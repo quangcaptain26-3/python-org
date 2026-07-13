@@ -1,0 +1,609 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 16 - Mode</title></head><body style="background-color: #fffeee;"><p><a href="../exercise15/index.html">Trước - #15 Trung vị</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise17/index.html">Tiếp - #17 Tung xúc xắc</a></p>
+
+
+
+
+<h1><a name="_Toc115418685"></a><a name="_Toc115359996">Bài tập #16: Mode (Số xuất hiện nhiều nhất)</a></h1>
+<p class="ChapterTitleCodeExample">mode([1, 1, 2, 3, 4])&nbsp; <span style="font-size:13.0pt">→ </span>&nbsp;1</p>
+<p class="ChapterTitleCodeExample"><span style='font-size:8.0pt;font-family:"MS Shell Dlg 2","sans-serif"'><img border="0" height="144" id="Picture 27" src="data:image/jpeg;base64,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" width="144"/></span></p>
+<p class="Body"><i>Mode</i> là bài tập thống kê thứ ba trong sách. Mode là số xuất hiện thường xuyên nhất trong danh sách. Cùng với trung vị và trung bình, bạn có bộ chỉ số mô tả tổng quan cho một tập số. Bài tập này kiểm tra khả năng dùng từ điển (dictionary) để đếm tần suất các số.</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body">Viết hàm <code>mode()</code> nhận tham số <span class="Literal">numbers</span>. Hàm trả về mode — số xuất hiện nhiều nhất — trong danh sách số nguyên và số thực.</p>
+<p class="Body">Truyền danh sách rỗng vào <code>mode()</code> phải trả về <code>None</code>.</p>
+<p class="Body">Sao chép các câu lệnh <code>assert</code> sau vào cuối chương trình:</p>
+<p class="CodeCxSpFirst">assert mode([]) == None</p>
+<p class="CodeCxSpMiddle">assert mode([1, 2, 3, 4, 4]) == 4</p>
+<p class="CodeCxSpMiddle">assert mode([1, 1, 2, 3, 4]) == 1</p>
+<p class="CodeCxSpMiddle">import random</p>
+<p class="CodeCxSpMiddle">random.seed(42)</p>
+<p class="CodeCxSpMiddle">testData = [1, 2, 3, 4, 4]</p>
+<p class="CodeCxSpMiddle">for i in range(1000):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; random.shuffle(testData)</p>
+<p class="CodeCxSpLast">&nbsp;&nbsp;&nbsp; assert mode(testData) == 4</p>
+<p class="Body">Xáo trộn thứ tự không ảnh hưởng mode. Vòng lặp kiểm tra 1.000 lần. Giải thích <span class="Literal">random.seed()</span> xem Bài tập #19.</p>
+<p class="Body">Hãy tự viết lời giải trước. Nếu gặp khó khăn, đọc <span class="Bold">Thiết kế lời giải</span> và <span class="Bold">Trường hợp đặc biệt và lỗi thường gặp</span>.</p>
+<p class="Body">Kiến thức cần có: vòng lặp <code>for</code>, toán tử gán cộng, chỉ số, toán tử <code>not in</code></p>
+<p class="HeadA">Thiết kế lời giải</p>
+<p class="Body">Dùng từ điển để đếm tần suất: khóa là số, giá trị là số lần xuất hiện. Khởi tạo từ điển rỗng và hai biến theo dõi số xuất hiện nhiều nhất cùng số lần xuất hiện của nó. Duyệt từng số: nếu chưa có trong từ điển thì tạo khóa với giá trị 0, rồi tăng đếm. Nếu đếm mới lớn hơn kỷ lục, cập nhật số xuất hiện nhiều nhất.</p>
+<p class="Body">Cách làm tương tự Bài tập #12 “Nhỏ nhất &amp; Lớn nhất”: duyệt danh sách và cập nhật biến theo dõi kết quả tốt nhất tìm được.</p>
+<p class="HeadA">Trường hợp đặc biệt và lỗi thường gặp</p>
+<p class="Body">Danh sách rỗng phải trả về <code>None</code> ngay từ đầu hàm.</p>
+<p class="HeadA">Mẫu lời giải</p>
+<p class="Body">Mẫu tại <span class="MsoHyperlink">https://invpy.com/mode-template.py</span>. Lời giải đầy đủ: <span class="MsoHyperlink">https://invpy.com/mode.py</span>, debugger: <span class="MsoHyperlink">https://invpy.com/mode-debug/</span>.</p>
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body"><b>Bước 1 — Danh sách rỗng:</b> Trả về <code>None</code> nếu <code>len(numbers) == 0</code>.</p>
+<p class="Body"><b>Bước 2 — Khởi tạo:</b> <code>numberCount = {}</code> lưu tần suất; <code>mostFreqNumber</code> và <code>mostFreqNumberCount = 0</code> theo dõi kỷ lục.</p>
+<p class="Body"><b>Bước 3 — Đếm:</b> Với mỗi <code>number</code>, dùng <code>if number not in numberCount</code> để khởi tạo khóa, rồi <code>numberCount[number] += 1</code>.</p>
+<p class="Body"><b>Bước 4 — Cập nhật kỷ lục:</b> Nếu <code>numberCount[number] &gt; mostFreqNumberCount</code>, gán lại cả hai biến theo dõi.</p>
+<p class="Body"><b>Bước 5 — Trả về:</b> Sau vòng lặp, <code>mostFreqNumber</code> chính là mode.</p>
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="Body">Chương trình Python đầy đủ:</p>
+<p class="CodeCxSpFirst">def mode(numbers):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if len(numbers) == 0:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return None</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; numberCount = {}</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; mostFreqNumber = None</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; mostFreqNumberCount = 0</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; for number in numbers:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if number not in numberCount:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; numberCount[number] = 0</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; numberCount[number] += 1</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if numberCount[number] &gt; mostFreqNumberCount:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mostFreqNumber = number</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mostFreqNumberCount = numberCount[number]</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; return mostFreqNumber</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">assert mode([]) == None</p>
+<p class="CodeCxSpMiddle">assert mode([1, 2, 3, 4, 4]) == 4</p>
+<p class="CodeCxSpMiddle">assert mode([1, 1, 2, 3, 4]) == 1</p>
+<p class="CodeCxSpMiddle">import random</p>
+<p class="CodeCxSpMiddle">random.seed(42)</p>
+<p class="CodeCxSpMiddle">testData = [1, 2, 3, 4, 4]</p>
+<p class="CodeCxSpMiddle">for i in range(1000):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; random.shuffle(testData)</p>
+<p class="CodeCxSpLast">&nbsp;&nbsp;&nbsp; assert mode(testData) == 4</p>
+
+
+
+<p><a href="../exercise15/index.html">Trước - #15 Trung vị</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise17/index.html">Tiếp - #17 Tung xúc xắc</a></p></body></html>

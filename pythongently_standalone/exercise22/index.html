@@ -1,0 +1,604 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 22 - Kéo búa bao</title></head><body style="background-color: #fffeee;"><p><a href="../exercise21/index.html">Trước - #21 Kiểm tra ngày</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise23/index.html">Tiếp - #23 99 chai bia</a></p>
+
+
+
+
+<h1><a name="_Toc115418691"></a><a name="_Toc115360002">Bài tập #22: Kéo búa bao</a></h1>
+<p class="ChapterTitleCodeExample">rpsWinner('rock', 'paper')&nbsp; <span style="font-size:13.0pt">→ </span>&nbsp;'player two'</p>
+<p class="ChapterTitleCodeExample"><span style='font-size:8.0pt;font-family:"MS Shell Dlg 2","sans-serif"'><img border="0" height="144" id="Picture 33" src="data:image/jpeg;base64,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" width="399"/></span></p>
+<p class="Body">Kéo búa bao là trò chơi phổ biến cho hai người. Hai người cùng chọn kéo, búa hoặc bao: búa thắng kéo, bao thắng búa, kéo thắng bao. Bài tập xác định người thắng từ nước đi của hai người chơi.</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body">Viết hàm <code>rpsWinner(player1, player2)</code>. Mỗi tham số là <code>'rock'</code>, <code>'paper'</code> hoặc <code>'scissors'</code>. Người 1 thắng trả về <code>'player one'</code>, người 2 thắng trả về <code>'player two'</code>, hòa trả về <code>'tie'</code>.</p>
+<p class="Body">Các <code>assert</code> kiểm tra:</p>
+<p class="CodeCxSpFirst">assert rpsWinner('rock', 'paper') == 'player two'</p>
+<p class="CodeCxSpMiddle">assert rpsWinner('rock', 'scissors') == 'player one'</p>
+<p class="CodeCxSpMiddle">assert rpsWinner('paper', 'scissors') == 'player two'</p>
+<p class="CodeCxSpMiddle">assert rpsWinner('paper', 'rock') == 'player one'</p>
+<p class="CodeCxSpMiddle">assert rpsWinner('scissors', 'rock') == 'player two'</p>
+<p class="CodeCxSpMiddle">assert rpsWinner('scissors', 'paper') == 'player one'</p>
+<p class="CodeCxSpMiddle">assert rpsWinner('rock', 'rock') == 'tie'</p>
+<p class="CodeCxSpMiddle">assert rpsWinner('paper', 'paper') == 'tie'</p>
+<p class="CodeCxSpLast">assert rpsWinner('scissors', 'scissors') == 'tie'</p>
+<p class="Body">Kiến thức cần có: toán tử Boolean, <code>elif</code></p>
+<p class="HeadA">Thiết kế lời giải</p>
+<p class="Body">Dùng chuỗi <code>if</code>-<code>elif</code>-<code>else</code>. Kết hợp điều kiện bằng <code>and</code>, ví dụ <code>player1 == 'rock' and player2 == 'paper'</code> → người 2 thắng.</p>
+<p class="HeadA">Trường hợp đặc biệt và lỗi thường gặp</p>
+<p class="Body">Có thể kiểm tra <code>player1 == player2</code> đầu hàm và trả về <code>'tie'</code> ngay.</p>
+<p class="HeadA">Mẫu lời giải</p>
+<p class="Body">Mẫu: <span class="MsoHyperlink">https://invpy.com/rockpaperscissors-template.py</span>. Lời giải: <span class="MsoHyperlink">https://invpy.com/rockpaperscissors.py</span>.</p>
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body"><b>Bước 1:</b> Liệt kê 6 tổ hợp có người thắng (không hòa), mỗi tổ hợp một nhánh <code>elif</code>.</p>
+<p class="Body"><b>Bước 2:</b> Mỗi nhánh trả về <code>'player one'</code> hoặc <code>'player two'</code> theo quy tắc: búa&gt;kéo, bao&gt;búa, kéo&gt;bao.</p>
+<p class="Body"><b>Bước 3:</b> Nhánh <code>else</code> cuối cùng trả về <code>'tie'</code> khi cùng nước đi.</p>
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="Body">Chương trình Python đầy đủ:</p>
+<p class="CodeCxSpFirst">def rpsWinner(player1, player2):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if player1 == 'rock' and player2 == 'paper':</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 'player two'</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; elif player1 == 'rock' and player2 == 'scissors':</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 'player one'</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; elif player1 == 'paper' and player2 == 'scissors':</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 'player two'</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; elif player1 == 'paper' and player2 == 'rock':</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 'player one'</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; elif player1 == 'scissors' and player2 == 'rock':</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 'player two'</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; elif player1 == 'scissors' and player2 == 'paper':</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 'player one'</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; else:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 'tie'</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">assert rpsWinner('rock', 'paper') == 'player two'</p>
+<p class="CodeCxSpMiddle">assert rpsWinner('rock', 'scissors') == 'player one'</p>
+<p class="CodeCxSpMiddle">assert rpsWinner('paper', 'scissors') == 'player two'</p>
+<p class="CodeCxSpMiddle">assert rpsWinner('paper', 'rock') == 'player one'</p>
+<p class="CodeCxSpMiddle">assert rpsWinner('scissors', 'rock') == 'player two'</p>
+<p class="CodeCxSpMiddle">assert rpsWinner('scissors', 'paper') == 'player one'</p>
+<p class="CodeCxSpMiddle">assert rpsWinner('rock', 'rock') == 'tie'</p>
+<p class="CodeCxSpMiddle">assert rpsWinner('paper', 'paper') == 'tie'</p>
+<p class="CodeCxSpLast">assert rpsWinner('scissors', 'scissors') == 'tie'</p>
+
+
+
+<p><a href="../exercise21/index.html">Trước - #21 Kiểm tra ngày</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise23/index.html">Tiếp - #23 99 chai bia</a></p></body></html>

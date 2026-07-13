@@ -1,0 +1,649 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 33 - Định dạng số với dấu phẩy</title></head><body style="background-color: #fffeee;"><p><a href="../exercise32/index.html">Trước - #32 Chuyển chuỗi sang số nguyên</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise34/index.html">Sau - #34 Chữ hoa</a></p>
+
+
+
+
+<h1><a name="_Toc115418702"></a><a name="_Toc115360013">Bài tập #33: Định dạng số với dấu phẩy</a></h1>
+<p class="ChapterTitleCodeExample">commaFormat(12345)&nbsp; <span style="font-size:
+13.0pt">→ </span>&nbsp;'12,345'</p>
+<p class="ChapterTitleCodeExample"><span style='font-size:8.0pt;font-family:"MS Shell Dlg 2","sans-serif"'><img border="0" height="140" id="Picture 44" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAkACQAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/wAALCACMAtABAREA/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/APZqKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKwPEfjfQvCuF1W+VJiMiFAXkI9cDp+NZOlfFvwpq10tut89tI5wv2mMopP+90H412gIYAggg9CKWiq2oajaaVZvd6hcRW9vH96SRsAVxT/GnwilwYxc3LKDjzFt22/4/pXYaTrWn67ZLd6XdxXMB43Ieh9COoPsavUUVyGufFHwxoN01tcXxmnQ4dLdDJtPoT0z7Zqz4d+IXh7xRN5GnXwFyekEylHP0B6/hXTUUUUUUUVHNPFbQvNPIkUSDczucBR6k1xF58ZPCVpctCLuefacF4YSV/M4z+FdLoHijSPE9sZtIvY7gL99Ojp9VPIrWoormvEXxB8PeF5vI1G+H2nvBCpdx9QOn41V0T4peF9dultre+ME7nCJcoY9x9Aen6119FFUtW1nT9Dsmu9Uu4raBeN0hxk+gHUn2Fccvxp8ItcCP7TcquceYbdtv+P6V2mn6lZ6tZpd6fcxXNu/3ZI2yDVqiiiiiiisTxF4x0TwtGp1a+SF3GUiUFpGHso5x79KwtO+MHhPUbpYPtslszHAa4iKqfx5A/Gu2R1kRXRgysMhgcginUVBeXltp9rJc3k8cEEY3PJIwVVH1riZ/jP4ShuDELq5lAOPMjgO39cH9K6zRdf0zxFZ/atJvI7mIcNtPKn0IPIP1rRoorlNf+JXhrw5ctbXl95lypw0UCmQr9ccA+2aXw/8SfDfiS5FtZX2y5Y4WGdTGzfTPB+gNdVRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRXMfEDxcng7wzLeLta7lPlWyHu57n2A5//AF18w3V1dapfSXFzJJcXU77nduWdjTJ7aa2fZcQyRMRna6lT+tezfBTxvLcs3hvUZS5RC9m7HJwPvJ+A5H4+1exU13WNGd2CqoySegFfMnxG8bz+MNek8uRhpluxW2izwR03kep/QcVyv2S4Nv5/kS+T/wA9Nh2/n0rc8E+Lrrwfr0V5CzNbMQtzCDxInf8AEdQa+prW5ivbWG5t3DwzIJEYdCpGQalry74yeOpdEsk0TTJTHeXabppEODHH0wPQtz+A968Iht5rmTZBFJK/Xailj+lIrTWtwGUvFNG2QRlWUj+Rr6U+F/jNvF3hv/S2B1CzIjn/ANsfwv8Aj39wa7Wiiiiiivn74weOpdY1iTQ7GYjT7Ntsu08TSjrn2B4+uT6V5zFaXE8bSQwSyIn3mRCQPqat6Frl74d1eDUdOlMc8TZ9nHdSO4NfVPh3W7fxHoNpqlrxHcJuK55RujKfocitOuK+KHjQ+EPD2LRgNRvCY4P9gfxP+GRj3Ir5sJnvbksfMnnlYknlmYnr7k0k0EtvIY5o3jcdVdSD+Rr3j4M+N5dbsJNE1KUyXlmm6GRjkyRdMH1K8fgR6V6jUN3dQ2NnNdXLiOGFDJI56BQMk18teNvF934x12W7nZltkJW2gzxGn+J6k1htaXCQLO0Eqwt0kKEKfxrqfhz41n8Ia/H5kjHTblglzHngDpvA9R/LIr6dVg6hlIKkZBHcUtFFFFFYPjTxPD4R8NXGpSAPKPkgjJ+/Ieg+nc+wNfLepajea1qUt5fTPPdTtlmPJJ9B7egqGe1ntSBcQyRFhkCRCufzr1n4K+N5Yr0eG9QlLQSgtZsx+4w5KfQjJHuPevb6Svm74peOpfFGuSWdrKRpVo5SJVPErDgufX29vrXFLaXDwNOsErQr1kCEqPx6VqeFPE974T1yHULJzgECWLPyyp3U/wBPQ19U6ZqEGraZbX9o++C4jEiH2I/nVqvO/i744k8M6RHp2nSbNRvQfnB5ij6Fh7noPx9K+e44prqbbEkk0rc4UFmNIyy202GV4pUPQgqymvon4SeNZPFGhPaX8m/UbHCu56yofusffsfw9a9Aooooooooooooooooooooooooooooooor57+N+uHUPGCacj5h0+IKQDxvb5mP5bR+Fdz8HvBNvpWgw63eQK+oXq742cZMUfbHoT1z7iut8YeE7Lxdok1ldRoJtpME+PmifsQfT1HevmXTbu58L+KILhgUuLC5G9fdWww/mK+tIZkuII5ozlJFDKfUEZFcb8W9cbRfAd0In2zXhFshB5w33v8Ax0H868e+Ffg+PxZ4m/01N1hZqJZl7Oc/Kn4859ga+kRawC1+zCCIW+3Z5WwbNvpjpivnH4reDovCniVXsU2afeqZIVHSNgfmX6DII9jXqXwV1o6n4IFrI26WwlMPP9w/Mv8AMj8K9BZgqlmOABkk18o+JdSn8W+NLu5iBke7ufLgXP8ADnag/LFfR/g3wjZeENDhs7aNDcFQbifHzSv359PQVy3xg8E2+seH5tZtIVXUbJd7sowZYx94H1IHI+hrzj4Oa02lePILdmxDfoYHHv1X9Rj8a+kKKKKKKxvF+s/8I/4U1LUgcPDCfL/3zwv6kV81+DfDsvi/xZbaeztskYyXEncIOWP1PT6mvqPT9NtNKsY7Kwt44LaNdqxoMD/6/wBa8R+NPgq30e6h1zTYVit7p/LuI0GFWTqGA7ZGfxHvWv8AAPWmktdS0eRiREwuIgewPDfqF/OvYa+afi5rjaz48u41YmGxAtoxnjI+9/48T+VeufC7wTb+GvD0F3PCp1S7QSSyMPmjU8hB6cdfer/xB8F23i/QJk8pRqMKF7aYD5gw/hJ9D0/WvnzwVrD+HfGenXjEosc4jmB4+RvlbP4H9K+rq83+N2uNpvg9LCJismoS7Gwf4F5b9do/GuA+D3guHxJrM2oajEJLGxxiNh8skh6A+oA5P4V9AXFlbXdm9pcQRyW7rsaJlBUj0xXzH8RfCY8IeKprSEN9jmHnWxPZD/Dn2II/KvcvhXrTa34BsXkbdNbA20hJ5+Xp/wCO7a7GiiiiivB/jxrjXOv2ekRsfKtIvNcf7b9PyUD866D4L+Cbe30lfEN/Asl1cE/Zt4z5aDjcPcnPPp9a9B8S+G7DxTo81hqESsHB8uTHzRN2ZT/nNfLksd54W8SlG+S80656j+8jdfocV9Y6dex6jptteQnMdxEsq/Rhn+tc98StcbQPAuoXMbFZ5U8iIjqGfjI+gyfwrwj4ceEh4v8AFUVrOG+xQL51wR3UdFz7nA+ma+moLO2tbRbW3gjjt0XYsSqAoHpivn34weDIfDWuRX2nxCOxv8ny1HEcg6gexzkfjXdfArWje+FrnTZGy9jNlAT/AAPyP1DV6fXyz4/1mTxJ461CdCXQS/Z4FH91TtGPqcn8a988A+C7XwhoMMYiQ6hKga5mx8xY/wAIPoOn61m/FTwTb+I/Ds97bwqNTs0MkbqOZFHJQ+vHT3rx74Wa0dE8e6exbbDdN9mk9CH4H/j22vp2iiiiiiiiiiiiiiiiiiiiiiiiiiiiiik6V8paiz+J/Hs+CS1/qBVcejPgfpX1VBCltbxwxLtjjUIo9ABgVJXzT8X9OTT/AIiXpjxtuVSfA7EjB/UE/jXuPw7vzqPgDR52bcwtxGxPqhK/0rzn4/6gTdaRp4PyqjzsPckKP5Guk+B+liz8EveFcSXtwzZ/2V+UfqG/OvR683+OOnJdeCEuzgSWlyrKc9m+Uj9R+Vcp8Ab4x63qtiW+WaBZQPdWx/7NXq3jbUDpfgrV7tThktXCn/aI2j9TXg3wg0sal8QrJnGUtFa4P1AwP1Ir6Wpk0KXEEkMo3JIpVge4Iwa+TIyfD3i9Sj82F7wwOfuP/wDWr61Vg6hl6EZFLRRRRXmXx21A23g+2tFPN1dDP+6oJ/nisb4AaWu3VtUYfNlLdD7feb/2WvZq5b4l6cmp/D7Vo3xmKHzkJOMFDu/pj8a8W+DV/wDYviHaxlsLdRSQn3+XcP1UV9G3M62trNO/3YkLn6AZr5X8OWreJvHllFN832y9Dy+4Lbm/TNfVgGBgdKWvlj4iacmlePtXt4sBPPMqhT03gNj9a+k/DN9/afhjS7zOTNaxuT77Rn9a8W+PGoGfxZZ2YPy21qGI/wBpmOf0Ar0f4RaWNN+Hti2MSXZa4c465OB/46BXbV5N8fdOSTRNM1AbRJDO0J55IZc/zX9arfs/3+611iwJ+48cyj6gg/yFexUUUUUV8reNLp9d+IWptGdxlvDDH9Adi/yFfT+mWMemaXa2UIAjt4liUD0AxVqvnb43acll47NxHtAvLdJWA/vDKn/0EV6v8J783/w60wsctAGhP/AWOP0xXJfH/UNmn6Rp6t/rJXmYf7oAH/oRq38BtLFv4bvtRZRvurjywf8AZQf4sa9UrhPjJpyX3w9upW277SRJkJ+u0/oxrzr4E35t/GNzaE/Lc2rce6kEfpmvb/EN/wD2X4d1G9zg29tJID7hTj9a+bvhppn9sfEHS4pBvSOUzvnvsBb+YFfUVIQCCCMg9Qa+TNetv7A8Y30EBH+h3jeWQeytkf0r6us7hbuyguF+7LGrj6EZqaiiiiiiiiiiiiiiiiiiiiiiiiiiiiiqmrT/AGXR72f/AJ5QO/5KTXzR8Mrb7X8RtHUjO2YyH/gKlv5ivqKuf8aeLbXwdoEt/Ph5m+S3hzzI/YfQdSa+XdT1K61jUp7++lMtxO5d2Pr/AIV9BfBOfzvh5Emc+TcSp+ob/wBmrzb433Bm8fmM9IbWNB+OW/rXsvw8tvsnw/0WPGCbZXI/3vm/rXRO6xozuwVFGSxOAB6183/FDx43i7WPs1m5GlWjERAf8tW6Fz/T2+tSfBWfyfiJAmcebBKn14z/AEr1P4y3Bg+HN2qnHnSxR/8AjwP9K4j4AW27WdXucf6uBIwf95s/+y17lXnPxZ8f/wDCN6adK02UDVLtOWU8wRn+L6noPz9K+eSSTk9a+vNAn+1eHtNnzkyWsTE/VRWhRRRRXin7QNyTc6LbZ4CSyEfUqB/I11PwRthB8P0kxzPcyOfwwv8A7LXoVeE/GLx//aVy/h7S5c2kDf6VIp4lcfw/Qd/f6VxPgK4+zePNEkzj/S0U/QnH9a+j/G9ybPwRrUwOCtnIB9SpH9a8M+DFsLj4i2rsM+TDLIP++dv/ALNX0hXJ/EPxtD4M0JpUKvqFwClrEeee7Eeg/wABXzHc3M17dS3NzI0s0rF3djksT1Jr6a+Fdx9p+HGkN3RGj/J2FeJfFm6N18SNU9IykY/BFr6J8OWosvDOl26jAitYlx9FFXbq5hsrWW5uZFigiUu7scBQOpNfMfxC8bTeM9daVSyafb5S1iPp3Yj1P+ArpPgLceX4tvoM/wCtsycfRl/xr32iiiimSv5ULueiqW/KvljwfF/avxD0sOM+bfLIw/4FuP8AKvqqsbxV4ls/CehT6lenIQbY4weZXPRR/ngZr5b1zWrzxDq9xqWoSb552yfRR2UegA4r3D4EXJl8GXUJOfKvGwPQFVP+Nch8ernzPFtjBniKzB/Fmb/AV6X8KLUWnw40oAcyK8h/Fya7AnAyeAK+efiz4/8A+El1M6Xp0pOl2j8sp4nkH8X0HQfnWX8Jrk2/xI0vBwJC8Z/FGr234qXP2b4cau2cF41jH/AnA/lXl3wHtRL4wvLg/wDLGzbH1ZlH+Ne/1wnxR8eL4S0f7LZOP7Vu1IiA/wCWS9C5/p7/AEr5vd2kdndizMclickmvq7wRcG78EaLMxyWs4wfwUD+lbtFFFFFFFFFFFFFFFFFFFFFFFFFFFFFYvjGXyfBmsuO1lL/AOgmvB/gym/4j2Z/uxSn/wAcI/rX0TqF/baXYT3t7KsVvAheR27AV8v+OfGFz4y197yTcltHlLaEn7if4nqf/rVN4h8FT+G/Cmk6jfbku9Qdz5J/5ZoACufc5z7cV6t8B5N3gu7T+7et+qLXmnxelMnxJ1If3BGv/kNa+hPDMfleFdJT+7Zwj/xwV5h8ZfH/AJav4a0uX5mH+myqeg/55j+v5etefeDPBU/ihb+7fdHYWEDySSD+JwpKoPf19vqKs/CZ9nxJ0r3Mg/8AIbV6j8dZCvgaBf796g/8dY1j/s/R/wCi63J3LxL+jf416F4z8WWvg7QJb+4w8x+S3hzzI/YfQdSfSvmWSTU/FviIs2+61G+l6Dux/kB+gFXvG3hoeEteGl+aZXSCN5H7FyMtj2z0r6O8DP5ngXRGPU2UX/oIreoooorwb4+vnxPpqf3bPP5u3+Fej/CWMR/DbSsfxCRv/IjVmfFnx8PDWmHS9Olxql2nLKeYIz/F9T0H514x4L8J3XjLxDFYw7lhB33M2P8AVpnk/U9B71Dpka2Hjm0ijztg1FFXPXAkAr6H+J7+X8OdZPrCB+bAV5T8CIw3jW6Y9Usnx/32le5a3rVn4f0i41LUJNkEC5Pqx7KPUk8V8ueJ/Ed94w8QS390GLyNshhXkRrn5VH+eSau+L/B0vhGy0cXbN9svIWlmTtGcjC/UDr717T8GHL/AA5tB/dmlH/jxP8AWvFPiA3nfETWfe7Zfy4r6it1CW0SjoEA/SvD/jH4/wD7RuX8O6XLm1hb/SpFP+scfwfQd/f6VyHh3wXPq/hvWNcn3x2VhAzRkf8ALWQDoPYd/wAK2vgg+34gAf3rWQfyP9K+iqKKKKpa0/l6HfuOq20h/wDHTXzZ8LI/M+JGjj0kZvyRq+m7m5hs7WW5uZFihiUu7scBQOpNfMnxD8bTeM9daRCyafbkpaxHjjuxHqf8BUeqeC7jRvA1jrl9vjmvrgLFCf4YtpIY+5x+X1r0r4ANnRNXX0uEP/jv/wBauN+Nr7viFIP7ttEP5n+te1+AI/K8A6Iv/Toh/MZrifjF4/8A7MtX8PaXLi7nX/SpFPMSH+H6n9B9a8x8C+DLjxhqki/PHY2yGS4mHbjhR7n/ABNN+HTGP4h6L6/alH55Fe1fGl9vw6uR/eniH/j2f6Vxv7P6Z1TWZP7sMa/mx/wr1fxT4ls/CmhT6lenIQbY4weZXPRR/ngZr5f1PUdS8XeIXuZt9xe3kgVEUZ68Kqj0HSr/AI28KN4P1CysJZPMnktEmmPYOS2QPYYAr3/4ZPv+HOin0hI/JiK6qiiiiiiiiiiiiiiiiiiiiiiiiiiiiisHx0M+BNcx/wA+Uv8A6Ca8O+Cv/JRbf/rhL/6DV74u+P8A+3r86LpkudOtX/eup4nkH/so7ep59Kl+D/gD+2b1dd1OLNhbP+4jYcTSDv8A7q/qfoa6D9oD/kEaP/13k/8AQRVv4Cg/8Ilf+n2w/wDoC15p8WP+Slat/vR/+i1r1fxb46Twd4C02O2ZW1S6s41t1/uDYMuR6Dt6n8a8O0DQ7/xd4hjsbYtJcXDlpJXydozlnY/5zX0tDoNn4a8EXGmWKYhhtZMserttOWPua8A+FYJ+JGj4/wCej/8AoDV6l8eP+RLtP+v5f/QHrH+B1/baZ4d8QXt5KsVvA8byO3QAK1eeeOfGFz4z197yTclrHlLaEn7iep9z1P8A9avXPhD4A/sGwGtalFjUbpP3SMOYIz/7Me/oOPWvP/jbj/hYUn/XtF/I17X4B/5EHQ/+vOP+VdDRRRRXgXx6B/4S6x/68h/6G1dh4e8WWvg/4L6Xf3GHlMbpBDnmV97YH07k+leJSy6l4s8Ql233Wo30vAHdj0A9AP0Ar6W8C+D7fwboCWce17qTD3MwH339vYdB/wDXr51I/wCLhED/AKCnH/f2vf8A4q8/DfV/9xP/AENa8w+A7Kniy/d2CqtixJJwAN61mfFLx63i3V/sllIf7KtGIix/y1boXP8AT2+tdN8GvAHmuniXVIvkU/6FGw6n/nofp2/P0qP9oH/kJ6L6+TL/ADWuw+Cv/JO4P+viX+deK+NuPiJq+f8An/f/ANCr2L4p+Ph4Z0ddM06UDVLuP7ynmCM8bvqeg/OvGPBvhS78Y+II7CDcsf37ibGRGnc/XsPevoPxVplro3wv1WwsYhFbQWEiIo/3Tyfc9a8d+Cn/ACUOH/r3l/lX0bRRRRWfr/8AyLup/wDXrL/6Aa+dPhN/yUnSvrJ/6Laun+Mfj/8AtC4fw7pc2bWFv9LkU/6xx/B9B39/pWX8J/AJ8TamNT1GInS7R/usOJ5ByF+g6n8q7j48gDwfYgDGL1cf98NVP9n/AP5BGsf9d4//AEE1xvxq/wCSiT/9e8X/AKDXo1141g8GfCnRplKvfz2UaWsR7ttGWPsP8BXh2n2GpeLfEKW8O+5vr2UlnY9zyzMfQdTX054c8M2fhPwyum2YyFQtLIRzK5HLH/PAxXzp4C/5KLo2P+f1f517R8bP+SeS/wDXzF/M1x/wGuYbNvEFxcyLFDFDE7uxwFUbySa5D4ieN5vGeumSMsmnW5KW0R447uR6n9BgV6N8HPAH9n26eItUixdTL/okbD/Vof4/qe3t9a5j48Y/4TO09fsS/wDobV6p8Lf+Sb6N/wBcm/8AQ2rrKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKx/F0XneD9Yj/vWUv8A6Aa+VtN1S70meSaxlMUskTwlx1CsMHHocd62vAfg248Z6+lqu5LOLD3Mw/gT0Hueg/PtX1BY2VvptjDZ2cSxW8CBI0UcACvJf2gZgLTRIe5eVv0Uf1rY+BUWzwNO+Pv3r/oqivMvjBF5XxI1A4++sTf+OD/CuXvb++1/UImnZ7i4ZUgiVR2ACqqivov4beBo/B2hg3Cq2p3QDXDjnb6ID6D9T+Fb/iaUQeFtVlPRLOU/+OGvnv4QxGX4k6bgZ2CRj/37avUPjpFv8CRP/cvEP/jrD+teDR6rdw6TNpscpW1nkWWVB/GVBxn2Geleh/CDwB/bd8uuanFnT7Z/3KMOJpB/7KP1P4179Xzd8ZpRJ8R7sD+CKJf/ABwH+te7+DYTB4L0WMjBWyi/9AFbVFFFFeEfH1MeJNMfH3rQj8nP+Nea3mq3d9aWdrcSloLKMxwJ2QFix/Ek9fpXufwg8Af2HYLrepxY1C5T9yjDmGM/+zH9Bx616dXynpS/bPiLagc+bqin85a+g/ianmfDrWh6QA/kwNfM9jqt3psV3HaSmIXcPkTEdShIJGffArqPhr4Gk8Y62GuFZdMtSGuHHG89kB9T39B+FfS0UUcEKRQoqRxqFVVGAoHQCvDvj/IDrmkx91tnb82/+tXd/ByLy/hvYn+/JK3/AI+R/SvEfiIph+ImtY6/ai354P8AWsuWXUvFev7n33eoXsoAA6sTwAPQD9AK+lfAng638GaAlom17uXD3Mw/jf0HsOg/+vS/EaQRfD3W2Pe2ZfzwP61478DYy/j1mxwlnIf1Uf1r6Hooooqnq8fm6NfRj+O3kX81NfJWmandaPfLeWMpiuEVlVx1XcpUke+Ca0/B/hW78Y+IIrC33Kn37ibGRGnc/X096+otK0u10XTLfT7CIRW0CBUUfzPqT1JrzX4+y7fDmmR/3rsn8kP+NJ8AYyPD2qSY4a6VR+Cj/GuM+NyFPiCzY4e1jI/Uf0rib7UrzV3tluZGlMEKW8KAfdReAoH+eTX0H8LPAS+FNI+2X0Y/tW7UGTPWFOoQe/c+/wBK7XUJPK066kPRYnb8ga+Y/htGZviLow6n7Ru/IE/0r2j4zoX+HN2QPuTRN/48B/Wvnq21S7tNPu7K3lKQXmzz1H8YUkgfTJrt/hR4BPifVP7S1CI/2VaPyCOJ5OoX6Dqfy719EgBQABgDoBXz18c5d/jyNP7lnGP/AB5j/WvX/hvH5Xw80VfW3DfmSf6109FFFFFFFFFFFFFFFFFFFFFFFFFFFFFVtSg+1aXdwf8APWF0/NSK+Q7OymvdQhsoQPOmlWJQxwNxOBk/Wvqfwb4UtfB+gRafbYaU/PPNjmV+5+nYD0rerwn4+3Yk8QaXag5MNszkem5sf+y133wdtTbfDixZhgzPJJ/48R/SvMPjlbGHx4kvae0jb8iw/pXRfBPwRE8Q8T3wSRtzJaR9dhHDOffqB+fpXstcv8SbsWXw91mQtgtAYx9WIX+teQ/A21M/jt5scQWjsT9SF/rXp3xitjc/Di+Zf+WLxyf+Pgf1rwvwP4Wfxf4mg00SCKLBkmfPIQYzj35x+NfUljY2+mWMNnZxLFbwIEjRegAqxXy38Rrn+0PiLrDId3+keUv/AAEBf6V9N6bb/ZNLtLf/AJ5Qon5KBVmiiiivF/2gbU79FugOMSxk/wDfJH9aw/g94Ii8Q6q+q3+x7OwcbYTz5knUZHoOvvx719CVV1S5FlpV3cscCGF5D+Ck18zfDe3a9+IujqRuIuPNP/AQW/pX0T4ytTe+DNZgAyXs5cD3Ckj+VfLeh6RNr2tWmmWzIstzII1ZzgD3NfVXhzw/Z+GNEt9MsFxHEPmcjmRu7H3NalfPHxxu/tHjxYQRi3tY0P1JLf1Few/Di1Np8PdFjK4JtxIR/vEt/WvDfi7a/ZfiPqJ7SiOQfig/qK9E+DHgiHT9LTxFd7ZLu7U/Zx18qPpn/eP6D8a9UrhvjFefZPhzernBuJI4h7/MD/JTXCfAG2369qtzjiO2VM+7Nn/2WvdKKKKKbIgkjZD0YEV8fT2brqslmozIJjEMnHO7FfTngPwbb+DNAS1Xa95Lh7qYfxN6D2HQfn3rp68W/aBvMy6LZg8hZZSPrtA/ka6T4H2vkeAjLjme6kf8Bhf6VxXx8ttnijTrjtLabfxVj/8AFCrHwV8ERahMfEd+Fkit5CltF1/eDqx+mePfntXuVYnjO8Fh4M1i4JxstJAPqVIH6mvB/g3a/afiNZtjiCOST/x0j/2avaPifbfavhzrCgZKxCT/AL5YH+Qr528J+HZfFXiO10qGRY/OJLuf4VAyxHqcDpX1RpGlWmh6Xb6fYRCO3gXai/zJ9SepNXK+Zvi5eC8+I+pbekOyL8kGf1zX0J4XtPsPhXSrbGDFaRKR77RmtWiiiiiiiiiiiiiiivKfir8Tb3w9qKaPobpHcqge4nZQxTPRQDxnHJPuK0/hV8Qp/F9tcWWqbP7RtQH3oMCVDxnHYg9fqK9DoorB8aeJ4vCPhq41ORBJIuEhjJxvc9B9O59hXkXhX40ayviGJdelim0+4kCOFjCmHPG4Edh3BzxXvQORkdKWiivB/F/xl1geI5odAligsbaQopMYczEcEnPY9sdq9X8D+Ko/GHhqDUVQRzZMc8YPCOOuPY8EfWuhor5O8S20mgeNtQiT5Xtbxmj+m7cv6Yr6l0nUYtW0i0v4CDHcxLKuPcZq5Xy/8TtYGt+P9RlibdFCwt4yOchODj8c19FeFdN/sjwrpdiRhoLZFYf7WMn9c15d+0Bpxzo+oqOPngY/kw/9mrR+A2sLceH77S2YeZazeao/2HH+IP516tXlvx31lbXwzaaWrDzbybewz/An/wBcj8qzfgBppEWr6kwOGKW6H6ZZv5rXpfi/TzqvhDVbNRlpbVwv+8BkfqBXzp8NdXXRfHumXEjBYpJPIkJ9HG3+ZFfUlVdTv4tL0y6vrhgsVvE0rE+gGa+XfDNtJ4k8fWCSDLXV6JZPpu3N+gNfVlFcd8TvF83hDwv59nt+23MnkwlhkJxktjvgD8yK8/8Ahl8UdVuPEcOla9dG6gvG2RyuAGjk7DI6g9PxFe40V5t8c9ON14JiulGTaXKsT/ssCp/UiuU+AmsLBrOo6VI2PtMQmjB7sh5/Rv0r3SuL+LOsLpHgC+G7Et5i2jGeu773/joNeY/AvTTdeM57wj5LO2Y5/wBpjtH6bq9/miWeCSJxlJFKkexGK+TLWWXwv4vjkORJp158w/3H5/lX1lBMlzBHNEwaORQ6sO4IyDTyQASTgDqTXyn4r1BvE/jm+uLfL/arry4fdc7V/QCvqXT7RbDTra0T7sESxj6KAP6V4f8AHvTjD4k0++A+W4tjGT7o3+DCu0+CerjUPA4s2bMthM0ZH+y3zL/Mj8K9Erxz4+6woh0zR0b5izXMgB6D7q/zb8q0fgNppt/DF9fsMG6uNqn1VB/iT+VepUV4H49+Kmtr4tuLbRb02tnZSGJQig+aynDFsjkZzx6V6t4A8Vjxh4Xhv3VUuUYxXCL0DjuPYgg/jXTUV8r/ABCsG0nx/q8IBUG4MyfR/mH86+k/DGrJrnhnTtRQ58+BWb2bGGH5g1q181/GDWF1bx9cpG26KyRbYemRy36kj8K9y8AaadJ8C6Rasu1xbiRx/tN8x/nXD/H3TjLo2l6gq/6idomPswyP/Qar/ALV1NvqmkO3zKy3MY9Qflb+S/nXsVedfG3WV0/wT9iVsS38yxgf7C/Mx/QD8a5P4A6aZNV1TUmX5YoVgU+7HJ/9BH517HrViNT0S+siAftFu8XPupFfL3g3U/8AhH/Gum3k2UWG4Cy+yn5W/Qmvq4HPIplxPHa20s8zBYokLux7ADJNfKaGTxb45U4LPqN9kj0DP/QGvq5VCIFUYCjAFOrnvHHiqPwf4am1FkEkxIjgjJ4Zz0z7DBJ+leUeEPjLrB8Rww6/LFPY3MgRiIwhhJ4BGOw7g9q94oopCcDJ4ArwXxT8aNZbxFKugyxQ6fbyFEDRhjNjjcxPY9gMcV674M8TxeLvDVvqcaCORspNGDnY46j6dx7EVvUUV558VfiFP4Qt7ey0vZ/aNyC+9xuESDjOO5J6fQ1mfCr4m3viLUH0fXHSS6KF7edVCl8dVIHGccg+xr1aivlX4hTPN8QNbaTqLt1/AHA/QCtr4LyvH8RbVUziSGVWx6bc/wAwK+kKKK8k/aAlddI0eIE7HnkYj3CjH8zXh1fXXhyV5/DOlyy53vaRMxPclBWlRVLWpXg0O/ljJDpbSMuPUKcV8gda9s/Z+mc2OtQnPlrJEw9iQwP8hXsFFeB/HTQGsvEtvq8afub6MK5A6SJx+q4/I1Y+FXxPtNDsf7E16Ro7VGLW1xgsEyclWA5xnkH3NdN42+MGk2WkS2/h66F5qEylUkQHZDn+Ik9T6AV5T8O9AfxL42srdlLwxP8AaLgn+4pzz9TgfjX1JXI/FDQW8QeBb2GFC1xb4uIgBySvUfiua8A8FeK5/B3iKHUYVMkWPLniBx5iHqPr0I9xXvX/AAtrwj/Z32v+0+dufI8tvNz6Yx1/HHvXgvjTxXceMvEUuoSoY4seXbw5zsQdB9TnJ9zX0N8OvD7eG/BVjZyrtuHXzpx3Dtzj8BgfhXTda+VfHWhP4a8ZX9lgrGJTLAfVG5XH06fhXrvgj4v6Te6PFb+IboWeoQqEaSQHZMB/ECOh9Qa5n4qfFC11yxOiaDI0lq5BubjBUPg5CqDzjPJPtSfAjw81zrN3rcqfurVPJiJ7yN1x9F/9Cr3WivJfj/BI2iaTMoPlpcOrHsCV4/ka8UsLlrPUba5jOHhlWRT7gg19hxuJI1cdGAIp1ZfiXSF1/wAOX+mN/wAvMLIpPZuqn8wK+WdL1G98L+IYbyEGO7spjlG9Rwyn68g19B6Z8XfCt9pi3NxfizlC5kglVtynuBgfN+FeO/Erx4fGmrxi1V49NtciBW4Lk9XI9+w7CvVPgr4ebSfCBvp02zai/mjI5EY4X8+T+Ir0WvnH4yaC2keN5btVIt9RUTqe27o4/Pn/AIFXU/DH4q2Flo8WjeIpzAbcbbe5YEqU7K2OhHQH0q18Rfi3px0abTPDlx9puLlSklwgIWJD1wT1Yjj2rh/hD4ebW/G9vO6ZttP/ANIkJHG4fcH58/ga+k68/wDjNoDax4Ka6hUtNp7+eAOpTo/6c/hXjvw88ayeC9f+0OrSWU4EdzGvXHZh7j/Gvbbz4t+E7bTTdx6j9ofblYI0bzGPpgjj8a8A8Qa3e+L/ABLNfTITPdSBIol52joqCvpzwnoi+HPC+n6YMboIgJCO7nlj+ZNbFFfIviSCS28T6pDMpWRLuUEH/eNep/s/XjZ1qzJ+T93KB7/MD/SvZ6K8P+POgtFqNjrcSfu5k+zykdmHK/mCf++ao/Cn4lW/hqJ9I1pmWwd98MwBbyWPUEDnaevHQ/Wu48W/GHRNM0mQaJdLfahIpEQRTsjP95iR29K8X8I6LP4s8YWlm+6Tz5vMuHPPyA7nJ/z1NfVqqEUKoAUDAA7Vz3j3QT4j8GajYRrunMfmQj/bX5gPxxj8a+bfC3iK68J+IbfU7ZctESskZ43oeGU/564r6At/i34Sm00Xb6l5TbctA8beYD6YA5/DivDvH/jKXxp4gN3saK0hXy7aJuqr3J9z/gO1e5fCnw83h/wPaiZNtzeE3MoI5G77oP8AwED9a7Ovl/4naA3h/wAc30YTbBct9phPYq3JH4HI/CvSfh78XNNfRYdP8R3P2a7tlCLO4JWVR0yR0bHXPWsz4ofFSy1HSpNF8PTGZZ+Li5CkLt/urnk57n0+tY/wQ8PNqPiqTVZEzb6eh2kjgyMMD8hk/lX0FRXj/wC0DM4sdFhGfLaSVj7kBQP5mvE+lfX+iyvPodhLJku9tGzZ9SozV2is3xHK8HhnVJYs70tJWUjsQhr5Fr3H9n+V20fWIiTsSeNgPcqc/wAhXrdFFfN/xnleT4i3SvnEcMSr9Nuf5k1i/D2Z4PiBojR5ybtF/A8H9Ca+qqK+d/jN4ZuNK8Wy6okTGy1DDiQDhZMYZT78Z/H2rZ+BXhidtRuNfuImS3SMw25YY3sfvEewAx+PtXt9FFcL8XfDU/iLweWs4zJdWUnnoijJZcYYD3wc/hXgPhzw/d+JNdt9Ms42LyOA7AcRr/Ex9ABX1nbQJa2sVvEMRxIEUegAwKlopksSzwvFIMo6lWHqDwa+TfFHh268Ma/c6bdRsNjnymI4kTPysPXIr3b4O+GZ/D/hJpr2Norm/k84owwVTGFB9+p/Gu/orE8XeGbbxb4fn0y5O0t80UuMmNx0b/H2Jr5j8QeGdU8MX72mqWrxMD8smMpIPVW71U07TL3V7xLXTrWW5nc4CRrk/wD1h719H/DbwKvgvRm+0bH1K6w1w68hR2QH0H6n8K7Ok618+/E34Z3eialPqmj2zzaXMxdljXJtyeoI/u+h7dK82AJOAOfSvVfhX8Mrq91GHW9ct2hsoCHghlXDTMOhI7KOvv8ASvd6K4P4o+AT4v0xLqwCjVLQHywTgSp3Qn17j8fWvna9sbrTrp7a9t5bedDho5FKkfga1PC/hDVfFmoJbabbsY8/vJ2BEcY9Sf6da+nfDegWnhjQrbTLIfu4V5cjl2PVj7k1qUVz3jvQ08Q+DdRsmAMnlGWI+jryP5Y/GvlWNS0iqOpIFfY1qhjtIUbqqKD+VS0V4z8Wvhrc3N7J4g0O3aYyDN3bxjLZ/vqO+e4/H1rxplZGKupVhwQRgiu5+Hvw2vfFWoRXN9DJBpEbBpJGG0zf7K+ue57fWvo+KJIIkiiUJGihVVRgADoBT65nx54Oh8Z+Hnsyyx3UR8y2lP8AC/ofY9D/APWr5o1jQ9R0C+e01S0kt5lOMMOG9wehHuKNG0LUfEF8lppdpJcTMcfKOF9yegHua+l/Afg6DwZ4fW0UrJdynzLmUfxP6D2HQfn3rpqZJGk0TxyKHRwVZSMgg9RXzf8AEP4b3vhXUZbmygkn0iRi0cijcYf9lvTHY964dVZ2CopZicAAZJr2X4TfDS5t7yLX9dgaEx/NaW8gw27++w7Y7D8fSvZqKK+fvjloaaf4rg1GEALqEWXA/vpgE/iCtaP7P6E6rrL/AMIhjH5sf8K9worL8R6Ba+JtCudLvR+7mXhgOUYdGHuDXzF4n8I6r4T1B7bUrdgmf3c6jMcg9Qf6day7KxutSuktrG3luJ3OFjjUsT+Ar6J+F3gD/hD9Ne6vwp1W6AEmDkRJ1CA/qfw9K7yivCPip8M7qz1KfW9Et2mspyXnhiXLQuepAH8J6+30ryrBBxjn0r0n4Z/DK71vUIdU1i2eHS4WDqkgwbgjoAP7vqe/SvoLpwKWuM+JPgVfGeir9n2JqVrlrd24DZ6oT6H9DXzfqOmXukXj2uoW0ttOhwUkXB/+v9au+HvDGqeKL9LTS7V5ST88hGEjHqzdq+m/CPhi18I+H4NNtfmK/NLLjBkc9W/oPYCtuiuA+MXhmfxB4SWayjaW5sJPOCKMlkIwwH6H8K8J8LeHbrxP4gttNtY2O9x5rgcRpn5mP4V9ZRRLBCkUYwiKFUegHAp9FRXMCXVrLbyjMcqFGHsRg18meIvD934b124028jYPG5CMRxIv8LD1BFe/fCLwzP4d8Hq15GY7q9k890YYKLjCg++Bn8a7qiivEPjr4ZnXUbfX7eJnt5IxDcMozsYfdJ9iDj8Kxvgz4Zn1XxbFqjxsLLT8uZCOGkIwqj88/h719EUVHPbw3MRiuIkljPVHUMD+Bp0caRRqkaKiKMBVGAB9KdRRRUMNpb28jyQ28UbyHLsiAFvqR1qaiiioZrS3uXR57eKVozlC6Bip9s9KmoooqOe3huYzHcRRyof4XUMPyNMtrK2s1ItbeGEHqI0C5/Kp6KKKqLpdgs3nLZWwlzneIl3fnirdFFFV7mwtLzH2q1gnx08yMNj86lihjgjEcMaRoOiooAH4U+iiqWs3cVhot7dTsFihgd2J9Apr5W8J6c2r+LNLslGfOuUDf7oOT+gNfW1FFFVZdMsZpvOlsrZ5f77RKW/PFWQAAABgDtS0UVDcWtvdpsuYIpk/uyIGH60tvawWibLaCKFP7saBR+lS0UUhAIIIyD2NVotMsYJvNhsraOX++kShvzxVqiiivEv2gLyNr3R7NSDLHHJKw7gEgD/ANBP5Vr/AAE05oPD2o37Lj7TcCNT6hB/ixr1aiimSwxzxmOaNJEPVXUEH8DUVtY2tnn7LbQQZ6+XGFz+VWKKKKqHS7Bp/ONlbGXOd5iXd+eKt0UUVBc2VteAC6t4ZgOgkQNj86fDBFbRiOCJIkH8KKFH5CpKKKKhhtLe2Z2gt4omkOXKIFLH3x1qaiiioZrS3uJEkmt4pHjOUZ0BK/QnpU1FFFNkjSWNkkRXRhgqwyCPpTYIIraIRW8SRRjoiKFA/AVJRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRWX4i8QWfhjR5NS1Hzfs8bKp8tdzZJwOK8N+IXxXl8V2h0zS4ZLXTmIMpcjfNjoDjgD2rV+BfhZ59Rn8Q3CEQwAw25I+85+8R9Bx+PtXuNFFFFFFFFFFFFFFFFFFcD4w+LWmeFb6505bS5udQhA+TAWPJAIy3XHPYV4RqWo6n4z8Sm4mBnvryQIkaDgdlVR2Ar6e8K6FH4a8NWOlxkEwR4dh/E55Y/mTWvRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRXHfFTS73WPAt1aadbSXNw8kZWOMZJAYE15h4W+CmsajdRy68Bp9mDlkDBpXHoAMgfU/lXu+nafa6VYQ2VjCsNtAoREXoBVmiiiiiiiiiiiiiiiiiivCPiD4C8ReIviHfz6dpkj28vl7Z2YKhwig8k+tdt8PPhdb+EWGoag6XWqlcAqPkhB6hc9T716DRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRX//2Q==" width="720"/></span></p>
+<p class="Body">Ở Mỹ và Anh, các chữ số của số được nhóm bằng dấu phẩy cứ ba chữ số. Ví dụ, số 79033516 được viết là 79,033,516 để dễ đọc hơn. Trong bài tập này, bạn viết hàm nhận một số và trả về chuỗi của số đó có định dạng dấu phẩy.</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body">Viết hàm <code>commaFormat()</code> với tham số <span class="Literal">number</span>. Tham số này có thể là số nguyên hoặc số thực. Hàm trả về chuỗi của số đó với định dạng dấu phẩy kiểu Mỹ/Anh. Có dấu phẩy sau mỗi ba chữ số ở phần nguyên. Không có dấu phẩy trong phần thập phân: định dạng đúng của 1234.5678 là 1,234.5678 chứ không phải 1,234.567,8.</p>
+<p class="Body">Các câu lệnh <code>assert</code> sau dừng chương trình nếu điều kiện là <code>False</code>. Sao chép chúng vào cuối chương trình. Lời giải đúng khi tất cả điều kiện đều là <span class="Literal">True</span>:</p>
+<p class="CodeCxSpFirst">assert commaFormat(1) == '1'</p>
+<p class="CodeCxSpMiddle">assert commaFormat(10) == '10'</p>
+<p class="CodeCxSpMiddle">assert commaFormat(100) == '100'</p>
+<p class="CodeCxSpMiddle">assert commaFormat(1000) == '1,000'</p>
+<p class="CodeCxSpMiddle">assert commaFormat(10000) == '10,000'</p>
+<p class="CodeCxSpMiddle">assert commaFormat(100000) == '100,000'</p>
+<p class="CodeCxSpMiddle">assert commaFormat(1000000) == '1,000,000'</p>
+<p class="CodeCxSpMiddle">assert commaFormat(1234567890) == '1,234,567,890'</p>
+<p class="CodeCxSpLast">assert commaFormat(1000.123456) == '1,000.123456'</p>
+<p class="Body">Hãy tự viết lời giải dựa trên mô tả này. Nếu vẫn gặp khó khăn, đọc các phần <span class="Bold">Thiết kế lời giải</span> và <span class="Bold">Trường hợp đặc biệt và lỗi thường gặp</span> để có thêm gợi ý.</p>
+<p class="Body">Kiến thức cần có: chuỗi, <code>str()</code>, toán tử <code>in</code>, <code>index()</code>, cắt chuỗi (slice), nối chuỗi</p>
+<p class="HeadA">Thiết kế lời giải</p>
+<p class="Body">Dù liên quan đến số, bài tập này thực chất là thao tác văn bản. Các ký tự trong chuỗi chỉ tình cờ là chữ số.</p>
+<p class="Body">Đầu tiên, chuyển tham số <code>number</code> thành chuỗi bằng hàm <code>str()</code>. Cách này hoạt động với cả số nguyên lẫn số thực. Khi đã có <span class="Literal">number</span> dạng chuỗi, ta kiểm tra có dấu chấm hay không — dấu hiệu của số thực có phần thập phân. Biểu thức <code>'.' in number</code> bằng <span class="Literal">True</span> nếu chuỗi có ký tự chấm. Tiếp theo, <code>number.index('.')</code> tìm vị trí của dấu chấm. (Phương thức <code>index()</code> ném ngoại lệ <span class="Literal">ValueError</span> nếu <code>'.'</code> không có trong chuỗi, nhưng điều kiện <code>'.' in number</code> trước đó đảm bảo dấu chấm tồn tại.)</p>
+<p class="Body">Ta cần tách phần thập phân khỏi <code>number</code> và lưu vào biến khác để thêm lại sau. Như vậy ta chỉ thêm dấu phẩy vào phần nguyên, dù tham số là số nguyên hay số thực.</p>
+<p class="Body">Tiếp theo, khởi tạo biến <code>triplet</code> và <code>commaNumber</code> là chuỗi rỗng. Khi lặp qua các chữ số của <code>number</code>, biến <code>triplet</code> tích lũy chữ số cho đến khi đủ ba, lúc đó ta thêm vào <code>commaNumber</code> (chuỗi đã định dạng) kèm dấu phẩy. Lần đầu thêm <span class="Literal">triplet</span> vào <code>commaNumber</code>, sẽ có dấu phẩy thừa ở cuối. Ví dụ, bộ ba <span class="Literal">'248'</span> được thêm vào <code>commaNumber</code> thành <code>'248,'</code>. Ta có thể bỏ dấu phẩy thừa ngay trước khi trả về.</p>
+<p class="Body">Vòng lặp cần bắt đầu từ hàng đơn vị và đi sang trái, nên dùng vòng lặp ngược: <code>for i in range(len(number) - 1, -1, -1)</code>. Ví dụ, nếu <code>number</code> là <code>4096</code>, lần lặp đầu truy cập <code>number[3]</code>, lần hai <code>number[2]</code>, v.v. Nhờ vậy bộ ba đầu tiên là <code>'096'</code> thay vì <code>'409'</code>.</p>
+<p class="Body">Nếu vòng lặp kết thúc mà còn chữ số trong <span class="Literal">triplet</span>, thêm chúng vào <code>commaNumber</code> kèm dấu phẩy. Cuối cùng, trả về <code>commaNumber</code> nhưng cắt bỏ dấu phẩy ở cuối: <code>commaNumber[:-1]</code> là mọi ký tự trừ ký tự cuối.</p>
+<p class="Body">Cuối cùng, thêm lại phần thập phân nếu ban đầu có.</p>
+<p class="HeadA">Trường hợp đặc biệt và lỗi thường gặp</p>
+<p class="Body">Có nhiều lỗi có thể xảy ra. Nên cân nhắc trước khi viết mã để tránh chúng:</p>
+<p class="Body" style="margin-left:.5in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Dấu phẩy ở cuối số, ví dụ <code>386</code> cho ra <code>'386,'</code></p>
+<p class="Body" style="margin-left:.5in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Dấu phẩy ở đầu số, ví dụ <code>499000</code> cho ra <code>',499,000'</code></p>
+<p class="Body" style="margin-left:.5in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Dấu phẩy trong phần thập phân, ví dụ <code>12.3333</code> cho ra <code>'12.3,333'</code></p>
+<p class="Body" style="margin-left:.5in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Nhóm bộ ba theo thứ tự ngược, ví dụ <code>4096</code> cho ra <code>'409,6'</code></p>
+<p class="Body">Dù giải theo cách nào, hãy đảm bảo mã không mắc các lỗi trên.</p>
+<p class="Body">Hãy tự viết lời giải dựa trên các phần trước. Nếu vẫn gặp khó khăn, xem phần <span class="Bold">Mẫu lời giải</span>.</p>
+<p class="HeadA">Mẫu lời giải</p>
+<p class="Body">Hãy cố viết lời giải từ đầu. Nếu cần gợi ý, sao chép mã từ <span class="MsoHyperlink">https://invpy.com/commaformat-template.py</span> và điền vào các chỗ trống:</p>
+<p class="CodeCxSpFirst">def commaFormat(number):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Chuyển số thành chuỗi:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; number = str(____)</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Lưu phần thập phân và tách khỏi số, nếu có:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if '.' in ____:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fractionalPart = number[number.index(____):]</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; number = number[:number.index('.')]</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; else:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fractionalPart = ''</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Biến chứa bộ ba chữ số và chuỗi đã định dạng:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; triplet = ____</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; commaNumber = ____</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Lặp qua chữ số từ phải sang trái:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; for i in range(len(number) - 1, ____, ____):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Thêm chữ số vào biến triplet:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; triplet = ____[i] + ____</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Khi triplet đủ ba chữ số, thêm kèm dấu phẩy:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ____(triplet) == ____:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; commaNumber = triplet + ',' + ____</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Đặt lại triplet thành chuỗi rỗng:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; triplet = ____</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Nếu còn chữ số trong triplet, thêm kèm dấu phẩy:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if triplet != '':</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; commaNumber = ____ + ',' + ____</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Trả về chuỗi đã định dạng:</span></p>
+<p class="CodeCxSpLast">&nbsp;&nbsp;&nbsp; return ____[:____] + fractionalPart</p>
+<p class="Body">Lời giải đầy đủ có trong Phụ lục A và <span class="MsoHyperlink">https://invpy.com/commaformat.py</span>. Xem từng bước chạy tại <span class="MsoHyperlink">https://invpy.com/commaformat-debug/</span>.</p>
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body"><b>Bước 1 — Chuyển sang chuỗi:</b> <code>number = str(number)</code> để thao tác từng ký tự, dù đầu vào là số nguyên hay số thực.</p>
+<p class="Body"><b>Bước 2 — Tách phần thập phân:</b> Nếu có dấu <code>'.'</code>, lưu phần từ dấu chấm trở đi vào <code>fractionalPart</code> và chỉ giữ phần nguyên trong <code>number</code>. Nhờ vậy dấu phẩy chỉ xuất hiện ở phần nguyên.</p>
+<p class="Body"><b>Bước 3 — Nhóm bộ ba từ phải sang trái:</b> Vòng lặp <code>for i in range(len(number) - 1, -1, -1)</code> duyệt từ hàng đơn vị. Mỗi chữ số được thêm vào <code>triplet</code>. Khi <code>triplet</code> đủ 3 chữ số, nối vào <code>commaNumber</code> kèm dấu phẩy rồi đặt lại <code>triplet</code>.</p>
+<p class="Body"><b>Bước 4 — Xử lý chữ số còn lại:</b> Sau vòng lặp, nếu <code>triplet</code> không rỗng (ví dụ số có 1 hoặc 2 chữ số ở đầu), thêm vào <code>commaNumber</code> kèm dấu phẩy.</p>
+<p class="Body"><b>Bước 5 — Bỏ dấu phẩy thừa và ghép phần thập phân:</b> <code>commaNumber[:-1]</code> cắt dấu phẩy ở cuối (do mỗi lần thêm bộ ba đều kèm dấu phẩy). Cuối cùng nối <code>fractionalPart</code> nếu có.</p>
+<p class="Body"><b>Ví dụ:</b> Với <code>commaFormat(1234567890)</code>, thuật toán nhóm '890', '567', '234', '1' từ phải sang trái → <code>'1,234,567,890'</code>.</p>
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="Body">Chương trình Python đầy đủ cho bài tập này:</p>
+<p class="CodeCxSpFirst">def commaFormat(number):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; number = str(number)</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if '.' in number:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fractionalPart = number[number.index('.'):]</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; number = number[:number.index('.')]</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; else:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fractionalPart = ''</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; triplet = ''</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; commaNumber = ''</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; for i in range(len(number) - 1, -1, -1):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; triplet = number[i] + triplet</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if len(triplet) == 3:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; commaNumber = triplet + ',' + commaNumber</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; triplet = ''</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if triplet != '':</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; commaNumber = triplet + ',' + commaNumber</p>
+<p class="CodeCxSpLast">&nbsp;&nbsp;&nbsp; return commaNumber[:-1] + fractionalPart</p>
+
+
+
+<p><a href="../exercise32/index.html">Trước - #32 Chuyển chuỗi sang số nguyên</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise34/index.html">Sau - #34 Chữ hoa</a></p></body></html>

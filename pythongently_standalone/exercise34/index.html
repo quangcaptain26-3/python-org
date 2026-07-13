@@ -1,0 +1,626 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 34 - Chữ in hoa</title></head><body style="background-color: #fffeee;"><p><a href="../exercise33/index.html">Trước - #33 Số có dấu phẩy</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise35/index.html">Sau - #35 Chữ hoa đầu từ</a></p>
+
+
+
+
+<h1><a name="_Toc115418703"></a><a name="_Toc115360014">Bài tập #34: Chữ in hoa</a></h1>
+<p class="ChapterTitleCodeExample">getUppercase('Hello')  <span style="font-size:
+13.0pt">→ </span> 'HELLO'</p>
+<p class="ChapterTitleCodeExample"><span style='font-size:8.0pt;font-family:"MS Shell Dlg 2","sans-serif"'><img border="0" height="144" id="Picture 45" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAkACQAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/wAALCACQARkBAREA/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/APZqKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK8v8Y/GQeGvElxpVrpiXYtwoeUzlfnIyRjB6ZH61h/8NBXH/QAi/wDAo/8AxNbPhL4zjxF4ktdLutLS0W5JRZROWw2MgYwOvT8a9ToooooooooooooooooooooooooooooooqjrWqRaJot5qNwf3dtE0hHrgcD8Tx+NfI97eTahfT3dw26aeRpHb1YnJ/nUNSWtzLZ3UNzAxSWFxIjDswOQa+otF+IHh7V7O0f+1rKK5miVmgeYKyMRyvPcGulBDAEEEHoRS0UUUUUUUUUUUUUUUUUUUUUUUUUUUUV5V8dvEH2TQrTRonxJev5koH/PNeg/Fsf9814RWqPD12fCh1/H+ii7+y4xznbuz9O31rrPhz8LpPGER1HUJnttMVtq7B88xHXGeAB616RdfBHwrNamOBbu3lxxKsxY59weK4qTXvFHwjvp9DkZdRtZ482LSZKqScAqOvsU9cfjrW3w58Z+KUF94j8RzWbyDctupLFB7qCFX6CoL7TPHPwxT+0bXU21fSoyPOjkLMFHupJKj3U/WvUfC3iWz8WaFDqdjlVf5ZI2PMbjqp/zyCK2KKKKKKKKKKKKKKKKKKKKKKKKKKK+XPiT4g/4SLxvfXKNut4W+zwemxOMj6nJ/GuWVSzBVBLE4AHevdfGegt4c+BcWmovzxeS1xgfxFwW/wDHjiuz+Hfk/wDCvtE+z42fZVzj+9/F/wCPZqr8QLnxZbWlifCEKyyNNi4+VWIHG3huMdcn6VyHx2P/ABI9CaUKt/5zYCdvlG7HtnbXq0bypYI7IXmWIEr3ZsdPzrlPAvibU/GFlqaa7o32JIn8oKysFkUg7lIbqR3+tcp8GC1h4k8UaTExa1gm+T2Kuy/qMflXrtFFFFFFFFFFFFFFFFFFFFFFFFFc18Qtf/4RvwXf3iNtnZPJg9d7cA/hyfwr5YrsPhZoH9v+OrJZE3W9oftUvHGF+6PxYrX0frOlW+uaPdabdgmC5jMbY6jPQj3B5/CvHNC8U6l8I9Tl8PeIrd7jTWYyW8sXUKT95c9Qe69jn8evufjX4UhtTJDNdTyY4iSAg5+pwP1rzDWvEOs+JtVt/GV5pZl0awukiSENlEwQ2098njLYxkgegr2/QfHWgeIbNJ7PUYFcjLQzOEkQ+hB/mOKxvG3xQ0nw5p00dhdQ3upupWKKFg4Q/wB5iOBj06mq/wAIPCtzoWg3Go6krLfam4kZXHzKgztz7kkn8RXoVFFFFFFFFFFFFFFFFFFFFFFFFFeGfHjxB9o1ay0SJvktU8+YD++33R+C8/8AAq8mr3v4F6B9h8N3OrypiW/k2xkj/lmmR+rbvyFeo15l8ctA/tDwtDqkSZl0+T5yB/yzfAP5Hb+teAV6l8DtajTV77QLwJJb38W9I3AKl1HIwfVc/wDfNdxqvwT8MahO0tuLqxLHJSCQbPwDA4/Cr/h34VeG/DlylzFbSXdyhyst02/afULgDPviuzoooooooooooooooooooooooooqK6uYrO0muZ2CRQoZHY9lAyTXyRr+ry69r17qc2d9zM0mD/COw/AYH4VWsbOXUb+3s7dd01xIsSD1JOB/OvrnSNNi0bR7TT7cfuraJYl98DGfx61cqrqmnw6tpd1YXAzDcxNE/wBCMV8jalYTaXqVzY3IxNbStE49wcVLomqy6JrdnqVv/rLaVZAPXB5H4jI/Gvreyu4r+ygu7dt0M8ayI3qpGRU9FFFFFFFFFFFFFFFFFFef+Ific8OtPonhbTJNY1KMkSlc+XGR1BI6479APWs6bx/428PqLrxJ4UT7AOXktWyYx6nDMPzx9abd/EPWfGWojS/h/AFQIHnv7hMCLPbByBjp0JJzjpmnS+G/iXpUZvLPxLBqEqfM1tIvD+wyMfyrpfAnjhPF1pPDdW5s9Vs22XVscjB6ZGecZBGOxrrKKK88+NPiD+yfBhsomxPqT+UMdfLHLn+Q/wCBV87V6N8EtA/tTxg2oSpmHTo94J6eY3C/puP4V9DUUV8+/HDQP7O8WRanEmIdRjyxA48xcA/ptP515rX0L8E/EH9qeD20+V8z6dJsGevltyv/ALMPwFej0UUUUUUUUUUUUUUUU13WKNnkYKiglmJwAPWvO/Ffxg0Cx028t9Ku3u79omSJ4EyiORgEscDg88Zq18JNIg0zwDBfRR+Zd3waeZ/4nIJCrn6D8yat+A/FWp+LYNSGs6N9hWCQRqGVsODnKkN1Ixz9a57wBAvh/wCKXifQLPixKLcIg6IflIH5SY/AV0C6t4sPxMOnnTV/4R7y8/aNnH3c7t3ru42+n51hRqlr+0M62XAnsN10F6Z29/yQ/jXp9FFfN3xh8Qf2143mt43zb6ev2dcdN3Vz+fH/AAGuEr6R+D+gf2L4GgmkTE+oN9pfPXaeEH5DP413dFFcT8W9A/tzwLdPGm64sT9qjwOcL94f98k/kK+aa7f4ReIP7D8c28cj7be/H2aTPTJ+4f8AvoAfia+laKKKKKKKKKKKKKKKKpa0C2h34UEk20gAAyT8pr598PfBzxHrcaTXKR6bbtyDcZ3keyDn88V2PhfxRN8MJ38MeLYpVs0dms76NCyFScnj0zzxyCSDXR6z8YPDOn2bPYXTajdMMRwQow3HtkkYA/X2rg7C58X+Cr6bxpqelJPb6oSbqMnDxKWyue6dsdewODWxf/H21NmRpukTm7YYX7RIoRT68cn9K6X4eeD77Sp7zX/EEqza3qXL4IIiTrtyOMnA6cDAAruqKyfFGtJ4d8NX+pyY/wBHiLID/E54UfiSK+S5pXnmeWVi8kjFmY9STyTWh4c0k674hsdO3BVuJgrsTjavVj+ABr6whuLK3hjhingWONQqqHGABwBT/t1r/wA/MP8A38FH261/5+Yf+/go+3Wv/PzD/wB/BTZLqzljaOSeBkcFWUuMEGvlHxTo/wDYHia/04MGjhlPlsDnch5U/kRWZHI0UiyRsVdCGVh1BHQ19ZeE9cXxH4X0/U1I3TxDzAOzjhh+YNbFFFFFFFFFFFFcvq3jm3stVk0zTdPvtXvoQDNHZoCsOezseAfasqX4g3urXcWjeH9Inh1t8maPUozGlqg/jbH3gc8Y/wD1uvdV8W+EYhqOtSWOraUpH2k20RilgUnG4DowHfvXcRSpPCksTB45FDKw6EHkGn0VXvdPtNStzBf2sNzCeqTIHH5Gs/TvCWg6TP59hpFlBMOkiQjcPoe1adzbQ3lrLbXMayQyoUdGHDKRgivkfXtO/sfX9Q0/JItbh4gT3AYgfpX0x8OtSbVfAOkXMjbnEAiYnuUJX/2Wulorx749eIPLtbDQoX+aU/aZwP7oyEH4ncfwFeKUUUUUUUUV7R8BfEG6O/0KZ+V/0mAE9uA4/wDQT+Jr2SiiiiiiiiiiuJ+J3iHWtA0myHh5N95d3HkgCLzGxtJ+UevHoay/h3e39v4USKysUudY/tN11dJ5RFJGWY5cg9TjHH19Kf4k1228LfEwXc1wBHfaZ5MrKhkNmVfKyOo/gJNRar4vh1HwgPD1pqVvr3iDUomtgbRNqfNnLt2UKp/TpXoOk2P9maPZWO/f9mgSHd67VAz+lWmYKpZiAAMkntXlHi7432unTyWnh2BL2VOGuZSfKB/2QOW+uQPrXnN/8VfF1+5LavJAp/ggRUA/EDP61nHxz4nY5Ov6ln/r4b/Gk/4TjxN/0H9S/wDAl/8AGse5uZry5kuLmV5ZpWLPI5yzE9STX0Z8GCT8OLQHtNKB/wB9mu8pCQoJYgAckmvlLxvr58S+L9Q1EMTE8myH2jXhf0GfxrBrv7b4K+Kbq1hnUWSCVA4V5iGGRnBGOtS/8KO8Veun/wDf8/8AxNH/AAo7xV66f/3/AD/8TR/wo7xV66f/AN/z/wDE0f8ACjvFXrp//f8AP/xNH/CjvFXrp/8A3/P/AMTTZPgj4qjid8WLbVJ2rOcn2HFeekEEgjBHY1t+DNePhvxZp+pZIjjlCygd424b9Ca+sFYOoZSCrDII7iloooooorL1/WRo1gHjRJruaRIbaAuF8yR2CqM9hzkn0Brm7jWdffVYdJfUtNQy3At57izgbzLVzGZAm1yQdwHDdvSr/h7Vb1fEV9ot7LcXKQx+bDcXEAikIDbSDtwGU8FWAGfm9K6jAJBwMjpXA+LI/A8mqG7v9bXTdTA2vNY3ZjlYejBc5/EZqDQfEfw68OpP9j1aOSa4/wBfcXAkkll/3mK9PbpXlX2+x034tRXmgSq1gNQRoigIXYxG5QPT5mFfTdeafG3xLLpHhqDTbWQpNqLMrsDyIlxuH4kgfTNeN+DfC0/i/wARQ6ZA/loQXmlxny0HU49egHuRX0Lo3w08L6JCixaVDcSqOZrpfNZj688D8AK349LsIhiOytkHosSj+lSfYbX/AJ9of+/Yr5V8ayRy+NtaaEAR/bZQoA4wGIr3T4L/APJObX/rtL/6Ea72uO+KfiD/AIR/wNePG+24ux9mi55y3U/gu79K+ZK6LwBoX/CReNNOsmXdCJPNm9Ni8n88Y/Gvqqiiiiiivl74maD/AMI/46v4EXbBO32iH02vyQPocj8K5Svpj4UeIP7e8DWnmPuuLL/RZcnn5fun/vkj9a7SiiiiiiuS8R+B9D1XWf7c1i6mhlijWOJxP5SwlSSHB/vZOeeOOlc34mhsNQ0qaaTx9HLqNkDNZGKeGLbIo/iCcsxHGe2eBWr8IbtdV8KNqU++XUpZmiurmRy7y7fu8noAGHA46+tcv8avG95Z3cfh7TZngUxiS6dDhmz0TPYY5PrkVF4Z+Bcd1p0N1r99NFLKof7PbgAoDzgsc8/QV0Y+BvhYDl9RPuZ1/wDia8i1vSbTQviW2m6eXNtb3kSIXbc38JOT9Sa+o68M+P8Au/tzSc52fZnx9d3P9Kh+AcsS+J9SjYgSvaZTPcBxn+Yr3misnxRr8Hhnw7d6ncMMQofLUn77n7qj6mvkyaZ7ieSaVt0kjFmJ7knJr6M+C/8AyTm1/wCu0v8A6Ea72vAPjl4g/tDxPBpMT5i0+PLgH/lo+CfyG38zXmVe1/ATQtltqGtyrzIRbQk+g+Zj+e38jXsNFFFFFFeTfHnQvtGjWWsxL89rJ5MpH9xuh/Bh/wCPV4ZXpXwP8Qf2d4ql0uV8Q6jHhQTx5i5I/Mbh+VfQVFFFFFFeNtp6/EX4uarp+t3E39n6WrCK1RyobBC/qSST16Cuj8S+A/Beg+GNQvn0iCPyIGKM0jk78YUct1JxVf4Ff8iLP/1+v/6Clee/Ge1ms/iLJcup2TwxSRk9DgbSPzWvdfDfiPT/ABNpMN7p88bhkBeMN80bd1YdiKq+LPGel+EdNkuL2dGuNp8q2VhvkbsMdh6ntXzVDeXGo+LoL28z59zeJM5Ixks4PHtzxX1rXm/xq8MS614Zi1G0jMlxprM7Ko5MTfe/LAP0zXheha3eeHdYt9S09wk8DZGejDoVI9CK900b43+Hb22T+01nsLjHzqYzImfYrz+YFT6j8a/CtnCzW0tzeyY4SKErk/VsV5J4n8Xa18Sdct7WOEiMvttbKI5AJ7k9z79APSud1vS30XWrvTpJBJJayGJmUYBI64/GvoH4L/8AJObX/rtL/wChGuz1PUIdJ0u6v7k4htomlf6AZr5G1PUJtV1S6v7k5muZWlf6k5quql2CqCWY4AHc19Y+D9EHh3wpp2m4AeGIeZju55b9Sa2qKKKKKKzPEejpr/h2/wBMkxi5hZFJ7N1U/gQDXyTNC9vPJDKpWSNirKeoI4IqXTr6bTNRtr22bbNbyrKh9wcivrjSdSh1jSbTULc5iuYllX2yM4/CrlFFFFFef+Kvhrcah4jHiDw5qraXqbD94cHa5xjPHTjqMEGoE+G2tay4bxh4ibUY4gTDbRpti34IDMOM49MfjXQeAfCL+C9Bk06S7W6LztNvVNmMgDGMn0qXxj4L07xppq219ujmiJaC4T70ZPX6g9xXlE3wK8Q2twTYapZMnZyzxtj3AB/nW54d+BaQ3yXXiTUFuwpDfZ4Qdrn/AGmPJHsAPrV7XPg/Jq3jF9bh1SKCIyxutuLf7oQKNoOf9n0r0+kIyMHkGvL/ABb8ErDV7mS80O4XT5nOWgZcxE+2OV/UewrhZvgl4sjcqkdnKP7yXAA/UCrmnfAjX7iQfb7uytI+5DGRvyAA/WvVfB3w90jwZGXtEae9cYe6lA3EegH8I+n4k1x3iD4JT634gv8AUl1qOIXc7SiM25O3JzjO6u78EeGX8I+GotKe5W5aN3fzFTaDuOemTR428O3Xirw5LpVrerZiZ1MshQvlQc7cZHcCvM/+Gfbj/oPxf+Ap/wDiq0NA+Bp0rXrK/u9WjuYbaUSmEW5XeRyBnce+K9cooooooooryjxP8E/7c8R3upWmqx2sd0/mGIwFtrH73O4dTk/jWV/wz7cf9B+L/wABT/8AFV6V4H8N3XhPw6mlXV8t4sTsYnWMptU87cZPfP510VFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFf/Z" width="281"/></span></p>
+<p class="Body">Python được gọi là ngôn ngữ “batteries included” (đi kèm đầy đủ pin) vì thư viện chuẩn có sẵn nhiều hàm và module hữu ích. Một trong số đó là phương thức chuỗi <code>upper()</code>, trả về phiên bản chữ in hoa của chuỗi: <code>'Hello'.upper()</code> cho kết quả <code>'HELLO'</code>. Tuy nhiên, trong bài tập này, bạn sẽ tự viết lại chức năng tương tự.</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body">Viết hàm <code>getUppercase()</code> với tham số chuỗi <code>text</code>. Hàm trả về chuỗi có tất cả chữ thường trong <code>text</code> được chuyển thành chữ in hoa. Các ký tự không phải chữ cái trong <code>text</code> giữ nguyên. Ví dụ, <code>'Hello'</code> khiến <span class="Literal">getUppercase()</span> trả về <code>'HELLO'</code>, còn <code>'goodbye 123!'</code> trả về <span class="Literal">'GOODBYE 123!'</span>.</p>
+<p class="Body">Các câu lệnh <code>assert</code> sau dừng chương trình nếu điều kiện là <code>False</code>. Sao chép chúng vào cuối chương trình. Lời giải đúng khi tất cả điều kiện đều là <span class="Literal">True</span>:</p>
+<p class="CodeCxSpFirst">assert getUppercase('Hello') == 'HELLO'</p>
+<p class="CodeCxSpMiddle">assert getUppercase('hello') == 'HELLO'</p>
+<p class="CodeCxSpMiddle">assert getUppercase('HELLO') == 'HELLO'</p>
+<p class="CodeCxSpMiddle">assert getUppercase('Hello, world!') == 'HELLO, WORLD!'</p>
+<p class="CodeCxSpMiddle">assert getUppercase('goodbye 123!') == 'GOODBYE 123!'</p>
+<p class="CodeCxSpMiddle">assert getUppercase('12345') == '12345'</p>
+<p class="CodeCxSpLast">assert getUppercase('') == ''</p>
+<p class="Body">Hãy thử viết lời giải dựa trên thông tin trong mô tả này. Nếu vẫn gặp khó khăn, hãy đọc các phần <span class="Bold">Thiết kế giải pháp</span> và <span class="Bold">Trường hợp đặc biệt và lưu ý</span> để có thêm gợi ý.</p>
+<p class="Body">Kiến thức cần có: vòng lặp <code>for</code>, toán tử <span class="Literal">in</span>, nối chuỗi, chỉ số</p>
+<p class="HeadA">Thiết kế giải pháp</p>
+<p class="Body">Hàm <code>getUppercase()</code> nên bắt đầu với một chuỗi mới rỗng chỉ chứa các ký tự đã chuyển đổi. Sau đó, dùng vòng lặp duyệt từng ký tự trong tham số <code>text</code>, sao chép ký tự vào chuỗi mới. Nếu ký tự là chữ thường, sao chép phiên bản chữ in hoa. Ngược lại, sao chép ký tự không phải chữ thường như cũ. Sau khi vòng lặp kết thúc, <code>getUppercase()</code> trả về chuỗi in hoa vừa xây dựng.</p>
+<p class="Body">Việc lấy chữ in hoa sẽ dùng từ điển ánh xạ chữ thường sang chữ in hoa. Nếu ký tự từ tham số <span class="Literal">text</span> tồn tại làm khóa trong từ điển, ta biết đó là chữ cái và từ điển chứa phiên bản in hoa tương ứng. Chữ in hoa này được nối vào cuối chuỗi trả về. Ngược lại, ký tự gốc từ <code>text</code> được nối vào chuỗi trả về.</p>
+<p class="HeadA">Trường hợp đặc biệt và lưu ý</p>
+<p class="Body">Hàm <code>getUppercase()</code> phải hoạt động tốt dù tham số <code>text</code> đang ở dạng chữ thường hay đã là chữ in hoa. Các ký tự không phải chữ cái không bị ảnh hưởng bởi hàm <code>getUppercase()</code>.</p>
+<p class="Body">Lưu ý rằng dùng từ điển ánh xạ chữ thường sang chữ in hoa có nghĩa chương trình chỉ hoạt động với 26 chữ cái tiếng Anh cơ bản. Do đó, nó không thể chuyển chữ có dấu sang in hoa, như <code>'ñ'</code> thành <code>'Ñ'</code>, theo cách phương thức <code>upper()</code> của Python làm. Bạn phải thêm mọi chữ có dấu vào từ điển nếu muốn chuyển chúng sang in hoa.</p>
+<p class="Body">Hãy thử viết lời giải dựa trên thông tin ở các phần trước. Nếu vẫn gặp khó khăn, hãy đọc phần <span class="Bold">Mẫu giải pháp</span> để có thêm gợi ý.</p>
+<p class="HeadA">Mẫu giải pháp</p>
+<p class="Body">Hãy thử viết lời giải từ đầu trước. Nếu gặp khó khăn, bạn có thể dùng chương trình dở sau làm điểm xuất phát. Sao chép mã từ <span class="MsoHyperlink">https://invpy.com/uppercase-template.py</span> và dán vào trình soạn thảo. Thay các dấu gạch dưới bằng mã để tạo chương trình hoạt động:</p>
+<p class="CodeCxSpFirst"><span class="CodeComment"># Ánh xạ chữ thường sang chữ in hoa.</span></p>
+<p class="CodeCxSpMiddle">LOWER_TO_UPPER = {'a': 'A', 'b': 'B', 'c': 'C', 'd':
+'D', 'e': 'E', 'f': 'F', 'g': 'G', 'h': 'H', 'i': 'I', 'j': 'J', 'k': 'K', 'l':
+'L', 'm': 'M', 'n': 'N', 'o': 'O', 'p': 'P', 'q': 'Q', 'r': 'R', 's': 'S', 't':
+'T', 'u': 'U', 'v': 'V', 'w': 'W', 'x': 'X', 'y': 'Y', 'z': 'Z'}</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpMiddle">def getUppercase(text):</p>
+<p class="CodeCxSpMiddle">    <span class="CodeComment"># Tạo biến mới bắt đầu là chuỗi rỗng và sẽ</span></p>
+<p class="CodeCxSpMiddle">    <span class="CodeComment"># chứa dạng in hoa của text:</span></p>
+<p class="CodeCxSpMiddle">    uppercaseText = ''</p>
+<p class="CodeCxSpMiddle">    <span class="CodeComment"># Lặp qua tất cả ký tự trong text, thêm ký tự</span></p>
+<p class="CodeCxSpMiddle">    <span class="CodeComment"># không phải chữ thường vào chuỗi mới:</span></p>
+<p class="CodeCxSpMiddle">    for character in ____:</p>
+<p class="CodeCxSpMiddle">        if character in ____:</p>
+<p class="CodeCxSpMiddle">            <span class="CodeComment"># Nối dạng in hoa vào chuỗi mới:</span></p>
+<p class="CodeCxSpMiddle">            uppercaseText += ____[____]</p>
+<p class="CodeCxSpMiddle">        else:</p>
+<p class="CodeCxSpMiddle">            uppercaseText += ____</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpMiddle">    <span class="CodeComment"># Trả về chuỗi in hoa:</span></p>
+<p class="CodeCxSpLast">    return ____</p>
+<p class="Body">Lời giải hoàn chỉnh cho bài tập này có trong Phụ lục A và tại <span class="MsoHyperlink">https://invpy.com/uppercase.py</span>. Bạn có thể xem từng bước chương trình chạy trong trình gỡ lỗi tại <span class="MsoHyperlink">https://invpy.com/uppercase-debug/</span>.</p>
+
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body"><b>Bước 1 — Tạo từ điển ánh xạ:</b> Hằng số <code>LOWER_TO_UPPER</code> là từ điển với 26 cặp khóa–giá trị, mỗi chữ thường ánh xạ tới chữ in hoa tương ứng. Dùng từ điển giúp tra cứu nhanh thay vì viết 26 câu lệnh <code>if</code> riêng.</p>
+<p class="Body"><b>Bước 2 — Duyệt từng ký tự:</b> Vòng lặp <code>for character in text</code> lần lượt lấy từng ký tự trong chuỗi đầu vào. Đây là cách Pythonic để xử lý chuỗi mà không cần chỉ số.</p>
+<p class="Body"><b>Bước 3 — Kiểm tra và chuyển đổi:</b> Biểu thức <code>character in LOWER_TO_UPPER</code> trả về <code>True</code> nếu ký tự là chữ thường tiếng Anh. Khi đó, <code>LOWER_TO_UPPER[character]</code> lấy chữ in hoa tương ứng. Các ký tự khác (số, dấu câu, khoảng trắng, chữ đã in hoa) được nối nguyên vẹn vào <code>uppercaseText</code>.</p>
+<p class="Body"><b>Bước 4 — Xây dựng chuỗi kết quả:</b> Toán tử <code>+=</code> nối từng ký tự vào cuối chuỗi kết quả. Với <code>'Hello'</code>, quá trình tạo ra <code>'H'</code> → <code>'HE'</code> → <code>'HEL'</code> → <code>'HELL'</code> → <code>'HELLO'</code>.</p>
+<p class="Body"><b>So sánh với <code>upper()</code>:</b> Phương thức có sẵn của Python xử lý được mọi ký tự Unicode, kể cả chữ có dấu. Giải pháp tự viết chỉ hỗ trợ 26 chữ cái tiếng Anh — đây là đánh đổi khi học cách từ điển và vòng lặp hoạt động.</p>
+
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="Body">Chương trình Python đầy đủ cho bài tập này:</p>
+<p class="CodeCxSpFirst">LOWER_TO_UPPER = {'a': 'A', 'b': 'B', 'c': 'C', 'd': 'D', 'e': 'E', 'f': 'F', 'g': 'G', 'h': 'H', 'i': 'I', 'j': 'J', 'k': 'K', 'l': 'L', 'm': 'M', 'n': 'N', 'o': 'O', 'p': 'P', 'q': 'Q', 'r': 'R', 's': 'S', 't': 'T', 'u': 'U', 'v': 'V', 'w': 'W', 'x': 'X', 'y': 'Y', 'z': 'Z'}</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpMiddle">def getUppercase(text):</p>
+<p class="CodeCxSpMiddle">    uppercaseText = ''</p>
+<p class="CodeCxSpMiddle">    for character in text:</p>
+<p class="CodeCxSpMiddle">        if character in LOWER_TO_UPPER:</p>
+<p class="CodeCxSpMiddle">            uppercaseText += LOWER_TO_UPPER[character]</p>
+<p class="CodeCxSpMiddle">        else:</p>
+<p class="CodeCxSpMiddle">            uppercaseText += character</p>
+<p class="CodeCxSpMiddle">    return uppercaseText</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpMiddle">assert getUppercase('Hello') == 'HELLO'</p>
+<p class="CodeCxSpMiddle">assert getUppercase('hello') == 'HELLO'</p>
+<p class="CodeCxSpMiddle">assert getUppercase('HELLO') == 'HELLO'</p>
+<p class="CodeCxSpMiddle">assert getUppercase('Hello, world!') == 'HELLO, WORLD!'</p>
+<p class="CodeCxSpMiddle">assert getUppercase('goodbye 123!') == 'GOODBYE 123!'</p>
+<p class="CodeCxSpMiddle">assert getUppercase('12345') == '12345'</p>
+<p class="CodeCxSpLast">assert getUppercase('') == ''</p>
+
+
+
+<p><a href="../exercise33/index.html">Trước - #33 Số có dấu phẩy</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise35/index.html">Sau - #35 Chữ hoa đầu từ</a></p></body></html>

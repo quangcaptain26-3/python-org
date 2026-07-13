@@ -1,0 +1,702 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 41 - Mã hóa ROT 13</title></head><body style="background-color: #fffeee;"><p><a href="../exercise40/index.html">Trước - #40 Gộp hai danh sách đã sắp xếp</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise42/index.html">Tiếp - #42 Sắp xếp nổi bọt</a></p>
+
+
+
+
+<h1><a name="_Toc115418710"></a><a name="_Toc115360021">Bài tập #41: Mã hóa ROT 13</a></h1>
+<p class="ChapterTitleCodeExample">rot13('Hello, world!')  <span style="font-size:13.0pt">→ </span> 'Uryyb, jbeyq!'<br/>
+rot13('Uryyb, jbeyq!')  <span style="font-size:13.0pt">→ </span> 'Hello,
+world!'</p>
+<p class="ChapterTitleCodeExample"><span style='font-size:8.0pt;font-family:"MS Shell Dlg 2","sans-serif"'><img border="0" height="144" id="Picture 52" src="data:image/jpeg;base64,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" width="424"/></span></p>
+<p class="Body">ROT 13 là một <span class="Italic"><span style='font-family:"serif"'>mật mã</span></span> mã hóa đơn giản. Tên “ROT 13”
+viết tắt của “rotate 13” (xoay 13). Nó mã hóa bằng cách thay thế mỗi chữ cái bằng chữ cái cách nó 13 ký tự trong bảng chữ cái: A được thay bằng N, B bằng O, C bằng P, v.v. Nếu việc xoay 13 chữ cái vượt qua cuối bảng chữ cái, nó “quay vòng” qua Z và tiếp tục từ đầu bảng. Vì vậy X được thay bằng K, Y bằng L, Z bằng M, v.v. Các ký tự không phải chữ cái được giữ nguyên.</p>
+<p class="Body">Ưu điểm của ROT 13 là bạn có thể giải mã văn bản đã mã hóa
+bằng cách chạy lại qua mã hóa ROT 13. Việc này xoay chữ cái 26 lần, đưa ta trở lại chữ cái gốc. Vì vậy “Hello, world!” mã hóa thành
+“Uryyb, jbeyq!” rồi mã hóa lại thành “Hello, world!” Không có thuật toán giải mã riêng; bạn giải mã bằng cách mã hóa lại. Thuật toán ROT 13 không an toàn cho mật mã thực tế. Nhưng nó có thể dùng để che giấu văn bản, tránh làm hỏng punch line của câu đùa hoặc lời giải câu đố.</p>
+<p class="Body">Bảng sau cho thấy mỗi chữ cái trong 26 chữ cái được mã hóa thành gì với
+ROT 13 một lần (từ hàng trên xuống hàng giữa) và hai lần (từ hàng giữa
+xuống hàng dưới).</p>
+<p class="CodeCxSpFirst">A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S 
+T  U  V  W  X  Y  Z</p>
+<p class="CodeCxSpMiddle">▼  ▼  ▼  ▼  ▼  ▼ 
+▼  ▼  ▼  ▼  ▼  ▼  ▼  ▼ 
+▼  ▼  ▼  ▼  ▼  ▼  ▼  ▼ 
+▼  ▼  ▼  ▼</p>
+<p class="CodeCxSpMiddle">N  O  P  Q  R  S  T  U  V  W  X  Y  Z  A  B  C  D  E 
+F  G  H  I  J  K  L  M  </p>
+<p class="CodeCxSpMiddle">▼  ▼  ▼  ▼  ▼  ▼ 
+▼  ▼  ▼  ▼  ▼  ▼  ▼  ▼  ▼
+ ▼  ▼  ▼  ▼  ▼  ▼  ▼  ▼ 
+▼  ▼  ▼</p>
+<p class="CodeCxSpLast">A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S 
+T  U  V  W  X  Y  Z</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body">Viết hàm <code>rot13()</code> với tham số <span class="Literal">text</span> trả về phiên bản ROT 13 đã mã hóa của <code>text</code>. Chữ hoa mã hóa thành chữ hoa
+và chữ thường mã hóa thành chữ thường. Ví dụ, <span class="Literal">'HELLO, world!'</span> mã hóa thành <span class="Literal">'URYYB,
+jbeyq!'</span> và <code>'hello, WORLD!'</code> mã hóa thành <span class="Literal">'uryyb, JBEYQ!'</span>.</p>
+<p class="Body">Bạn có thể dùng các hàm và phương thức chuỗi sau trong lời giải: <code>ord()</code>, <code>chr()</code>,
+<code>isalpha()</code>, <code>islower()</code>, và
+<code>isupper()</code>.</p>
+<p class="Body">Các câu lệnh <code>assert</code> sau sẽ dừng chương trình nếu điều kiện của chúng là <code>False</code>. Sao chép chúng xuống cuối chương trình lời giải. Lời giải đúng khi tất cả điều kiện của các câu lệnh <code>assert</code> sau đều là <span class="Literal">True</span>:</p>
+<p class="CodeCxSpFirst">assert rot13('Hello, world!') == 'Uryyb, jbeyq!'</p>
+<p class="CodeCxSpMiddle">assert rot13('Uryyb, jbeyq!') == 'Hello, world!'</p>
+<p class="CodeCxSpMiddle">assert rot13(rot13('Hello, world!')) == 'Hello, world!'</p>
+<p class="CodeCxSpMiddle">assert rot13('abcdefghijklmnopqrstuvwxyz') ==
+'nopqrstuvwxyzabcdefghijklm'</p>
+<p class="CodeCxSpLast">assert rot13('ABCDEFGHIJKLMNOPQRSTUVWXYZ') ==
+'NOPQRSTUVWXYZABCDEFGHIJKLM'</p>
+<p class="Body">Hãy tự viết lời giải dựa trên mô tả này. Nếu vẫn gặp khó khăn, đọc các phần <span class="Bold">Thiết kế lời giải</span> và <span class="Bold">Trường hợp đặc biệt và lỗi thường gặp</span> để có thêm gợi ý.</p>
+<p class="Body">Kiến thức cần có: chuỗi, <code>ord()</code>,
+<code>chr()</code>, vòng lặp <code>for</code>, toán tử Boolean,
+<code>islower()</code>, <code>isupper()</code>,
+toán tử gán cộng</p>
+<p class="HeadA">Thiết kế lời giải</p>
+<p class="Body">Thay vì mã hóa cứng từng chữ cái và dạng mã hóa của nó, ta
+có thể dựa vào số nguyên mã Unicode của mỗi chữ cái. Mã Unicode đã được
+thảo luận trong Bài tập #7, “Bảng ASCII”. Hàm <code>ord()</code>
+và <code>chr()</code> trong Bài tập #7, “Bảng ASCII” có thể chuyển từ chuỗi chữ cái sang số nguyên và ngược lại.</p>
+<p class="Body">Hàm bắt đầu với biến <code>encryptedText</code>
+đặt thành chuỗi rỗng để lưu kết quả mã hóa khi ta mã hóa từng ký tự. Vòng lặp <code>for</code> có thể duyệt qua tham số
+<code>text</code> để mã hóa từng ký tự. Nếu ký tự
+không phải chữ cái, nó được thêm vào cuối <code>encryptedText</code>
+nguyên vẹn, không mã hóa.</p>
+<p class="Body">Ngược lại, ta truyền chữ cái vào <code>ord()</code>
+để lấy mã Unicode dạng số nguyên. Chữ hoa A đến Z có
+số nguyên từ 65 đến 90. Chữ thường a đến z có
+số nguyên từ 97 đến 122. Ta cần trừ 26
+để “quay vòng” về đầu bảng chữ cái.</p>
+<p class="Body">Ví dụ, chữ cái <code>'S'</code> có
+số nguyên <code>83</code> (vì <code>ord('S')</code>
+trả về <code>83</code>) nhưng cộng <code>83 + 13</code>
+cho ta <code>96</code>, lớn hơn số nguyên của Z
+(<code>ord('Z')</code> trả về <code>90</code>). Trong
+trường hợp này, ta phải trừ <code>26</code>: <span class="Literal">96
+- 26</span> cho ta số nguyên mã hóa <code>70</code>, và <span class="Literal">chr(70)</span> trả về <code>'F'</code>. Đây là
+cách ta xác định <code>'S'</code> mã hóa thành <span class="Literal">'F'</span> trong mật mã ROT 13.</p>
+<p class="Body">Lưu ý rằng chữ hoa <code>'Z'</code> có
+mã Unicode <code>90</code>, còn chữ thường <span class="Literal">'z'</span> có mã Unicode <code>122</code>.</p>
+<p class="HeadA">Trường hợp đặc biệt và lỗi thường gặp</p>
+<p class="Body">Dù bạn cộng <code>13</code> vào
+mã Unicode của cả chữ hoa và chữ thường, khi kiểm tra phép cộng có tạo ra số lớn hơn mã Unicode của Z hay không,
+bạn phải dùng đúng kiểu chữ của Z. Nếu không, hàm <code>rot13()</code>
+có thể kết luận chữ thường <code>'a'</code> (số nguyên
+<code>97</code>) vượt qua chữ hoa <code>'Z'</code>
+(số nguyên <code>90</code>) vì <code>97</code>
+lớn hơn <code>90</code>. Bạn phải so sánh chữ thường
+đã xoay với <code>122</code> (số nguyên của chữ thường <span class="Literal">'z'</span>) và chữ hoa đã xoay với <span class="Literal">90</span> (số nguyên của chữ hoa <code>'Z'</code>).</p>
+<p class="Body">Tất cả ký tự không phải chữ cái như số, khoảng trắng và
+dấu câu được thêm vào văn bản mã hóa không thay đổi. Hãy đảm bảo hàm <code>rot13()</code> không vô tình bỏ sót chúng khỏi
+chuỗi trả về.</p>
+<p class="Body">Hãy tự viết lời giải dựa trên các phần trước. Nếu vẫn gặp khó khăn, đọc phần <span class="Bold">Mẫu lời giải</span> để có thêm gợi ý.</p>
+<p class="HeadA">Mẫu lời giải</p>
+<p class="Body">Hãy tự viết lời giải trước. Nếu cần gợi ý, sao chép mã từ <span class="MsoHyperlink">https://invpy.com/rot13-template.py</span>
+và dán vào trình soạn thảo. Điền vào các chỗ trống để có chương trình hoạt động:</p>
+<p class="CodeCxSpFirst">def rot13(text):</p>
+<p class="CodeCxSpMiddle">    <span class="CodeComment"># Tạo biến encryptedText
+để lưu chuỗi đã mã hóa:</span></p>
+<p class="CodeCxSpMiddle">    encryptedText = ____</p>
+<p class="CodeCxSpMiddle">    <span class="CodeComment"># Lặp qua từng ký tự
+trong text:</span></p>
+<p class="CodeCxSpMiddle">    for character in text:</p>
+<p class="CodeCxSpMiddle">        <span class="CodeComment"># Nếu ký tự không
+phải chữ cái, thêm nguyên vẹn vào encryptedText:</span></p>
+<p class="CodeCxSpMiddle">        if not character.____():</p>
+<p class="CodeCxSpMiddle">            encryptedText += ____</p>
+<p class="CodeCxSpMiddle">        <span class="CodeComment"># Ngược lại tính
+chữ cái đã "xoay 13":</span></p>
+<p class="CodeCxSpMiddle">        else:</p>
+<p class="CodeCxSpMiddle">            rotatedLetterOrdinal = ____(character) + 13</p>
+<p class="CodeCxSpMiddle">            <span class="CodeComment"># Nếu cộng 13
+đẩy chữ cái qua Z, trừ 26:</span></p>
+<p class="CodeCxSpMiddle">            if ____.islower() and rotatedLetterOrdinal
+&gt; ____:</p>
+<p class="CodeCxSpMiddle">                rotatedLetterOrdinal -= ____</p>
+<p class="CodeCxSpMiddle">            if ____.isupper() and rotatedLetterOrdinal
+&gt; ____:</p>
+<p class="CodeCxSpMiddle">                rotatedLetterOrdinal -= ____</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpMiddle">            <span class="CodeComment"># Thêm chữ cái đã mã hóa
+vào encryptedText:</span></p>
+<p class="CodeCxSpMiddle">            encryptedText += ____(rotatedLetterOrdinal)</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpMiddle">    <span class="CodeComment"># Trả về văn bản đã mã hóa:</span></p>
+<p class="CodeCxSpLast">    return encryptedText</p>
+<p class="Body">Lời giải đầy đủ có trong Phụ lục A
+và <span class="MsoHyperlink">https://invpy.com/rot13.py</span>. Bạn có thể
+xem từng bước chạy tại debugger <span class="MsoHyperlink">https://invpy.com/rot13-debug/</span>.</p>
+<p class="HeadA">Đọc thêm</p>
+<p class="Body">Nếu bạn quan tâm viết chương trình Python cho thuật toán mã hóa
+và phá mã, cuốn “Cracking Codes with Python” của tôi được phát hành miễn phí
+theo giấy phép Creative Commons tại <span class="MsoHyperlink">https://inventwithpython.com/cracking/</span>.</p>
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body"><b>Bước 1 — Duyệt từng ký tự:</b> Vòng lặp <code>for character in text:</code> xử lý từng ký tự trong chuỗi đầu vào.</p>
+<p class="Body"><b>Bước 2 — Giữ nguyên ký tự không phải chữ:</b> Nếu <code>not character.isalpha()</code>, nối ký tự đó vào <code>encryptedText</code> không thay đổi — số, dấu câu và khoảng trắng được bảo toàn.</p>
+<p class="Body"><b>Bước 3 — Xoay chữ cái:</b> Dùng <code>ord(character) + 13</code> để lấy mã Unicode của chữ cái sau khi xoay 13 vị trí.</p>
+<p class="Body"><b>Bước 4 — Quay vòng bảng chữ cái:</b> Nếu chữ thường vượt quá 122 (<code>'z'</code>) hoặc chữ hoa vượt quá 90 (<code>'Z'</code>), trừ 26 để quay về đầu bảng chữ cái. Phải kiểm tra riêng từng kiểu chữ.</p>
+<p class="Body"><b>Bước 5 — Chuyển về chữ cái:</b> Dùng <code>chr(rotatedLetterOrdinal)</code> để chuyển số nguyên thành ký tự và nối vào <code>encryptedText</code>.</p>
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="Body">Chương trình Python đầy đủ cho bài tập này:</p>
+<p class="CodeCxSpFirst">def rot13(text):</p>
+<p class="CodeCxSpMiddle">    encryptedText = ''</p>
+<p class="CodeCxSpMiddle">    for character in text:</p>
+<p class="CodeCxSpMiddle">        if not character.isalpha():</p>
+<p class="CodeCxSpMiddle">            encryptedText += character</p>
+<p class="CodeCxSpMiddle">        else:</p>
+<p class="CodeCxSpMiddle">            rotatedLetterOrdinal = ord(character) + 13</p>
+<p class="CodeCxSpMiddle">            if character.islower() and rotatedLetterOrdinal &gt; 122:</p>
+<p class="CodeCxSpMiddle">                rotatedLetterOrdinal -= 26</p>
+<p class="CodeCxSpMiddle">            if character.isupper() and rotatedLetterOrdinal &gt; 90:</p>
+<p class="CodeCxSpMiddle">                rotatedLetterOrdinal -= 26</p>
+<p class="CodeCxSpMiddle">            encryptedText += chr(rotatedLetterOrdinal)</p>
+<p class="CodeCxSpMiddle">    return encryptedText</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">assert rot13('Hello, world!') == 'Uryyb, jbeyq!'</p>
+<p class="CodeCxSpMiddle">assert rot13('Uryyb, jbeyq!') == 'Hello, world!'</p>
+<p class="CodeCxSpMiddle">assert rot13(rot13('Hello, world!')) == 'Hello, world!'</p>
+<p class="CodeCxSpMiddle">assert rot13('abcdefghijklmnopqrstuvwxyz') == 'nopqrstuvwxyzabcdefghijklm'</p>
+<p class="CodeCxSpLast">assert rot13('ABCDEFGHIJKLMNOPQRSTUVWXYZ') == 'NOPQRSTUVWXYZABCDEFGHIJKLM'</p>
+
+
+
+<p><a href="../exercise40/index.html">Trước - #40 Gộp hai danh sách đã sắp xếp</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise42/index.html">Tiếp - #42 Sắp xếp nổi bọt</a></p></body></html>

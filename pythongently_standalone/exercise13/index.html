@@ -1,0 +1,595 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 13 - Tổng &amp; Tích</title></head><body style="background-color: #fffeee;"><p><a href="../exercise12/index.html">Trước - #12 Nhỏ nhất &amp; Lớn nhất</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise14/index.html">Tiếp - #14 Trung bình</a></p>
+
+
+
+
+<h1><a name="_Toc115418682"></a><a name="_Toc115359993">Bài tập #13: Tổng &amp; Tích</a></h1>
+<p class="ChapterTitleCodeExample">  calculateSum([2, 4, 6, 8, 10])  <span style="font-size:13.0pt">→ </span> 30<br/>
+calculateProduct([2, 4, 6, 8, 10])  <span style="font-size:13.0pt">→ </span> 3840</p>
+<p class="ChapterTitleCodeExample"><span style='font-size:8.0pt;font-family:"MS Shell Dlg 2","sans-serif"'><img border="0" height="144" id="Picture 24" src="data:image/jpeg;base64,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" width="288"/></span></p>
+<p class="Body">Hàm <code>sum()</code> có sẵn trong Python. Bài tập tự viết
+<code>calculateSum()</code> và <code>calculateProduct()</code>.</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body">Hai hàm cùng tham số <code>numbers</code> (list số). <code>calculateSum()</code>
+cộng dồn; list rỗng → <span class="Literal">0</span>. <code>calculateProduct()</code>
+nhân dồn; list rỗng → <code>1</code>. Không gọi <code>sum()</code>.</p>
+<p class="Body">Các <code>assert</code>:</p>
+<p class="CodeCxSpFirst">assert calculateSum([]) == 0</p>
+<p class="CodeCxSpMiddle">assert calculateSum([2, 4, 6, 8, 10]) == 30</p>
+<p class="CodeCxSpMiddle">assert calculateProduct([]) == 1</p>
+<p class="CodeCxSpLast">assert calculateProduct([2, 4, 6, 8, 10]) == 3840</p>
+<p class="Body">Khái niệm tiên quyết: list, chỉ số, <code>for</code>, toán tử gán tăng cường</p>
+<p class="HeadA">Thiết kế lời giải</p>
+<p class="Body"><code>calculateSum</code>: <code>result = 0</code>, cộng từng số.
+<code>calculateProduct</code>: <code>result = 1</code>, nhân từng số.</p>
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body">Không đặt tên biến <code>sum</code> — trùng hàm built-in <code>sum()</code>.</p>
+<p class="Body">Tích list rỗng là 1 (phần tử trung tính nhân — multiplicative identity):
+0 × bất kỳ = 0 sai cho tích rỗng. Tổng list rỗng là 0 (additive identity).</p>
+<p class="Body"><code>result += number</code> và <code>result *= number</code> — gán tăng cường.</p>
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="CodeCxSpFirst">def calculateSum(numbers):</p>
+<p class="CodeCxSpMiddle">    result = 0</p>
+<p class="CodeCxSpMiddle">    for number in numbers:</p>
+<p class="CodeCxSpMiddle">        result += number</p>
+<p class="CodeCxSpMiddle">    return result</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpMiddle">def calculateProduct(numbers):</p>
+<p class="CodeCxSpMiddle">    result = 1</p>
+<p class="CodeCxSpMiddle">    for number in numbers:</p>
+<p class="CodeCxSpMiddle">        result *= number</p>
+<p class="CodeCxSpLast">    return result</p>
+<p class="HeadA">Trường hợp đặc biệt và lỗi thường gặp</p>
+<p class="Body">Tránh ghi đè tên built-in: <code>all</code>, <code>min</code>, <code>max</code>,
+<code>sum</code>, <code>open</code>, v.v.</p>
+<p class="Body">Khởi tạo tích bằng 1, không phải 0.</p>
+<p class="HeadA">Mẫu lời giải</p>
+<p class="Body">Mã dở: <span class="MsoHyperlink">https://invpy.com/sumproduct-template.py</span>.
+Lời giải: <span class="MsoHyperlink">https://invpy.com/sumproduct.py</span>.</p>
+<p class="HeadA">Đọc thêm</p>
+<p class="Body">Thử với hàng chục nghìn số ngẫu nhiên — file <span class="Italic"><span style='font-family:"serif"'>testsumproduct.py</span></span> trong sách gốc.</p>
+
+
+
+<p><a href="../exercise12/index.html">Trước - #12 Nhỏ nhất &amp; Lớn nhất</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise14/index.html">Tiếp - #14 Trung bình</a></p></body></html>

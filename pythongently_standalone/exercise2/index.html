@@ -1,0 +1,635 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 2 - Chuyển đổi nhiệt độ</title></head><body style="background-color: #fffeee;"><p><a href="../exercise1/index.html">Trước - #1 Hello, World!</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise3/index.html">Tiếp - #3 Chẵn &amp; Lẻ</a></p>
+
+
+
+
+<h1><a name="_Toc115418671"></a><a name="_Toc115359982">Bài tập #2: Chuyển đổi nhiệt
+độ</a></h1>
+<p class="ChapterTitleCodeExample">    convertToCelsius(32)  <span style="font-size:13.0pt">→ </span> 0.0<br/>
+convertToFahrenheit(100)  <span style="font-size:13.0pt">→ </span> 212</p>
+<p class="ChapterTitleCodeExample"><span style='font-size:8.0pt;font-family:"MS Shell Dlg 2","sans-serif"'><img height="144" id="Picture 8" src="data:image/jpeg;base64,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" width="72"/></span></p>
+<p class="Body">Chuyển đổi giữa độ Celsius và Fahrenheit là phép tính cơ bản, phù
+hợp để luyện viết hàm nhận số vào và trả số ra. Bài tập kiểm tra khả năng dùng
+toán tử toán học của Python và chuyển công thức toán thành mã Python.</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body">Viết hàm <code>convertToFahrenheit()</code> với tham số
+<code>degreesCelsius</code>. Hàm trả về nhiệt độ tương ứng theo độ Fahrenheit.
+Sau đó viết hàm <code>convertToCelsius()</code> với tham số <span class="Literal">degreesFahrenheit</span> và trả về nhiệt độ theo độ Celsius.</p>
+<p class="Body">Dùng hai công thức sau:</p>
+<p class="Body" style="margin-left:.75in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>      
+</span></span>Fahrenheit = Celsius × (9 / 5) + 32</p>
+<p class="Body" style="margin-left:.75in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>      
+</span></span>Celsius = (Fahrenheit - 32) × (5 / 9)</p>
+<p class="Body">Các câu lệnh <code>assert</code> sau dừng chương trình nếu
+điều kiện là <code>False</code>. Sao chép chúng xuống cuối chương trình. Lời
+giải đúng khi tất cả điều kiện sau là <span class="Literal">True</span>:</p>
+<p class="CodeCxSpFirst">assert convertToCelsius(0) == -17.77777777777778</p>
+<p class="CodeCxSpMiddle">assert convertToCelsius(180) == 82.22222222222223</p>
+<p class="CodeCxSpMiddle">assert convertToFahrenheit(0) == 32</p>
+<p class="CodeCxSpMiddle">assert convertToFahrenheit(100) == 212</p>
+<p class="CodeCxSpMiddle">assert convertToCelsius(convertToFahrenheit(15)) == 15</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpMiddle"><span class="CodeComment"># Sai số làm tròn gây lệch nhỏ:</span></p>
+<p class="CodeCxSpLast">assert convertToCelsius(convertToFahrenheit(42)) ==
+42.00000000000001</p>
+<p class="Body">Hãy thử viết lời giải dựa trên mô tả trên. Nếu vẫn gặp khó
+khăn, đọc phần <span class="Bold">Thiết kế lời giải</span> và <span class="Bold">Trường hợp đặc biệt và lỗi thường gặp</span>.</p>
+<p class="Body">Khái niệm tiên quyết: toán tử toán học</p>
+<p class="HeadA">Thiết kế lời giải</p>
+<p class="Body">Chuyển công thức trong mô tả bài tập sang mã Python. Khi đổi
+Celsius sang Fahrenheit, “Celsius” là tham số <code>degreesCelsius</code>, dấu
+× thành <span class="Literal">*</span>, ngoặc và ký hiệu toán học có tương ứng
+trong Python. Phần “Fahrenheit =” và “Celsius =” thành câu lệnh <code>return</code>.</p>
+<p class="Body">Mỗi hàm có thể chỉ một dòng: <code>return</code> tính kết quả
+công thức và trả về.</p>
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body"><code>def convertToFahrenheit(degreesCelsius):</code> — Định nghĩa
+hàm với một tham số (parameter). Khi gọi <code>convertToFahrenheit(100)</code>,
+giá trị 100 được gán cho <code>degreesCelsius</code> trong thân hàm.</p>
+<p class="Body"><code>return degreesCelsius * (9 / 5) + 32</code> — Python tính
+theo thứ tự ưu tiên: chia <code>9/5</code> trước (bằng 1.8), nhân với
+<code>degreesCelsius</code>, rồi cộng 32. Ví dụ: 0°C → 32°F; 100°C → 212°F.</p>
+<p class="Body"><code>return (degreesFahrenheit - 32) * (5 / 9)</code> — Trừ 32
+trước (điểm đóng băng nước theo °F), nhân với 5/9. Ví dụ: 32°F → 0°C.</p>
+<p class="Body">Hai hàm đối ngược nhau: gọi lồng nhau <code>convertToCelsius(convertToFahrenheit(15))</code>
+nên trả về 15 (có thể lệch cực nhỏ do số thực dấu phẩy động).</p>
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="CodeCxSpFirst">def convertToFahrenheit(degreesCelsius):</p>
+<p class="CodeCxSpMiddle">    return degreesCelsius * (9 / 5) + 32</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpMiddle">def convertToCelsius(degreesFahrenheit):</p>
+<p class="CodeCxSpLast">    return (degreesFahrenheit - 32) * (5 / 9)</p>
+<p class="HeadA">Trường hợp đặc biệt và lỗi thường gặp</p>
+<p class="Body">Khi đổi 42°C sang °F rồi ngược lại, có thể không được đúng 42
+mà là 42.00000000000001 — do sai số làm tròn. Máy tính không biểu diễn chính xác
+mọi số thập phân. Ví dụ: <span class="Literal">print(0.1 + 0.1
++ 0.1)</span> in <code>0.30000000000000004</code> chứ không phải <span class="Literal">0.3</span>.</p>
+<p class="Body">Python không gây ra lỗi này một mình; nó đến từ chuẩn số thực
+dấu phẩy động (floating-point) trên mọi máy tính. Mọi ngôn ngữ lập trình đều có
+sai số tương tự. Trừ khi viết phần mềm ngân hàng hay lò phản ứng hạt nhân, sai
+số nhỏ này thường không quan trọng. Xem thêm phần <span class="Bold">Đọc thêm</span>.</p>
+<p class="Body">Hãy thử viết lời giải. Nếu vẫn khó, đọc phần <span class="Bold">Mẫu lời giải</span>.</p>
+<p class="HeadA">Mẫu lời giải</p>
+<p class="Body">Tự viết trước. Nếu khó, dùng mã dở từ <span class="MsoHyperlink">https://invpy.com/converttemp-template.py</span>
+và thay dấu gạch dưới:</p>
+<p class="CodeCxSpFirst">def convertToFahrenheit(degreesCelsius):</p>
+<p class="CodeCxSpMiddle">    <span class="CodeComment"># Tính và trả về độ Fahrenheit:</span></p>
+<p class="CodeCxSpMiddle">    return ____ * (9 / 5) + 32</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpMiddle">def convertToCelsius(degreesFahrenheit):</p>
+<p class="CodeCxSpMiddle">    <span class="CodeComment"># Tính và trả về độ Celsius:</span></p>
+<p class="CodeCxSpLast">    return (____ - 32) * (____ / ____)</p>
+<p class="Body">Lời giải đầy đủ trong Phụ lục A và <span class="MsoHyperlink">https://invpy.com/converttemp.py</span>. Debugger: <span class="MsoHyperlink">https://invpy.com/converttemp-debug/</span>.</p>
+<p class="HeadA">Đọc thêm</p>
+<p class="Body">Module <code>decimal</code> của Python biểu diễn số thập phân
+chính xác hơn float. Xem <span class="MsoHyperlink">https://pymotw.com/3/decimal/</span>.</p>
+<p class="Body">Một kỹ thuật tránh sai số làm tròn là dùng số nguyên: thay vì
+$1.25 dạng float <code>1.25</code>, dùng <code>125</code> (cent); thay 1.5 phút
+bằng <code>90</code> giây. Số nguyên và <code>Decimal</code> không bị sai số
+như float.</p>
+
+
+
+<p><a href="../exercise1/index.html">Trước - #1 Hello, World!</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise3/index.html">Tiếp - #3 Chẵn &amp; Lẻ</a></p></body></html>

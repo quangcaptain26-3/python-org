@@ -1,0 +1,656 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 39 - Dãy Collatz</title></head><body style="background-color: #fffeee;"><p><a href="../exercise38/index.html">Trước - #38 Xáo trộn ngẫu nhiên</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise40/index.html">Sau - #40 Gộp hai danh sách đã sắp xếp</a></p>
+
+
+
+
+<h1><a name="_Toc115418708"></a><a name="_Toc115360019">Bài tập #39: Dãy Collatz</a></h1>
+<p class="ChapterTitleCodeExample">collatz(10)&nbsp; <span style="font-size:13.0pt">→
+</span>&nbsp;[10, 5, 16, 8, 4, 2, 1]</p>
+<p class="ChapterTitleCodeExample"><span style='font-size:8.0pt;font-family:"MS Shell Dlg 2","sans-serif"'><img border="0" height="144" id="Picture 50" src="data:image/jpeg;base64,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" width="530"/></span></p>
+<p class="Body">Dãy Collatz, còn gọi là bài toán 3<span class="Italic"><span style='font-family:"serif"'>n</span></span> + 1, là dãy số đơn giản nhưng bí ẩn mà các nhà toán học vẫn chưa chứng minh được. Dãy có bốn quy tắc:</p>
+<p class="Body" style="margin-left:.75in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Bắt đầu bằng số nguyên dương khác không gọi là <span class="Italic"><span style='font-family:"serif"'>n</span></span>.</p>
+<p class="Body" style="margin-left:.75in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Nếu <i>n</i> bằng 1, dãy kết thúc.</p>
+<p class="Body" style="margin-left:.75in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Nếu <i>n</i> chẵn, giá trị tiếp theo của <i>n</i> là <i>n</i> / 2.</p>
+<p class="Body" style="margin-left:.75in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Nếu <i>n</i> lẻ, giá trị tiếp theo của <i>n</i> là 3<i>n</i> + 1.</p>
+<p class="Body">Ví dụ, số bắt đầu là 10. Số này chẵn nên số tiếp theo là 10 / 2 = 5. 5 lẻ nên số tiếp theo là 3 × 5 + 1 = 16. 16 chẵn nên tiếp theo là 8, rồi 4, 2, 1. Tại 1, dãy dừng. Toàn bộ dãy Collatz bắt đầu từ 10 là: 10, 5, 16, 8, 4, 2, 1</p>
+<p class="Body">Các nhà toán học chưa chứng minh được mọi số nguyên bắt đầu đều kết thúc. Điều này khiến dãy Collatz được gọi là "bài toán toán học đơn giản nhất không thể giải". Tuy nhiên, trong bài tập này, bạn chỉ cần tính dãy số cho một số nguyên bắt đầu cho trước.</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body">Viết hàm tên <code>collatz()</code> với tham số <code>startingNumber</code>. Hàm trả về danh sách số nguyên của dãy Collatz mà <code>startingNumber</code> tạo ra. Số nguyên đầu tiên trong danh sách phải là <code>startingNumber</code> và số cuối cùng phải là <code>1</code>.</p>
+<p class="Body">Hàm phải kiểm tra nếu <code>startingNumber</code> là số nguyên nhỏ hơn 1, trong trường hợp đó trả về danh sách rỗng.</p>
+<p class="Body">Các câu lệnh <code>assert</code> sau dừng chương trình nếu điều kiện là <code>False</code>. Sao chép chúng vào cuối chương trình. Lời giải đúng khi tất cả điều kiện đều là <span class="Literal">True</span>:</p>
+<p class="CodeCxSpFirst">assert collatz(0) == []</p>
+<p class="CodeCxSpMiddle">assert collatz(10) == [10, 5, 16, 8, 4, 2, 1]</p>
+<p class="CodeCxSpMiddle">assert collatz(11) == [11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1]</p>
+<p class="CodeCxSpMiddle">assert collatz(12) == [12, 6, 3, 10, 5, 16, 8, 4, 2, 1]</p>
+<p class="CodeCxSpMiddle">assert len(collatz(256)) == 9</p>
+<p class="CodeCxSpMiddle">assert len(collatz(257)) == 123</p>
+<p class="CodeCxSpMiddle">import random</p>
+<p class="CodeCxSpMiddle">random.seed(42)</p>
+<p class="CodeCxSpMiddle">for i in range(1000):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; startingNum = random.randint(1, 10000)</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; seq = collatz(startingNum)</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; assert seq[0] == startingNum <span class="CodeComment"># Đảm bảo có số bắt đầu.</span></p>
+<p class="CodeCxSpLast">&nbsp;&nbsp;&nbsp; assert seq[-1] == 1&nbsp; <span class="CodeComment"># Đảm bảo số cuối là 1.</span></p>
+<p class="Body">Hãy thử viết lời giải dựa trên thông tin trong mô tả này. Nếu vẫn gặp khó khăn, hãy đọc các phần <span class="Bold">Thiết kế giải pháp</span> và <span class="Bold">Trường hợp đặc biệt và lưu ý</span> để có thêm gợi ý.</p>
+<p class="Body">Kiến thức cần có: danh sách, vòng lặp <code>while</code>, toán tử modulo, chia nguyên, <code>append()</code></p>
+<p class="HeadA">Thiết kế giải pháp</p>
+<p class="Body">Hàm chỉ cần một biến theo dõi số hiện tại, gọi là <code>num</code>, và một biến chứa dãy, gọi là <code>sequence</code>. Đầu hàm, gán <code>num</code> bằng số nguyên trong tham số <code>startingNumber</code> và <code>sequence</code> bằng <code>[num]</code>. Dùng vòng lặp <code>while</code> tiếp tục khi <code>num</code> chưa bằng <code>1</code>. Mỗi lần lặp, tính giá trị tiếp theo của <code>num</code> dựa trên <span class="Literal">num</span> đang chẵn hay lẻ. Bạn có thể dùng kỹ thuật modulo 2 từ Bài tập #3 "Chẵn &amp; Lẻ": nếu <span class="Literal">num % 2</span> bằng <code>0</code> thì <span class="Literal">num</span> chẵn, nếu bằng <code>1</code> thì <code>num</code> lẻ. Sau đó thêm <span class="Literal">num</span> vào cuối danh sách <code>sequence</code>.</p>
+<p class="Body">Khi <code>num</code> chính xác bằng <code>1</code>, vòng lặp <code>while</code> dừng và hàm trả về <code>sequence</code>.</p>
+<p class="HeadA">Trường hợp đặc biệt và lưu ý</p>
+<p class="Body">Trường hợp đặc biệt duy nhất là khi tham số <code>startingNumber</code> nhỏ hơn 1 — khi đó không có dãy và hàm trả về danh sách rỗng <code>[]</code>.</p>
+<p class="Body">Nếu <code>startingNumber</code> đã bằng 1, vòng lặp <code>while</code> không chạy và hàm trả về <code>[1]</code> — đúng vì dãy chỉ gồm số bắt đầu.</p>
+<p class="Body">Dùng chia nguyên <code>//</code> khi chia số chẵn cho 2 để luôn nhận số nguyên, không phải float.</p>
+<p class="Body">Hãy thử viết lời giải dựa trên thông tin ở các phần trước. Nếu vẫn gặp khó khăn, hãy đọc phần <span class="Bold">Mẫu giải pháp</span> để có thêm gợi ý.</p>
+<p class="HeadA">Mẫu giải pháp</p>
+<p class="Body">Hãy thử viết lời giải từ đầu trước. Nếu gặp khó khăn, bạn có thể dùng chương trình dở sau làm điểm xuất phát. Sao chép mã từ <span class="MsoHyperlink">https://invpy.com/collatzsequence-template.py</span> và dán vào trình soạn thảo. Thay các dấu gạch dưới bằng mã để tạo chương trình hoạt động:</p>
+<p class="CodeCxSpFirst">def collatz(startingNumber):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Nếu số bắt đầu là 0 hoặc âm, trả về danh sách rỗng:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if ____ &lt; 1:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return ____</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Tạo danh sách chứa dãy, bắt đầu bằng số khởi tạo:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; sequence = [____]</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; num = ____</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Tiếp tục lặp cho đến khi số hiện tại là 1:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; while num ____ 1:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Nếu lẻ, số tiếp theo là 3 lần số hiện tại cộng 1:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if num % 2 == ____:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; num = 3 * num + 1</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Nếu chẵn, số tiếp theo là một nửa số hiện tại:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; num = num // ____</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Ghi số vào danh sách dãy:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sequence.append(____)</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Trả về dãy số:</span></p>
+<p class="CodeCxSpLast">&nbsp;&nbsp;&nbsp; return ____</p>
+<p class="Body">Lời giải hoàn chỉnh cho bài tập này có trong Phụ lục A và tại <span class="MsoHyperlink">https://invpy.com/collatzsequence.py</span>. Bạn có thể xem từng bước chương trình chạy trong trình gỡ lỗi tại <span class="MsoHyperlink">https://invpy.com/collatzsequence-debug/</span>.</p>
+
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body"><b>Bước 1 — Kiểm tra đầu vào:</b> Nếu <code>startingNumber &lt; 1</code>, trả về <code>[]</code> ngay. Điều này xử lý 0 và số âm theo yêu cầu bài tập.</p>
+<p class="Body"><b>Bước 2 — Khởi tạo dãy:</b> Tạo <code>sequence = [startingNumber]</code> và <code>num = startingNumber</code>. Số bắt đầu luôn là phần tử đầu tiên của dãy.</p>
+<p class="Body"><b>Bước 3 — Vòng lặp while:</b> Tiếp tục khi <code>num != 1</code>. Mỗi lần lặp áp dụng quy tắc Collatz: số lẻ thì <code>num = 3 * num + 1</code>, số chẵn thì <code>num = num // 2</code>.</p>
+<p class="Body"><b>Bước 4 — Ghi nhận số mới:</b> Sau mỗi phép tính, gọi <code>sequence.append(num)</code> để thêm số tiếp theo vào dãy. Ví dụ với <code>collatz(10)</code>: bắt đầu [10], lặp 1 thêm 5 → [10, 5], lặp 2 thêm 16 → [10, 5, 16], … đến [10, 5, 16, 8, 4, 2, 1].</p>
+<p class="Body"><b>Bước 5 — Kết thúc:</b> Khi <code>num</code> đạt 1, vòng lặp dừng. Hàm trả về <code>sequence</code> với phần tử cuối luôn là 1.</p>
+<p class="Body"><b>Độ dài dãy thay đổi mạnh:</b> <code>collatz(256)</code> chỉ có 9 phần tử (là lũy thừa của 2 nên chỉ chia đôi), nhưng <code>collatz(257)</code> có tới 123 phần tử — minh họa sự khó đoán của dãy Collatz.</p>
+
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="Body">Chương trình Python đầy đủ cho bài tập này:</p>
+<p class="CodeCxSpFirst">def collatz(startingNumber):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if startingNumber &lt; 1:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return []</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; sequence = [startingNumber]</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; num = startingNumber</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; while num != 1:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if num % 2 == 1:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; num = 3 * num + 1</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; num = num // 2</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sequence.append(num)</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; return sequence</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">assert collatz(0) == []</p>
+<p class="CodeCxSpMiddle">assert collatz(10) == [10, 5, 16, 8, 4, 2, 1]</p>
+<p class="CodeCxSpMiddle">assert collatz(11) == [11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1]</p>
+<p class="CodeCxSpMiddle">assert collatz(12) == [12, 6, 3, 10, 5, 16, 8, 4, 2, 1]</p>
+<p class="CodeCxSpMiddle">assert len(collatz(256)) == 9</p>
+<p class="CodeCxSpMiddle">assert len(collatz(257)) == 123</p>
+<p class="CodeCxSpMiddle">import random</p>
+<p class="CodeCxSpMiddle">random.seed(42)</p>
+<p class="CodeCxSpMiddle">for i in range(1000):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; startingNum = random.randint(1, 10000)</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; seq = collatz(startingNum)</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; assert seq[0] == startingNum</p>
+<p class="CodeCxSpLast">&nbsp;&nbsp;&nbsp; assert seq[-1] == 1</p>
+
+<p class="HeadA">Đọc thêm</p>
+<p class="Body">Bạn có thể tìm hiểu thêm về dãy Collatz trên Wikipedia tại <span class="MsoHyperlink">https://en.wikipedia.org/wiki/Collatz_conjecture</span>. Có video trên YouTube về dãy này trên kênh Veritasium với tiêu đề "The Simplest Math Problem No One Can Solve - Collatz Conjecture" tại <span class="MsoHyperlink">https://youtu.be/094y1Z2wpJg</span> và kênh Numberphile với tiêu đề "UNCRACKABLE? The Collatz Conjecture" tại <span class="MsoHyperlink">https://youtu.be/5mFpVDpKX70</span>.</p>
+
+
+
+<p><a href="../exercise38/index.html">Trước - #38 Xáo trộn ngẫu nhiên</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise40/index.html">Sau - #40 Gộp hai danh sách đã sắp xếp</a></p></body></html>

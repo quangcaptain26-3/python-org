@@ -1,0 +1,584 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 24 - Mỗi 15 phút</title></head><body style="background-color: #fffeee;"><p><a href="../exercise23/index.html">Trước - #23 99 chai bia</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise25/index.html">Tiếp - #25 Bảng cửu chương</a></p>
+
+
+
+
+<h1><a name="_Toc115418693"></a><a name="_Toc115360004">Bài tập #24: Mỗi 15 phút</a></h1>
+<p class="ChapterTitleCodeExample"><img border="0" height="144" id="Picture 35" src="data:image/jpeg;base64,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" width="502"/></p>
+<p class="Body">Đồng hồ đếm khác hệ thập phân: bắt đầu từ 12, qua 1, 2, … đến 11 rồi quay lại 12. Bài tập dùng vòng lặp <code>for</code> lồng nhau để duyệt phút, giờ và nửa ngày (am/pm).</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body">Viết chương trình in thời gian mỗi 15 phút từ 12:00 am đến 11:45 pm. Kết quả mẫu:</p>
+<p class="CodeCxSpFirst">12:00 am</p>
+<p class="CodeCxSpMiddle">12:15 am</p>
+<p class="CodeCxSpMiddle">12:30 am</p>
+<p class="CodeCxSpMiddle">12:45 am</p>
+<p class="CodeCxSpMiddle">1:00 am</p>
+<p class="CodeCxSpMiddle">1:15 am</p>
+<p class="CodeCxSpMiddle">--cắt--</p>
+<p class="CodeCxSpMiddle">11:30 pm</p>
+<p class="CodeCxSpLast">11:45 pm</p>
+<p class="Body">Tổng cộng 96 dòng.</p>
+<p class="Body">Kiến thức cần có: vòng lặp <code>for</code>, list, vòng lặp lồng nhau, nối chuỗi</p>
+<p class="HeadA">Thiết kế lời giải</p>
+<p class="Body">Ba vòng lặp lồng nhau: ngoài cùng duyệt <code>'am'</code> và <code>'pm'</code>; giữa duyệt giờ <code>'12', '1', …, '11'</code>; trong cùng duyệt phút <code>'00', '15', '30', '45'</code>. Giờ và phút là chuỗi để nối: <code>'12' + ':' + '00' + ' ' + 'am'</code> → <code>'12:00 am'</code>.</p>
+<p class="Body">Vòng <code>for</code> có thể duyệt list bất kỳ, không chỉ <code>range()</code>.</p>
+<p class="HeadA">Trường hợp đặc biệt và lỗi thường gặp</p>
+<p class="Body">Thứ tự vòng lặp quan trọng: ngoài → am/pm, giữa → giờ, trong → phút.</p>
+<p class="HeadA">Mẫu lời giải</p>
+<p class="Body">Mẫu: <span class="MsoHyperlink">https://invpy.com/every15minutes-template.py</span>. Lời giải: <span class="MsoHyperlink">https://invpy.com/every15minutes.py</span>.</p>
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body"><b>Bước 1:</b> <code>for meridiem in ['am', 'pm']:</code> — lặp nửa ngày.</p>
+<p class="Body"><b>Bước 2:</b> <code>for hour in ['12', '1', '2', ..., '11']:</code> — 12 giờ mỗi nửa ngày.</p>
+<p class="Body"><b>Bước 3:</b> <code>for minutes in ['00', '15', '30', '45']:</code> — 4 mốc phút.</p>
+<p class="Body"><b>Bước 4:</b> <code>print(hour + ':' + minutes + ' ' + meridiem)</code> — ghép chuỗi và in. Tổng: 2 × 12 × 4 = 96 dòng.</p>
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="Body">Chương trình Python đầy đủ:</p>
+<p class="CodeCxSpFirst">for meridiem in ['am', 'pm']:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; for hour in ['12', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for minutes in ['00', '15', '30', '45']:</p>
+<p class="CodeCxSpLast">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print(hour + ':' + minutes + ' ' + meridiem)</p>
+
+
+
+<p><a href="../exercise23/index.html">Trước - #23 99 chai bia</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise25/index.html">Tiếp - #25 Bảng cửu chương</a></p></body></html>

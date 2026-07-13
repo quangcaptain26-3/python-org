@@ -1,0 +1,639 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 15 - Trung vị</title></head><body style="background-color: #fffeee;"><p><a href="../exercise14/index.html">Trước - #14 Trung bình</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise16/index.html">Tiếp - #16 Mode</a></p>
+
+
+
+
+<h1><a name="_Toc115418684"></a><a name="_Toc115359995">Bài tập #15: Trung vị (Median)</a></h1>
+<p class="ChapterTitleCodeExample">median([3, 7, 10, 4, 1, 6, 9, 2, 8])&nbsp; <span style="font-size:13.0pt">→ </span>&nbsp;6</p>
+<p class="ChapterTitleCodeExample"><span style='font-size:8.0pt;font-family:"MS Shell Dlg 2","sans-serif"'><img border="0" height="144" id="Picture 26" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAkACQAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/wAALCACQAJABAREA/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/APYpporeF5Z5EiiQZZ3YBVHqSaaLy2MsUYuITJMu+Nd4y6+oHcfSpqKKKKKKKKKKKKKKKgvoLe5sLiC8CtbSRssobptI5z+FedfC7TZrnULrUbmdLq20yM6Vp06fdkiVixcHvwVGR6EV6ZRRRRRRRRRRRRRRRSEAggjI9K4rwN8RLfxhqN3YW+mvZi0j35MgYH5sYwAMV21FFFFFFFFFFFFFFFJXh/wK/wCRq1r/AK4f+z17jRRRRRRRRRRRRRRRSV4f8Cv+Rq1r/rh/7PXuNFFFFFcR8WnZPB0ZRmU/bYBlTj+Ku3oooooooopK8P8AgV/yNWtf9cP/AGevcaKKKK43x58R7DwXCIQoutSkXdHbhsBR/ec9h7dT+teJa/458VeK7Zmu5JPsKyqQkEGI1fPy84znPqa3tF+MPibQL4W/iCJryIH5454/KmUexwP1Fe4aFr1h4k0qLUNMmEsEnHoyHurDsRWjRRRRRRSV4f8AAr/kata/64f+z17jRRRWN4s8RQeFfDl1qlwAxiXEcZP+sc8Kv5/pmvF/h/4OuPiJr91r3iB3ksll3SHp58nXYPRQMZx2wB7eh/FK1gsfAkFvaQxwQR3tuqRxqFVRu7AV0fijwnpni3TXtNSgBbH7qdR+8iPqD/Toa8W8LanffCr4gS6Tqrn7DM4SY/wFT9yUfTv7ZHUV9BgggEHIPelooooopK8P+BX/ACNWtf8AXD/2evcaKKK8O+M2rz694s0/wvp53mJl3IP4pn4AP0Uj/vo16/4d0S38OaDaaXageXbxhS2Pvt1Zj9Tk1Lquj2Ot2gtdSgE8AdZAhJHzDkHirteZ/G3wuNU8NprECZutOPzkDloiefyOD+davwm8RnxB4KgSZ911Yn7NLk8kAfKf++cD6g129FFFFFJXh/wK/wCRq1r/AK4f+z17jRRUN3dRWNnPdTttigjaRz6KBk/yrw/4UWkvir4jah4ivF3CAtNz0EkhIUfgN35CvdqKKhu7WK+s5rW4UPDPG0bqe6kYNeH/AAruZfCfxL1Dw7dNhZy8HPd0JKn8V3fmK92ooooopK8P+BX/ACNWtf8AXD/2evcaKK4P4x6z/ZXgK4hRsS3zrbr67Ty36Aj8aZ8GdF/svwJFcuuJr+Rpz67fur+gz+Nd/RRRXhXxdtpPDfxD0zxDaqR52yXI7yRkAj8V217ha3Md5aQ3MJ3RTIsiH1BGR/OpaKKKKSvD/gV/yNWtf9cP/Z69xoorw340XsuueNNK8PWp3NGFXA/56SkAfoF/OvarCzj07T7azgGIreJYkHsowP5VYooorz7406N/afgZ7pFzLYSrMPXaflb+YP4VZ+EGs/2v4BtY2bMtkzWz/Qcr/wCOkD8K7iiiiikrw/4Ff8jVrX/XD/2evcaKbJIsUbSSMFRAWZj0AFeEfD5G8Z/F681yVSYYGe5Ge38MY/Ac/wDAa95ooooqrqVjFqmmXVjOMxXMTRN9GGP614x8Fr+XRPGOqeHbw7WlDAKf+esZII/EZ/KvcaKKKKSvD/gV/wAjVrX/AFw/9nr3GiuI+LfiEaF4HuY4323N/wD6NHg84P3z/wB85H4is/4JaAdL8HtqEqYm1GTeM9fLXhf13H8a9Hooooorwf4l28vg34o2XiG1QiO4ZbjA6Fl+WRfxGP8AvqvcrS6ivrOG6t3DwzIsiMO6kZBqaiiikrw/4Ff8jVrX/XD/ANnr3Givn/xrqEvxK+Jlro2muWs4H+zo68jrmST6cfiFHrXvVnaQ2FlBa2yBIYI1jjUdlAwKmooooori/ir4YPiXwbP5CbryyP2iEActgfMv4jP4gVg/BHxYuo6I+g3Mn+k2PzQ5PLxE/wDspP5EV6lRRRSV4f8AAr/kata/64f+z17jXlHxS+KEFlZzaJoNwJbyUFLi4jORCvdQe7H9Pr0t/B3wM2g6Y2s6jEVv71MRow5ii6/gW4P0A969MooooooorwDx74fvvh14zh8Q6GDHZzSmSMgfLG5+9G3+yecexI7V614M8cab4y05ZbWRY7tAPPtWb50Pt6r710tFFJXh/wACv+Rq1r/rh/7PUvxIHjTVfGV5pOj/ANpS6cVj2xwKVj5QZBYYHXPU1qeAvg2mlXEWpeJDHPcod0VqvzRoexY/xH26fWvWKKKKKKKKKqanplprOnTWOoQLPbTLtdG/zwfevDfEnwg13w9fm+8MSTXcCndH5T7biL8sZ+o/KvQPhNfa/faJenxI9208Vx5cYuY9rhQoPcAnk9672ikNfPvwk8RaX4d8R6tNq94lrHLFtRnBO4789ga9Y/4Wh4Q/6DkH/fD/AOFH/C0PCH/Qcg/74f8Awo/4Wh4Q/wCg5B/3w/8AhR/wtDwh/wBByD/vh/8ACj/haHhD/oOQf98P/hR/wtDwh/0HIP8Avh/8KP8AhaHhD/oOQf8AfD/4Uf8AC0PCH/Qcg/74f/Cj/haHhD/oOQf98P8A4Uf8LQ8If9ByD/vh/wDCj/haHhD/AKDkH/fD/wCFH/C0PCH/AEHIP++H/wAKP+FoeEP+g5B/3w/+FWtN8e+GtY1CKx0/VoZ7mUkJGqsC2Bk9R6A1c1nxHYaBJa/2m7wQ3LlFuCv7pGAyAzds9qn0bVoNc0uK/tUmSCbJj85NjMvZseh7Vdrzt/gf4Xd2YvqOWOT+/H/xNJ/wo3wt/f1H/v8Ar/8AE0f8KN8Lf39R/wC/6/8AxNH/AAo3wt/f1H/v+v8A8TR/wo3wt/f1H/v+v/xNH/CjfC39/Uf+/wCv/wATR/wo3wt/f1H/AL/r/wDE0f8ACjfC39/Uf+/6/wDxNH/CjfC39/Uf+/6//E0f8KN8Lf39R/7/AK//ABNH/CjfC39/Uf8Av+v/AMTR/wAKN8Lf39R/7/r/APE0f8KN8Lf39R/7/r/8TR/wo3wt/f1H/v8Ar/8AE1oaD8J/D/h3WbfU7F703FuSUEkoK8gjkY9DWx4o8MDxXDb2d3dPHpqvvuII1w05H3RuzwAeenPFXdB0640nR4LG6vTevANizMmxio+6CMnkDjPev//Z" width="144"/></span></p>
+<p class="Body">Khi sắp xếp một danh sách số theo thứ tự tăng dần, <span class="Italic"><span style='font-family:"serif"'>trung vị</span></span> (median) là giá trị nằm ở vị trí giữa. Các giá trị ngoại lai (outlier) có thể khiến trung bình cộng cao hoặc thấp hơn đáng kể so với phần lớn các số trong danh sách, nên trung vị đôi khi phản ánh đặc điểm của tập số tốt hơn. Bài này cùng hai bài trước và sau thách thức bạn dùng Python để tính các chỉ số thống kê.</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body">Viết hàm <code>median()</code> nhận tham số <span class="Literal">numbers</span>. Hàm trả về trung vị thống kê của danh sách <code>numbers</code>. Với danh sách có độ dài lẻ, trung vị là phần tử ở giữa sau khi sắp xếp. Với danh sách có độ dài chẵn, trung vị là trung bình của hai phần tử ở giữa. Bạn có thể dùng phương thức <code>sort()</code> có sẵn của Python.</p>
+<p class="Body">Truyền danh sách rỗng vào <code>median()</code> phải trả về <code>None</code>.</p>
+<p class="Body">Các câu lệnh <code>assert</code> sau dừng chương trình nếu điều kiện là <code>False</code>. Sao chép chúng vào cuối chương trình. Lời giải đúng khi tất cả điều kiện đều là <span class="Literal">True</span>:</p>
+<p class="CodeCxSpFirst">assert median([]) == None</p>
+<p class="CodeCxSpMiddle">assert median([1, 2, 3]) == 2</p>
+<p class="CodeCxSpMiddle">assert median([3, 7, 10, 4, 1, 9, 6, 5, 2, 8]) == 5.5</p>
+<p class="CodeCxSpMiddle">assert median([3, 7, 10, 4, 1, 9, 6, 2, 8]) == 6</p>
+<p class="CodeCxSpMiddle">import random</p>
+<p class="CodeCxSpMiddle">random.seed(42)</p>
+<p class="CodeCxSpMiddle">testData = [3, 7, 10, 4, 1, 9, 6, 2, 8]</p>
+<p class="CodeCxSpMiddle">for i in range(1000):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; random.shuffle(testData)</p>
+<p class="CodeCxSpLast">&nbsp;&nbsp;&nbsp; assert median(testData) == 6</p>
+<p class="Body">Xáo trộn thứ tự các số không được làm thay đổi trung vị. Vòng lặp <code>for</code> thực hiện 1.000 lần xáo trộn ngẫu nhiên để kiểm tra kỹ. Giải thích về <span class="Literal">random.seed()</span> xem phần <span class="Bold">Đọc thêm</span> của Bài tập #19, “Tạo mật khẩu”.</p>
+<p class="Body">Hãy tự viết lời giải trước. Nếu gặp khó khăn, đọc các phần <span class="Bold">Thiết kế lời giải</span> và <span class="Bold">Trường hợp đặc biệt và lỗi thường gặp</span>.</p>
+<p class="Body">Kiến thức cần có: <code>len()</code>, vòng lặp <span class="Literal">for</span>, toán tử gán cộng, chia nguyên, toán tử modulo, chỉ số mảng</p>
+<p class="HeadA">Thiết kế lời giải</p>
+<p class="Body">Đầu tiên kiểm tra danh sách <code>numbers</code> có rỗng không; nếu rỗng thì trả về <code>None</code>. Tiếp theo gọi <code>sort()</code> để sắp xếp. Tính chỉ số giữa bằng phép chia nguyên độ dài cho <span class="Literal">2</span>. Toán tử chia nguyên <span class="Literal">//</span> chia rồi làm tròn xuống; ví dụ <code>5 / 2</code> bằng <code>2.5</code> nhưng <code>5 // 2</code> bằng <code>2</code>.</p>
+<p class="Body">Xác định độ dài lẻ hay chẵn. Nếu lẻ, trung vị nằm tại chỉ số giữa. Ví dụ:</p>
+<p class="Body" style="margin-left:.5in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Độ dài <code>3</code>, chỉ số từ <code>0</code> đến <code>2</code>, chỉ số giữa là <code>3 // 2</code> hay <code>1</code>.</p>
+<p class="Body" style="margin-left:.5in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Độ dài <code>5</code>, chỉ số từ <code>0</code> đến <code>4</code>, chỉ số giữa là <code>5 // 2</code> hay <code>2</code>.</p>
+<p class="Body" style="margin-left:.5in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Độ dài <code>9</code>, chỉ số từ <code>0</code> đến <code>8</code>, chỉ số giữa là <code>9 // 2</code> hay <code>4</code>.</p>
+<p class="Body">Nếu độ dài chẵn, lấy trung bình hai phần tử giữa tại chỉ số <code>middleIndex</code> và <code>middleIndex - 1</code>. Ví dụ:</p>
+<p class="Body" style="margin-left:.5in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Độ dài <code>4</code>: chỉ số giữa là <code>2</code> và <code>1</code>.</p>
+<p class="Body" style="margin-left:.5in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Độ dài <code>6</code>: chỉ số giữa là <code>3</code> và <code>2</code>.</p>
+<p class="Body" style="margin-left:.5in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Độ dài <code>10</code>: chỉ số giữa là <code>5</code> và <code>4</code>.</p>
+<p class="Body">Với danh sách chẵn, cộng hai số giữa rồi chia cho 2.</p>
+<p class="HeadA">Trường hợp đặc biệt và lỗi thường gặp</p>
+<p class="Body">Danh sách rỗng phải trả về <code>None</code> ngay từ đầu hàm.</p>
+<p class="Body">Hãy tự viết lời giải. Nếu vẫn gặp khó khăn, xem phần <span class="Bold">Mẫu lời giải</span>.</p>
+<p class="HeadA">Mẫu lời giải</p>
+<p class="Body">Nếu cần gợi ý, sao chép mã từ <span class="MsoHyperlink">https://invpy.com/median-template.py</span> và điền vào các chỗ trống:</p>
+<p class="CodeCxSpFirst">def median(numbers):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Trường hợp đặc biệt: danh sách rỗng, trả về None:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if len(numbers) == ____:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return ____</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Sắp xếp danh sách:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; ____.sort()</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Lấy chỉ số phần tử giữa:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; middleIndex = len(____) // ____</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Nếu độ dài chẵn, trả về trung bình hai phần tử giữa:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if len(numbers) % ____ == 0:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return (numbers[____] + numbers[middleIndex - ____]) / ____</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Nếu độ dài lẻ, trả về phần tử giữa:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; else:</p>
+<p class="CodeCxSpLast">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return numbers[____]</p>
+<p class="Body">Lời giải đầy đủ có trong Phụ lục A và <span class="MsoHyperlink">https://invpy.com/median.py</span>. Xem từng bước chạy tại <span class="MsoHyperlink">https://invpy.com/median-debug/</span>.</p>
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body"><b>Bước 1 — Xử lý danh sách rỗng:</b> Kiểm tra <code>len(numbers) == 0</code> và trả về <code>None</code> ngay, tránh lỗi khi truy cập chỉ số trên danh sách rỗng.</p>
+<p class="Body"><b>Bước 2 — Sắp xếp:</b> Gọi <code>numbers.sort()</code> để sắp xếp tại chỗ. Thứ tự ban đầu không ảnh hưởng trung vị nhưng cần sắp xếp để tìm phần tử giữa.</p>
+<p class="Body"><b>Bước 3 — Tính chỉ số giữa:</b> <code>middleIndex = len(numbers) // 2</code>. Với 9 phần tử (chỉ số 0–8), <code>9 // 2 = 4</code> là vị trí giữa chính xác.</p>
+<p class="Body"><b>Bước 4 — Phân biệt chẵn/lẻ:</b> Dùng <code>len(numbers) % 2 == 0</code>. Danh sách chẵn: lấy trung bình <code>numbers[middleIndex]</code> và <code>numbers[middleIndex - 1]</code>. Danh sách lẻ: trả về <code>numbers[middleIndex]</code>.</p>
+<p class="Body"><b>Bước 5 — Kiểm tra:</b> Các <code>assert</code> xác nhận kết quả với dữ liệu cố định và sau 1.000 lần <code>random.shuffle()</code> để đảm bảo thuật toán không phụ thuộc thứ tự ban đầu.</p>
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="Body">Chương trình Python đầy đủ cho bài tập này:</p>
+<p class="CodeCxSpFirst">def median(numbers):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if len(numbers) == 0:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return None</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; numbers.sort()</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; middleIndex = len(numbers) // 2</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if len(numbers) % 2 == 0:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return (numbers[middleIndex] + numbers[middleIndex - 1]) / 2</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; else:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return numbers[middleIndex]</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">assert median([]) == None</p>
+<p class="CodeCxSpMiddle">assert median([1, 2, 3]) == 2</p>
+<p class="CodeCxSpMiddle">assert median([3, 7, 10, 4, 1, 9, 6, 5, 2, 8]) == 5.5</p>
+<p class="CodeCxSpMiddle">assert median([3, 7, 10, 4, 1, 9, 6, 2, 8]) == 6</p>
+<p class="CodeCxSpMiddle">import random</p>
+<p class="CodeCxSpMiddle">random.seed(42)</p>
+<p class="CodeCxSpMiddle">testData = [3, 7, 10, 4, 1, 9, 6, 2, 8]</p>
+<p class="CodeCxSpMiddle">for i in range(1000):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; random.shuffle(testData)</p>
+<p class="CodeCxSpLast">&nbsp;&nbsp;&nbsp; assert median(testData) == 6</p>
+
+
+
+<p><a href="../exercise14/index.html">Trước - #14 Trung bình</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise16/index.html">Tiếp - #16 Mode</a></p></body></html>

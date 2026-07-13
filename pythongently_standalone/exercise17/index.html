@@ -1,0 +1,596 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 17 - Tung xúc xắc</title></head><body style="background-color: #fffeee;"><p><a href="../exercise16/index.html">Trước - #16 Mode</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise18/index.html">Tiếp - #18 Mua 8 tặng 1</a></p>
+
+
+
+
+<h1><a name="_Toc115418686"></a><a name="_Toc115359997">Bài tập #17: Tung xúc xắc</a></h1>
+<p class="ChapterTitleCodeExample">rollDice(1)&nbsp; <span style="font-size:13.0pt">→</span>&nbsp;6</p>
+<p class="ChapterTitleCodeExample"><span style='font-size:8.0pt;font-family:"MS Shell Dlg 2","sans-serif"'><img border="0" height="144" id="Picture 28" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAkACQAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/wAALCACQAQMBAREA/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/APZqKKKKKqXuq2GmoWvr22tlHeaVU/ma5jUfiz4R07I/tQXDj+G3jZ/1xj9a5XUfj9YR7hpuj3Ex7NPIIx+QzXLaj8cvEt1kWkdlZr2KRl2/NiR+lYTeJfG3iZtkd7q11uP3LYMF/JABR/wr7xkf9K/se/3dd2fn/LOasaR8QPFng++EFxcXLrGcPaXwY8f8C5X8K948GeNdP8aaWbmzzFPHgT27nLRn+oPY10VFFFFFFFFFFFFFFFFFFFQXd5bWEBnvLiK3iXq8rhVH4muV1H4r+EdOyDqq3Dj+G3RpP1Ax+tctqPx+06PcNN0i5nPZp5FjH5DdXLaj8dPEl0SLOGys17FYy7fmxx+lYEnijxr4mYol9qt0GP3LYMB+SACrNl8K/GOrPvfTXi3dXupQh/InP6V0+nfAHUJNp1LV7aAd1gjaQ/mdtdTp3wM8N2oBvJr28buGkCL+SjP611OneA/DOlYNpolmGHRnj8xvzbJreSNIkCRqqKOgUYAp1YHi3wfpvjDS3tb6JRMFPk3Cj54m9Qe49R3r588P6lffDrx8BcZQ20xgu0B4ePPP14ww/CvqBWV0VlIKsMgjuKdRRRRRRRRRRRRRRRRRXKeP/HVt4J0lZCqzX8+RbwE9fVm/2R+vT6eChfFPxK1piPtF/OOTztihB/8AHVH8/eux074BalKFbUtWtbcHqsKNIR+eBXU6d8C/Dlrg3s97eN3BcIv5KM/rXVad4B8MaXg2uiWYYdGkTzG/Ns1vRxpCgSNFRR0VRgCn0UUUUUV89fHLTvsnjeO6VQFvLZWJ9WUlT+gWvZfAeo/2p4G0e6JyxtlRj/tL8p/UV0FFFFFFFFFFFFFFFFFFfMPjLULrxr8R54oCXMlyLO1XsFDbR+ZyfxNfRHhnw5ZeFtEg06wQBUGZJMfNK/dj7n/61a1FFFFFFFFFFeSfH7TvM0jStQVeYZmhY+zDI/8AQK0vgZqP2rwTLaE/NaXTKB/ssAw/UtXpNFFQ3V1BZWstzdSpDBEpZ5HOAoHcmvGPFnxzuHne28MQJHEpx9rnXLN7qvQD65+gri/+E28bX5M0eqao47mEEL+SjFKPiD40tfvavfLj/nooP8xViH4veMYf+YqJP9+3jP8A7LVyL42eLI8bpbOT/etx/QirkPx48RJ/rbPTZP8Atm4/9mq7F8f9TH+t0azb/dkZf8auQ/tBH/lvoA/4Bdf4rVyL4/6cf9bot2v+7Krf4Vdh+PPh5/8AW2OpR/8AAEP/ALNVyL43eE5PvPex/wC9b/4E1vaN8QvDOvSrFY6rCZm4EUuY2J9g2M/hXSUV8u/D7/RviZpK3X3luyjZ/v8AIH619RUV5X8Qvi+3h/UZdJ0KGKa7h4nnl5SNv7oA6kd/SuS0j45a/a3itqkVte2xPzqqeW4H+yRx+Yr3PRtXtNe0m31Gwk8y3uE3Ke49QfcHIP0q9RRRRRRXG/FnTv7R+HWpYGXtws6/8BYZ/TNef/AHUfL1nVdPZuJoFmUe6tg/+h17lRRXhnxv8XyXOpL4ctJCLe3CyXW0/fc8qp9gMH6n2rX+GPwqs49Og1rxDbie4nAkgtpBlI1PQsO5PXB4H16etRxpDGEjRURRgKowB+FV9QvbLTrVrjUbiC3gXq8zBV/M1j2Ot+E9fuPIs7rS7uY/8s8IWP0B5NXZfCugz/63RdOb62qf4VRk+H3hWX72gWA/3Ygv8qqS/CvwfL10WJf9ySRf5NVKX4M+EJPu2U8f+7cv/UmqcvwM8Lv9yTUY/wDdmU/zWqUvwC0Q58rVNQX/AHtjf0FVJf2frU58nXZl/wB63B/9mFcp4m+DWu6DbPdWbx6lbxjc3kqVkUeuzv8AgTWh8Mvinc6ZeQ6Pr1w01hKQkU8hy0B7Anuv16fSveq+XvF0beG/ihfSRgqYL8XKD2LCQfzr6ehlWeFJYzlHUMp9QafXyBraTpruoLdZ88XMgk3dd245/WqVfQ3wNWdfAbmbPltdyGLP93Cg4/HP616NRRRRRRVTVbJdS0i8snGVuIHiOf8AaUj+tfOPwrvW0n4k6ekny+az2zj3YEAf99Yr6Zoor5cuE/4SD4qPHcfMt3q2xh/smXGPyr6iAAAAGAOgFLXy58QvFV14o8UXTyyN9kt5Gitos/Kqg4zj1OMk/wCFcvHI8UiyRsyOpyrKcEH1Br6a+FviefxR4OinvX33dtIbeV+7kAEMfcgjPvmuxoorzf4n/E2Twm6aZpKxvqUib3kcZWFT047sffp+NeU2/wAVfF9vdif+2JJOcmOSNSh9sY/lXunw/wDG8PjbRWuPLEN5AwS4hByAT0Yex5/I11VfPnxp8KQ6Jr8Op2UYjt9RDF0UYCyjG7H1BB+ua7rwT8R7IeDtNTU5ibuOIxuSeTtYqCffAFcN8ddO+zeM4LtR8t3aqSf9pSVP6ba9f+H2o/2p4D0e4Lbm+zrGx90+U/8AoNdHXnHj74SQeKb1tT0y4Szv3/1quuY5T6nHIPvzmuT0f4C6i92p1nUbaK2B+YW2Xdh6DIAH15+le06bp1tpGnQWNjEIraBAkaDsP8atVk6x4p0Xw+VXVtSt7V2GQjt8xHrtHNSaP4i0nX42fSdQt7oL94Rvll+o6itKiiiivl3xRG3hn4n3rxgr9mvxcIB6Fg4/Q19PxyLLEkiHKOAwPqDT6QnAzXzB4L/0v4p6a3XdqHmfkS39K+oKK+XfiJ4TuvC/ii6WSJvsdxI0ttLj5WUnO3PqM4Irl44nmlWOJGeRzhVUZJPoBX018L/DE/hbwdFb3i7Lu4c3Eyf3CQAF+oAGffNdhRRXzR8X7We2+I2oPODtnWOSInuuwDj8QR+FcVXsH7P9rP8AbNYu8EW3lxxZ7F8k/oP517ZXk/x+YDw/pS/xG6Yj/vk/4147aaddT2qSROwRs4A+texfH3TvN0LS9QVeYLhomPs65/mlXPgVqP2nwbcWbH5rS6bA/wBlgCP13V6ZRRRWT4q1k+H/AAvqOpqoZ7aEsinoW6Ln2yRXyhfX1zqV7Nd3szzXEzFnkc5LGptH1i80HVINQ0+ZoriFsgjoR3B9Qe4r600m/TVdIs7+MYS5hSYD03AHH61booor58+OenfZfGsN2B8t3aqxP+0pKn9AtexeAdR/tTwLo9yTljbLGx91+U/qtdDUN5J5NlPJ/cjZvyFfNPwpjNx8S9JJ7PI5/CNjX05RUF5Y2uo2zW97bw3ELdY5UDKfwNUNN8K6Ho85m07SbO2mP/LSOIBvz61rUUUVznjHwPpnjSySK/DRzxZ8m4j++meo9x7V53b/ALP2Lsfadd3WwPSO3w5H4sQP1r1bQtCsPDmlRadpkIit4+fUse7E9ya0a8d/aBlxa6JFnq8zfoo/rWd4I0JLzwjZTlcl/M/SRh/SvQ/irp39o/DvVFAy0CrOvttYE/pmvOvgFqPla9qens2BPbrKo90bH8nr3WiiiszxJo6+IPDl/pbNs+0wlFY/wt1B/AgV8patpF7oeoy2OpW7wXERwVYdfcHuD61P4e8PX/ifVotP06Fnkcjc+PljXuzHsBX1hptjHpmmWtjD/q7aJYlJ7hQB/SrNFFFeS/H7TvM0bStQVeYZ2hY+zrkf+gVofAvUftXgua0J+a0umAH+ywDD9d1elVneIZfJ8N6nL02WkrfkhrwD4LxeZ8RrVv8AnnDK3/juP619IUUUUUUUUUUUV4h+0DLnUtFiz92GVvzK/wCFdp8LdORvhzpLMOWWQ/nK9dlqVmuoaZdWb/duIXiOfRgR/Wvm34Y3j6P8StOST5d8rWzg+rArj/vrFfTdFFFFU9Q0fTtWQJqVjbXajoJolfH0zTrDTLLS4fJ0+0gtYz1WGMID+VWqyvEviKz8LaHPqd+T5cfCov3pGPRR7mvDtQ+OHia5u2ezFpaQZ+WIRbzj3J6/hiu++HPxWXxXdDS9Whjt9RKlonj4SbHUYPRsc+/NekVx3xY07+0fh1qYAy8AWdf+AsCf0zXnvwC1Hytb1TT2bieBZlHujY/9nr3OsHx1MYPAutuOv2KUD8VI/rXjPwLi3+Opn7R2Tn82UV9CUyWVIIXlmdUjjUszMcBQOSTXiXiX463rXrw+HLaFLZGwJ7hSzSe4XIAH1yau+DvjdLd6jDY+JIIY0mYIt1CCoUnpuUk8e46V7HRRRWJ4h8YaL4WjVtXvkhdxlIgCzsPUKOce/SqGhfErwz4hu1tbLUAly5wkU6GMufQE8E+2c11VFeC/HyXd4r0+PP3LPP5u3+Fep/DeLyvh5oq+tuG/Mk/1rp6+XvGMTeHPiffvGCvkXwuUHsSJB/Ovp6GVZ4I5YzlJFDKfUEZp9FFFFFFeT/H5JzoGlOufs63LB8dNxX5f03V4XW94ESd/HWiC1z5n2yM8egOW/TNfV1VdUsl1HSruzfG24heI5/2lI/rXzf8AC29bSPiTp6SfL5jvbOPdgQB/31ivpquV+JsvlfDnWm9YQv5sB/WvMvgFFnxJqcv920C/m4/wr3euX+JXnf8ACu9a+z53/Z+cf3cjd/47mvluivrvw75//CN6Z9qz9o+yReZnru2DOa0aKjuJhb20szAlY0LkD0AzXyLresXWv6xc6jfSF5p3LHJ+6Oyj2A4qiGKsGUkEHII7V9RfDbXJ/EPgawvLxi9yoaGRz1cqcZ+pGM+9dVXzx8cZfM8fKuf9XZxr+rH+te2eDIfs/grRI/7tlD/6AK26+f8A47ad9m8Y214o+W7tVyf9pSQf021658PNR/tTwFo9wW3MLcRMfdPlP/oNdJRRRRRRWfrmiWXiLSJ9N1GLzLeYYOOCp7EHsQa8Y1D4CatHdkabqVnLbE8NPuRwPcAEGu7+H/wutfBspvrqcXmpMpUOFwkQPUKPU+v8q7yivlx8L8WD9j6DWf3e3/rtX1HXEfGCbyvhtqIH8bRL/wCRF/wriv2fos3ety+kcS/mWP8ASvbKZLEk8TxSorxupVlYZDA9Qa8U8S/Aq7+2vN4cuoGtnbIguGKtH7BsHI+uPxq74N+CL2WoRX3iS4hlELB0tYcsrEdNzEDj2HX1r2GiimuqujIwBVhgg9xXzB468Cah4Q1eYGCSTTXctb3CrldvZWPZh05rD0bQtR8QX6Wel2slxM5x8o4X3Y9APc19SeEfD6eF/DFlpSMHaBP3jjozk5Y/TJP4Vs182fGSXzPiRejP3I4l/wDHAf619C6HF5Og6fF/cto1/JRV6vKPj7p3m6Bpl+q5NvcNET7Ouf5pVr4E6j9p8H3Nmx+a0ujgeisAR+u6vTaKKKKKKKKKK5Xx/wCNbXwdoUkpkVtQmUraw55Lf3iP7o6/pXjXwh0CbXvHEV9KGaCwP2iVz3f+EfXPP4Gvo+vPfjdL5fw+Zf8AnpdRr/M/0rC/Z+ixp2tS/wB6WJfyDf416/RRRRRRRSMqupVlDKeoIyDTIoIoF2wxJGp7IoAqSivmH4nMbn4masM5zMiD8EUV9NQJ5VvGg6KoH6VJXI/FPTv7S+HeqoBl4UE6+2xgT+ma82+AmpCDxDqOns2Bc24kUHuUP+DH8q93ooooooqnfavp+mKWv762tgO80qp/M1zGo/Frwjp+R/af2lx/Dbxs/wCuMfrXLaj8frFNw03R7iY9mnkEY/IZrldT+OHiW8DLaJZ2KkYBjj3sPxYkfpWNonhLxN8QtU+0v58iSH97fXROwD2J6/QfpX0L4V8LWPhHRY9PsFJx80srD5pX7sf8OwrarzD49TbPB1lF/wA9L1T+SPUfwDi2+FtRl/v3mPyRf8a9TorEvfGXh7Tro215rNjDODgo0wyv19PxrWt7mG7gSa2ljmicZV42DKw9iKlooooooor5e8Vf6Z8Vb9eu/U/L/wDHwK+oaKiubeO7tZbedd0UqFHU9wRgivmC+ttS+GnjwGPIms5d8LN92aI9PwIyD+NfQvhTxnpXi+wSfT51E4XMts5HmRn3Hce44rfqpe6rYaapa+vba2Uc5mlVP5muY1H4seEdOyDqguHH8NvGz/rjH61y2o/H7T49w03SLmc9mnkWMfkN1ctqPxz8SXWRZxWVmvYrGXb82OP0rAk8TeNfE7FEvdVu9x+5bBgv5IAKtWXwq8Yaq+99OeHd1e6lCn8ic/pXUad8Ab+TadS1e2hHdYIzIfzOK6nTvgb4atcG8lvbxu4aQIv5KAf1rqdO8C+GtKINnotmrDo7x72/Nsmt5VCqFUAAcADtS0V5L8f5CNF0iPs1w7fkv/161PgbGE8BO3d7yQ/oo/pXo1edfGbxVdeH/DkFnYSNDcag7IZVOGWNQN2D2JyBn6188E5OT1r0D4QeK7rRvFltpjSs1hqD+U0RPCufusPQ5wD7H2FfRlFFUdZ1e20HR7rUr1itvbIXbHU+gHuTgfjXz5rvxh8Tapeu9ldf2dbZ+SGFQSB7sRkn8h7V0fgD4xX76rBpviWRZ4J2EaXW0K0bHgbscEe/avbqK+XYgb74tLnnzdaz+HnV9RUUVznjLwTpvjTThBegx3EWTBcoPmjP9R6ivDNZ+F3ivw3dmW1tpbqNDlLiyJJ/IfMDVI3njq5UWpl8QyDp5eZjVmy+FnjHVn8x9Nki3dZLqQIfxBOf0rp9O+AWoybTqWr20A7rBG0h/M7a6nTvgX4ctcG8mvbxu4aQIv5KM/rXVad4C8M6Vg2miWYYdGkj8xvzbJrejjSJAkaKijoqjAFOoooooorzb446TJfeDIryJSxsbgO+B0RhtJ/MrWN8BvEMX2a90GZwswf7TAD/ABAgBgPpgH8T6V7FXnXxm8K3XiDw5BeWEbS3GnuzmJRlmjYDdgdyMA4+tfPBBBweCK9A+EHhS61nxZbam0TLYae/mtKRwzj7qj1OcE+w9xX0ZRRXDfGK1nuvh1efZwW8qSOSQD+4G5/LIP4V82VLaW8t3eQ29upaaWRUjA6licD9a+xIVZIUVzuYKAT6mld1jRncgKoJJPYV8weCP+Jj8UdNkTLb77zvwBLf0r6hoooooooooooooooooqC8s4NQsprS6jEkE6GORD0ZSMEV81eLvCOrfDvxClxbSTC3Em+zvU/QE9mHcd/pXc+HvjzELdIvENhJ5q8Ge1wQ3uVJGPwNdJF8a/CUn3p7uP8A3rc/0zVGfxV8LdYuvtN4li85OS8tk4J+vy8/jXRWfxA8GRQJDaaxYQxIMKgHlqo9hgYrQh8Z+HLj/Va7prf9vKD+tXYtb0ub/ValZP8A7s6n+tWknikGY5UYf7LA0ssUc8LxTIrxupVlYZDA9QRXk2u/Aa1ur15tF1I2kTnPkTR7wn+62QcfXP1re8E/CbTfCd4t/cTm/v0H7t2TakXuq88+5Nd9Xl/xY+Itrpml3Gh6XOsuoXCmOdkORAh6gn+8Rxjt19K534F+F5J9Tn8QXCEQW6mG3JH3nP3iPoOP+Be1e5UUUUUUUUUUUUUUUUUUVBeWdvqFrJbXkEc8Egw8cihlYfQ159q3wO8OX8rSWUt1YEnOyNg6fk3P61iy/s+wn/U69IP9+2B/9mqlL+z9eDPla5bt/vW7L/U1Tl+AeuL/AKrUtOf6l1/9lqlL8DvFKZ2tp8n+7Of6qKqS/BvxhHnbYQyf7twn9TVRvhj4zticaNcD3jlQ/wAmpv8Awi3jmz+5p2tJj/nnvP8AKkEnj6yOM+JIseonxSnxl44sv9ZqWrJj/nqGP/oQpj+MfGevKbVdS1K5DcGO3BBPsdgya6Lwh8GdW1e4S519X0+yByyN/rpPYD+H6nn2r3iwsLbS7CGysYVhtoV2xxqOAKs1/9k=" width="259"/></span></p>
+<p class="Body">Bài tập này dùng hàm sinh số ngẫu nhiên của Python để mô phỏng tung bất kỳ số lượng xúc xắc 6 mặt nào và trả về tổng điểm. Bài tập giới thiệu module <span class="Literal">random</span> trong Python.</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body">Viết hàm <code>rollDice()</code> với tham số <span class="Literal">numberOfDice</span> — số xúc xắc 6 mặt cần tung. Hàm trả về tổng điểm của tất cả lần tung. Bạn phải <code>import random</code> và gọi <code>random.randint()</code>.</p>
+<p class="Body">Sao chép các <code>assert</code> sau. Vì kết quả ngẫu nhiên, ta kiểm tra giá trị nằm trong khoảng hợp lệ:</p>
+<p class="CodeCxSpFirst">assert rollDice(0) == 0</p>
+<p class="CodeCxSpMiddle">assert rollDice(1000) != rollDice(1000)</p>
+<p class="CodeCxSpMiddle">for i in range(1000):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; assert 1 &lt;= rollDice(1) &lt;= 6</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; assert 2 &lt;= rollDice(2) &lt;= 12</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; assert 3 &lt;= rollDice(3) &lt;= 18</p>
+<p class="CodeCxSpLast">&nbsp;&nbsp;&nbsp; assert 100 &lt;= rollDice(100) &lt;= 600</p>
+<p class="Body">Có xác suất cực nhỏ <code>assert rollDice(1000) != rollDice(1000)</code> thất bại do hai lần tung trùng tổng. Nếu vậy, chạy lại kiểm tra.</p>
+<p class="Body">Kiến thức cần có: <code>import</code>, module <code>random</code>, <code>randint()</code>, vòng lặp <code>for</code>, <code>range()</code>, toán tử gán cộng</p>
+<p class="HeadA">Thiết kế lời giải</p>
+<p class="Body">Khởi tạo biến tổng bằng <code>0</code>. Dùng vòng lặp <code>for</code> lặp <code>numberOfDice</code> lần. Mỗi lần gọi <code>random.randint(1, 6)</code> và cộng vào tổng. Sau vòng lặp trả về tổng.</p>
+<p class="Body">Gõ <code>help(random.randint)</code> trong shell tương tác để xem tài liệu.</p>
+<p class="HeadA">Trường hợp đặc biệt và lỗi thường gặp</p>
+<p class="Body"><code>random.randint(1, 6)</code> bao gồm cả hai đầu mút (khác <code>range()</code>). Tung 3 xúc xắc cho tổng từ 3 đến 18, không phải 1 đến 18. Phải tung từng viên rồi cộng, không dùng <code>randint(2, 12)</code> một lần vì phân phối không đều. Cần <code>import random</code> ở đầu file.</p>
+<p class="HeadA">Mẫu lời giải</p>
+<p class="Body">Mẫu: <span class="MsoHyperlink">https://invpy.com/rolldice-template.py</span>. Lời giải: <span class="MsoHyperlink">https://invpy.com/rolldice.py</span>.</p>
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body"><b>Bước 1 — Import:</b> <code>import random</code> để dùng <code>random.randint()</code>.</p>
+<p class="Body"><b>Bước 2 — Khởi tạo tổng:</b> <code>total = 0</code> tích lũy điểm các lần tung.</p>
+<p class="Body"><b>Bước 3 — Vòng lặp:</b> <code>for i in range(numberOfDice):</code> — khi <code>numberOfDice</code> là 0, vòng lặp không chạy, trả về 0.</p>
+<p class="Body"><b>Bước 4 — Tung xúc xắc:</b> <code>total += random.randint(1, 6)</code> mô phỏng một mặt ngẫu nhiên từ 1 đến 6.</p>
+<p class="Body"><b>Bước 5 — Trả về:</b> <code>return total</code> sau khi tung đủ số lần.</p>
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="Body">Chương trình Python đầy đủ:</p>
+<p class="CodeCxSpFirst">import random</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">def rollDice(numberOfDice):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; total = 0</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; for i in range(numberOfDice):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; total += random.randint(1, 6)</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; return total</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">assert rollDice(0) == 0</p>
+<p class="CodeCxSpMiddle">assert rollDice(1000) != rollDice(1000)</p>
+<p class="CodeCxSpMiddle">for i in range(1000):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; assert 1 &lt;= rollDice(1) &lt;= 6</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; assert 2 &lt;= rollDice(2) &lt;= 12</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; assert 3 &lt;= rollDice(3) &lt;= 18</p>
+<p class="CodeCxSpLast">&nbsp;&nbsp;&nbsp; assert 100 &lt;= rollDice(100) &lt;= 600</p>
+
+
+
+<p><a href="../exercise16/index.html">Trước - #16 Mode</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise18/index.html">Tiếp - #18 Mua 8 tặng 1</a></p></body></html>

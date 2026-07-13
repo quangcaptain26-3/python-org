@@ -1,0 +1,611 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 11 - Giờ, phút, giây</title></head><body style="background-color: #fffeee;"><p><a href="../exercise10/index.html">Trước - #10 Tìm và thay thế</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise12/index.html">Tiếp - #12 Nhỏ nhất &amp; Lớn nhất</a></p>
+
+
+
+
+<h1><a name="_Toc115418680"></a><a name="_Toc115359991">Bài tập #11: Giờ, phút, giây</a></h1>
+<p class="ChapterTitleCodeExample">getHoursMinutesSeconds(90)  <span style="font-size:13.0pt">→ </span> '1m 30s'</p>
+<p class="ChapterTitleCodeExample"><span style='font-size:8.0pt;font-family:"MS Shell Dlg 2","sans-serif"'><img border="0" height="144" id="Picture 22" src="data:image/jpeg;base64,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" width="223"/></span></p>
+<p class="Body">Website thường hiển thị thời gian tương đối như “3 ngày trước”.
+Bài tập chuyển số giây thành chuỗi giờ, phút, giây.</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body"><code>getHoursMinutesSeconds(totalSeconds)</code> — nếu giờ/phút/giây
+bằng 0 thì không hiển thị (trả <span class="Literal">'10m'</span> không phải <code>'0h 10m 0s'</code>).
+Ngoại lệ: <code>getHoursMinutesSeconds(0)</code> trả <code>'0s'</code>.</p>
+<p class="Body">Các <code>assert</code>:</p>
+<p class="CodeCxSpFirst">assert getHoursMinutesSeconds(30) == '30s'</p>
+<p class="CodeCxSpMiddle">assert getHoursMinutesSeconds(60) == '1m'</p>
+<p class="CodeCxSpMiddle">assert getHoursMinutesSeconds(90) == '1m 30s'</p>
+<p class="CodeCxSpMiddle">assert getHoursMinutesSeconds(3600) == '1h'</p>
+<p class="CodeCxSpMiddle">assert getHoursMinutesSeconds(3601) == '1h 1s'</p>
+<p class="CodeCxSpMiddle">assert getHoursMinutesSeconds(3661) == '1h 1m 1s'</p>
+<p class="CodeCxSpMiddle">assert getHoursMinutesSeconds(90042) == '25h 42s'</p>
+<p class="CodeCxSpMiddle">assert getHoursMinutesSeconds(0) == '0s'</p>
+<p class="CodeCxSpLast"> </p>
+<p class="Body">Thử thách thêm: tách chu kỳ 24 giờ thành ngày (hậu tố “d”), ví dụ
+<code>getHoursMinutesSeconds(90042)</code> → <span class="Literal">'1d 1h 42s'</span>.</p>
+<p class="Body">Khái niệm tiên quyết: <code>join()</code>, <span class="Literal">append()</span>, list, nối chuỗi, vòng <span class="Literal">while</span></p>
+<p class="HeadA">Thiết kế lời giải</p>
+<p class="Body">1 giờ = 3600 giây, 1 phút = 60 giây. Trừ 3600 lặp để đếm giờ,
+rồi trừ 60 lặp để đếm phút; phần còn lại là giây. Thêm vào list dạng <code>'1h'</code>,
+<code>'30s'</code> chỉ khi &gt; 0; <code>' '.join(hms)</code> nối bằng dấu cách.</p>
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body"><code>if totalSeconds == 0: return '0s'</code> — trường hợp đặc biệt.</p>
+<p class="Body">Vòng <code>while totalSeconds &gt;= 3600</code> — trừ giờ trước,
+phút sau, để không nhầm 7200 giây thành 120 phút thay vì 2 giờ.</p>
+<p class="Body">Chỉ <code>append</code> thành phần khác 0 (trừ 0 giây đã xử lý
+riêng).</p>
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="CodeCxSpFirst">def getHoursMinutesSeconds(totalSeconds):</p>
+<p class="CodeCxSpMiddle">    if totalSeconds == 0:</p>
+<p class="CodeCxSpMiddle">        return '0s'</p>
+<p class="CodeCxSpMiddle">    hours = 0</p>
+<p class="CodeCxSpMiddle">    while totalSeconds &gt;= 3600:</p>
+<p class="CodeCxSpMiddle">        hours += 1</p>
+<p class="CodeCxSpMiddle">        totalSeconds -= 3600</p>
+<p class="CodeCxSpMiddle">    minutes = 0</p>
+<p class="CodeCxSpMiddle">    while totalSeconds &gt;= 60:</p>
+<p class="CodeCxSpMiddle">        minutes += 1</p>
+<p class="CodeCxSpMiddle">        totalSeconds -= 60</p>
+<p class="CodeCxSpMiddle">    seconds = totalSeconds</p>
+<p class="CodeCxSpMiddle">    hms = []</p>
+<p class="CodeCxSpMiddle">    if hours &gt; 0:</p>
+<p class="CodeCxSpMiddle">        hms.append(str(hours) + 'h')</p>
+<p class="CodeCxSpMiddle">    if minutes &gt; 0:</p>
+<p class="CodeCxSpMiddle">        hms.append(str(minutes) + 'm')</p>
+<p class="CodeCxSpMiddle">    if seconds &gt; 0:</p>
+<p class="CodeCxSpMiddle">        hms.append(str(seconds) + 's')</p>
+<p class="CodeCxSpLast">    return ' '.join(hms)</p>
+<p class="HeadA">Trường hợp đặc biệt và lỗi thường gặp</p>
+<p class="Body">Trừ đơn vị lớn trước (giờ → phút → giây). Không hiển thị thành phần 0.</p>
+<p class="HeadA">Mẫu lời giải</p>
+<p class="Body">Mã dở: <span class="MsoHyperlink">https://invpy.com/hoursminutesseconds-template.py</span>.
+Cách dùng <code>//</code> và <code>%</code>: <span class="MsoHyperlink">https://invpy.com/hoursminutesseconds2.py</span>.</p>
+<p class="HeadA">Thiết kế lời giải thay thế</p>
+<p class="Body"><code>hours = totalSeconds // 3600</code>, <code>totalSeconds %= 3600</code>;
+tương tự phút với 60.</p>
+
+
+
+<p><a href="../exercise10/index.html">Trước - #10 Tìm và thay thế</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise12/index.html">Tiếp - #12 Nhỏ nhất &amp; Lớn nhất</a></p></body></html>

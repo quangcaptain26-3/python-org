@@ -1,0 +1,636 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 37 - Tính tiền thối</title></head><body style="background-color: #fffeee;"><p><a href="../exercise36/index.html">Trước - #36 Đảo chuỗi</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise38/index.html">Sau - #38 Xáo trộn ngẫu nhiên</a></p>
+
+
+
+
+<h1><a name="_Toc115418706"></a><a name="_Toc115360017">Bài tập #37: Tính tiền thối</a></h1>
+<p class="ChapterTitleCodeExample">makeChange(30)&nbsp; <span style="font-size:13.0pt">→
+</span>&nbsp;{'quarters': 1, 'nickels': 1}</p>
+<p class="ChapterTitleCodeExample"><span style='font-size:8.0pt;font-family:"MS Shell Dlg 2","sans-serif"'><img border="0" height="144" id="Picture 48" src="data:image/jpeg;base64,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" width="385"/></span></p>
+<p class="Body">Tiền xu Mỹ có các mệnh giá 1 (penny), 5 (nickel), 10 (dime) và 25 xu (quarter). Hãy tưởng tượng ta lập trình máy tính tiền để trả tiền thối đúng. Trong bài này, bạn cần tính số lượng từng loại xu cho một số tiền thối cho trước.</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body">Viết hàm <code>makeChange()</code> với tham số <span class="Literal">amount</span>. Tham số <code>amount</code> là số nguyên biểu diễn số xu cần thối. Ví dụ, <code>30</code> là 30 xu và <span class="Literal">125</span> là $1.25. Hàm trả về từ điển với các khóa <code>'quarters'</code>, <span class="Literal">'dimes'</span>, <code>'nickels'</code> và <span class="Literal">'pennies'</span>; giá trị của mỗi khóa là số nguyên cho biết số xu loại đó.</p>
+<p class="Body">Giá trị của một khóa không bao giờ là <code>0</code>. Thay vào đó, khóa đó không có trong từ điển. Ví dụ, <span class="Literal">makeChange(5)</span> trả về <span class="Literal">{'nickels': 1}</span> chứ không phải <span class="Literal">{'quarters': 0, 'dimes': 0, 'nickels': 1, 'pennies': 0}</span>.</p>
+<p class="Body">Ví dụ, <code>makeChange(30)</code> trả về từ điển <code>{'quarters': 1, 'nickels': 1}</code> để biểu diễn các xu dùng cho 30 xu tiền thối. Hàm phải dùng số xu tối thiểu. Ví dụ, <code>makeChange(10)</code> trả về <code>{'dimes': 1}</code> chứ không phải <span class="Literal">{'nickels': 2}</span>, dù cả hai đều cộng thành 10 xu.</p>
+<p class="Body">Các câu lệnh <code>assert</code> sau dừng chương trình nếu điều kiện là <code>False</code>. Sao chép chúng vào cuối chương trình. Lời giải đúng khi tất cả điều kiện đều là <span class="Literal">True</span>:</p>
+<p class="CodeCxSpFirst">assert makeChange(30) == {'quarters': 1, 'nickels': 1}</p>
+<p class="CodeCxSpMiddle">assert makeChange(10) == {'dimes': 1}</p>
+<p class="CodeCxSpMiddle">assert makeChange(57) == {'quarters': 2, 'nickels': 1, 'pennies': 2}</p>
+<p class="CodeCxSpMiddle">assert makeChange(100) == {'quarters': 4}</p>
+<p class="CodeCxSpLast">assert makeChange(125) == {'quarters': 5}</p>
+<p class="Body">Hãy thử viết lời giải dựa trên thông tin trong mô tả này. Nếu vẫn gặp khó khăn, hãy đọc các phần <span class="Bold">Thiết kế giải pháp</span> và <span class="Bold">Trường hợp đặc biệt và lưu ý</span> để có thêm gợi ý.</p>
+<p class="Body">Kiến thức cần có: toán tử modulo, chia nguyên</p>
+<p class="HeadA">Thiết kế giải pháp</p>
+<p class="Body">Đầu tiên, hàm <code>makeChange()</code> tạo từ điển rỗng trong biến <code>change</code> để lưu kết quả trả về. Tiếp theo, ta xác định số lượng từng loại xu, bắt đầu từ mệnh giá lớn nhất (quarter 25 xu) đến nhỏ nhất (penny 1 xu). Cách này tránh dùng nhiều xu hơn mức tối thiểu — ví dụ dùng hai nickel 5 xu thay vì một dime 10 xu.</p>
+<p class="Body">Bắt đầu với quarter. Trước khi tính, nếu số tiền thối nhỏ hơn 25 thì bỏ qua bước này vì không có quarter nào. Ngược lại, nếu số tiền chia hết cho 25 — ví dụ <code>amount</code> là <code>125</code> — ta tính số quarter bằng cách chia <code>amount</code> cho <code>25</code>: <span class="Literal">125 / 25</span> bằng <code>5.0</code>.</p>
+<p class="Body">Tuy nhiên, nếu không chia hết cho 25, kết quả sẽ có phần thập phân: <code>135 / 25</code> bằng <span class="Literal">5.4</span>. Ta chỉ thêm số nguyên quarter vào tiền thối, không phải 0.4 quarter. Dùng toán tử chia nguyên <code>//</code> để đảm bảo chỉ đưa số nguyên xu vào từ điển: cả <code>125 // 25</code> và <span class="Literal">135 // 25</span> đều bằng <code>5</code>.</p>
+<p class="Body">Để trừ phần tiền đã dùng cho quarter, ta cập nhật <span class="Literal">amount</span> thành số còn lại sau khi bỏ các bội số 25 xu. Từ "còn lại" gợi ý dùng toán tử <code>%</code> modulo. Ví dụ, cần thối 135 xu và dùng 5 quarter cho 125 xu, phần còn lại là <span class="Literal">135 % 25</span> hay <code>10</code> xu.</p>
+<p class="Body">Sau khi tính xong quarter, sao chép và sửa đoạn mã tương tự cho dime, nickel và penny (theo thứ tự đó). Khi xử lý xong penny, tham số <code>amount</code> sẽ là <span class="Literal">0</span> và từ điển <code>change</code> chứa đúng số lượng từng loại xu.</p>
+<p class="HeadA">Trường hợp đặc biệt và lưu ý</p>
+<p class="Body">Vì bài tập yêu cầu dùng số xu tối thiểu, mỗi số tiền thối chỉ có một đáp án đúng. Điều quan trọng nhất là tính xu theo thứ tự từ lớn đến nhỏ; nếu không, bạn có thể dùng hai nickel thay vì một dime.</p>
+<p class="Body">Hãy dùng toán tử chia nguyên <code>//</code> thay vì <code>/</code> khi tính số xu. Toán tử chia thông thường của Python trả về số thực có thể có phần thập phân. (Kể cả khi không có phần lẻ, Python vẫn trả về float: <span class="Literal">125 / 25</span> bằng <code>5.0</code> chứ không phải số nguyên <code>5</code>.) Chia nguyên luôn trả về số nguyên.</p>
+<p class="Body">Vì penny là 1 xu, bạn có thể gán số penny bằng giá trị còn lại của tham số <code>amount</code> ở cuối hàm, miễn là lớn hơn không.</p>
+<p class="Body">Hãy thử viết lời giải dựa trên thông tin ở các phần trước. Nếu vẫn gặp khó khăn, hãy đọc phần <span class="Bold">Mẫu giải pháp</span> để có thêm gợi ý.</p>
+<p class="HeadA">Mẫu giải pháp</p>
+<p class="Body">Hãy thử viết lời giải từ đầu trước. Nếu gặp khó khăn, bạn có thể dùng chương trình dở sau làm điểm xuất phát. Sao chép mã từ <span class="MsoHyperlink">https://invpy.com/makechange-template.py</span> và dán vào trình soạn thảo. Thay các dấu gạch dưới bằng mã để tạo chương trình hoạt động:</p>
+<p class="CodeCxSpFirst">def makeChange(amount):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Tạo từ điển theo dõi số lượng từng loại xu:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; change = ____</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Nếu đủ tiền để thêm quarter, thêm vào:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if amount &gt;= ____:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; change['quarters'] = amount // ____</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Giảm amount theo giá trị quarter đã thêm:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; amount = amount % ____</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Nếu đủ tiền để thêm dime, thêm vào:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if amount &gt;= ____:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; change['dimes'] = ____ // ____</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Giảm amount theo giá trị dime đã thêm:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; amount = ____ % ____</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Nếu đủ tiền để thêm nickel, thêm vào:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if amount &gt;= ____:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; change['nickels'] = ____ // ____</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Giảm amount theo giá trị nickel đã thêm:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; amount = ____ % ____</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Nếu đủ tiền để thêm penny, thêm vào:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if amount &gt;= 1:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; change[____] = amount</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpLast">&nbsp;&nbsp;&nbsp; return change</p>
+<p class="Body">Lời giải hoàn chỉnh cho bài tập này có trong Phụ lục A và tại <span class="MsoHyperlink">https://invpy.com/makechange.py</span>. Bạn có thể xem từng bước chương trình chạy trong trình gỡ lỗi tại <span class="MsoHyperlink">https://invpy.com/makechange-debug/</span>.</p>
+
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body"><b>Bước 1 — Khởi tạo từ điển:</b> Tạo <code>change = {}</code> để lưu kết quả. Chỉ thêm khóa khi số lượng xu lớn hơn 0, đúng yêu cầu bài tập.</p>
+<p class="Body"><b>Bước 2 — Xử lý quarter (25 xu):</b> Nếu <code>amount &gt;= 25</code>, tính <code>amount // 25</code> quarter rồi cập nhật <code>amount = amount % 25</code>. Ví dụ với 57 xu: <code>57 // 25 = 2</code> quarter, còn lại <code>57 % 25 = 7</code> xu.</p>
+<p class="Body"><b>Bước 3 — Xử lý dime (10 xu):</b> Tương tự với mệnh giá 10. Với 7 xu còn lại, không đủ dime nên bỏ qua.</p>
+<p class="Body"><b>Bước 4 — Xử lý nickel (5 xu):</b> Với 7 xu, <code>7 // 5 = 1</code> nickel, còn <code>7 % 5 = 2</code> xu.</p>
+<p class="Body"><b>Bước 5 — Xử lý penny (1 xu):</b> Phần còn lại gán trực tiếp cho penny vì mỗi penny là 1 xu. Kết quả <code>makeChange(57)</code> là <code>{'quarters': 2, 'nickels': 1, 'pennies': 2}</code>.</p>
+<p class="Body"><b>Thuật toán tham lam:</b> Với hệ tiền xu Mỹ, luôn chọn mệnh giá lớn nhất trước đảm bảo số xu tối thiểu. Mỗi bước dùng cặp <code>//</code> (chia lấy phần nguyên) và <code>%</code> (lấy phần dư) để tách số xu và phần còn lại.</p>
+
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="Body">Chương trình Python đầy đủ cho bài tập này:</p>
+<p class="CodeCxSpFirst">def makeChange(amount):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; change = {}</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if amount &gt;= 25:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; change['quarters'] = amount // 25</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; amount = amount % 25</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if amount &gt;= 10:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; change['dimes'] = amount // 10</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; amount = amount % 10</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if amount &gt;= 5:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; change['nickels'] = amount // 5</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; amount = amount % 5</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if amount &gt;= 1:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; change['pennies'] = amount</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; return change</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">assert makeChange(30) == {'quarters': 1, 'nickels': 1}</p>
+<p class="CodeCxSpMiddle">assert makeChange(10) == {'dimes': 1}</p>
+<p class="CodeCxSpMiddle">assert makeChange(57) == {'quarters': 2, 'nickels': 1, 'pennies': 2}</p>
+<p class="CodeCxSpMiddle">assert makeChange(100) == {'quarters': 4}</p>
+<p class="CodeCxSpLast">assert makeChange(125) == {'quarters': 5}</p>
+
+
+
+<p><a href="../exercise36/index.html">Trước - #36 Đảo chuỗi</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise38/index.html">Sau - #38 Xáo trộn ngẫu nhiên</a></p></body></html>

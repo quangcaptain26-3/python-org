@@ -1,0 +1,633 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 19 - Tạo mật khẩu</title></head><body style="background-color: #fffeee;"><p><a href="../exercise18/index.html">Trước - #18 Mua 8 tặng 1</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise20/index.html">Tiếp - #20 Năm nhuận</a></p>
+
+
+
+
+<h1><a name="_Toc115418688"></a><a name="_Toc115359999">Bài tập #19: Tạo mật khẩu</a></h1>
+<p class="ChapterTitleCodeExample">generatePassword(12)&nbsp; <span style="font-size:13.0pt">→ </span>&nbsp;'v*f6uoklQJ!d'<br/>
+generatePassword(12)&nbsp; <span style="font-size:13.0pt">→ </span>&nbsp;' Yzkr(j2T$MsG'<br/>
+generatePassword(16)&nbsp; <span style="font-size:13.0pt">→ </span>&nbsp;' UVp7ow8T%5LZl1la'</p>
+<p class="ChapterTitleCodeExample"><span style='font-size:8.0pt;font-family:"MS Shell Dlg 2","sans-serif"'><img border="0" height="144" id="Picture 30" src="data:image/png;base64,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rYA5Ba4YXAIotfRiUNAIIYQErDpBkHwWMKiKdxneJVNwCCGEiIyuVcb253sOrCInvHm5MBFCCOXBIqiY7wJWzp+AChUqWFSEEEIUSu62XEHtAytTpoxlFyGEEIVu38tbHrBp0yZfmp/r7Nu3z77//ns7+OCDC+5u8N1331nt2rUtXr755hurW7eu5QNff/11QoOnN2/eTK43L6INzK6jsEqIFNk5CVgiRpOxVK1bt7Y777zTjjzySMtFFi5cyPfnBeydd97x3eqx+OGHH+yss86yZs2a2d13321HH3205SKfffYZ35/vW5ozZ05cpd3//e9/fYNxvXr1bOjQoTnbX7dixQq799577aOPPrIPPvggrscHDcYXX3yxwfDhw3O2v2716tVs02WCOH8mfXtLBhFCAvanP/3J/vWvf/nz0ksvsSDTb3iuX79+zkxTePjhh+3JJ5+0nTt3GkycONF++9vfWizGjx9vS5Ys8efVV1+1q666yvr37+873XOBtWvX+rv97W9/s//85z8Gjz/+eFwbtp966in75JNP/Jk1a5b/PG6++WZr2rSp5QJffvmljR492h577DHbtm2bwSOPPGJDhgyxWEybNs3efPNNg9NPP91PcBkwYIAdddRRlgvg+T766KP2l7/8xXuKMGbMGHvwwQctQwghAVuzZo03KgAYmgceeMAmTZpkN954o/Xq1Yttz1kzEhg8jMSWLVsszH333Wfdu3fHU4nqWY4aNSrsjWFk/KDMfv36Wd++ff3052zAfcaOHcv9fGgtDJ9/z549o4YSd+zY4V/+AAj7X//6V3+366+/np9d1kJafG+IFsK8YcMGC4GR5xER1VP56aefvEcZ9jSfeOIJmzp1ql177bX+bocddphlg127dvHY4G7e+wrDz7N37972i1/8wjKAEBKwkSNH2tatWy2S9evXs+Laz8i79dZbWbRGYjFjRgIvhBFAhNSKY+XKlcy48x5HSWBkvvrqq2LzFXgBzz77LHdko7UPR2YCBnROmDDB/vjHP+Lxlui5/PnPfzY3OsZKAlHHgEbCz5KQ23PPPec9zauvvhqRz1jcnocPf6YWLVpUYl6LRwWeWQkgVoRUixNGfi0ijYeKmGX0cTV9+nQeF4RCSwxX89nz8xVCApb+vEvMv2yE3jDwGN2BAwdahw4dLJ3wykZUGZ4bC4zZ5ZdfXqyn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" width="432"/></span></p>
+<p class="Body">Mật khẩu từ một từ tiếng Anh như “rosebud” dễ nhớ nhưng không an toàn. <span class="Italic"><span style='font-family:"serif"'>Tấn công từ điển</span></span> (dictionary attack) là khi hacker thử lần lượt mọi từ trong từ điển. Mật khẩu ngẫu nhiên khó bị tấn công kiểu này hơn.</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body">Viết hàm <code>generatePassword()</code> với tham số <code>length</code> (số ký tự). Vì lý do bảo mật, nếu <code>length</code> &lt; <code>12</code> thì ép thành 12. Mật khẩu phải có ít nhất một chữ thường, một chữ hoa, một số và một ký tự đặc biệt từ <code>~!@#$%^&amp;*()_+</code>. Dùng module <code>random</code>.</p>
+<p class="Body">Các <code>assert</code> kiểm tra:</p>
+<p class="CodeCxSpFirst">assert len(generatePassword(8)) == 12</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">pw = generatePassword(14)</p>
+<p class="CodeCxSpMiddle">assert len(pw) == 14</p>
+<p class="CodeCxSpMiddle">hasLowercase = False</p>
+<p class="CodeCxSpMiddle">hasUppercase = False</p>
+<p class="CodeCxSpMiddle">hasNumber = False</p>
+<p class="CodeCxSpMiddle">hasSpecial = False</p>
+<p class="CodeCxSpMiddle">for character in pw:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if character in LOWER_LETTERS:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hasLowercase = True</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if character in UPPER_LETTERS:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hasUppercase = True</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if character in NUMBERS:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hasNumber = True</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if character in SPECIAL:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hasSpecial = True</p>
+<p class="CodeCxSpLast">assert hasLowercase and hasUppercase and hasNumber and hasSpecial</p>
+<p class="Body">Kiến thức cần có: <code>import</code>, module <code>random</code>, chuỗi, nối chuỗi, <code>len()</code>, <code>append()</code>, <code>randint()</code>, <code>shuffle()</code>, <code>join()</code></p>
+<p class="HeadA">Thiết kế lời giải</p>
+<p class="Body">Tạo hằng số cho từng loại ký tự, nối thành <code>ALL_CHARS</code>. Trong hàm: ép <code>length</code> tối thiểu 12; khởi tạo <code>password</code> là list rỗng; thêm ngẫu nhiên một ký tự từ mỗi loại; tiếp tục thêm từ <code>ALL_CHARS</code> đến đủ độ dài; gọi <code>random.shuffle(password)</code>; trả về <code>''.join(password)</code>.</p>
+<p class="HeadA">Trường hợp đặc biệt và lỗi thường gặp</p>
+<p class="Body"><code>random.shuffle()</code> chỉ hoạt động với list, không phải chuỗi. Dùng list rồi <code>join()</code> để ghép.</p>
+<p class="HeadA">Mẫu lời giải</p>
+<p class="Body">Mẫu: <span class="MsoHyperlink">https://invpy.com/passwordgenerator-template.py</span>. Lời giải: <span class="MsoHyperlink">https://invpy.com/passwordgenerator.py</span>.</p>
+<p class="HeadA">Đọc thêm</p>
+<p class="Body">Hầu hết bộ sinh số ngẫu nhiên là <span class="Italic"><span style='font-family:"serif"'>giả ngẫu nhiên</span></span> (pseudorandom): cùng <code>random.seed()</code> cho cùng dãy số. Python cũng có <code>random.SystemRandom()</code> dựa trên entropy hệ thống. Ứng dụng tạo mật khẩu này đủ tốt cho hầu hết người dùng. Nên dùng <span class="Italic"><span style='font-family:"serif"'>trình quản lý mật khẩu</span></span> như KeePass (<span class="MsoHyperlink">https://keepass.info</span>).</p>
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body"><b>Bước 1 — Hằng số:</b> Định nghĩa <code>LOWER_LETTERS</code>, <code>UPPER_LETTERS</code>, <code>NUMBERS</code>, <code>SPECIAL</code> và <code>ALL_CHARS</code> ở phạm vi toàn cục.</p>
+<p class="Body"><b>Bước 2 — Độ dài tối thiểu:</b> <code>if length &lt; 12: length = 12</code>.</p>
+<p class="Body"><b>Bước 3 — Bốn ký tự bắt buộc:</b> Dùng <code>random.randint()</code> chọn chỉ số ngẫu nhiên trong mỗi chuỗi, <code>append</code> vào list.</p>
+<p class="Body"><b>Bước 4 — Đủ độ dài:</b> Vòng <code>while len(password) &lt; length</code> thêm ký tự từ <code>ALL_CHARS</code>.</p>
+<p class="Body"><b>Bước 5 — Xáo trộn và ghép:</b> <code>random.shuffle(password)</code> rồi <code>return ''.join(password)</code>.</p>
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="Body">Chương trình Python đầy đủ:</p>
+<p class="CodeCxSpFirst">import random</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">LOWER_LETTERS = 'abcdefghijklmnopqrstuvwxyz'</p>
+<p class="CodeCxSpMiddle">UPPER_LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</p>
+<p class="CodeCxSpMiddle">NUMBERS = '1234567890'</p>
+<p class="CodeCxSpMiddle">SPECIAL = '~!@#$%^&amp;*()_+'</p>
+<p class="CodeCxSpMiddle">ALL_CHARS = LOWER_LETTERS + UPPER_LETTERS + NUMBERS + SPECIAL</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">def generatePassword(length):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if length &lt; 12:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; length = 12</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; password = []</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; password.append(LOWER_LETTERS[random.randint(0, 25)])</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; password.append(UPPER_LETTERS[random.randint(0, 25)])</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; password.append(NUMBERS[random.randint(0, 9)])</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; password.append(SPECIAL[random.randint(0, 12)])</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; while len(password) &lt; length:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; password.append(ALL_CHARS[random.randint(0, 74)])</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; random.shuffle(password)</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; return ''.join(password)</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">assert len(generatePassword(8)) == 12</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">pw = generatePassword(14)</p>
+<p class="CodeCxSpMiddle">assert len(pw) == 14</p>
+<p class="CodeCxSpMiddle">hasLowercase = False</p>
+<p class="CodeCxSpMiddle">hasUppercase = False</p>
+<p class="CodeCxSpMiddle">hasNumber = False</p>
+<p class="CodeCxSpMiddle">hasSpecial = False</p>
+<p class="CodeCxSpMiddle">for character in pw:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if character in LOWER_LETTERS:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hasLowercase = True</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if character in UPPER_LETTERS:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hasUppercase = True</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if character in NUMBERS:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hasNumber = True</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if character in SPECIAL:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hasSpecial = True</p>
+<p class="CodeCxSpLast">assert hasLowercase and hasUppercase and hasNumber and hasSpecial</p>
+
+
+
+<p><a href="../exercise18/index.html">Trước - #18 Mua 8 tặng 1</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise20/index.html">Tiếp - #20 Năm nhuận</a></p></body></html>

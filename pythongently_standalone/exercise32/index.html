@@ -1,0 +1,644 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 32 - Chuyển chuỗi sang số nguyên</title></head><body style="background-color: #fffeee;"><p><a href="../exercise31/index.html">Trước - #31 Chuyển số nguyên sang chuỗi</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise33/index.html">Sau - #33 Định dạng số với dấu phẩy</a></p>
+
+
+
+
+<h1><a name="_Toc115418701"></a><a name="_Toc115360012">Bài tập #32: Chuyển chuỗi sang số nguyên</a></h1>
+<p class="ChapterTitleCodeExample">convertStrToInt('42')&nbsp; <span style="font-size:
+13.0pt">→ </span>&nbsp;42</p>
+<p class="ChapterTitleCodeExample"><span style='font-size:8.0pt;font-family:"MS Shell Dlg 2","sans-serif"'><img border="0" height="144" id="Picture 43" src="data:image/jpeg;base64,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" width="432"/></span></p>
+<p class="Body">Bổ sung cho Bài tập #31 “Chuyển số nguyên sang chuỗi”, bài này chuyển chuỗi các chữ số sang dạng số nguyên tương ứng. Trường hợp dùng phổ biến nhất là lấy chuỗi từ hàm <code>input()</code> hoặc phương thức <span class="Literal">read()</span> của tệp văn bản rồi chuyển thành số nguyên để tính toán. Bạn có thể dùng hàm <code>int()</code> của Python, nhưng trong bài tập này bạn sẽ tự tái tạo hàm đó.</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body">Viết hàm <code>convertStrToInt()</code> với tham số <code>stringNum</code>. Hàm trả về dạng số nguyên của tham số, giống hàm <code>int()</code>. Ví dụ, <code>convertStrToInt('42')</code> phải trả về số nguyên <code>42</code>. Hàm không cần xử lý số thực có dấu thập phân, nhưng phải hoạt động với số âm.</p>
+<p class="Body">Tránh dùng <code>int()</code> trong mã của bạn, vì như vậy sẽ làm hết ý nghĩa của bài tập. Tuy nhiên, chúng ta dùng <code>int()</code> với câu lệnh <code>assert</code> để kiểm tra hàm <code>convertStrToInt()</code> hoạt động giống <code>int()</code> với mọi số nguyên từ <code>-10000</code> đến <code>9999</code>:</p>
+<p class="CodeCxSpFirst">for i in range(-10000, 10000):</p>
+<p class="CodeCxSpLast">&nbsp;&nbsp;&nbsp; assert convertStrToInt(str(i)) == i</p>
+<p class="Body">Hãy tự viết lời giải dựa trên mô tả này. Nếu vẫn gặp khó khăn, đọc các phần <span class="Bold">Thiết kế lời giải</span> và <span class="Bold">Trường hợp đặc biệt và lỗi thường gặp</span> để có thêm gợi ý.</p>
+<p class="HeadA">Thiết kế lời giải</p>
+<p class="Body">Lời giải bài này khác hẳn thuật toán chuyển số sang chuỗi, nhưng cả hai đều chuyển từng chữ số một và dùng từ điển ánh xạ giữa chữ số chuỗi và chữ số nguyên:</p>
+<p class="Code">DIGITS_STR_TO_INT = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5':
+5, '6': 6, '7': 7, '8': 8, '9': 9}</p>
+<p class="Body">Hàm tạo biến <code>integerNum</code> để chứa dạng số nguyên của <code>stringNum</code> khi xây dựng dần. Biến này bắt đầu bằng <code>0</code>. Mã cũng cần ghi nhận nếu có dấu trừ ở đầu chuỗi.</p>
+<p class="Body">Thuật toán lặp qua từng chữ số trong tham số <span class="Literal">stringNum</span>, từ trái sang phải. Mã nhân số nguyên hiện tại trong <code>integerNum</code> với 10 để “dịch” tất cả chữ số sang trái một hàng, rồi cộng chữ số hiện tại.</p>
+<p class="Body">Ví dụ, để chuyển chuỗi <span class="Literal">'41096'</span> thành số nguyên, mã thực hiện các bước sau:</p>
+<p class="Body" style="margin-left:.75in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><code>integerNum</code> = <code>0</code></p>
+<p class="Body" style="margin-left:.75in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><code>integerNum</code> = <span class="Literal">(0 *
+10) + 4</span> = <code>4</code></p>
+<p class="Body" style="margin-left:.75in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><code>integerNum</code> = <span class="Literal">(4 *
+10) + 1</span> = <code>41</code></p>
+<p class="Body" style="margin-left:.75in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><code>integerNum</code> = <span class="Literal">(41 *
+10) + 0</span> = <code>410</code></p>
+<p class="Body" style="margin-left:.75in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><code>integerNum</code> = <span class="Literal">(410
+* 10) + 9</span> = <code>4109</code></p>
+<p class="Body" style="margin-left:.75in;text-indent:-.25in"><span class="Literal"><span style="font-family:Symbol;color:black">·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><code>integerNum</code> = <span class="Literal">(4109 * 10) + 6</span> = <code>41096</code></p>
+<p class="Body">Trước khi trả về, ta đổi số nguyên thành số âm nếu chuỗi ban đầu bắt đầu bằng dấu trừ.</p>
+<p class="HeadA">Trường hợp đặc biệt và lỗi thường gặp</p>
+<p class="Body">Hàm <code>convertStrToInt()</code> phải xử lý chuỗi biểu diễn số nguyên âm. Kiểm tra xem <span class="Literal">stringNum[0]</span> (ký tự đầu tiên) có phải ký tự <span class="Literal">'-'</span> không. Nếu có, đặt biến <span class="Literal">isNegative</span> thành <code>True</code> (và <code>False</code> nếu không). Sau đó bỏ dấu trừ bằng <code>stringNum = stringNum[1:]</code>, thay chuỗi bằng tất cả ký tự sau ký tự đầu tiên.</p>
+<p class="Body">Cuối hàm, trả về <span class="Literal">-integerNum</span> nếu <code>isNegative</code> là <code>True</code>.</p>
+<p class="Body">Hãy tự viết lời giải dựa trên các phần trước. Nếu vẫn gặp khó khăn, xem phần <span class="Bold">Mẫu lời giải</span>.</p>
+<p class="HeadA">Mẫu lời giải</p>
+<p class="Body">Hãy cố viết lời giải từ đầu. Nếu cần gợi ý, sao chép mã từ <span class="MsoHyperlink">https://invpy.com/convertstrtoint-template.py</span> và điền vào các chỗ trống:</p>
+<p class="CodeCxSpFirst">def convertStrToInt(stringNum):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Từ điển ánh xạ chữ số chuỗi sang chữ số nguyên:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; DIGITS_STR_TO_INT = {'0': 0, '1': 1, '2': 2, '3':
+3, '4': 4,</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Ghi nhận số âm hay dương, bỏ dấu trừ nếu có:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if stringNum[0] == '-':</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; isNegative = True</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stringNum = stringNum[1:]&nbsp; <span class="CodeComment"># Bỏ dấu trừ.</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; else:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; isNegative = False</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># integerNum chứa số nguyên kết quả, bắt đầu bằng 0:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; integerNum = 0</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Lặp qua các chữ số trong chuỗi từ trái sang phải:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; for i in range(len(stringNum)):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Lấy chữ số nguyên từ chữ số chuỗi:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digit = DIGITS_STR_TO_INT[stringNum[i]]</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Cộng vào số nguyên:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; integerNum = (integerNum * 10) + digit</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Nếu số ban đầu âm, đổi thành số âm trước khi trả về:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if isNegative:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return -integerNum</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; else:</p>
+<p class="CodeCxSpLast">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return integerNum</p>
+<p class="Body">Lời giải đầy đủ có trong Phụ lục A và <span class="MsoHyperlink">https://invpy.com/convertstrtoint.py</span>. Xem từng bước chạy tại <span class="MsoHyperlink">https://invpy.com/convertstrtoint-debug/</span>.</p>
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body"><b>Bước 1 — Từ điển ánh xạ:</b> <code>DIGITS_STR_TO_INT</code> ánh xạ mỗi ký tự chữ số ('0'–'9') sang giá trị số nguyên tương ứng (0–9).</p>
+<p class="Body"><b>Bước 2 — Xử lý dấu trừ:</b> Kiểm tra ký tự đầu <code>stringNum[0]</code>. Nếu là <code>'-'</code>, đặt <code>isNegative = True</code> và cắt bỏ bằng <code>stringNum[1:]</code> để phần còn lại chỉ chứa chữ số.</p>
+<p class="Body"><b>Bước 3 — Xây dựng số nguyên:</b> Khởi tạo <code>integerNum = 0</code>. Với mỗi ký tự trong chuỗi, tra từ điển lấy <code>digit</code>, rồi tính <code>integerNum = (integerNum * 10) + digit</code>. Nhân 10 dịch các chữ số đã có sang trái một hàng trước khi thêm chữ số mới.</p>
+<p class="Body"><b>Bước 4 — Trả về kết quả:</b> Nếu <code>isNegative</code> là <code>True</code>, trả về <code>-integerNum</code>. Ngược lại trả về <code>integerNum</code>.</p>
+<p class="Body"><b>Ví dụ:</b> Với <code>convertStrToInt('-41096')</code>, sau khi bỏ dấu trừ, vòng lặp lần lượt tính 4 → 41 → 410 → 4109 → 41096, rồi đổi dấu → <code>-41096</code>.</p>
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="Body">Chương trình Python đầy đủ cho bài tập này:</p>
+<p class="CodeCxSpFirst">def convertStrToInt(stringNum):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; DIGITS_STR_TO_INT = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4,</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if stringNum[0] == '-':</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; isNegative = True</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stringNum = stringNum[1:]</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; else:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; isNegative = False</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; integerNum = 0</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; for i in range(len(stringNum)):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digit = DIGITS_STR_TO_INT[stringNum[i]]</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; integerNum = (integerNum * 10) + digit</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; if isNegative:</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return -integerNum</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; else:</p>
+<p class="CodeCxSpLast">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return integerNum</p>
+
+
+
+<p><a href="../exercise31/index.html">Trước - #31 Chuyển số nguyên sang chuỗi</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise33/index.html">Sau - #33 Định dạng số với dấu phẩy</a></p></body></html>

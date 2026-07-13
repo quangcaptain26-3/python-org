@@ -1,0 +1,730 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 29 - Vẽ kim tự tháp</title></head><body style="background-color: #fffeee;"><p><a href="../exercise28/index.html">Trước - #28 Vẽ viền hình chữ nhật</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise30/index.html">Sau - #30 Vẽ hộp 3D</a></p>
+
+
+
+
+<h1><a name="_Toc115418698"></a><a name="_Toc115360009">Bài tập #29: Vẽ kim tự tháp</a></h1>
+<p class="ChapterTitleCodeExample">drawPyramid(5)  <span style="font-size:13.0pt">→
+</span>     #<br/>
+                       ###<br/>
+                       #####<br/>
+                       ####### <br/>
+                       #########</p>
+<p class="ChapterTitleCodeExample"><span style='font-size:8.0pt;font-family:"MS Shell Dlg 2","sans-serif"'><img border="0" height="144" id="Picture 40" src="data:image/jpeg;base64,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" width="144"/></span></p>
+<p class="Body">Bài tập này tiếp tục chuỗi chương trình tạo nghệ thuật ASCII từ Bài tập #27, "Vẽ hình chữ nhật", và Bài tập #28, "Vẽ viền hình chữ nhật". Trong bài này, mã của bạn in ra một kim tự tháp gồm các ký tự dấu thăng (#) với kích thước tùy ý.</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body">Viết hàm <code>drawPyramid()</code> với tham số <span class="Literal">height</span>. Đỉnh kim tự tháp có một ký tự dấu thăng ở giữa, và mỗi hàng tiếp theo có thêm hai ký tự dấu thăng so với hàng trước. Số hàng bằng giá trị nguyên <code>height</code>. Không có câu lệnh Python <code>assert</code> để kiểm tra tính đúng của chương trình; thay vào đó, bạn có thể tự kiểm tra kết quả bằng mắt. Ví dụ, gọi <code>drawPyramid(8)</code> sẽ in ra:</p>
+<p class="CodeCxSpFirst">       #</p>
+<p class="CodeCxSpMiddle">      ###</p>
+<p class="CodeCxSpMiddle">     #####</p>
+<p class="CodeCxSpMiddle">    #######</p>
+<p class="CodeCxSpMiddle">   #########</p>
+<p class="CodeCxSpMiddle">  ###########</p>
+<p class="CodeCxSpMiddle"> #############</p>
+<p class="CodeCxSpLast">###############</p>
+<p class="Body">Hãy thử viết lời giải dựa trên thông tin trong mô tả này. Nếu vẫn gặp khó khăn, hãy đọc các phần <span class="Bold">Thiết kế giải pháp</span> và <span class="Bold">Trường hợp đặc biệt và lưu ý</span> để có thêm gợi ý.</p>
+<p class="Body">Kiến thức cần có: chuỗi, nối chuỗi, nhân bản chuỗi, vòng lặp <code>for</code>, <code>range()</code></p>
+<span style='font-size:11.0pt;font-family:"sans-serif"'><br clear="all" style="page-break-before:always"/>
+</span>
+<p class="MsoNormal" style="margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal"><b><span style='font-size:12.0pt;font-family:"sans-serif";
+color:black'> </span></b></p>
+<p class="HeadA">Thiết kế giải pháp</p>
+<p class="Body">Quan trọng là phải nhận ra quy luật chung khi chiều cao kim tự tháp tăng lên. Đây là kim tự tháp có chiều cao 1:</p>
+<p class="Code">#</p>
+<p class="Body">Đây là kim tự tháp có chiều cao 2:</p>
+<p class="CodeCxSpFirst"> #</p>
+<p class="CodeCxSpLast">###</p>
+<p class="Body">Đây là kim tự tháp có chiều cao 3:</p>
+<p class="CodeCxSpFirst">  #</p>
+<p class="CodeCxSpMiddle"> ###</p>
+<p class="CodeCxSpLast">#####</p>
+<p class="Body">Để căn giữa kim tự tháp đúng cách, bạn cần in đúng số ký tự khoảng trắng ở bên trái mỗi hàng. Dưới đây là kim tự tháp với <code>height</code> bằng <code>5</code>, các khoảng trắng được đánh dấu bằng dấu chấm để dễ nhìn:</p>
+<p class="CodeCxSpFirst">....#</p>
+<p class="CodeCxSpMiddle">...###</p>
+<p class="CodeCxSpMiddle">..#####</p>
+<p class="CodeCxSpMiddle">.#######</p>
+<p class="CodeCxSpLast">#########</p>
+<p class="Body">Số ký tự dấu thăng bắt đầu từ <code>1</code> ở hàng trên cùng rồi tăng thêm <code>2</code> mỗi hàng. Trong vòng lặp <code>for</code>, số dấu thăng ở mỗi hàng bằng <span class="Literal">rowNumber * 2 + 1</span>. Bảng sau cho thấy số khoảng trắng và dấu thăng của kim tự tháp cao 5:</p>
+<table border="1" cellpadding="0" cellspacing="0" class="MsoTableGrid" style="border-collapse:collapse;border:none">
+<tr>
+<td style="width:1.15in;border:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt" valign="top" width="166">
+<p align="center" class="Body" style="text-align:center;text-indent:0in"><span class="Bold">Số hàng</span></p>
+</td>
+<td style="width:102.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0in 5.4pt 0in 5.4pt" valign="top" width="205">
+<p align="center" class="Body" style="text-align:center;text-indent:0in"><span class="Bold">Số khoảng trắng</span></p>
+</td>
+<td style="width:121.5pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0in 5.4pt 0in 5.4pt" valign="top" width="243">
+<p align="center" class="Body" style="text-align:center;text-indent:0in"><span class="Bold">Số dấu thăng</span></p>
+</td>
+</tr>
+<tr>
+<td style="width:1.15in;border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt" valign="top" width="166">
+<p align="center" class="Body" style="text-align:center;text-indent:0in">0</p>
+</td>
+<td style="width:102.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt" valign="top" width="205">
+<p align="center" class="Body" style="text-align:center;text-indent:0in">4</p>
+</td>
+<td style="width:121.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt" valign="top" width="243">
+<p align="center" class="Body" style="text-align:center;text-indent:0in">1</p>
+</td>
+</tr>
+<tr>
+<td style="width:1.15in;border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt" valign="top" width="166">
+<p align="center" class="Body" style="text-align:center;text-indent:0in">1</p>
+</td>
+<td style="width:102.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt" valign="top" width="205">
+<p align="center" class="Body" style="text-align:center;text-indent:0in">3</p>
+</td>
+<td style="width:121.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt" valign="top" width="243">
+<p align="center" class="Body" style="text-align:center;text-indent:0in">3</p>
+</td>
+</tr>
+<tr>
+<td style="width:1.15in;border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt" valign="top" width="166">
+<p align="center" class="Body" style="text-align:center;text-indent:0in">2</p>
+</td>
+<td style="width:102.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt" valign="top" width="205">
+<p align="center" class="Body" style="text-align:center;text-indent:0in">2</p>
+</td>
+<td style="width:121.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt" valign="top" width="243">
+<p align="center" class="Body" style="text-align:center;text-indent:0in">5</p>
+</td>
+</tr>
+<tr>
+<td style="width:1.15in;border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt" valign="top" width="166">
+<p align="center" class="Body" style="text-align:center;text-indent:0in">3</p>
+</td>
+<td style="width:102.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt" valign="top" width="205">
+<p align="center" class="Body" style="text-align:center;text-indent:0in">1</p>
+</td>
+<td style="width:121.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt" valign="top" width="243">
+<p align="center" class="Body" style="text-align:center;text-indent:0in">7</p>
+</td>
+</tr>
+<tr>
+<td style="width:1.15in;border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt" valign="top" width="166">
+<p align="center" class="Body" style="text-align:center;text-indent:0in">4</p>
+</td>
+<td style="width:102.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt" valign="top" width="205">
+<p align="center" class="Body" style="text-align:center;text-indent:0in">0</p>
+</td>
+<td style="width:121.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt" valign="top" width="243">
+<p align="center" class="Body" style="text-align:center;text-indent:0in">9</p>
+</td>
+</tr>
+</table>
+<p class="Body">Lưu ý rằng với mọi kim tự tháp, số khoảng trắng ở hàng trên cùng là <code>height - 1</code>, và mỗi hàng tiếp theo có ít hơn một khoảng trắng so với hàng trước. Cách đơn giản hơn là dùng vòng lặp <span class="Literal">for</span> từ <code>0</code> đến trước <code>height</code> làm số hàng, trong đó hàng 0 ở trên cùng. Khi đó số khoảng trắng ở hàng <span class="Literal">rowNumber</span> là <span class="Literal">height – (rowNumber + 1)</span>.</p>
+<p class="Body">Nhân bản chuỗi giúp tạo chuỗi dấu thăng và khoảng trắng dễ dàng. Trong Python, bạn có thể dùng toán tử <span class="Literal">*</span> với chuỗi và số nguyên để tạo chuỗi dài hơn. Ví dụ, nhập vào shell tương tác:</p>
+<p class="CodeCxSpFirst">&gt;&gt;&gt; 'Hello' * 3</p>
+<p class="CodeCxSpMiddle">'HelloHelloHello'</p>
+<p class="CodeCxSpMiddle">&gt;&gt;&gt; '#' * 7</p>
+<p class="CodeCxSpMiddle">'#######'</p>
+<p class="CodeCxSpMiddle">&gt;&gt;&gt; rowNumber = 5</p>
+<p class="CodeCxSpMiddle">&gt;&gt;&gt; (rowNumber * 2 + 1) * '#'</p>
+<p class="CodeCxSpLast">'###########'</p>
+<p class="HeadA">Trường hợp đặc biệt và lưu ý</p>
+<p class="Body">Nếu lời giải dùng vòng lặp <code>for</code> duyệt từ <code>0</code> đến trước <code>height</code>, ta không cần kiểm tra riêng khi <span class="Literal">height</span> bằng <code>0</code> hoặc âm. Vì các giá trị này khiến vòng lặp <span class="Literal">for</span> không chạy, nên không có gì được in ra.</p>
+<p class="Body">Hãy thử viết lời giải dựa trên thông tin ở các phần trước. Nếu vẫn gặp khó khăn, hãy đọc phần <span class="Bold">Mẫu giải pháp</span> để có thêm gợi ý.</p>
+<p class="HeadA">Mẫu giải pháp</p>
+<p class="Body">Hãy thử viết lời giải từ đầu trước. Nếu gặp khó khăn, bạn có thể dùng chương trình dở sau làm điểm xuất phát. Sao chép mã từ <span class="MsoHyperlink">https://invpy.com/pyramiddrawing-template.py</span> và dán vào trình soạn thảo. Thay các dấu gạch dưới bằng mã để tạo chương trình hoạt động:</p>
+<p class="CodeCxSpFirst">def drawPyramid(height):</p>
+<p class="CodeCxSpMiddle">    <span class="CodeComment"># Loop over each row from 0 up to height:</span></p>
+<p class="CodeCxSpMiddle">    for rowNumber in range(____):</p>
+<p class="CodeCxSpMiddle">        <span class="CodeComment"># Create a string of spaces for the left side of the pyramid:</span></p>
+<p class="CodeCxSpMiddle">        leftSideSpaces = ' ' * (____ - (rowNumber + ____))</p>
+<p class="CodeCxSpMiddle">        <span class="CodeComment"># Create the string of hashtags for this row of the pyramid:</span></p>
+<p class="CodeCxSpMiddle">        pyramidRow = '#' * (____ * 2 + ____)</p>
+<p class="CodeCxSpMiddle">        <span class="CodeComment"># Print the left side spaces and the row of the pyramid:</span></p>
+<p class="CodeCxSpLast">        ____(leftSideSpaces + pyramidRow)</p>
+<p class="Body">Lời giải hoàn chỉnh cho bài tập này có trong Phụ lục A và tại <span class="MsoHyperlink">https://invpy.com/pyramiddrawing.py</span>. Bạn có thể xem từng bước chương trình chạy trong trình gỡ lỗi tại <span class="MsoHyperlink">https://invpy.com/pyramiddrawing-debug/</span>.</p>
+
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body">Kim tự tháp là bài tập kết hợp hai kỹ năng quan trọng: nhân bản chuỗi và lặp có quy luật. Mỗi hàng gồm hai phần: khoảng trắng bên trái để căn giữa, và chuỗi dấu thăng tạo thân kim tự tháp.</p>
+<p class="Body">Công thức cốt lõi: với hàng thứ <code>rowNumber</code> (bắt đầu từ 0), số khoảng trắng là <code>height - (rowNumber + 1)</code> và số dấu thăng là <code>rowNumber * 2 + 1</code>. Hàng 0 có 1 dấu thăng, hàng 1 có 3, hàng 2 có 5 — mỗi hàng tăng thêm 2, tạo hình tam giác đối xứng.</p>
+<p class="Body">Ví dụ với <code>drawPyramid(5)</code>: hàng 0 in <code>'    #' </code> (4 khoảng + 1 dấu thăng), hàng 4 in <code>'#########'</code> (0 khoảng + 9 dấu thăng). Vòng lặp <code>range(height)</code> tự xử lý trường hợp <code>height</code> bằng 0 hoặc âm — không cần kiểm tra riêng.</p>
+<p class="Body">So với Bài tập #27 (hình chữ nhật đặc) và #28 (viền), bài này thêm yêu cầu căn giữa theo chiều ngang, buộc bạn phải tính toán khoảng trắng thay vì chỉ in ký tự lặp đều.</p>
+
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="CodeCxSpFirst">def drawPyramid(height):</p>
+<p class="CodeCxSpMiddle">    # Lặp qua từng hàng từ 0 đến height:</p>
+<p class="CodeCxSpMiddle">    for rowNumber in range(height):</p>
+<p class="CodeCxSpMiddle">        # Tạo chuỗi khoảng trắng bên trái kim tự tháp:</p>
+<p class="CodeCxSpMiddle">        leftSideSpaces = ' ' * (height - (rowNumber + 1))</p>
+<p class="CodeCxSpMiddle">        # Tạo chuỗi dấu thăng cho hàng này:</p>
+<p class="CodeCxSpMiddle">        pyramidRow = '#' * (rowNumber * 2 + 1)</p>
+<p class="CodeCxSpMiddle">        # In khoảng trắng và hàng kim tự tháp:</p>
+<p class="CodeCxSpLast">        print(leftSideSpaces + pyramidRow)</p>
+
+
+
+<p><a href="../exercise28/index.html">Trước - #28 Vẽ viền hình chữ nhật</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise30/index.html">Sau - #30 Vẽ hộp 3D</a></p></body></html>

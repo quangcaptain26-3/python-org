@@ -1,0 +1,599 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 8 - Đọc ghi file</title></head><body style="background-color: #fffeee;"><p><a href="../exercise7/index.html">Trước - #7 Bảng ASCII</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise9/index.html">Tiếp - #9 Màu ô cờ vua</a></p>
+
+
+
+
+<h1><a name="_Toc115418677"></a><a name="_Toc115359988">Bài tập #8: Đọc ghi file</a></h1>
+<p class="ChapterTitleCodeExample"><img border="0" height="144" id="Picture 19" src="data:image/jpeg;base64,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" width="120"/></p>
+<p class="Body">File I/O (nhập/xuất file) cho phép chương trình đọc và ghi dữ
+liệu lên ổ đĩa. Bài tập này ghi và đọc văn bản — quan trọng vì dữ liệu không
+mất khi chương trình đóng.</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body">Viết ba hàm: <span class="Literal">writeToFile(filename, text)</span>
+— ghi đè file; <span class="Literal">appendToFile(filename, text)</span> — ghi
+thêm cuối file; <code>readFromFile(filename)</code> — trả về toàn bộ nội dung
+dạng string.</p>
+<p class="Body">Kiểm tra:</p>
+<p class="CodeCxSpFirst">writeToFile('greet.txt', 'Hello!\n')</p>
+<p class="CodeCxSpMiddle">appendToFile('greet.txt', 'Goodbye!\n')</p>
+<p class="CodeCxSpLast">assert readFromFile('greet.txt') == 'Hello!\nGoodbye!\n'</p>
+<p class="Body">Sau khi chạy có thể xóa file <span class="Italic"><span style='font-family:"serif"'>greet.txt</span></span>.</p>
+<p class="Body">Khái niệm tiên quyết: đọc ghi file văn bản</p>
+<p class="HeadA">Thiết kế lời giải</p>
+<p class="Body"><code>open(filename, mode)</code> với <code>with</code>:
+<code>'w'</code> ghi, <code>'a'</code> ghi thêm, <code>'r'</code> đọc (mặc định).
+<code>fileObj.write(text)</code> ghi; <code>fileObj.read()</code> đọc hết.</p>
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body"><code>with open(...) as fileObj:</code> — tự đóng file khi ra
+khỏi khối, kể cả khi lỗi.</p>
+<p class="Body"><code>'w'</code> tạo file mới hoặc xóa nội dung cũ. <code>'a'</code>
+giữ nội dung và thêm vào cuối — nên <code>Hello!</code> rồi <code>Goodbye!</code>
+nối liền.</p>
+<p class="Body"><code>\n</code> trong chuỗi là ký tự xuống dòng — assert so khớp
+cả ký tự này.</p>
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="CodeCxSpFirst">def writeToFile(filename, text):</p>
+<p class="CodeCxSpMiddle">    with open(filename, 'w') as fileObj:</p>
+<p class="CodeCxSpMiddle">        fileObj.write(text)</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpMiddle">def appendToFile(filename, text):</p>
+<p class="CodeCxSpMiddle">    with open(filename, 'a') as fileObj:</p>
+<p class="CodeCxSpMiddle">        fileObj.write(text)</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpMiddle">def readFromFile(filename):</p>
+<p class="CodeCxSpMiddle">    with open(filename) as fileObj:</p>
+<p class="CodeCxSpLast">        return fileObj.read()</p>
+<p class="HeadA">Trường hợp đặc biệt và lỗi thường gặp</p>
+<p class="Body">Chế độ <code>'w'</code> ghi đè toàn bộ file. <code>'a'</code>
+không xóa nội dung cũ.</p>
+<p class="HeadA">Mẫu lời giải</p>
+<p class="Body">Mã dở: <span class="MsoHyperlink">https://invpy.com/readwritefile-template.py</span>.
+Lời giải đầy đủ: <span class="MsoHyperlink">https://invpy.com/readwritefile.py</span>.</p>
+<p class="HeadA">Đọc thêm</p>
+<p class="Body">Chương 9–10 <span class="Italic"><span style='font-family:"serif"'>Automate
+the Boring Stuff with Python</span></span>: <span class="MsoHyperlink">https://automatetheboringstuff.com/2e/</span>.</p>
+
+
+
+<p><a href="../exercise7/index.html">Trước - #7 Bảng ASCII</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise9/index.html">Tiếp - #9 Màu ô cờ vua</a></p></body></html>

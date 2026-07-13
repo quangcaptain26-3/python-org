@@ -1,0 +1,638 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 38 - Xáo trộn ngẫu nhiên</title></head><body style="background-color: #fffeee;"><p><a href="../exercise37/index.html">Trước - #37 Tính tiền thối</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise39/index.html">Sau - #39 Dãy Collatz</a></p>
+
+
+
+
+<h1><a name="_Toc115418707"></a><a name="_Toc115360018">Bài tập #38: Xáo trộn ngẫu nhiên</a></h1>
+<p class="ChapterTitleCodeExample">shuffle([1, 2, 3, 4, 5])&nbsp; <span style="font-size:13.0pt">→ </span>&nbsp;[3, 1, 4, 5, 2]</p>
+<p class="ChapterTitleCodeExample"><span style='font-size:8.0pt;font-family:"MS Shell Dlg 2","sans-serif"'><img border="0" height="144" id="Picture 49" src="data:image/jpeg;base64,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" width="171"/></span></p>
+<p class="Body">Thuật toán xáo trộn ngẫu nhiên đặt các giá trị trong danh sách theo thứ tự ngẫu nhiên, giống như xáo bài. Thuật toán này tạo một <span class="Italic"><span style='font-family:"serif"'>hoán vị</span></span> mới — thứ tự mới của các giá trị trong danh sách. Thuật toán lặp qua từng giá trị và ngẫu nhiên chọn chỉ số để hoán đổi, khiến các giá trị nằm ở vị trí ngẫu nhiên.</p>
+<p class="Body">Với danh sách n phần tử, có n! ("n giai thừa") hoán vị có thể. Ví dụ, danh sách 10 phần tử có 10! hay 10 × 9 × 8 × 7 × 6 × 5 × 4 × 3 × 2 × 1 = 3.628.800 cách sắp xếp.</p>
+<p class="Body">Bài tập này sửa đổi danh sách được truyền vào <span class="Italic"><span style='font-family:"serif"'>tại chỗ</span></span> (in-place), thay vì tạo danh sách mới rồi trả về. Vì danh sách là đối tượng có thể thay đổi trong Python, sửa đổi tham số thực chất là sửa đối tượng gốc được truyền vào lời gọi hàm. Ví dụ, nhập vào shell tương tác:</p>
+<p class="CodeCxSpFirst">&gt;&gt;&gt; someList = [1, 2, 3]&nbsp; <span class="CodeComment"># Tạo một đối tượng danh sách.</span></p>
+<p class="CodeCxSpMiddle">&gt;&gt;&gt; def someFunc(someParam):</p>
+<p class="CodeCxSpMiddle">...&nbsp;&nbsp;&nbsp; someParam[0] = 'dog'&nbsp; <span class="CodeComment"># Sửa danh sách tại chỗ.</span></p>
+<p class="CodeCxSpMiddle">...&nbsp;&nbsp;&nbsp; someParam.append('xyz')&nbsp; <span class="CodeComment"># Sửa danh sách tại chỗ.</span></p>
+<p class="CodeCxSpMiddle">...</p>
+<p class="CodeCxSpMiddle">&gt;&gt;&gt; someList&nbsp; </p>
+<p class="CodeCxSpMiddle">[1, 2, 3]</p>
+<p class="CodeCxSpMiddle">&gt;&gt;&gt; someFunc(someList)&nbsp; <span class="CodeComment"># Truyền danh sách làm đối số.</span></p>
+<p class="CodeCxSpMiddle">&gt;&gt;&gt; someList&nbsp; <span class="CodeComment"># Danh sách đã bị hàm sửa đổi.</span></p>
+<p class="CodeCxSpLast">['dog', 2, 3, 'xyz']</p>
+<p class="Body">Danh sách <code>someList</code> được truyền làm đối số cho tham số <code>someParam</code> của hàm <code>someFunc()</code>. Hàm sửa <span class="Literal">someParam</span> (cùng trỏ đến đối tượng danh sách mà biến <span class="Literal">someList</span> trỏ tới), nên các thay đổi vẫn còn sau khi hàm kết thúc. Hàm <code>someFunc()</code> không trả về danh sách mới để thay thế <code>someList</code>; nó sửa <code>someList</code> tại chỗ.</p>
+<p class="Body">Trong Python, chỉ đối tượng có thể thay đổi (như danh sách, từ điển, tập hợp) mới sửa được tại chỗ. Đối tượng bất biến (như chuỗi, số nguyên, tuple, frozen set) không sửa được tại chỗ.</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body">Viết hàm <code>shuffle()</code> với tham số <span class="Literal">values</span> là danh sách các giá trị. Hàm không trả về gì mà đặt mỗi giá trị hoán đổi với một chỉ số ngẫu nhiên. Danh sách sau khi xáo trộn phải chứa cùng các giá trị như trước nhưng theo thứ tự ngẫu nhiên.</p>
+<p class="Body">Bài tập yêu cầu bạn triển khai hàm giống <code>random.shuffle()</code> của Python. Vì vậy, đừng dùng hàm đó trong lời giải vì sẽ mất ý nghĩa bài tập.</p>
+<p class="Body">Các câu lệnh <code>assert</code> sau dừng chương trình nếu điều kiện là <code>False</code>. Sao chép chúng vào cuối chương trình. Lời giải đúng khi tất cả điều kiện đều là <span class="Literal">True</span>:</p>
+<p class="CodeCxSpFirst">random.seed(42)</p>
+<p class="CodeCxSpMiddle"><span class="CodeComment"># Thực hiện kiểm tra này mười lần:</span></p>
+<p class="CodeCxSpMiddle">for i in range(10):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; testData1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; shuffle(testData1)</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Đảm bảo số lượng phần tử không đổi:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; assert len(testData1) == 10</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Đảm bảo thứ tự đã thay đổi:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; assert testData1 != [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Đảm bảo khi sắp xếp lại, tất cả giá trị gốc vẫn còn:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; assert sorted(testData1) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle"><span class="CodeComment"># Đảm bảo danh sách rỗng sau khi xáo vẫn rỗng:</span></p>
+<p class="CodeCxSpMiddle">testData2 = []</p>
+<p class="CodeCxSpMiddle">shuffle(testData2)</p>
+<p class="CodeCxSpLast">assert testData2 == []</p>
+<p class="Body">Hãy thử viết lời giải dựa trên thông tin trong mô tả này. Nếu vẫn gặp khó khăn, hãy đọc các phần <span class="Bold">Thiết kế giải pháp</span> và <span class="Bold">Trường hợp đặc biệt và lưu ý</span> để có thêm gợi ý.</p>
+<p class="Body">Kiến thức cần có: câu lệnh <code>import</code>, module <code>random</code>, <code>randint()</code>, vòng lặp <code>for</code>, <code>range()</code>, <span class="Literal">len()</span>, hoán đổi giá trị</p>
+<p class="HeadA">Thiết kế giải pháp</p>
+<p class="Body">Lời giải khá đơn giản. Vòng lặp <span class="Literal">for</span> duyệt qua mọi chỉ số trong danh sách. Mỗi lần lặp, mã chọn một chỉ số ngẫu nhiên rồi hoán đổi giá trị tại chỉ số hiện tại và chỉ số ngẫu nhiên.</p>
+<p class="Body">Nếu chỉ số ngẫu nhiên trùng chỉ số hiện tại thì không sao: xáo trộn ngẫu nhiên có thể giữ phần tử ở vị trí cũ. Điều đó không kém "ngẫu nhiên" hơn hoán vị khác. Nếu chỉ số ngẫu nhiên trùng chỉ số đã hoán đổi trước đó cũng ổn — hoán đổi hai lần không làm kết quả kém xáo trộn hơn hoán đổi một lần.</p>
+<p class="HeadA">Trường hợp đặc biệt và lưu ý</p>
+<p class="Body">Hàm <code>shuffle()</code> không được thêm hay bớt phần tử; chỉ sắp xếp lại các giá trị có sẵn. Vì hàm sửa danh sách <code>values</code> tại chỗ, nó không cần trả về gì. Không nên có câu lệnh <code>return</code> trong hàm. Trong Python, mọi hàm đều trả về giá trị; hàm không có <code>return</code> trả về <code>None</code>.</p>
+<p class="Body">Khi chọn chỉ số ngẫu nhiên, chỉ chọn trong phạm vi chỉ số hợp lệ của danh sách — từ <span class="Literal">0</span> đến trước độ dài danh sách. Khi gọi <code>random.randint()</code>, dùng <code>0</code> và <span class="Literal">len(values) - 1</span>, không phải <code>0</code> và <span class="Literal">len(values)</span>.</p>
+<p class="Body">Hãy thử viết lời giải dựa trên thông tin ở các phần trước. Nếu vẫn gặp khó khăn, hãy đọc phần <span class="Bold">Mẫu giải pháp</span> để có thêm gợi ý.</p>
+<p class="HeadA">Mẫu giải pháp</p>
+<p class="Body">Hãy thử viết lời giải từ đầu trước. Nếu gặp khó khăn, bạn có thể dùng chương trình dở sau làm điểm xuất phát. Sao chép mã từ <span class="MsoHyperlink">https://invpy.com/randomshuffle-template.py</span> và dán vào trình soạn thảo. Thay các dấu gạch dưới bằng mã để tạo chương trình hoạt động:</p>
+<p class="CodeCxSpFirst"><span class="CodeComment"># Import module random để dùng hàm randint().</span></p>
+<p class="CodeCxSpMiddle">import random</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">def shuffle(values):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Lặp qua các chỉ số từ 0 đến trước độ dài danh sách:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; for i in range(____(values)):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Chọn ngẫu nhiên chỉ số để hoán đổi:</span></p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; swapIndex = random.randint(0, len(____) - ____)</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="CodeComment"># Hoán đổi giá trị giữa hai chỉ số:</span></p>
+<p class="CodeCxSpLast">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; values[i], values[swapIndex] = values[____], values[____]</p>
+<p class="Body">Lời giải hoàn chỉnh cho bài tập này có trong Phụ lục A và tại <span class="MsoHyperlink">https://invpy.com/randomshuffle.py</span>. Bạn có thể xem từng bước chương trình chạy trong trình gỡ lỗi tại <span class="MsoHyperlink">https://invpy.com/randomshuffle-debug/</span>.</p>
+
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body"><b>Bước 1 — Import module random:</b> Dùng <code>import random</code> để truy cập <code>random.randint()</code>, tạo số nguyên ngẫu nhiên trong khoảng cho trước.</p>
+<p class="Body"><b>Bước 2 — Lặp qua từng chỉ số:</b> <code>for i in range(len(values))</code> duyệt chỉ số 0, 1, 2, … đến phần tử cuối. Với danh sách rỗng, <code>range(0)</code> không lặp — hàm kết thúc ngay, đúng với kiểm tra danh sách rỗng.</p>
+<p class="Body"><b>Bước 3 — Chọn chỉ số hoán đổi:</b> <code>swapIndex = random.randint(0, len(values) - 1)</code> chọn chỉ số ngẫu nhiên. Dùng <code>len(values) - 1</code> vì <code>randint</code> bao gồm cả hai đầu khoảng.</p>
+<p class="Body"><b>Bước 4 — Hoán đổi tại chỗ:</b> Câu lệnh <code>values[i], values[swapIndex] = values[swapIndex], values[i]</code> hoán đổi hai phần tử mà không cần biến tạm. Python đánh giá vế phải trước rồi gán cùng lúc.</p>
+<p class="Body"><b>Thuật toán Fisher-Yates đơn giản:</b> Mỗi phần tử có cơ hội di chuyển đến vị trí ngẫu nhiên. Sau n lần hoán đổi, thứ tự trở nên ngẫu nhiên. Hàm không trả về gì vì sửa danh sách gốc trực tiếp — đây là điểm then chốt của tham số kiểu danh sách trong Python.</p>
+
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="Body">Chương trình Python đầy đủ cho bài tập này:</p>
+<p class="CodeCxSpFirst">import random</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">def shuffle(values):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; for i in range(len(values)):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; swapIndex = random.randint(0, len(values) - 1)</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; values[i], values[swapIndex] = values[swapIndex], values[i]</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">random.seed(42)</p>
+<p class="CodeCxSpMiddle">for i in range(10):</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; testData1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; shuffle(testData1)</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; assert len(testData1) == 10</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; assert testData1 != [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</p>
+<p class="CodeCxSpMiddle">&nbsp;&nbsp;&nbsp; assert sorted(testData1) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</p>
+<p class="CodeCxSpMiddle">&nbsp;</p>
+<p class="CodeCxSpMiddle">testData2 = []</p>
+<p class="CodeCxSpMiddle">shuffle(testData2)</p>
+<p class="CodeCxSpLast">assert testData2 == []</p>
+
+
+
+<p><a href="../exercise37/index.html">Trước - #37 Tính tiền thối</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise39/index.html">Sau - #39 Dãy Collatz</a></p></body></html>

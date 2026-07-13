@@ -1,0 +1,739 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 30 - Vẽ hộp 3D</title></head><body style="background-color: #fffeee;"><p><a href="../exercise29/index.html">Trước - #29 Vẽ kim tự tháp</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise31/index.html">Sau - #31 Chuyển số nguyên thành chuỗi</a></p>
+
+
+
+
+<h1><a name="_Toc115418699"></a><a name="_Toc115360010">Bài tập #30: Vẽ hộp 3D</a></h1>
+<p class="ChapterTitleCodeExample">drawBox(2)  <span style="font-size:13.0pt">→
+</span>   +----+<br/>
+                 /    /|<br/>
+                /    / |<br/>
+               +----+  +<br/>
+              |    | /<br/>
+             |    |/<br/>
+            +----+</p>
+<p class="ChapterTitleCodeExample"><img border="0" height="144" id="Picture 41" src="data:image/jpeg;base64,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" width="206"/></p>
+<p class="Body">Trong bài tập này, chúng ta chuyển từ nghệ thuật ASCII 2D sang nghệ thuật ASCII 3D bằng cách tạo hộp theo kích thước bất kỳ bằng chương trình.</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body">Viết hàm <code>drawBox()</code> với tham số <span class="Literal">size</span>. Tham số <code>size</code>
+chứa một số nguyên cho chiều rộng, chiều dài và chiều cao của hộp. Các đường ngang được vẽ bằng ký tự gạch ngang <code>-</code>,
+các đường dọc bằng ký tự thẳng đứng <code>|</code>, và các đường chéo bằng ký tự gạch chéo <code>/</code>. Các góc của hộp được vẽ bằng dấu cộng <code>+</code>.</p>
+<p class="Body">Không có câu lệnh Python <code>assert</code> để
+kiểm tra tính đúng của chương trình. Thay vào đó, bạn có thể tự kiểm tra kết quả bằng mắt. Ví dụ, gọi <code>drawBox(1)</code> đến
+<code>drawBox(5)</code> sẽ in ra các hộp sau, tương ứng:</p>
+<p class="CodeCxSpFirst">                                                       
++----------+</p>
+<p class="CodeCxSpMiddle">                                                      
+/          /|</p>
+<p class="CodeCxSpMiddle">                                      +--------+     
+/          / |</p>
+<p class="CodeCxSpMiddle">                                     /        /|    
+/          /  |</p>
+<p class="CodeCxSpMiddle">                      +------+     /        / |   
+/          /   |</p>
+<p class="CodeCxSpMiddle">                      /      /|    /        /  |  
+/          /    |</p>
+<p class="CodeCxSpMiddle">          +----+    /      / |   /        /   | 
++----------+     +</p>
+<p class="CodeCxSpMiddle">          /    /|   /      /  |  +--------+    + 
+|          |    / </p>
+<p class="CodeCxSpMiddle">  +--+   /    / |  +------+   +  |        |   /  
+|          |   /  </p>
+<p class="CodeCxSpMiddle"> /  /|  +----+  +  |      |  /   |        |  /   
+|          |  /   </p>
+<p class="CodeCxSpMiddle">+--+ +  |    | /   |      | /    |        | /    
+|          | /    </p>
+<p class="CodeCxSpMiddle">|  |/   |    |/    |      |/     |        |/     
+|          |/     </p>
+<p class="CodeCxSpMiddle">+--+    +----+     +------+      +--------+      
++----------+</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpLast">Kích thước 1  Kích thước 2      Kích thước 3         Kích thước 4            Kích
+thước 5</p>
+<p class="Body">Nếu đối số <code>size</code> nhỏ hơn <span class="Literal">1</span>, hàm không in gì cả.</p>
+<p class="Body">Hãy thử viết lời giải dựa trên thông tin trong mô
+tả này. Nếu vẫn gặp khó khăn, hãy đọc các phần <span class="Bold">Thiết kế giải pháp</span> và <span class="Bold">Trường hợp đặc biệt và lưu ý</span> để có thêm gợi ý.</p>
+<p class="Body">Kiến thức cần có: chuỗi, nối chuỗi, nhân bản chuỗi, vòng lặp <code>for</code>, <code>range()</code></p>
+<p class="HeadA">Thiết kế giải pháp</p>
+<p class="Body">Bài tập này là bước nhảy vọt về độ phức tạp so với các bài vẽ hình chữ nhật, viền và kim tự tháp trước đó. Cần vẽ chín dòng khác nhau,
+cùng với nhiều vùng khoảng trắng ở bên trái và bên trong hộp. Tuy nhiên, giải bài vẫn là việc tìm ra quy luật kích thước. Vẽ hộp thủ công trong trình soạn thảo văn bản trước có thể giúp bạn xác định quy luật đằng sau các đường của hộp. Dưới đây là các hộp từ kích thước 1 đến 5 với các dòng được đánh số và khoảng trắng được đánh dấu bằng dấu chấm (vì khoảng trắng khó đếm khi không nhìn thấy):</p>
+<p class="CodeCxSpFirst">                                                  ......+----1-----+</p>
+<p class="CodeCxSpMiddle">                                                 
+...../........../|</p>
+<p class="CodeCxSpMiddle">                                 .....+---1----+ 
+..../........../.|</p>
+<p class="CodeCxSpMiddle">                                 ..../......../| 
+...2..........3..4</p>
+<p class="CodeCxSpMiddle">                   ....+--1---+  ...2........3.4 
+../........../...|</p>
+<p class="CodeCxSpMiddle">                   .../....../|  ../......../..| 
+./........../....|</p>
+<p class="CodeCxSpMiddle">        ...+-1--+  ..2......3.4  ./......../...| 
++----5-----+.....+</p>
+<p class="CodeCxSpMiddle">        ../..../|  ./....../..|  +---5----+....+  |..........|..../
+</p>
+<p class="CodeCxSpMiddle">..+1-+  .2....3.4  +--5---+...+  |........|.../  
+|..........|.../  </p>
+<p class="CodeCxSpMiddle">.2..34  +-5--+..+  |......|../   6........7..8   
+6..........7..8   </p>
+<p class="CodeCxSpMiddle">+5-+.+  6....7.8   6......7.8    |........|./    
+|..........|./    </p>
+<p class="CodeCxSpMiddle">6..78   |....|/    |......|/     |........|/     
+|..........|/     </p>
+<p class="CodeCxSpMiddle">+9-+    +-9--+     +--9---+      +---9----+      
++----9-----+</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpLast">Kích thước 1  Kích thước 2      Kích thước 3         Kích thước 4            Kích
+thước 5     </p>
+<p class="Body">Vì các lệnh <code>print()</code> hiển thị văn bản
+theo thứ tự trái sang phải và trên xuống dưới, ta phải xem xét các dòng và khoảng trắng theo thứ tự đó. Trong các mô tả sau, <span class="Literal">size</span> là tham số số nguyên truyền vào hàm <span class="Literal">drawBox()</span>.</p>
+<p class="Body">Các đường chéo của hộp tuân theo quy luật có <span class="Literal">size</span> ký tự gạch chéo. Các đường dọc của hộp tuân theo quy luật có <code>size</code> ký tự thẳng đứng. Trong khi đó, các đường ngang gồm <code>size * 2</code> ký tự gạch ngang.
+Hãy nhìn hộp lớn nhất bên phải trong sơ đồ trên: các đường ngang 1, 5 và 9 gồm 10 ký tự gạch ngang <code>-</code> (tức là <code>size * 2</code>). Các đường chéo 2, 3 và 8 gồm 5 ký tự gạch chéo <code>/</code> (tức là <code>size</code>). Các đường dọc 4, 6 và 7 cũng gồm 5 ký tự thẳng đứng <code>|</code> (tức là <span class="Literal">size</span>).</p>
+<p class="Body">Ba đường ngang 1, 5 và 9 giống nhau về cấu trúc: mỗi đường gồm một ký tự cộng <code>+</code>, theo sau là <code>size * 2</code> ký tự gạch ngang
+và một ký tự cộng <code>+</code> nữa. Dòng 1 có số khoảng trắng bên trái bằng <code>size + 1</code>.</p>
+<p class="Body">Khoảng trắng bên trong mặt trên và mặt trước của hộp gồm <code>size</code> ký tự khoảng trắng, bằng số ký tự gạch ngang <span class="Literal">-</span>. Khoảng trắng bên trong mặt phải của hộp phức tạp hơn. Ví dụ, đây là hộp có <code>size</code> bằng 5 với các khoảng trắng mặt phải được đánh dấu bằng dấu chấm:</p>
+<p class="CodeCxSpFirst">      +----------+</p>
+<p class="CodeCxSpMiddle">     /          /| 0 dấu chấm </p>
+<p class="CodeCxSpMiddle">    /          /.| 1 dấu chấm</p>
+<p class="CodeCxSpMiddle">   /          /..| 2 dấu chấm</p>
+<p class="CodeCxSpMiddle">  /          /...| 3 dấu chấm</p>
+<p class="CodeCxSpMiddle"> /          /....| 4 dấu chấm</p>
+<p class="CodeCxSpMiddle">+----------+.....+ 5 dấu chấm</p>
+<p class="CodeCxSpMiddle">|          |..../  4 dấu chấm</p>
+<p class="CodeCxSpMiddle">|          |.../   3 dấu chấm</p>
+<p class="CodeCxSpMiddle">|          |../    2 dấu chấm</p>
+<p class="CodeCxSpMiddle">|          |./     1 dấu chấm</p>
+<p class="CodeCxSpMiddle">|          |/      0 dấu chấm</p>
+<p class="CodeCxSpMiddle">+----------+</p>
+<p class="CodeCxSpLast"><br/>
+   Kích thước 5</p>
+<p class="Body">Khi in mặt trên, mặt phải có số khoảng trắng tăng dần từ <code>0</code> đến <span class="Literal">size - 1</span> trước khi in ký tự thẳng đứng <code>|</code>
+của dòng 4. Khi in dòng 5, mặt phải có đúng <code>size</code> khoảng trắng trước khi in dấu cộng <span class="Literal">+</span> ở góc. Và khi in mặt trước, mặt phải có số khoảng trắng giảm dần từ <span class="Literal">size - 1</span> xuống <code>0</code> trước khi in ký tự gạch chéo <code>/</code> của dòng 8.</p>
+<p class="Body">Cuối cùng, bạn in các ký tự cộng <code>+</code> và gạch ngang <span class="Literal">-</span> của dòng 9 ở đáy hộp.</p>
+<p class="HeadA">Trường hợp đặc biệt và lưu ý</p>
+<p class="Body">Không có gì bất ngờ khi in các hộp này. Dù có nhiều thứ phải theo dõi, hãy luôn nhớ rằng số ký tự khoảng trắng và gạch ngang bạn in ở mỗi hàng luôn tỷ lệ với tham số <span class="Literal">size</span>. Mỗi đường dọc sẽ có <code>size</code>
+ký tự thẳng đứng và gạch chéo, và mỗi đường ngang có <span class="Literal">size *
+2</span> ký tự gạch ngang.</p>
+<p class="Body">Hãy thử viết lời giải dựa trên thông tin ở các phần trước. Nếu vẫn gặp khó khăn, hãy đọc phần <span class="Bold">Mẫu giải pháp</span> để có thêm gợi ý.</p>
+<p class="HeadA">Mẫu giải pháp</p>
+<p class="Body">Hãy thử viết lời giải từ đầu trước. Nếu gặp khó khăn, bạn có thể dùng chương trình dở sau làm điểm xuất phát. Sao chép mã từ <span class="MsoHyperlink">https://invpy.com/boxdrawing-template.py</span>
+và dán vào trình soạn thảo. Thay các dấu gạch dưới bằng mã để tạo chương trình hoạt động:</p>
+<p class="CodeCxSpFirst">def drawBox(size):</p>
+<p class="CodeCxSpMiddle">    <span class="CodeComment"># Special case: Draw
+nothing if size is less than 1:</span></p>
+<p class="CodeCxSpMiddle">    if size &lt; ____:</p>
+<p class="CodeCxSpMiddle">        return</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpMiddle">    <span class="CodeComment"># Draw back line on top
+surface:</span></p>
+<p class="CodeCxSpMiddle">    print(' ' * (____ + 1) + '+' + '-' * (____ * 2) +
+'+')</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpMiddle">    <span class="CodeComment"># Draw top surface:</span></p>
+<p class="CodeCxSpMiddle">    for i in range(____):</p>
+<p class="CodeCxSpMiddle">        print(' ' * (____ - i) + '/' + ' ' * (____ * 2)
++ '/' + ' ' * i + '|')</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpMiddle">    <span class="CodeComment"># Draw top line on top
+surface:</span></p>
+<p class="CodeCxSpMiddle">    print(____ + ____ * (size * 2) + ____ + ' ' * size
++ '+')</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpMiddle">    <span class="CodeComment"># Draw front surface:</span></p>
+<p class="CodeCxSpMiddle">    for i in range(size - 1, ____, ____):</p>
+<p class="CodeCxSpMiddle">        print(____ + ' ' * (size * ____) + ____ + ' ' *
+i + ____)</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpMiddle">    <span class="CodeComment"># Draw bottom lie on front
+surface:</span></p>
+<p class="CodeCxSpMiddle">    print(____ + ____ * (size * 2) + ____)</p>
+<p class="CodeCxSpMiddle"> </p>
+<p class="CodeCxSpMiddle"><span class="CodeComment"># In a loop, call drawBox()
+with arguments 1 to 5:</span></p>
+<p class="CodeCxSpMiddle">for i in range(1, 6):</p>
+<p class="CodeCxSpLast">    drawBox(i)</p>
+<p class="Body">Lời giải hoàn chỉnh cho bài tập này có trong Phụ lục A
+và tại <span class="MsoHyperlink">https://invpy.com/boxdrawing.py</span>. Bạn có thể
+xem từng bước chương trình chạy trong trình gỡ lỗi tại <span class="MsoHyperlink">https://invpy.com/boxdrawing-debug/</span>.</p>
+<p class="HeadA">Đọc thêm</p>
+<p class="Body">Nếu bạn thích thử thách của các bài tập tạo nghệ thuật ASCII này, hãy xem <i>https://</i>
+<i>github.com/asweigart/programmedpatterns/</i>.
+Trang web này có nhiều mẫu hình phát triển dần mà bạn có thể thử tái tạo bằng chương trình Python. Ví dụ, một mẫu trông như sau:</p>
+<p class="CodeCxSpFirst">#     #      #       #</p>
+<p class="CodeCxSpMiddle">##    ##     ##      ##</p>
+<p class="CodeCxSpMiddle">      ###    ###     ###</p>
+<p class="CodeCxSpMiddle">             ####    ####</p>
+<p class="CodeCxSpLast">                     #####</p>
+<p class="Body">Bốn bước đầu của mẫu đã được cung cấp. Bạn có thể viết
+hàm với tham số <code>step</code> để in mẫu ở bước đó. Có hàng trăm mẫu trên trang web.</p>
+
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body">Hộp 3D là bài tập phức tạp nhất trong chuỗi nghệ thuật ASCII từ Bài #27 đến #29, vì mỗi hộp gồm đúng <strong>9 dòng</strong> có vai trò khác nhau. Toàn bộ hình được xây dựng từ bốn loại ký tự: <code>+</code> (góc), <code>-</code> (cạnh ngang), <code>|</code> (cạnh dọc) và <code>/</code> (cạnh chéo thể hiện chiều sâu). Mọi kích thước đều quy về tham số <code>size</code>.</p>
+<p class="Body"><strong>Dòng 1</strong> — cạnh sau của mặt trên: in <code>size + 1</code> khoảng trắng bên trái, rồi <code>+</code>, <code>size * 2</code> dấu gạch ngang và <code>+</code>. Dòng này đẩy hộp sang phải để tạo hiệu ứng 3D.</p>
+<p class="Body"><strong>Dòng 2 đến 4</strong> — mặt trên (vòng lặp <code>for i in range(size)</code>): mỗi lần lặp in <code>size - i</code> khoảng trắng bên trái, rồi <code>/</code>, <code>size * 2</code> khoảng trắng (mặt trên), <code>/</code>, <code>i</code> khoảng trắng (mặt phải, tăng từ 0 đến <code>size - 1</code>) và <code>|</code>. Khi <code>i</code> tăng, hộp "nghiêng" về phía trước.</p>
+<p class="Body"><strong>Dòng 5</strong> — cạnh trước của mặt trên nối với mặt phải: in <code>+</code>, <code>size * 2</code> gạch ngang, <code>+</code>, rồi <code>size</code> khoảng trắng và <code>+</code> ở góc phải trên.</p>
+<p class="Body"><strong>Dòng 6 đến 8</strong> — mặt trước (vòng lặp <code>for i in range(size - 1, -1, -1)</code>): mỗi lần lặp in <code>|</code>, <code>size * 2</code> khoảng trắng, <code>|</code>, <code>i</code> khoảng trắng (mặt phải, giảm từ <code>size - 1</code> xuống 0) và <code>/</code>.</p>
+<p class="Body"><strong>Dòng 9</strong> — đáy hộp: in <code>+</code>, <code>size * 2</code> gạch ngang và <code>+</code>, không có khoảng trắng bên trái.</p>
+<p class="Body">Quy luật kích thước cốt lõi: mỗi cạnh ngang có <code>size * 2</code> dấu gạch ngang; mỗi cạnh dọc hoặc chéo có <code>size</code> ký tự tương ứng. Khoảng trắng bên trong mặt trên và mặt trước luôn bằng <code>size</code>. Khoảng trắng mặt phải thay đổi theo từng hàng — đây là phần dễ nhầm nhất.</p>
+<p class="Body">Ví dụ <code>drawBox(2)</code> in 9 dòng: dòng 1 có 3 khoảng trắng bên trái (<code>size + 1</code>); vòng lặp mặt trên chạy 2 lần; dòng 5 nối mặt trên với mặt phải; vòng lặp mặt trước chạy từ <code>i = 1</code> xuống <code>0</code>; dòng 9 khép đáy. Nếu <code>size &lt; 1</code>, hàm <code>return</code> ngay — không in gì.</p>
+<p class="Body">So với kim tự tháp (Bài #29), bài này không chỉ căn lề mà còn phải quản lý nhiều mặt 3D cùng lúc. Kỹ năng nhân bản chuỗi (<code>' ' * n</code>, <code>'-' * n</code>) và vòng lặp với chỉ số <code>i</code> thay đổi là chìa khóa để mã gọn và đúng quy luật.</p>
+
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="CodeCxSpFirst">def drawBox(size):</p>
+<p class="CodeCxSpMiddle">    if size &lt; 1:</p>
+<p class="CodeCxSpMiddle">        return</p>
+<p class="CodeCxSpMiddle">    print(' ' * (size + 1) + '+' + '-' * (size * 2) + '+')</p>
+<p class="CodeCxSpMiddle">    for i in range(size):</p>
+<p class="CodeCxSpMiddle">        print(' ' * (size - i) + '/' + ' ' * (size * 2) + '/' + ' ' * i + '|')</p>
+<p class="CodeCxSpMiddle">    print('+' + '-' * (size * 2) + '+' + ' ' * size + '+')</p>
+<p class="CodeCxSpMiddle">    for i in range(size - 1, -1, -1):</p>
+<p class="CodeCxSpMiddle">        print('|' + ' ' * (size * 2) + '|' + ' ' * i + '/')</p>
+<p class="CodeCxSpLast">    print('+' + '-' * (size * 2) + '+')</p>
+<p class="CodeCxSpFirst"> </p>
+<p class="CodeCxSpMiddle">for i in range(1, 6):</p>
+<p class="CodeCxSpLast">    drawBox(i)</p>
+
+
+
+<p><a href="../exercise29/index.html">Trước - #29 Vẽ kim tự tháp</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise31/index.html">Sau - #31 Chuyển số nguyên thành chuỗi</a></p></body></html>

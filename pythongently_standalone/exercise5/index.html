@@ -1,0 +1,632 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+p.ChapterTitleCodeExample {
+    font-family: Consolas;
+}
+
+ /* Style Definitions */
+h1 {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: 1em;
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+h2 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.5in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+h3 {
+    margin-top: 10.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 2.0in;
+    margin-bottom: .0001pt;
+    text-indent: 0in;
+    line-height: 115%;
+    page-break-after: avoid;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: #5B9BD5;
+}
+a:link, span.MsoHyperlink {
+    color: windowtext;
+    font-style: italic;
+    text-decoration: none;
+}
+a:visited, span.MsoHyperlinkFollowed {
+    color: #954F72;
+    text-decoration: underline;
+}
+pre {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Courier New";
+}
+span.Heading1Char {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.Heading2Char {
+    font-family: sans-serif;
+    color: #5B9BD5;
+    font-weight: bold;
+}
+span.BoldItalic {
+    font-family: "serif";
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Code, li.Code, div.Code {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpFirst, li.CodeCxSpFirst, div.CodeCxSpFirst {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpMiddle, li.CodeCxSpMiddle, div.CodeCxSpMiddle {
+    margin: 0;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.CodeCxSpLast, li.CodeCxSpLast, div.CodeCxSpLast {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-family: Consolas;
+}
+p.Epigraph, li.Epigraph, div.Epigraph {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: "serif";
+    font-style: italic;
+}
+span.Literal {
+    font-family: Consolas;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ProductionDirective, li.ProductionDirective, div.ProductionDirective {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    color: red;
+}
+span.LiteralBold {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LiteralBoldItalic {
+    font-family: Courier;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.HeadA, li.HeadA, div.HeadA {
+    margin-top: 1em;
+    margin-right: 0;
+    margin-bottom: .5em
+    margin-left: 0in;
+    page-break-after: avoid;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.Blockquote, li.Blockquote, div.Blockquote {
+    margin-top: 6.0pt;
+    margin-right: .5in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.5in;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+}
+p.CaptionBody, li.CaptionBody, div.CaptionBody {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 1.0in;
+    text-indent: -1.0in;
+    font-size: 8.5pt;
+    font-family: "serif";
+}
+span.Regular {
+    font-family: FuturaPT-Book;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.NoteHead {
+    font-family: DogmaOT-Bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    border: none;
+    background: black;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.TableHeader, li.TableHeader, div.TableHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 9.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.TableBody, li.TableBody, div.TableBody {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    line-height: 9.5pt;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.ChapterIntro, li.ChapterIntro, div.ChapterIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle {
+    margin-top: 30.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: 0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 16.0pt;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+span.LinkURL {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.Note, li.Note, div.Note {
+    margin-top: 12.0pt;
+    margin-right: 0in;
+    margin-bottom: 12.0pt;
+    margin-left: .8in;
+    text-indent: -.8in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.bulletcharacter {
+    font-family: Symbol;
+}
+span.Superscript {
+    color: #3366FF;
+    vertical-align: super;
+}
+span.Subscript {
+    color: #3366FF;
+    vertical-align: sub;
+}
+span.Italic {
+    font-family: NewBaskervilleStd-Italic;
+    color: windowtext;
+    position: relative;
+    top: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListBullet, li.ListBullet, div.ListBullet {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+span.Bold {
+    color: windowtext;
+    font-weight: bold;
+}
+p.RunInHead, li.RunInHead, div.RunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+    font-weight: bold;
+}
+p.RunInPara, li.RunInPara, div.RunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 1.0in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.BoxRunInHead, li.BoxRunInHead, div.BoxRunInHead {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+p.BoxRunInPara, li.BoxRunInPara, div.BoxRunInPara {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+span.LinkEmail {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.LinkTwitter {
+    font-family: NewBaskervilleStd-Italic;
+    color: #3366FF;
+    position: relative;
+    top: 0pt;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+span.Caps {
+    font-variant: normal !important;
+    color: #3366FF;
+    text-transform: uppercase;
+}
+span.SmallCaps {
+    font-variant: small-caps;
+    color: #3366FF;
+    text-transform: none;
+}
+span.CodeAnnotation {
+    font-family: Courier;
+    color: white;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    border: none;
+    background: black;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.ListPlain, li.ListPlain, div.ListPlain {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.Body, li.Body, div.Body {
+    margin-top: .5em;
+    margin-right: 0;
+    margin-bottom: .5em;
+    margin-left: 0;
+    text-indent: 2em;
+    xxxline-height: 12.0pt;
+    font-size: 1em;
+    font-family: "serif";
+}
+p.ChapterNumber, li.ChapterNumber, div.ChapterNumber {
+    margin-top: 60.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: .3in;
+    margin-bottom: .0001pt;
+    text-align: center;
+    text-indent: -.3in;
+    line-height: 120.0pt;
+    font-size: 120.0pt;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+span.SuperscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: super;
+}
+span.SubscriptItalic {
+    color: #3366FF;
+    font-style: italic;
+    vertical-align: sub;
+}
+span.Symbol {
+    font-family: Symbol;
+}
+span.AltText {
+    color: green;
+}
+p.PartIntro, li.PartIntro, div.PartIntro {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 3.0pt;
+    margin-left: 1.0in;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: "serif";
+    letter-spacing: .05pt;
+}
+p.PartList, li.PartList, div.PartList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterIntroList, li.ChapterIntroList, div.ChapterIntroList {
+    margin-top: 9.0pt;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 1.25in;
+    margin-bottom: .0001pt;
+    text-indent: -.25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "serif";
+}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .25in;
+    margin-left: 1.0in;
+    text-align: center;
+    line-height: 18.0pt;
+    font-size: 14.0pt;
+    font-family: sans-serif;
+    letter-spacing: 2.4pt;
+    font-weight: bold;
+}
+p.BoxExtractPara, li.BoxExtractPara, div.BoxExtractPara {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 27.35pt;
+    line-height: 12.0pt;
+    border: none;
+    padding: 0in;
+    font-size: 8.5pt;
+    font-family: sans-serif;
+}
+p.Default, li.Default, div.Default {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    font-size: 12.0pt;
+    font-family: "serif";
+}
+span.CodeComment {
+    font-family: Consolas;
+    color: gray;
+    position: relative;
+    top: 0pt;
+    letter-spacing: 0pt;
+    font-style: italic;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+p.LiteralText, li.LiteralText, div.LiteralText {
+    margin-top: 6.0pt;
+    margin-right: 0in;
+    margin-bottom: 6.0pt;
+    margin-left: 0in;
+    text-indent: .25in;
+    line-height: 12.0pt;
+    font-size: 10.0pt;
+    font-family: Consolas;
+}
+span.BodyChar {
+    font-family: "serif";
+}
+ol {
+    margin-bottom: 0in;
+}
+ul {
+    margin-bottom: 0in;
+}
+</style>
+<title>Bài tập 5 - Fizz Buzz</title></head><body style="background-color: #fffeee;"><p><a href="../exercise4/index.html">Trước - #4 Diện tích &amp; Thể tích</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise6/index.html">Tiếp - #6 Hậu tố thứ tự</a></p>
+
+
+
+
+<h1><a name="_Toc115418674"></a><a name="_Toc115359985">Bài tập #5: Fizz Buzz</a></h1>
+<p class="ChapterTitleCodeExample">fizzBuzz(5)  <span style="font-size:13.0pt">→
+</span> 1 2 Fizz 4 Buzz</p>
+<p class="ChapterTitleCodeExample"><span style='font-size:8.0pt;font-family:"MS Shell Dlg 2","sans-serif"'><img height="144" id="Picture 11" src="data:image/jpeg;base64,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" width="105"/></span></p>
+<p class="Body">Fizz Buzz là trò chơi chữ có thể lập trình đơn giản. Nó nổi tiếng
+như câu hỏi phỏng vấn để nhanh chóng đánh giá khả năng lập trình cơ bản.</p>
+<p class="Body">Bài tập tiếp tục dùng modulo để kiểm tra chia hết cho 3, 5, hoặc
+cả hai. “Chia hết cho <span class="Italic"><span style='font-family:"serif"'>n</span></span>”
+nghĩa là chia cho <span class="Italic"><span style='font-family:"serif"'>n</span></span>
+không dư. Ví dụ: 10 chia hết cho 5; 11 thì không.</p>
+<p class="HeadA">Mô tả bài tập</p>
+<p class="Body">Viết hàm <code>fizzBuzz()</code> với tham số nguyên <code>upTo</code>.
+Với các số từ <code>1</code> đến và gồm <code>upTo</code>, hàm in một trong bốn
+thứ:</p>
+<p class="Body" style="margin-left:.5in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>      
+</span></span>In <code>'FizzBuzz'</code> nếu chia hết cho cả 3 <i>và</i> 5.</p>
+<p class="Body" style="margin-left:.5in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>      
+</span></span>In <code>'Fizz'</code> nếu chỉ chia hết cho 3.</p>
+<p class="Body" style="margin-left:.5in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>      
+</span></span>In <code>'Buzz'</code> nếu chỉ chia hết cho 5.</p>
+<p class="Body" style="margin-left:.5in;text-indent:-.25in"><span style="font-family:Symbol">·<span style='font:7.0pt "Times New Roman"'>      
+</span></span>In số nếu <span class="Italic"><span style='font-family:"serif"'>không</span></span> chia hết cho 3 cũng không chia hết cho 5.</p>
+<p class="Body">In trên cùng một dòng, cách nhau bằng dấu cách (không xuống dòng
+sau mỗi mục). Ví dụ <span class="Literal">fizzBuzz(35)</span> in:</p>
+<p class="Code">1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 17
+Fizz 19 Buzz Fizz 22 23 Fizz Buzz 26 Fizz 28 29 FizzBuzz 31 32 Fizz 34 Buzz</p>
+<p class="Body">Khái niệm tiên quyết: modulo, tham số <code>end</code> của
+<code>print()</code>, vòng lặp <code>for</code>, <span class="Literal">range()</span> hai đối số</p>
+<p class="HeadA">Thiết kế lời giải</p>
+<p class="Body">Cần vòng lặp từ <span class="Literal">1</span> đến <code>upTo</code>.
+Toán tử <code>%</code>: <code>number % 3 == 0</code> → chia hết cho 3;
+<code>number % 5 == 0</code> → chia hết cho 5. Ví dụ trong shell:</p>
+<p class="CodeCxSpFirst">&gt;&gt;&gt; 9 % 3</p>
+<p class="CodeCxSpMiddle">0</p>
+<p class="CodeCxSpMiddle">&gt;&gt;&gt; 10 % 3</p>
+<p class="CodeCxSpMiddle">1</p>
+<p class="CodeCxSpMiddle">&gt;&gt;&gt; 11 % 3</p>
+<p class="CodeCxSpLast">2</p>
+<p class="Body">Trong vòng lặp, dùng chuỗi <code>if</code>-<code>elif</code>-<code>elif</code>-<code>else</code>.
+Để <code>print()</code> in dấu cách thay vì xuống dòng: <span class="Literal">print('FizzBuzz', end=' ')</span>.</p>
+<p class="HeadA">Giải thích chi tiết</p>
+<p class="Body"><code>for number in range(1, upTo + 1):</code> — <code>range(1, n)</code>
+không bao gồm <code>n</code>, nên cộng 1 để lặp đến đúng <code>upTo</code>.</p>
+<p class="Body">Kiểm tra <code>number % 3 == 0 and number % 5 == 0</code> <i>trước</i>
+các điều kiện chỉ chia 3 hoặc chỉ chia 5 — vì số chia hết cho 15 cũng chia hết
+cho 3 và 5 riêng lẻ.</p>
+<p class="Body"><code>print(..., end=' ')</code> — tham số <code>end</code> mặc
+định là <code>'\n'</code> (xuống dòng); đổi thành dấu cách để nối liền trên một
+dòng.</p>
+<p class="HeadA">Mã nguồn hoàn chỉnh</p>
+<p class="CodeCxSpFirst">def fizzBuzz(upTo):</p>
+<p class="CodeCxSpMiddle">    for number in range(1, upTo + 1):</p>
+<p class="CodeCxSpMiddle">        if number % 3 == 0 and number % 5 == 0:</p>
+<p class="CodeCxSpMiddle">            print('FizzBuzz', end=' ')</p>
+<p class="CodeCxSpMiddle">        elif number % 3 == 0:</p>
+<p class="CodeCxSpMiddle">            print('Fizz', end=' ')</p>
+<p class="CodeCxSpMiddle">        elif number % 5 == 0:</p>
+<p class="CodeCxSpMiddle">            print('Buzz', end=' ')</p>
+<p class="CodeCxSpMiddle">        else:</p>
+<p class="CodeCxSpLast">            print(number, end=' ')</p>
+<p class="HeadA">Trường hợp đặc biệt và lỗi thường gặp</p>
+<p class="Body">Lỗi phổ biến: kiểm tra chia 3 <span class="Italic"><span style='font-family:
+"serif"'>hoặc</span></span> 5 trước khi kiểm tra chia cả 3 <span class="Italic"><span style='font-family:"serif"'>và</span></span> 5 — sẽ in 'Fizz' hoặc 'Buzz'
+thay vì 'FizzBuzz'.</p>
+<p class="Body">Có thể kiểm tra <code>number % 15 == 0</code> (bội chung nhỏ nhất
+của 3 và 5) thay cho <code>number % 3 == 0 and number % 5 == 0</code>.</p>
+<p class="Body"><code>range(10)</code> cho 0–9; <code>range(1, 10)</code> cho
+1–9. Muốn gồm <code>upTo</code>: <span class="Literal">range(1, upTo + 1)</span>.</p>
+<p class="HeadA">Mẫu lời giải</p>
+<p class="Body">Mã dở từ <span class="MsoHyperlink">https://invpy.com/fizzbuzz-template.py</span>:</p>
+<p class="CodeCxSpFirst">def fizzBuzz(upTo):</p>
+<p class="CodeCxSpMiddle">    <span class="CodeComment"># Lặp từ 1 đến upTo:</span></p>
+<p class="CodeCxSpMiddle">    for number in range(1, ____):</p>
+<p class="CodeCxSpMiddle">        if number % 3 == ____ and number % 5 == ____:</p>
+<p class="CodeCxSpMiddle">            ____(____, end=' ')</p>
+<p class="CodeCxSpMiddle">        elif ____ % 3 == 0:</p>
+<p class="CodeCxSpMiddle">            ____(____, end=' ')</p>
+<p class="CodeCxSpMiddle">        elif number % 5 ____ 0:</p>
+<p class="CodeCxSpMiddle">            ____(____, end=' ')</p>
+<p class="CodeCxSpMiddle">        else:</p>
+<p class="CodeCxSpLast">            ____(____, end=' ')</p>
+<p class="Body">Lời giải đầy đủ: Phụ lục A, <span class="MsoHyperlink">https://invpy.com/fizzbuzz.py</span>, debugger <span class="MsoHyperlink">https://invpy.com/fizzbuzz-debug/</span>.</p>
+
+
+
+<p><a href="../exercise4/index.html">Trước - #4 Diện tích &amp; Thể tích</a> | <a href="../index.html">Mục lục</a> | <a href="../exercise6/index.html">Tiếp - #6 Hậu tố thứ tự</a></p></body></html>
