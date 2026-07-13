@@ -1,0 +1,4353 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="5. Data Structures" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://docs.python.org/3/tutorial/datastructures.html" />
+<meta property="og:site_name" content="Python documentation" />
+<meta property="og:description" content="This chapter describes some things you’ve learned about already in more detail, and adds some new things as well. More on Lists: The list data type has some more methods. Here are all of the method..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="https://docs.python.org/3.14/_images/social_previews/summary_tutorial_datastructures_5322edaa.png" />
+<meta property="og:image:alt" content="This chapter describes some things you’ve learned about already in more detail, and adds some new things as well. More on Lists: The list data type has some more methods. Here are all of the method..." />
+<meta name="description" content="This chapter describes some things you’ve learned about already in more detail, and adds some new things as well. More on Lists: The list data type has some more methods. Here are all of the method..." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#3776ab">
+
+    <title>5. Data Structures &#8212; Python 3.14.6 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style type="text/css">
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f8f8f8; }
+.highlight .c { color: #3D7B7B; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #F00 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666 } /* Operator */
+.highlight .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #9C6500 } /* Comment.Preproc */
+.highlight .cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.highlight .gr { color: #E40000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #008400 } /* Generic.Inserted */
+.highlight .go { color: #717171 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #04D } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #687822 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #00F; font-weight: bold } /* Name.Class */
+.highlight .no { color: #800 } /* Name.Constant */
+.highlight .nd { color: #A2F } /* Name.Decorator */
+.highlight .ni { color: #717171; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #00F } /* Name.Function */
+.highlight .nl { color: #767600 } /* Name.Label */
+.highlight .nn { color: #00F; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #BBB } /* Text.Whitespace */
+.highlight .mb { color: #666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666 } /* Literal.Number.Float */
+.highlight .mh { color: #666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #A45A77 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #00F } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666 } /* Literal.Number.Integer.Long */
+</style>
+    <style type="text/css">
+/*
+ * Sphinx stylesheet -- classic theme.
+ */
+
+/*
+ * Sphinx stylesheet -- basic theme.
+ */
+
+/* -- main layout ----------------------------------------------------------- */
+
+div.clearer {
+    clear: both;
+}
+
+div.section::after {
+    display: block;
+    content: '';
+    clear: left;
+}
+
+/* -- relbar ---------------------------------------------------------------- */
+
+div.related {
+    width: 100%;
+    font-size: 90%;
+}
+
+div.related h3 {
+    display: none;
+}
+
+div.related ul {
+    margin: 0;
+    padding: 0 0 0 10px;
+    list-style: none;
+}
+
+div.related li {
+    display: inline;
+}
+
+div.related li.right {
+    float: right;
+    margin-right: 5px;
+}
+
+/* -- sidebar --------------------------------------------------------------- */
+
+div.sphinxsidebarwrapper {
+    padding: 10px 5px 0 10px;
+}
+
+div.sphinxsidebar {
+    float: left;
+    width: 230px;
+    margin-left: -100%;
+    font-size: 90%;
+    word-wrap: break-word;
+    overflow-wrap : break-word;
+}
+
+div.sphinxsidebar ul {
+    list-style: none;
+}
+
+div.sphinxsidebar ul ul,
+div.sphinxsidebar ul.want-points {
+    margin-left: 20px;
+    list-style: square;
+}
+
+div.sphinxsidebar ul ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+div.sphinxsidebar form {
+    margin-top: 10px;
+}
+
+div.sphinxsidebar input {
+    border: 1px solid #98dbcc;
+    font-family: sans-serif;
+    font-size: 1em;
+}
+
+div.sphinxsidebar #searchbox form.search {
+    overflow: hidden;
+}
+
+div.sphinxsidebar #searchbox input[type="text"] {
+    float: left;
+    width: 80%;
+    padding: 0.25em;
+    box-sizing: border-box;
+}
+
+div.sphinxsidebar #searchbox input[type="submit"] {
+    float: left;
+    width: 20%;
+    border-left: none;
+    padding: 0.25em;
+    box-sizing: border-box;
+}
+
+
+img {
+    border: 0;
+    max-width: 100%;
+}
+
+/* -- search page ----------------------------------------------------------- */
+
+ul.search {
+    margin-top: 10px;
+}
+
+ul.search li {
+    padding: 5px 0;
+}
+
+ul.search li a {
+    font-weight: bold;
+}
+
+ul.search li p.context {
+    color: #888;
+    margin: 2px 0 0 30px;
+    text-align: left;
+}
+
+ul.keywordmatches li.goodmatch a {
+    font-weight: bold;
+}
+
+/* -- index page ------------------------------------------------------------ */
+
+table.contentstable {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table.contentstable p.biglink {
+    line-height: 150%;
+}
+
+a.biglink {
+    font-size: 1.3em;
+}
+
+span.linkdescr {
+    font-style: italic;
+    padding-top: 5px;
+    font-size: 90%;
+}
+
+/* -- general index --------------------------------------------------------- */
+
+table.indextable {
+    width: 100%;
+}
+
+table.indextable td {
+    text-align: left;
+    vertical-align: top;
+}
+
+table.indextable ul {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+}
+
+table.indextable > tbody > tr > td > ul {
+    padding-left: 0em;
+}
+
+table.indextable tr.pcap {
+    height: 10px;
+}
+
+table.indextable tr.cap {
+    margin-top: 10px;
+    background-color: #f2f2f2;
+}
+
+img.toggler {
+    margin-right: 3px;
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+div.modindex-jumpbox {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin: 1em 0 1em 0;
+    padding: 0.4em;
+}
+
+div.genindex-jumpbox {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin: 1em 0 1em 0;
+    padding: 0.4em;
+}
+
+/* -- domain module index --------------------------------------------------- */
+
+table.modindextable td {
+    padding: 2px;
+    border-collapse: collapse;
+}
+
+/* -- general body styles --------------------------------------------------- */
+
+div.body {
+    min-width: 360px;
+    max-width: 800px;
+}
+
+div.body p, div.body dd, div.body li, div.body blockquote {
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+a.headerlink {
+    visibility: hidden;
+}
+
+a:visited {
+    color: #551A8B;
+}
+
+h1:hover > a.headerlink,
+h2:hover > a.headerlink,
+h3:hover > a.headerlink,
+h4:hover > a.headerlink,
+h5:hover > a.headerlink,
+h6:hover > a.headerlink,
+dt:hover > a.headerlink,
+caption:hover > a.headerlink,
+p.caption:hover > a.headerlink,
+div.code-block-caption:hover > a.headerlink {
+    visibility: visible;
+}
+
+div.body p.caption {
+    text-align: inherit;
+}
+
+div.body td {
+    text-align: left;
+}
+
+.first {
+    margin-top: 0 !important;
+}
+
+p.rubric {
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+img.align-left, figure.align-left, .figure.align-left, object.align-left {
+    clear: left;
+    float: left;
+    margin-right: 1em;
+}
+
+img.align-right, figure.align-right, .figure.align-right, object.align-right {
+    clear: right;
+    float: right;
+    margin-left: 1em;
+}
+
+img.align-center, figure.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img.align-default, figure.align-default, .figure.align-default {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-default {
+    text-align: center;
+}
+
+.align-right {
+    text-align: right;
+}
+
+/* -- sidebars -------------------------------------------------------------- */
+
+div.sidebar,
+aside.sidebar {
+    margin: 0 0 0.5em 1em;
+    border: 1px solid #ddb;
+    padding: 7px;
+    background-color: #ffe;
+    width: 40%;
+    float: right;
+    clear: right;
+    overflow-x: auto;
+}
+
+p.sidebar-title {
+    font-weight: bold;
+}
+
+nav.contents,
+aside.topic,
+div.admonition, div.topic, blockquote {
+    clear: left;
+}
+
+/* -- topics ---------------------------------------------------------------- */
+
+nav.contents,
+aside.topic,
+div.topic {
+    border: 1px solid #ccc;
+    padding: 7px;
+    margin: 10px 0 10px 0;
+}
+
+p.topic-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* -- admonitions ----------------------------------------------------------- */
+
+div.admonition {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 7px;
+}
+
+div.admonition dt {
+    font-weight: bold;
+}
+
+p.admonition-title {
+    margin: 0px 10px 5px 0px;
+    font-weight: bold;
+}
+
+div.body p.centered {
+    text-align: center;
+    margin-top: 25px;
+}
+
+/* -- content of sidebars/topics/admonitions -------------------------------- */
+
+div.sidebar > :last-child,
+aside.sidebar > :last-child,
+nav.contents > :last-child,
+aside.topic > :last-child,
+div.topic > :last-child,
+div.admonition > :last-child {
+    margin-bottom: 0;
+}
+
+div.sidebar::after,
+aside.sidebar::after,
+nav.contents::after,
+aside.topic::after,
+div.topic::after,
+div.admonition::after,
+blockquote::after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+/* -- tables ---------------------------------------------------------------- */
+
+table.docutils {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0;
+    border-collapse: collapse;
+}
+
+table.align-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table.align-default {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table caption span.caption-number {
+    font-style: italic;
+}
+
+table caption span.caption-text {
+}
+
+table.docutils td, table.docutils th {
+    padding: 1px 8px 1px 5px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #aaa;
+}
+
+th {
+    text-align: left;
+    padding-right: 5px;
+}
+
+table.citation {
+    border-left: solid 1px gray;
+    margin-left: 1px;
+}
+
+table.citation td {
+    border-bottom: none;
+}
+
+th > :first-child,
+td > :first-child {
+    margin-top: 0px;
+}
+
+th > :last-child,
+td > :last-child {
+    margin-bottom: 0px;
+}
+
+/* -- figures --------------------------------------------------------------- */
+
+div.figure, figure {
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+div.figure p.caption, figcaption {
+    padding: 0.3em;
+}
+
+div.figure p.caption span.caption-number,
+figcaption span.caption-number {
+    font-style: italic;
+}
+
+div.figure p.caption span.caption-text,
+figcaption span.caption-text {
+}
+
+/* -- field list styles ----------------------------------------------------- */
+
+table.field-list td, table.field-list th {
+    border: 0 !important;
+}
+
+.field-list ul {
+    margin: 0;
+    padding-left: 1em;
+}
+
+.field-list p {
+    margin: 0;
+}
+
+.field-name {
+    -moz-hyphens: manual;
+    -ms-hyphens: manual;
+    -webkit-hyphens: manual;
+    hyphens: manual;
+}
+
+/* -- hlist styles ---------------------------------------------------------- */
+
+table.hlist {
+    margin: 1em 0;
+}
+
+table.hlist td {
+    vertical-align: top;
+}
+
+/* -- object description styles --------------------------------------------- */
+
+.sig {
+	font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+}
+
+.sig-name, code.descname {
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.sig-name {
+	font-size: 1.1em;
+}
+
+code.descname {
+    font-size: 1.2em;
+}
+
+.sig-prename, code.descclassname {
+    background-color: transparent;
+}
+
+.optional {
+    font-size: 1.3em;
+}
+
+.sig-paren {
+    font-size: larger;
+}
+
+.sig-param.n {
+	font-style: italic;
+}
+
+/* C++ specific styling */
+
+.sig-inline.c-texpr,
+.sig-inline.cpp-texpr {
+	font-family: unset;
+}
+
+.sig.c   .k, .sig.c   .kt,
+.sig.cpp .k, .sig.cpp .kt {
+	color: #0033B3;
+}
+
+.sig.c   .m,
+.sig.cpp .m {
+	color: #1750EB;
+}
+
+.sig.c   .s, .sig.c   .sc,
+.sig.cpp .s, .sig.cpp .sc {
+	color: #067D17;
+}
+
+
+/* -- other body styles ----------------------------------------------------- */
+
+ol.arabic {
+    list-style: decimal;
+}
+
+ol.loweralpha {
+    list-style: lower-alpha;
+}
+
+ol.upperalpha {
+    list-style: upper-alpha;
+}
+
+ol.lowerroman {
+    list-style: lower-roman;
+}
+
+ol.upperroman {
+    list-style: upper-roman;
+}
+
+:not(li) > ol > li:first-child > :first-child,
+:not(li) > ul > li:first-child > :first-child {
+    margin-top: 0px;
+}
+
+:not(li) > ol > li:last-child > :last-child,
+:not(li) > ul > li:last-child > :last-child {
+    margin-bottom: 0px;
+}
+
+ol.simple ol p,
+ol.simple ul p,
+ul.simple ol p,
+ul.simple ul p {
+    margin-top: 0;
+}
+
+ol.simple > li:not(:first-child) > p,
+ul.simple > li:not(:first-child) > p {
+    margin-top: 0;
+}
+
+ol.simple p,
+ul.simple p {
+    margin-bottom: 0;
+}
+
+aside.footnote > span,
+div.citation > span {
+    float: left;
+}
+aside.footnote > span:last-of-type,
+div.citation > span:last-of-type {
+  padding-right: 0.5em;
+}
+aside.footnote > p {
+  margin-left: 2em;
+}
+div.citation > p {
+  margin-left: 4em;
+}
+aside.footnote > p:last-of-type,
+div.citation > p:last-of-type {
+    margin-bottom: 0em;
+}
+aside.footnote > p:last-of-type:after,
+div.citation > p:last-of-type:after {
+    content: "";
+    clear: both;
+}
+
+dl.field-list {
+    display: grid;
+    grid-template-columns: fit-content(30%) auto;
+}
+
+dl.field-list > dt {
+    font-weight: bold;
+    word-break: break-word;
+    padding-left: 0.5em;
+    padding-right: 5px;
+}
+
+dl.field-list > dd {
+    padding-left: 0.5em;
+    margin-top: 0em;
+    margin-left: 0em;
+    margin-bottom: 0em;
+}
+
+dl {
+    margin-bottom: 15px;
+}
+
+dd > :first-child {
+    margin-top: 0px;
+}
+
+dd ul, dd table {
+    margin-bottom: 10px;
+}
+
+dd {
+    margin-top: 3px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
+
+.sig dd {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.sig dl {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+dl > dd:last-child,
+dl > dd:last-child > :last-child {
+    margin-bottom: 0;
+}
+
+dt:target, span.highlighted {
+    background-color: #fbe54e;
+}
+
+rect.highlighted {
+    fill: #fbe54e;
+}
+
+dl.glossary dt {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.versionmodified {
+    font-style: italic;
+}
+
+.system-message {
+    background-color: #fda;
+    padding: 5px;
+    border: 3px solid red;
+}
+
+.footnote:target  {
+    background-color: #ffa;
+}
+
+.line-block {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.line-block .line-block {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 1.5em;
+}
+
+.guilabel, .menuselection {
+    font-family: sans-serif;
+}
+
+.accelerator {
+    text-decoration: underline;
+}
+
+.classifier {
+    font-style: oblique;
+}
+
+.classifier:before {
+    font-style: normal;
+    margin: 0 0.5em;
+    content: ":";
+    display: inline-block;
+}
+
+abbr, acronym {
+    border-bottom: dotted 1px;
+    cursor: help;
+}
+
+/* -- code displays --------------------------------------------------------- */
+
+pre {
+    overflow: auto;
+    overflow-y: hidden;  /* fixes display issues on Chrome browsers */
+}
+
+pre, div[class*="highlight-"] {
+    clear: both;
+}
+
+span.pre {
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    -webkit-hyphens: none;
+    hyphens: none;
+    white-space: nowrap;
+}
+
+div[class*="highlight-"] {
+    margin: 1em 0;
+}
+
+td.linenos pre {
+    border: 0;
+    background-color: transparent;
+    color: #aaa;
+}
+
+table.highlighttable {
+    display: block;
+}
+
+table.highlighttable tbody {
+    display: block;
+}
+
+table.highlighttable tr {
+    display: flex;
+}
+
+table.highlighttable td {
+    margin: 0;
+    padding: 0;
+}
+
+table.highlighttable td.linenos {
+    padding-right: 0.5em;
+}
+
+table.highlighttable td.code {
+    flex: 1;
+    overflow: hidden;
+}
+
+.highlight .hll {
+    display: block;
+}
+
+div.highlight pre,
+table.highlighttable pre {
+    margin: 0;
+}
+
+div.code-block-caption + div {
+    margin-top: 0;
+}
+
+div.code-block-caption {
+    margin-top: 1em;
+    padding: 2px 5px;
+    font-size: small;
+}
+
+div.code-block-caption code {
+    background-color: transparent;
+}
+
+table.highlighttable td.linenos,
+span.linenos,
+div.highlight span.gp {  /* gp: Generic.Prompt */
+  user-select: none;
+  -webkit-user-select: text; /* Safari fallback only */
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+}
+
+div.code-block-caption span.caption-number {
+    padding: 0.1em 0.3em;
+    font-style: italic;
+}
+
+div.code-block-caption span.caption-text {
+}
+
+div.literal-block-wrapper {
+    margin: 1em 0;
+}
+
+code.xref, a code {
+    background-color: transparent;
+    font-weight: bold;
+}
+
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+    background-color: transparent;
+}
+
+.viewcode-link {
+    float: right;
+}
+
+.viewcode-back {
+    float: right;
+    font-family: sans-serif;
+}
+
+div.viewcode-block:target {
+    margin: -1px -10px;
+    padding: 0 10px;
+}
+
+/* -- math display ---------------------------------------------------------- */
+
+img.math {
+    vertical-align: middle;
+}
+
+div.body div.math p {
+    text-align: center;
+}
+
+span.eqno {
+    float: right;
+}
+
+span.eqno a.headerlink {
+    position: absolute;
+    z-index: 1;
+}
+
+div.math:hover a.headerlink {
+    visibility: visible;
+}
+
+/* -- printout stylesheet --------------------------------------------------- */
+
+@media print {
+    div.document,
+    div.documentwrapper,
+    div.bodywrapper {
+        margin: 0 !important;
+        width: 100%;
+    }
+
+    div.sphinxsidebar,
+    div.related,
+    div.footer,
+    #top-link {
+        display: none;
+    }
+}
+
+/* -- page layout ----------------------------------------------------------- */
+
+html {
+    /* CSS hack for macOS's scrollbar (see #1125) */
+    background-color: #FFFFFF;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    font-size: 100%;
+    background-color: white;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+div.document {
+    display: flex;
+    background-color: white;
+}
+
+div.documentwrapper {
+    float: left;
+    width: 100%;
+}
+
+div.bodywrapper {
+    margin: 0 0 0 230px;
+}
+
+div.body {
+    background-color: white;
+    color: #222222;
+    padding: 0 20px 30px 20px;
+}
+
+div.footer {
+    color: #555555;
+    width: 100%;
+    padding: 9px 0 9px 0;
+    text-align: center;
+    font-size: 75%;
+}
+
+div.footer a {
+    color: #555555;
+    text-decoration: underline;
+}
+
+div.related {
+    background-color: white;
+    line-height: 30px;
+    color: #666666;
+}
+
+div.related a {
+    color: #444444;
+}
+
+div.sphinxsidebar {
+}
+
+div.sphinxsidebar h3 {
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    color: #444444;
+    font-size: 1.4em;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+div.sphinxsidebar h3 a {
+    color: #444444;
+}
+
+div.sphinxsidebar h4 {
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    color: #444444;
+    font-size: 1.3em;
+    font-weight: normal;
+    margin: 5px 0 0 0;
+    padding: 0;
+}
+
+div.sphinxsidebar p {
+    color: #444444;
+}
+
+div.sphinxsidebar p.topless {
+    margin: 5px 10px 10px 10px;
+}
+
+div.sphinxsidebar ul {
+    margin: 10px;
+    padding: 0;
+    color: #444444;
+}
+
+div.sphinxsidebar a {
+    color: #444444;
+}
+
+div.sphinxsidebar input {
+    border: 1px solid #444444;
+    font-family: sans-serif;
+    font-size: 1em;
+}
+
+
+
+    
+    
+
+/* for collapsible sidebar */
+#sidebarbutton {
+    height: 100%;
+    background-color: #cccccc;
+    margin-left: 0;
+    color: #FFFFFF;
+    border-left: 1px solid white;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding-top: 1px;
+    float: right;
+    display: table; /* for vertically centering the <span> */
+}
+
+#sidebarbutton:hover {
+    background-color: white;
+}
+
+#sidebarbutton span {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+div.sphinxsidebarwrapper {
+    float: left;
+    margin-right: 0;
+}
+
+
+/* -- hyperlink styles ------------------------------------------------------ */
+
+a {
+    color: #0090c0;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #00608f;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* -- body styles ----------------------------------------------------------- */
+
+div.body h1,
+div.body h2,
+div.body h3,
+div.body h4,
+div.body h5,
+div.body h6 {
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    background-color: white;
+    font-weight: normal;
+    color: #1a1a1a;
+    border-bottom: 1px solid #ccc;
+    margin: 20px -20px 10px -20px;
+    padding: 3px 0 3px 10px;
+}
+
+div.body h1 { margin-top: 0; font-size: 200%; }
+div.body h2 { font-size: 160%; }
+div.body h3 { font-size: 140%; }
+div.body h4 { font-size: 120%; }
+div.body h5 { font-size: 110%; }
+div.body h6 { font-size: 100%; }
+
+a.headerlink {
+    color: #aaaaaa;
+    font-size: 0.8em;
+    padding: 0 4px 0 4px;
+    text-decoration: none;
+}
+
+a.headerlink:hover {
+    background-color: #aaaaaa;
+    color: white;
+}
+
+div.body p, div.body dd, div.body li, div.body blockquote {
+    text-align: justify;
+    line-height: 130%;
+}
+
+div.admonition p.admonition-title + p {
+    display: inline;
+}
+
+div.admonition p {
+    margin-bottom: 5px;
+}
+
+div.admonition pre {
+    margin-bottom: 5px;
+}
+
+div.admonition ul, div.admonition ol {
+    margin-bottom: 5px;
+}
+
+div.note {
+    background-color: #eee;
+    border: 1px solid #ccc;
+}
+
+div.seealso {
+    background-color: #ffc;
+    border: 1px solid #ff6;
+}
+
+nav.contents,
+aside.topic,
+div.topic {
+    background-color: #eee;
+}
+
+div.warning {
+    background-color: #ffe4e4;
+    border: 1px solid #f66;
+}
+
+p.admonition-title {
+    display: inline;
+}
+
+p.admonition-title:after {
+    content: ":";
+}
+
+pre {
+    padding: 5px;
+    background-color: #eeffcc;
+    color: #333333;
+    line-height: 120%;
+    border: 1px solid #ac9;
+    border-left: none;
+    border-right: none;
+}
+
+code {
+    background-color: #ecf0f3;
+    padding: 0 1px 0 1px;
+    font-size: 0.95em;
+}
+
+th, dl.field-list > dt {
+    background-color: #ede;
+}
+
+.warning code {
+    background: #efc2c2;
+}
+
+.note code {
+    background: #d6d6d6;
+}
+
+.viewcode-back {
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+}
+
+div.viewcode-block:target {
+    background-color: #f4debf;
+    border-top: 1px solid #ac9;
+    border-bottom: 1px solid #ac9;
+}
+
+div.code-block-caption {
+    color: #efefef;
+    background-color: #1c4e63;
+}
+</style>
+    <style type="text/css">
+/* Common colours */
+:root {
+    --good-color: rgb(41 100 51);
+    --good-border: rgb(79 196 100);
+    --middle-color: rgb(133 72 38);
+    --middle-border: rgb(244, 227, 76);
+    --bad-color: rgb(159 49 51);
+    --bad-border: rgb(244, 76, 78);
+}
+
+/* unset some styles from the classic stylesheet */
+div.document,
+div.body,
+div.related,
+div.body h1,
+div.body h2,
+div.body h3,
+div.body h4,
+div.body h5,
+div.body h6,
+div.sphinxsidebar a,
+div.sphinxsidebar p,
+div.sphinxsidebar ul,
+div.sphinxsidebar h3,
+div.sphinxsidebar h3 a,
+div.sphinxsidebar h4,
+.menu a,
+.menu p,
+.menu ul,
+.menu h3,
+.menu h3 a,
+.menu h4,
+table.docutils td,
+table.indextable tr.cap,
+pre {
+    background-color: inherit;
+    color: inherit;
+}
+
+/* Add underlines to links */
+a[href] {
+    text-decoration: underline 1px;
+}
+
+/* Increase the underline offset for code to avoid obscuring underscores */
+a[href]:has(> code) {
+    text-underline-offset: 0.25em;
+}
+
+/* No underline for navigation */
+a.headerlink,
+div.genindex-jumpbox a,
+div.modindex-jumpbox a,
+div#search-results a,
+div.sphinxsidebar a,
+div.toctree-wrapper a,
+div[role=navigation] a,
+table.contentstable a,
+table.indextable a {
+    text-decoration: none;
+}
+
+/* Except when hovered */
+div.genindex-jumpbox a:hover,
+div.modindex-jumpbox a:hover,
+div#search-results a:hover,
+div.sphinxsidebar a:hover,
+div.toctree-wrapper a:hover,
+div[role=navigation] a:hover,
+table.contentstable a:hover,
+table.indextable a:hover {
+    text-decoration: underline;
+    text-underline-offset: auto;
+}
+
+body {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.mobile-nav,
+.menu-wrapper {
+    display: none;
+}
+
+div.related {
+    margin-top: 0.5em;
+    margin-bottom: 1.2em;
+    padding: 0.5em 0;
+    border-width: 1px;
+    border-color: #ccc;
+}
+
+.mobile-nav + div.related {
+    border-bottom-style: solid;
+}
+
+.document + div.related {
+    border-top-style: solid;
+}
+
+div.related a:hover {
+    color: #0095c4;
+}
+
+.related .switchers {
+    display: inline-flex;
+}
+
+.switchers > div {
+    margin-right: 5px;
+}
+
+div.related ul::after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+.inline-search,
+form.inline-search input {
+    display: inline;
+}
+
+form.inline-search input[type='submit'] {
+    /* In some languages, more than 40px is required */
+    width: auto;
+    min-width: 40px;
+}
+
+div.document {
+    display: flex;
+    /* Don't let long code literals extend beyond the right side of the screen */
+    overflow-wrap: break-word;
+}
+
+/* Don't let long code literals extend beyond the right side of the screen */
+span.pre {
+    white-space: unset;
+}
+
+div.sphinxsidebar {
+    display: flex;
+    width: min(25vw, 350px);
+    float: none;
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
+    color: #444;
+    background-color: #eee;
+    border-radius: 5px;
+    line-height: 130%;
+    font-size: smaller;
+}
+
+div.sphinxsidebar h3,
+div.sphinxsidebar h4 {
+    margin-top: 1.5em;
+}
+
+div.bodywrapper {
+    margin-left: min(25vw, 350px);
+}
+
+div.sphinxsidebarwrapper {
+    box-sizing: border-box;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    float: none;
+    flex-grow: 1;
+}
+
+div.sphinxsidebarwrapper > h3:first-child {
+    margin-top: 0.2em;
+}
+
+div.sphinxsidebarwrapper > ul > li > ul > li {
+    margin-bottom: 0.4em;
+}
+
+div.sphinxsidebar a:hover {
+    color: #0095c4;
+}
+
+form.inline-search input,
+div.sphinxsidebar input,
+div.related input {
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    border: 1px solid #999999;
+    font-size: smaller;
+    border-radius: 3px;
+}
+
+div.sphinxsidebar input[type='text'] {
+    max-width: 150px;
+}
+
+#sidebarbutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12px;
+    min-width: 12px;
+    border-radius: 0 5px 5px 0;
+    border-left: none;
+}
+
+#sidebarbutton:hover {
+    background-color: #AAAAAA;
+}
+
+div.body {
+    padding: 0 0 0 1.2em;
+}
+
+div.body p, div.body dd, div.body li, div.body blockquote {
+    text-align: left;
+    line-height: 1.6;
+}
+div.body h1, div.body h2, div.body h3, div.body h4, div.body h5, div.body h6 {
+    margin: 0;
+    border: 0;
+    padding: 0.3em 0;
+}
+div.body dl.field-list > dt {
+    line-height: 1.6;
+}
+
+div.body hr {
+    border: 0;
+    background-color: #ccc;
+    height: 1px;
+}
+
+div.body pre {
+    border-radius: 3px;
+    border: 1px solid #ac9;
+}
+
+div.body {
+    .good pre {
+        border-left: 3px solid var(--good-border);
+    }
+    .bad pre {
+        border-left: 3px solid var(--bad-border);
+    }
+    .maybe pre {
+        border-left: 3px solid var(--middle-border);
+    }
+}
+
+div.code-block-caption {
+    background-color: #eee;
+    border: 1px solid #ac9;
+    border-bottom: none;
+    border-radius: 3px 3px 0 0;
+    padding: 0.3em 0.6em;
+    font-size: 90%;
+    color: #333;
+
+    & + div pre {
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+    }
+
+    & + div .copybutton {
+        border-top-right-radius: 0 !important;
+    }
+}
+
+/* Admonitions */
+:root {
+    --admonition-background: #eee;
+    --admonition-border: #ccc;
+    --admonition-color: black;
+    --attention-background: #bbddff5c;
+    --attention-border: #0000ff36;
+    --caution-background: #ffc;
+    --caution-border: #dd6;
+    --danger-background: #ffe4e4;
+    --danger-border: red;
+    --error-background: #ffe4e4;
+    --error-border: red;
+    --hint-background: #dfd;
+    --hint-border: green;
+    --seealso-background: #ffc;
+    --seealso-border: #dd6;
+    --tip-background: #dfd;
+    --tip-border: green;
+    --warning-background: #ffe4e4;
+    --warning-border: red;
+}
+
+div.body div.admonition {
+    background-color: var(--admonition-background);
+    border: 1px solid var(--admonition-border);
+    border-radius: 3px;
+    color: var(--admonition-color);
+}
+
+div.body div.admonition.attention {
+    background-color: var(--attention-background);
+    border-color: var(--attention-border);
+}
+
+div.body div.admonition.caution {
+    background-color: var(--caution-background);
+    border-color: var(--caution-border);
+}
+
+div.body div.admonition.danger {
+    background-color: var(--danger-background);
+    border-color: var(--danger-border);
+}
+
+div.body div.admonition.error {
+    background-color: var(--error-background);
+    border-color: var(--error-border);
+}
+
+div.body div.admonition.hint {
+    background-color: var(--hint-background);
+    border-color: var(--hint-border);
+}
+
+div.body div.admonition.seealso {
+    background-color: var(--seealso-background);
+    border-color: var(--seealso-border);
+}
+
+div.body div.admonition.tip {
+    background-color: var(--tip-background);
+    border-color: var(--tip-border);
+}
+
+div.body div.admonition.warning {
+    background-color: var(--warning-background);
+    border-color: var(--warning-border);
+}
+
+div.body div.impl-detail {
+    border-radius: 3px;
+}
+
+div.body div.impl-detail > p {
+    margin: 0;
+}
+
+div.body a {
+    color: #0072aa;
+}
+
+div.body a:visited {
+    color: #6363bb;
+}
+
+div.body a:hover {
+    color: #00b0e4;
+}
+
+tt, code, pre {
+    font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+    font-size: 96.5%;
+}
+
+div.body pre {
+    line-height: 120%;
+}
+
+div.body tt,
+div.body code {
+    border-radius: 3px;
+}
+
+div.body tt.descname,
+div.body code.descname {
+    font-size: 120%;
+}
+
+div.body tt.xref,
+div.body a tt,
+div.body code.xref,
+div.body a code {
+    font-weight: normal;
+}
+
+table.docutils {
+    border: 1px solid #ddd;
+    min-width: 20%;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+table.docutils td,
+table.docutils th {
+    border: 1px solid #ddd !important;
+    border-radius: 3px;
+    padding: 0.3em 0.5em;
+}
+
+table p,
+table li {
+    text-align: left !important;
+}
+
+table.docutils th {
+    background-color: #eee;
+}
+
+table.footnote,
+table.footnote td {
+    border: 0 !important;
+}
+
+div.footer {
+    line-height: 150%;
+    text-align: right;
+    width: auto;
+    margin-right: 10px;
+}
+
+div.footer a {
+    text-underline-offset: auto;
+}
+
+div.footer a:hover {
+    color: #0095c4;
+}
+
+/* C API return value annotations */
+:root {
+    --refcount: var(--good-color);
+    --refcount-return-borrowed-ref: var(--middle-color);
+}
+
+.refcount {
+    color: var(--refcount);
+}
+
+.refcount.return_borrowed_ref {
+    color: var(--refcount-return-borrowed-ref)
+}
+
+.stableabi {
+    color: #229;
+}
+
+/* C API thread safety annotations */
+:root {
+    --threadsafety-incompatible: var(--bad-color);
+    --threadsafety-compatible: var(--middle-color);
+    --threadsafety-distinct: var(--middle-color);
+    --threadsafety-shared: var(--good-color);
+    --threadsafety-atomic: var(--good-color);
+}
+
+.threadsafety.threadsafety-incompatible {
+    color: var(--threadsafety-incompatible);
+}
+
+.threadsafety.threadsafety-compatible {
+    color: var(--threadsafety-compatible);
+}
+
+.threadsafety.threadsafety-distinct {
+    color: var(--threadsafety-distinct);
+}
+
+.threadsafety.threadsafety-shared {
+    color: var(--threadsafety-shared);
+}
+
+.threadsafety.threadsafety-atomic {
+    color: var(--threadsafety-atomic);
+}
+
+
+dl > dt span ~ em,
+.sig {
+    font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+}
+
+.toctree-wrapper ul {
+    padding-left: 20px;
+}
+
+.theme-selector {
+    margin-left: .5em;
+}
+
+div.genindex-jumpbox,
+div.genindex-jumpbox > p {
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+div.genindex-jumpbox a {
+    margin: 0 5px;
+    min-width: 30px;
+    text-align: center;
+}
+
+.copybutton {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+    font-size: 80%;
+    padding-left: .5em;
+    padding-right: .5em;
+    height: 100%;
+    max-height: min(100%, 2.4em);
+    border-radius: 0 3px 0 0;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #ac9; /* follows div.body pre */
+    display: none;
+}
+
+.copybutton:hover {
+    background-color: #eee;
+}
+
+.copybutton:active {
+    background-color: #ddd;
+}
+
+.highlight:active .copybutton {
+    display: block;
+}
+
+.highlight:hover .copybutton {
+    display: block;
+}
+
+@media (max-width: 1023px) {
+    /* Body layout */
+    div.body {
+        min-width: 100%;
+        padding: 0;
+        font-size: 0.875rem;
+    }
+    div.bodywrapper {
+        margin: 0;
+    }
+    /* Typography */
+    div.body h1 {
+        font-size: 1.625rem;
+    }
+    div.body h2 {
+        font-size: 1.25rem;
+    }
+    div.body h3, div.body h4, div.body h5 {
+        font-size: 1rem;
+    }
+    /* Override default styles to make more readable */
+    div.body ul {
+        padding-inline-start: 1rem;
+    }
+    div.body blockquote {
+        margin-inline-start: 1rem;
+        margin-inline-end: 0;
+    }
+    /* Remove sidebar and top related bar */
+    div.related, div.sphinxsidebar {
+        display: none;
+    }
+    /* Anchorlinks are not hidden by fixed-positioned navbar when scrolled to */
+    html {
+        scroll-padding-top: 40px;
+    }
+    body {
+        margin-top: 40px;
+    }
+
+    /* Top navigation bar */
+    .mobile-nav {
+        display: block;
+        height: 40px;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        box-shadow: rgba(0, 0, 0, 0.25) 0 0 2px 0;
+        z-index: 1;
+    }
+    .mobile-nav * {
+        box-sizing: border-box;
+    }
+    .nav-content {
+        position: absolute;
+        z-index: 1;
+        height: 40px;
+        width: 100%;
+        display: flex;
+        background-color: white;
+    }
+    .nav-items-wrapper {
+        display: flex;
+        flex: auto;
+        padding: .25rem;
+        align-items: stretch;
+    }
+    .nav-logo {
+        margin-right: 1rem;
+        flex-shrink: 0;
+        align-self: center;
+    }
+    .nav-content img {
+        display: block;
+        width: 20px;
+    }
+    .version_switcher_placeholder {
+        margin-right: 1rem;
+    }
+    .version_switcher_placeholder > select {
+        height: 100%;
+    }
+    .nav-content .search {
+        display: flex;
+        flex: auto;
+        border: 1px solid #a9a9a9;
+        align-items: stretch;
+    }
+    .nav-content .search input[type=search] {
+        border: 0;
+        padding-left: 24px;
+        width: 100%;
+        flex: 1;
+    }
+    .nav-content .search input[type=submit] {
+        height: 100%;
+        box-shadow: none;
+        border: 0;
+        border-left: 1px solid #a9a9a9;
+        cursor: pointer;
+        margin-right: 0;
+    }
+    .nav-content .search svg {
+        position: absolute;
+        align-self: center;
+        padding-left: 4px;
+    }
+    .toggler__input {
+        display: none;
+    }
+    .toggler__label {
+        width: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        flex-shrink: 0;
+    }
+    .toggler__label:hover, .toggler__label:focus {
+        background-color: rgba(127 127 127 / 50%);
+    }
+    .toggler__label > span {
+        position: relative;
+        flex: none;
+        height: 2px;
+        width: 100%;
+        background: currentColor;
+        transition: all 400ms ease;
+    }
+    .toggler__label > span::before,
+    .toggler__label > span::after {
+        content: '';
+        height: 2px;
+        width: 100%;
+        background: inherit;
+        position: absolute;
+        left: 0;
+        top: -8px;
+    }
+    .toggler__label > span::after {
+        top: 8px;
+    }
+    .toggler__input:checked ~ nav > .toggler__label span {
+        transform: rotate(135deg);
+    }
+    .toggler__input:checked ~ nav > .toggler__label span::before {
+        transform: rotate(90deg);
+    }
+    .toggler__input:checked ~ nav > .toggler__label span::before,
+    .toggler__input:checked ~ nav > .toggler__label span::after {
+        top: 0;
+    }
+    .toggler__input:checked:hover ~ nav > .toggler__label span {
+        transform: rotate(315deg);
+    }
+    .toggler__input:checked ~ .menu-wrapper {
+        visibility: visible;
+        left: 0;
+    }
+
+    /* Sliding side menu */
+    .menu-wrapper {
+        display: block;
+        position: fixed;
+        top: 0;
+        transition: left 400ms ease;
+        left: -310px;
+        width: 300px;
+        height: 100%;
+        background-color: #eee;
+        color: #444444;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        overflow-y: auto;
+    }
+    .menu-wrapper.open {
+        visibility: visible;
+        left: 0;
+    }
+    .menu {
+        padding: 40px 10px 30px 20px;
+    }
+    .menu-wrapper h3,
+    .menu-wrapper h4 {
+        margin-bottom: 0;
+        font-weight: normal;
+    }
+    .menu-wrapper h4 {
+        font-size: 1.3em;
+    }
+    .menu-wrapper h3 {
+        font-size: 1.4em;
+    }
+    .menu-wrapper h3 + p,
+    .menu-wrapper h4 + p {
+        margin-top: 0.5rem;
+    }
+    .menu a {
+        font-size: smaller;
+        text-decoration: none;
+    }
+    .menu ul {
+        list-style: none;
+        line-height: 1.4;
+        overflow-wrap: break-word;
+        padding-left: 0;
+    }
+    .menu ul ul {
+        margin-left: 20px;
+        list-style: square;
+    }
+    .menu ul li {
+        margin-bottom: 0.5rem;
+    }
+    .language_switcher_placeholder {
+        margin-top: 2rem;
+    }
+    .language_switcher_placeholder select {
+        width: 100%;
+    }
+    .document {
+        position: relative;
+        z-index: 0;
+    }
+    /*Responsive tables*/
+    .responsive-table__container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .menu .theme-selector-label {
+        margin-top: .5em;
+        display: flex;
+        width: 100%;
+    }
+
+    .menu .theme-selector {
+        flex: auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    div.footer {
+        margin-top: -2em;
+    }
+}
+
+/* Version change directives */
+:root {
+    --versionadded: var(--good-color);
+    --versionchanged: var(--middle-color);
+    --deprecated: var(--bad-color);
+    --soft-deprecated: rgb(175, 0, 255);
+
+    --versionadded-border: var(--good-border);
+    --versionchanged-border: var(--middle-border);
+    --deprecated-border: var(--bad-border);
+    --soft-deprecated-border: rgb(175, 0, 255);
+}
+
+div.versionadded,
+div.versionchanged,
+div.deprecated,
+div.deprecated-removed {
+    border-left: 3px solid;
+    padding: 0 1rem;
+}
+
+div.versionadded {
+    border-left-color: var(--versionadded-border);
+}
+
+div.versionchanged {
+    border-left-color: var(--versionchanged-border);
+}
+
+div.deprecated,
+div.deprecated-removed,
+div.versionremoved {
+    border-left-color: var(--deprecated-border);
+}
+
+div.soft-deprecated {
+    border-left-color: var(--soft-deprecated-border);
+}
+
+div.versionadded .versionmodified {
+    color: var(--versionadded);
+}
+
+div.versionchanged .versionmodified {
+    color: var(--versionchanged);
+}
+
+div.deprecated .versionmodified,
+div.deprecated-removed .versionmodified,
+div.versionremoved .versionmodified {
+    color: var(--deprecated);
+}
+
+div.soft-deprecated .versionmodified {
+    color: var(--soft-deprecated);
+}
+
+/* Hide header when printing */
+@media print {
+    div.mobile-nav {
+        display: none;
+    }
+}
+
+</style>
+    <style type="text/css" media="(prefers-color-scheme: dark)" id="pygments_dark_css">
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #49483e }
+.highlight { background: #272822; color: #F8F8F2 }
+.highlight .c { color: #959077 } /* Comment */
+.highlight .err { color: #ED007E; background-color: #1E0010 } /* Error */
+.highlight .esc { color: #F8F8F2 } /* Escape */
+.highlight .g { color: #F8F8F2 } /* Generic */
+.highlight .k { color: #66D9EF } /* Keyword */
+.highlight .l { color: #AE81FF } /* Literal */
+.highlight .n { color: #F8F8F2 } /* Name */
+.highlight .o { color: #FF4689 } /* Operator */
+.highlight .x { color: #F8F8F2 } /* Other */
+.highlight .p { color: #F8F8F2 } /* Punctuation */
+.highlight .ch { color: #959077 } /* Comment.Hashbang */
+.highlight .cm { color: #959077 } /* Comment.Multiline */
+.highlight .cp { color: #959077 } /* Comment.Preproc */
+.highlight .cpf { color: #959077 } /* Comment.PreprocFile */
+.highlight .c1 { color: #959077 } /* Comment.Single */
+.highlight .cs { color: #959077 } /* Comment.Special */
+.highlight .gd { color: #FF4689 } /* Generic.Deleted */
+.highlight .ge { color: #F8F8F2; font-style: italic } /* Generic.Emph */
+.highlight .ges { color: #F8F8F2; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.highlight .gr { color: #F8F8F2 } /* Generic.Error */
+.highlight .gh { color: #F8F8F2 } /* Generic.Heading */
+.highlight .gi { color: #A6E22E } /* Generic.Inserted */
+.highlight .go { color: #66D9EF } /* Generic.Output */
+.highlight .gp { color: #FF4689; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { color: #F8F8F2; font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #959077 } /* Generic.Subheading */
+.highlight .gt { color: #F8F8F2 } /* Generic.Traceback */
+.highlight .kc { color: #66D9EF } /* Keyword.Constant */
+.highlight .kd { color: #66D9EF } /* Keyword.Declaration */
+.highlight .kn { color: #FF4689 } /* Keyword.Namespace */
+.highlight .kp { color: #66D9EF } /* Keyword.Pseudo */
+.highlight .kr { color: #66D9EF } /* Keyword.Reserved */
+.highlight .kt { color: #66D9EF } /* Keyword.Type */
+.highlight .ld { color: #E6DB74 } /* Literal.Date */
+.highlight .m { color: #AE81FF } /* Literal.Number */
+.highlight .s { color: #E6DB74 } /* Literal.String */
+.highlight .na { color: #A6E22E } /* Name.Attribute */
+.highlight .nb { color: #F8F8F2 } /* Name.Builtin */
+.highlight .nc { color: #A6E22E } /* Name.Class */
+.highlight .no { color: #66D9EF } /* Name.Constant */
+.highlight .nd { color: #A6E22E } /* Name.Decorator */
+.highlight .ni { color: #F8F8F2 } /* Name.Entity */
+.highlight .ne { color: #A6E22E } /* Name.Exception */
+.highlight .nf { color: #A6E22E } /* Name.Function */
+.highlight .nl { color: #F8F8F2 } /* Name.Label */
+.highlight .nn { color: #F8F8F2 } /* Name.Namespace */
+.highlight .nx { color: #A6E22E } /* Name.Other */
+.highlight .py { color: #F8F8F2 } /* Name.Property */
+.highlight .nt { color: #FF4689 } /* Name.Tag */
+.highlight .nv { color: #F8F8F2 } /* Name.Variable */
+.highlight .ow { color: #FF4689 } /* Operator.Word */
+.highlight .pm { color: #F8F8F2 } /* Punctuation.Marker */
+.highlight .w { color: #F8F8F2 } /* Text.Whitespace */
+.highlight .mb { color: #AE81FF } /* Literal.Number.Bin */
+.highlight .mf { color: #AE81FF } /* Literal.Number.Float */
+.highlight .mh { color: #AE81FF } /* Literal.Number.Hex */
+.highlight .mi { color: #AE81FF } /* Literal.Number.Integer */
+.highlight .mo { color: #AE81FF } /* Literal.Number.Oct */
+.highlight .sa { color: #E6DB74 } /* Literal.String.Affix */
+.highlight .sb { color: #E6DB74 } /* Literal.String.Backtick */
+.highlight .sc { color: #E6DB74 } /* Literal.String.Char */
+.highlight .dl { color: #E6DB74 } /* Literal.String.Delimiter */
+.highlight .sd { color: #E6DB74 } /* Literal.String.Doc */
+.highlight .s2 { color: #E6DB74 } /* Literal.String.Double */
+.highlight .se { color: #AE81FF } /* Literal.String.Escape */
+.highlight .sh { color: #E6DB74 } /* Literal.String.Heredoc */
+.highlight .si { color: #E6DB74 } /* Literal.String.Interpol */
+.highlight .sx { color: #E6DB74 } /* Literal.String.Other */
+.highlight .sr { color: #E6DB74 } /* Literal.String.Regex */
+.highlight .s1 { color: #E6DB74 } /* Literal.String.Single */
+.highlight .ss { color: #E6DB74 } /* Literal.String.Symbol */
+.highlight .bp { color: #F8F8F2 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #A6E22E } /* Name.Function.Magic */
+.highlight .vc { color: #F8F8F2 } /* Name.Variable.Class */
+.highlight .vg { color: #F8F8F2 } /* Name.Variable.Global */
+.highlight .vi { color: #F8F8F2 } /* Name.Variable.Instance */
+.highlight .vm { color: #F8F8F2 } /* Name.Variable.Magic */
+.highlight .il { color: #AE81FF } /* Literal.Number.Integer.Long */
+</style>
+    
+    <script>
+const DOCUMENTATION_OPTIONS = {
+    VERSION: '3.14.6',
+    LANGUAGE: 'en',
+    COLLAPSE_INDEX: false,
+    BUILDER: 'html',
+    FILE_SUFFIX: '.html',
+    LINK_SUFFIX: '.html',
+    HAS_SOURCE: true,
+    SOURCELINK_SUFFIX: '.txt',
+    NAVIGATION_WITH_KEYS: false,
+    SHOW_SEARCH_SUMMARY: true,
+    ENABLE_SEARCH_SHORTCUTS: true,
+};
+</script>
+    <script>
+/*
+ * Base JavaScript utilities for all Sphinx HTML documentation.
+ */
+"use strict";
+
+const BLACKLISTED_KEY_CONTROL_ELEMENTS = new Set([
+  "TEXTAREA",
+  "INPUT",
+  "SELECT",
+  "BUTTON",
+]);
+
+const _ready = (callback) => {
+  if (document.readyState !== "loading") {
+    callback();
+  } else {
+    document.addEventListener("DOMContentLoaded", callback);
+  }
+};
+
+/**
+ * Small JavaScript module for the documentation.
+ */
+const Documentation = {
+  init: () => {
+    Documentation.initDomainIndexTable();
+    Documentation.initOnKeyListeners();
+  },
+
+  /**
+   * i18n support
+   */
+  TRANSLATIONS: {},
+  PLURAL_EXPR: (n) => (n === 1 ? 0 : 1),
+  LOCALE: "unknown",
+
+  // gettext and ngettext don't access this so that the functions
+  // can safely bound to a different name (_ = Documentation.gettext)
+  gettext: (string) => {
+    const translated = Documentation.TRANSLATIONS[string];
+    switch (typeof translated) {
+      case "undefined":
+        return string; // no translation
+      case "string":
+        return translated; // translation exists
+      default:
+        return translated[0]; // (singular, plural) translation tuple exists
+    }
+  },
+
+  ngettext: (singular, plural, n) => {
+    const translated = Documentation.TRANSLATIONS[singular];
+    if (typeof translated !== "undefined")
+      return translated[Documentation.PLURAL_EXPR(n)];
+    return n === 1 ? singular : plural;
+  },
+
+  addTranslations: (catalog) => {
+    Object.assign(Documentation.TRANSLATIONS, catalog.messages);
+    Documentation.PLURAL_EXPR = new Function(
+      "n",
+      `return (${catalog.plural_expr})`
+    );
+    Documentation.LOCALE = catalog.locale;
+  },
+
+  /**
+   * helper function to focus on search bar
+   */
+  focusSearchBar: () => {
+    document.querySelectorAll("input[name=q]")[0]?.focus();
+  },
+
+  /**
+   * Initialise the domain index toggle buttons
+   */
+  initDomainIndexTable: () => {
+    const toggler = (el) => {
+      const idNumber = el.id.substr(7);
+      const toggledRows = document.querySelectorAll(`tr.cg-${idNumber}`);
+      if (el.src.substr(-9) === "minus.png") {
+        el.src = `${el.src.substr(0, el.src.length - 9)}plus.png`;
+        toggledRows.forEach((el) => (el.style.display = "none"));
+      } else {
+        el.src = `${el.src.substr(0, el.src.length - 8)}minus.png`;
+        toggledRows.forEach((el) => (el.style.display = ""));
+      }
+    };
+
+    const togglerElements = document.querySelectorAll("img.toggler");
+    togglerElements.forEach((el) =>
+      el.addEventListener("click", (event) => toggler(event.currentTarget))
+    );
+    togglerElements.forEach((el) => (el.style.display = ""));
+    if (DOCUMENTATION_OPTIONS.COLLAPSE_INDEX) togglerElements.forEach(toggler);
+  },
+
+  initOnKeyListeners: () => {
+    // only install a listener if it is really needed
+    if (
+      !DOCUMENTATION_OPTIONS.NAVIGATION_WITH_KEYS &&
+      !DOCUMENTATION_OPTIONS.ENABLE_SEARCH_SHORTCUTS
+    )
+      return;
+
+    document.addEventListener("keydown", (event) => {
+      // bail for input elements
+      if (BLACKLISTED_KEY_CONTROL_ELEMENTS.has(document.activeElement.tagName)) return;
+      // bail with special keys
+      if (event.altKey || event.ctrlKey || event.metaKey) return;
+
+      if (!event.shiftKey) {
+        switch (event.key) {
+          case "ArrowLeft":
+            if (!DOCUMENTATION_OPTIONS.NAVIGATION_WITH_KEYS) break;
+
+            const prevLink = document.querySelector('link[rel="prev"]');
+            if (prevLink && prevLink.href) {
+              window.location.href = prevLink.href;
+              event.preventDefault();
+            }
+            break;
+          case "ArrowRight":
+            if (!DOCUMENTATION_OPTIONS.NAVIGATION_WITH_KEYS) break;
+
+            const nextLink = document.querySelector('link[rel="next"]');
+            if (nextLink && nextLink.href) {
+              window.location.href = nextLink.href;
+              event.preventDefault();
+            }
+            break;
+        }
+      }
+
+      // some keyboard layouts may need Shift to get /
+      switch (event.key) {
+        case "/":
+          if (!DOCUMENTATION_OPTIONS.ENABLE_SEARCH_SHORTCUTS) break;
+          Documentation.focusSearchBar();
+          event.preventDefault();
+      }
+    });
+  },
+};
+
+// quick alias for translations
+const _ = Documentation.gettext;
+
+_ready(Documentation.init);
+
+</script>
+    <script>
+/* Highlighting utilities for Sphinx HTML documentation. */
+"use strict";
+
+const SPHINX_HIGHLIGHT_ENABLED = true
+
+/**
+ * highlight a given string on a node by wrapping it in
+ * span elements with the given class name.
+ */
+const _highlight = (node, addItems, text, className) => {
+  if (node.nodeType === Node.TEXT_NODE) {
+    const val = node.nodeValue;
+    const parent = node.parentNode;
+    const pos = val.toLowerCase().indexOf(text);
+    if (
+      pos >= 0 &&
+      !parent.classList.contains(className) &&
+      !parent.classList.contains("nohighlight")
+    ) {
+      let span;
+
+      const closestNode = parent.closest("body, svg, foreignObject");
+      const isInSVG = closestNode && closestNode.matches("svg");
+      if (isInSVG) {
+        span = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+      } else {
+        span = document.createElement("span");
+        span.classList.add(className);
+      }
+
+      span.appendChild(document.createTextNode(val.substr(pos, text.length)));
+      const rest = document.createTextNode(val.substr(pos + text.length));
+      parent.insertBefore(
+        span,
+        parent.insertBefore(
+          rest,
+          node.nextSibling
+        )
+      );
+      node.nodeValue = val.substr(0, pos);
+      /* There may be more occurrences of search term in this node. So call this
+       * function recursively on the remaining fragment.
+       */
+      _highlight(rest, addItems, text, className);
+
+      if (isInSVG) {
+        const rect = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "rect"
+        );
+        const bbox = parent.getBBox();
+        rect.x.baseVal.value = bbox.x;
+        rect.y.baseVal.value = bbox.y;
+        rect.width.baseVal.value = bbox.width;
+        rect.height.baseVal.value = bbox.height;
+        rect.setAttribute("class", className);
+        addItems.push({ parent: parent, target: rect });
+      }
+    }
+  } else if (node.matches && !node.matches("button, select, textarea")) {
+    node.childNodes.forEach((el) => _highlight(el, addItems, text, className));
+  }
+};
+const _highlightText = (thisNode, text, className) => {
+  let addItems = [];
+  _highlight(thisNode, addItems, text, className);
+  addItems.forEach((obj) =>
+    obj.parent.insertAdjacentElement("beforebegin", obj.target)
+  );
+};
+
+/**
+ * Small JavaScript module for the documentation.
+ */
+const SphinxHighlight = {
+
+  /**
+   * highlight the search words provided in localstorage in the text
+   */
+  highlightSearchWords: () => {
+    if (!SPHINX_HIGHLIGHT_ENABLED) return;  // bail if no highlight
+
+    // get and clear terms from localstorage
+    const url = new URL(window.location);
+    const highlight =
+        localStorage.getItem("sphinx_highlight_terms")
+        || url.searchParams.get("highlight")
+        || "";
+    localStorage.removeItem("sphinx_highlight_terms")
+    url.searchParams.delete("highlight");
+    window.history.replaceState({}, "", url);
+
+    // get individual terms from highlight string
+    const terms = highlight.toLowerCase().split(/\s+/).filter(x => x);
+    if (terms.length === 0) return; // nothing to do
+
+    // There should never be more than one element matching "div.body"
+    const divBody = document.querySelectorAll("div.body");
+    const body = divBody.length ? divBody[0] : document.querySelector("body");
+    window.setTimeout(() => {
+      terms.forEach((term) => _highlightText(body, term, "highlighted"));
+    }, 10);
+
+    const searchBox = document.getElementById("searchbox");
+    if (searchBox === null) return;
+    searchBox.appendChild(
+      document
+        .createRange()
+        .createContextualFragment(
+          '<p class="highlight-link">' +
+            '<a href="javascript:SphinxHighlight.hideSearchWords()">' +
+            _("Hide Search Matches") +
+            "</a></p>"
+        )
+    );
+  },
+
+  /**
+   * helper function to hide the search marks again
+   */
+  hideSearchWords: () => {
+    document
+      .querySelectorAll("#searchbox .highlight-link")
+      .forEach((el) => el.remove());
+    document
+      .querySelectorAll("span.highlighted")
+      .forEach((el) => el.classList.remove("highlighted"));
+    localStorage.removeItem("sphinx_highlight_terms")
+  },
+
+  initEscapeListener: () => {
+    // only install a listener if it is really needed
+    if (!DOCUMENTATION_OPTIONS.ENABLE_SEARCH_SHORTCUTS) return;
+
+    document.addEventListener("keydown", (event) => {
+      // bail for input elements
+      if (BLACKLISTED_KEY_CONTROL_ELEMENTS.has(document.activeElement.tagName)) return;
+      // bail with special keys
+      if (event.shiftKey || event.altKey || event.ctrlKey || event.metaKey) return;
+      if (DOCUMENTATION_OPTIONS.ENABLE_SEARCH_SHORTCUTS && (event.key === "Escape")) {
+        SphinxHighlight.hideSearchWords();
+        event.preventDefault();
+      }
+    });
+  },
+};
+
+_ready(() => {
+  /* Do not call highlightSearchWords() when we are on the search page.
+   * It will highlight words from the *previous* search query.
+   */
+  if (typeof Search === "undefined") SphinxHighlight.highlightSearchWords();
+  SphinxHighlight.initEscapeListener();
+});
+
+</script>
+    
+    <script>
+/*
+ * This script makes the Sphinx sidebar collapsible.
+ *
+ * .sphinxsidebar contains .sphinxsidebarwrapper.  This script adds
+ * in .sphixsidebar, after .sphinxsidebarwrapper, the #sidebarbutton
+ * used to collapse and expand the sidebar.
+ *
+ * When the sidebar is collapsed the .sphinxsidebarwrapper is hidden
+ * and the width of the sidebar and the margin-left of the document
+ * are decreased. When the sidebar is expanded the opposite happens.
+ * This script saves a per-browser/per-session cookie used to
+ * remember the position of the sidebar among the pages.
+ * Once the browser is closed the cookie is deleted and the position
+ * reset to the default (expanded).
+ *
+ */
+
+const initialiseSidebar = () => {
+  
+    
+  
+
+  // global elements used by the functions.
+  const bodyWrapper = document.getElementsByClassName("bodywrapper")[0]
+  const sidebar = document.getElementsByClassName("sphinxsidebar")[0]
+  const sidebarWrapper = document.getElementsByClassName('sphinxsidebarwrapper')[0]
+  const sidebarButton = document.getElementById("sidebarbutton")
+  const sidebarArrow = sidebarButton.querySelector('span')
+
+  // for some reason, the document has no sidebar; do not run into errors
+  if (typeof sidebar === "undefined") return;
+
+  const flipArrow = element => element.innerText = (element.innerText === "»") ? "«" : "»"
+
+  const collapse_sidebar = () => {
+    bodyWrapper.style.marginLeft = ".8em";
+    sidebar.style.width = ".8em"
+    sidebarWrapper.style.display = "none"
+    flipArrow(sidebarArrow)
+    sidebarButton.title = _('Expand sidebar')
+    window.localStorage.setItem("sidebar", "collapsed")
+  }
+
+  const expand_sidebar = () => {
+    bodyWrapper.style.marginLeft = ""
+    sidebar.style.removeProperty("width")
+    sidebarWrapper.style.display = ""
+    flipArrow(sidebarArrow)
+    sidebarButton.title = _('Collapse sidebar')
+    window.localStorage.setItem("sidebar", "expanded")
+  }
+
+  sidebarButton.addEventListener("click", () => {
+    (sidebarWrapper.style.display === "none") ? expand_sidebar() : collapse_sidebar()
+  })
+
+  if (!window.localStorage.getItem("sidebar")) return
+  const value = window.localStorage.getItem("sidebar")
+  if (value === "collapsed") collapse_sidebar();
+  else if (value === "expanded") expand_sidebar();
+}
+
+if (document.readyState !== "loading") initialiseSidebar()
+else document.addEventListener("DOMContentLoaded", initialiseSidebar)
+</script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Python 3.14.6 documentation"
+          href="https://docs.python.org/3/_static/opensearch.xml"/>
+    <link rel="author" title="About these documents" href="https://docs.python.org/3/about.html" />
+    <link rel="index" title="Index" href="https://docs.python.org/3/genindex.html" />
+    <link rel="search" title="Search" href="https://docs.python.org/3/search.html" />
+    <link rel="copyright" title="Copyright" href="https://docs.python.org/3/copyright.html" />
+    <link rel="next" title="6. Modules" href="modules.html" />
+    <link rel="prev" title="4. More Control Flow Tools" href="controlflow.html" />
+    
+      
+      <script defer file-types="bz2,epub,zip" data-domain="docs.python.org" src="https://analytics.python.org/js/script.file-downloads.outbound-links.js"></script>
+      
+      <link rel="canonical" href="datastructures.html">
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<style type="text/css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+/* Common colours */
+:root {
+    --good-color: rgb(79 196 100);
+    --good-border: var(--good-color);
+    --middle-color: rgb(244, 227, 76);
+    --middle-border: var(--middle-color);
+    --bad-color: rgb(244, 76, 78);
+    --bad-border: var(--bad-color);
+}
+
+
+/* Browser elements */
+:root {
+    scrollbar-color: #616161 transparent;
+    color-scheme: dark;
+}
+
+html,
+body {
+    background-color: #222;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+div.related {
+    color: rgba(255, 255, 255, 0.7); /* classic overwrite */
+    border-color: #424242;
+}
+
+/* SIDEBAR */
+div.sphinxsidebar, .menu-wrapper {
+    background-color: #333;
+    color: inherit;
+}
+
+#sidebarbutton {
+    /* important to overwrite style attribute */
+    background-color: #555 !important;
+    color: inherit !important;
+}
+
+div.sidebar, aside.sidebar {
+    background-color: #424242;
+    border-color: #616161;
+}
+
+/* ANCHORS AND HIGHLIGHTS */
+div.body a {
+    color: #7af;
+}
+
+div.body a:visited {
+    color: #09e;
+}
+
+a.headerlink:hover {
+    background-color: #424242;
+}
+
+div.related a {
+    color: currentColor;
+}
+
+div.footer,
+div.footer a {
+    color: currentColor; /* classic overwrites */
+}
+
+dt:target,
+span.highlighted {
+    background-color: #616161;
+}
+
+.footnote:target {
+    background-color: #2c3e50;
+}
+
+/* Below for most things in text */
+
+dl.field-list > dt {
+    background-color: #434;
+}
+
+table.docutils td,
+table.docutils th {
+    border-color: #616161 !important;
+}
+
+table.docutils th {
+    background-color: #424242;
+}
+
+.stableabi {
+    color: #bbf;
+}
+
+div.body pre {
+    border-color: #616161;
+}
+
+div.code-block-caption {
+    background-color: #333;
+    border-color: #616161;
+    color: white;
+}
+
+code {
+    background-color: #424242;
+}
+
+div.body div.seealso {
+    background-color: rgba(255, 255, 0, 0.1);
+}
+
+div.warning {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+.warning code {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+/* Admonitions */
+:root {
+    --admonition-background: #ffffff1a;
+    --admonition-border: currentColor;
+    --admonition-color: #ffffffde;
+    --attention-background: #ffffff1a;
+    --attention-border: currentColor;
+    --caution-background: #ffff001a;
+    --caution-border: #dd6;
+    --danger-background: #f003;
+    --danger-border: #f66;
+    --error-background: #f003;
+    --error-border: #f66;
+    --hint-background: #0044117a;
+    --hint-border: green;
+    --seealso-background: #ffff001a;
+    --seealso-border: #dd6;
+    --tip-background: #0044117a;
+    --tip-border: green;
+    --warning-background: #ff000033;
+    --warning-border: #ff6666;
+}
+
+aside.topic,
+div.topic,
+div.note,
+nav.contents {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: currentColor;
+}
+
+.note code {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav {
+    box-shadow: rgba(255, 255, 255, 0.25) 0 0 2px 0;
+}
+
+.nav-content {
+    background-color: black;
+}
+
+img.invert-in-dark-mode {
+    filter: invert(1) hue-rotate(.5turn);
+}
+
+/* -- object description styles --------------------------------------------- */
+
+/* C++ specific styling */
+
+/* Override Sphinx's basic.css to fix colour contrast */
+.sig.c   .k, .sig.c   .kt,
+.sig.cpp .k, .sig.cpp .kt {
+    color: #5283ff;
+}
+
+/* Version change directives */
+:root {
+    --versionadded: var(--good-color);
+    --versionchanged: var(--middle-color);
+    --deprecated: var(--bad-color);
+    --soft-deprecated: rgb(206, 100, 255);
+    --soft-deprecated-border: rgb(206, 100, 255);
+}
+
+.copybutton {
+    color: #ac9; /* follows div.body pre */
+    background-color: #222222; /* follows body */
+}
+
+.copybutton:hover {
+    background-color: #434343;
+}
+
+.copybutton:active {
+    background-color: #656565;
+}
+
+</style>
+    <link rel="shortcut icon" type="image/png" href="data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M7.90472%200.00013087C7.24498%200.00316295%206.61493%200.0588153%206.06056%200.15584C4.42744%200.441207%204.13093%201.0385%204.13093%202.14002V3.59479H7.99018V4.07971H4.13093H2.68259C1.56098%204.07971%200.578874%204.7465%200.271682%206.01495C-0.0826595%207.4689%20-0.0983765%208.37618%200.271682%209.89434C0.546011%2011.0244%201.20115%2011.8296%202.32275%2011.8296H3.64965V10.0856C3.64965%208.82574%204.75178%207.71441%206.06056%207.71441H9.91531C10.9883%207.71441%2011.8449%206.84056%2011.8449%205.77472V2.14002C11.8449%201.10556%2010.9626%200.328486%209.91531%200.15584C9.25235%200.046687%208.56447%20-0.00290121%207.90472%200.00013087ZM5.81767%201.17017C6.2163%201.17017%206.54184%201.49742%206.54184%201.89978C6.54184%202.30072%206.2163%202.62494%205.81767%202.62494C5.41761%202.62494%205.0935%202.30072%205.0935%201.89978C5.0935%201.49742%205.41761%201.17017%205.81767%201.17017Z%22%20fill%3D%22url%28%23paint0_linear%29%22%2F%3E%0A%3Cpath%20d%3D%22M12.3262%204.07971V5.77472C12.3262%207.08883%2011.1998%208.19488%209.9153%208.19488H6.06055C5.00466%208.19488%204.13092%209.0887%204.13092%2010.1346V13.7693C4.13092%2014.8037%205.04038%2015.4122%206.06055%2015.709C7.28217%2016.0642%208.45364%2016.1285%209.9153%2015.709C10.8869%2015.4307%2011.8449%2014.8708%2011.8449%2013.7693V12.3145H7.99017V11.8296H11.8449H13.7746C14.8962%2011.8296%2015.3141%2011.0558%2015.7042%209.89434C16.1071%208.69865%2016.09%207.5488%2015.7042%206.01495C15.427%204.91058%2014.8976%204.07971%2013.7746%204.07971H12.3262ZM10.1582%2013.2843C10.5583%2013.2843%2010.8824%2013.6086%2010.8824%2014.0095C10.8824%2014.4119%2010.5583%2014.7391%2010.1582%2014.7391C9.75955%2014.7391%209.43402%2014.4119%209.43402%2014.0095C9.43402%2013.6086%209.75955%2013.2843%2010.1582%2013.2843Z%22%20fill%3D%22url%28%23paint1_linear%29%22%2F%3E%0A%3Cdefs%3E%0A%3ClinearGradient%20id%3D%22paint0_linear%22%20x1%3D%221.25961e-08%22%20y1%3D%221.08223e-08%22%20x2%3D%228.81664%22%20y2%3D%227.59597%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%3Cstop%20stop-color%3D%22%235A9FD4%22%2F%3E%0A%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23306998%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3ClinearGradient%20id%3D%22paint1_linear%22%20x1%3D%2210.0654%22%20y1%3D%2213.8872%22%20x2%3D%226.91912%22%20y2%3D%229.42957%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%3Cstop%20stop-color%3D%22%23FFD43B%22%2F%3E%0A%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFE873%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3C%2Fdefs%3E%0A%3C%2Fsvg%3E%0A">
+            <script>
+// Extract copyable text from the code block ignoring the
+// prompts and output.
+function getCopyableText(rootElement) {
+    rootElement = rootElement.cloneNode(true)
+    // tracebacks (.gt) contain bare text elements that
+    // need to be removed
+    const tracebacks = rootElement.querySelectorAll(".gt")
+    for (const el of tracebacks) {
+        while (
+            el.nextSibling &&
+            (el.nextSibling.nodeType !== Node.ELEMENT_NODE ||
+                !el.nextSibling.matches(".gp, .go"))
+        ) {
+            el.nextSibling.remove()
+        }
+    }
+    // Remove all elements with the "go" (Generic.Output),
+    // "gp" (Generic.Prompt), or "gt" (Generic.Traceback) CSS class
+    const elements = rootElement.querySelectorAll(".gp, .go, .gt, .linenos")
+    for (const el of elements) {
+        el.remove()
+    }
+    return rootElement.innerText.trim()
+}
+
+const loadCopyButton = () => {
+    const button = document.createElement("button")
+    button.classList.add("copybutton")
+    button.type = "button"
+    button.innerText = _("Copy")
+    button.title = _("Copy to clipboard")
+
+    const makeOnButtonClick = () => {
+        let timeout = null
+        // define the behavior of the button when it's clicked
+        return async event => {
+            // check if the clipboard is available
+            if (!navigator.clipboard || !navigator.clipboard.writeText) {
+                return;
+            }
+
+            clearTimeout(timeout)
+            const buttonEl = event.currentTarget
+            const codeEl = buttonEl.nextElementSibling
+
+            try {
+                await navigator.clipboard.writeText(getCopyableText(codeEl))
+            } catch (e) {
+                console.error(e.message)
+                return
+            }
+
+            buttonEl.innerText = _("Copied!")
+            timeout = setTimeout(() => {
+                buttonEl.innerText = _("Copy")
+            }, 1500)
+        }
+    }
+
+    const highlightedElements = document.querySelectorAll(
+        ".highlight-python .highlight,"
+        + ".highlight-python3 .highlight,"
+        + ".highlight-pycon .highlight,"
+        + ".highlight-pycon3 .highlight,"
+        + ".highlight-bash .highlight,"
+        + ".highlight-console .highlight,"
+        + ".highlight-doscon .highlight,"
+        + ".highlight-ps1con .highlight,"
+        + ".highlight-sh .highlight,"
+        + ".highlight-shell-session .highlight,"
+        + ".highlight-default .highlight"
+    )
+
+    // create and add the button to all the code blocks that contain >>>
+    highlightedElements.forEach(el => {
+        el.style.position = "relative"
+
+        // if we find a console prompt (.gp), prepend the (deeply cloned) button
+        const clonedButton = button.cloneNode(true)
+        // the onclick attribute is not cloned, set it on the new element
+        clonedButton.onclick = makeOnButtonClick()
+        el.prepend(clonedButton)
+    })
+}
+
+if (document.readyState !== "loading") {
+    loadCopyButton()
+} else {
+    document.addEventListener("DOMContentLoaded", loadCopyButton)
+}
+
+</script>
+            <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Make tables responsive by wrapping them in a div and making them scrollable
+    const tables = document.querySelectorAll("table.docutils")
+    tables.forEach(function(table){
+        table.outerHTML = '<div class="responsive-table__container">' + table.outerHTML + "</div>"
+    })
+
+    const togglerInput = document.querySelector(".toggler__input")
+    const togglerLabel = document.querySelector(".toggler__label")
+    const sideMenu = document.querySelector(".menu-wrapper")
+    const menuItems = document.querySelectorAll(".menu")
+    const doc = document.querySelector(".document")
+    const body = document.querySelector("body")
+
+    function closeMenu() {
+        togglerInput.checked = false
+        sideMenu.setAttribute("aria-expanded", "false")
+        sideMenu.setAttribute("aria-hidden", "true")
+        togglerLabel.setAttribute("aria-pressed", "false")
+        body.style.overflow = "visible"
+    }
+    function openMenu() {
+        togglerInput.checked = true
+        sideMenu.setAttribute("aria-expanded", "true")
+        sideMenu.setAttribute("aria-hidden", "false")
+        togglerLabel.setAttribute("aria-pressed", "true")
+        body.style.overflow = "hidden"
+    }
+
+    // Close menu when link on the sideMenu is clicked
+    sideMenu.addEventListener("click", function (event) {
+        let target = event.target
+        if (target.tagName.toLowerCase() !== "a") {
+            return
+        }
+        closeMenu()
+    })
+    // Add accessibility data when sideMenu is opened/closed
+    togglerInput.addEventListener("change", function (_event) {
+        togglerInput.checked ? openMenu() : closeMenu()
+    })
+    // Make sideMenu links tabbable only when visible
+    for(let menuItem of menuItems) {
+        if(togglerInput.checked) {
+          menuItem.setAttribute("tabindex", "0")
+        } else {
+          menuItem.setAttribute("tabindex", "-1")
+        }
+    }
+    // Close sideMenu when document body is clicked
+    doc.addEventListener("click", function () {
+        if (togglerInput.checked) {
+            closeMenu()
+        }
+    })
+})
+
+</script>
+            <script>
+function isInputFocused() {
+  const activeElement = document.activeElement;
+  return (
+    activeElement.tagName === 'INPUT' ||
+    activeElement.tagName === 'TEXTAREA' ||
+    activeElement.isContentEditable
+  );
+}
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === '/') {
+    if (!isInputFocused()) {
+      // Prevent "/" from being entered in the search box
+      event.preventDefault();
+
+      // Set the focus on the search box
+      const searchBox = document.getElementById('search-box');
+      searchBox.focus();
+    }
+  }
+});
+
+</script>
+            <script>
+const pydocthemeDark = document.getElementById('pydoctheme_dark_css')
+const pygmentsDark = document.getElementById('pygments_dark_css')
+const themeSelectors = document.getElementsByClassName('theme-selector')
+
+function activateTheme(theme) {
+  localStorage.setItem('currentTheme', theme);
+  [...themeSelectors].forEach(e => e.value = theme)
+  switch (theme) {
+    case 'light':
+      pydocthemeDark.media = 'not all'
+      pygmentsDark.media = 'not all'
+      break;
+    case 'dark':
+      pydocthemeDark.media = 'all'
+      pygmentsDark.media = 'all'
+      break;
+    default:
+      // auto
+      pydocthemeDark.media = '(prefers-color-scheme: dark)'
+      pygmentsDark.media = '(prefers-color-scheme: dark)'
+  }
+}
+
+activateTheme(localStorage.getItem('currentTheme') || 'auto')
+
+</script> 
+            <script>
+ function onSwitch(event) {
+     const option = event.target.selectedIndex;
+     const item = event.target.options[option];
+     window.location.href = item.dataset.url;
+ }
+
+ document.addEventListener("readthedocs-addons-data-ready", function(event) {
+   const config = event.detail.data()
+   const versionSelect = `
+   <select id="version_select" aria-label="Python version">
+   ${ config.versions.active.map(
+       (version) => `
+       <option
+           value="${ version.slug }"
+           ${ config.versions.current.slug === version.slug ? 'selected="selected"' : '' }
+           data-url="${ version.urls.documentation }">
+           ${ version.slug }
+       </option>`
+   ).join("\n") }
+   </select>
+   `;
+
+   // Prepend the current language to the options on the selector
+   let languages = config.projects.translations.concat(config.projects.current);
+   languages = languages.sort((a, b) => a.language.name.localeCompare(b.language.name));
+
+   const languageSelect = `
+   <select id="language_select" aria-label="Language">
+   ${ languages.map(
+       (translation) => `
+       <option
+           value="${ translation.slug }"
+           ${ config.projects.current.slug === translation.slug ? 'selected="selected"' : '' }
+           data-url="${ translation.urls.documentation }">
+           ${ translation.language.name }
+       </option>`
+   ).join("\n") }
+   </select>
+   `;
+
+   // Query all the placeholders because there are different ones for Desktop/Mobile
+   const versionPlaceholders = document.querySelectorAll(".version_switcher_placeholder");
+   for (placeholder of versionPlaceholders) {
+       placeholder.innerHTML = versionSelect;
+       let selectElement = placeholder.querySelector("select");
+       selectElement.addEventListener("change", onSwitch);
+   }
+
+   const languagePlaceholders = document.querySelectorAll(".language_switcher_placeholder");
+   for (placeholder of languagePlaceholders) {
+       placeholder.innerHTML = languageSelect;
+       let selectElement = placeholder.querySelector("select");
+       selectElement.addEventListener("change", onSwitch);
+   }
+ });
+
+</script>
+            <meta name="readthedocs-addons-api-version" content="1">
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M7.90472%200.00013087C7.24498%200.00316295%206.61493%200.0588153%206.06056%200.15584C4.42744%200.441207%204.13093%201.0385%204.13093%202.14002V3.59479H7.99018V4.07971H4.13093H2.68259C1.56098%204.07971%200.578874%204.7465%200.271682%206.01495C-0.0826595%207.4689%20-0.0983765%208.37618%200.271682%209.89434C0.546011%2011.0244%201.20115%2011.8296%202.32275%2011.8296H3.64965V10.0856C3.64965%208.82574%204.75178%207.71441%206.06056%207.71441H9.91531C10.9883%207.71441%2011.8449%206.84056%2011.8449%205.77472V2.14002C11.8449%201.10556%2010.9626%200.328486%209.91531%200.15584C9.25235%200.046687%208.56447%20-0.00290121%207.90472%200.00013087ZM5.81767%201.17017C6.2163%201.17017%206.54184%201.49742%206.54184%201.89978C6.54184%202.30072%206.2163%202.62494%205.81767%202.62494C5.41761%202.62494%205.0935%202.30072%205.0935%201.89978C5.0935%201.49742%205.41761%201.17017%205.81767%201.17017Z%22%20fill%3D%22url%28%23paint0_linear%29%22%2F%3E%0A%3Cpath%20d%3D%22M12.3262%204.07971V5.77472C12.3262%207.08883%2011.1998%208.19488%209.9153%208.19488H6.06055C5.00466%208.19488%204.13092%209.0887%204.13092%2010.1346V13.7693C4.13092%2014.8037%205.04038%2015.4122%206.06055%2015.709C7.28217%2016.0642%208.45364%2016.1285%209.9153%2015.709C10.8869%2015.4307%2011.8449%2014.8708%2011.8449%2013.7693V12.3145H7.99017V11.8296H11.8449H13.7746C14.8962%2011.8296%2015.3141%2011.0558%2015.7042%209.89434C16.1071%208.69865%2016.09%207.5488%2015.7042%206.01495C15.427%204.91058%2014.8976%204.07971%2013.7746%204.07971H12.3262ZM10.1582%2013.2843C10.5583%2013.2843%2010.8824%2013.6086%2010.8824%2014.0095C10.8824%2014.4119%2010.5583%2014.7391%2010.1582%2014.7391C9.75955%2014.7391%209.43402%2014.4119%209.43402%2014.0095C9.43402%2013.6086%209.75955%2013.2843%2010.1582%2013.2843Z%22%20fill%3D%22url%28%23paint1_linear%29%22%2F%3E%0A%3Cdefs%3E%0A%3ClinearGradient%20id%3D%22paint0_linear%22%20x1%3D%221.25961e-08%22%20y1%3D%221.08223e-08%22%20x2%3D%228.81664%22%20y2%3D%227.59597%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%3Cstop%20stop-color%3D%22%235A9FD4%22%2F%3E%0A%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23306998%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3ClinearGradient%20id%3D%22paint1_linear%22%20x1%3D%2210.0654%22%20y1%3D%2213.8872%22%20x2%3D%226.91912%22%20y2%3D%229.42957%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%3Cstop%20stop-color%3D%22%23FFD43B%22%2F%3E%0A%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFE873%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3C%2Fdefs%3E%0A%3C%2Fsvg%3E%0A" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="https://docs.python.org/3/search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="https://docs.python.org/3/contents.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="datastructures.html#">5. Data Structures</a><ul>
+<li><a class="reference internal" href="datastructures.html#more-on-lists">5.1. More on Lists</a><ul>
+<li><a class="reference internal" href="datastructures.html#using-lists-as-stacks">5.1.1. Using Lists as Stacks</a></li>
+<li><a class="reference internal" href="datastructures.html#using-lists-as-queues">5.1.2. Using Lists as Queues</a></li>
+<li><a class="reference internal" href="datastructures.html#list-comprehensions">5.1.3. List Comprehensions</a></li>
+<li><a class="reference internal" href="datastructures.html#nested-list-comprehensions">5.1.4. Nested List Comprehensions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="datastructures.html#the-del-statement">5.2. The <code class="xref std std-keyword docutils literal notranslate"><span class="pre">del</span></code> statement</a></li>
+<li><a class="reference internal" href="datastructures.html#tuples-and-sequences">5.3. Tuples and Sequences</a></li>
+<li><a class="reference internal" href="datastructures.html#sets">5.4. Sets</a></li>
+<li><a class="reference internal" href="datastructures.html#dictionaries">5.5. Dictionaries</a></li>
+<li><a class="reference internal" href="datastructures.html#looping-techniques">5.6. Looping Techniques</a></li>
+<li><a class="reference internal" href="datastructures.html#more-on-conditions">5.7. More on Conditions</a></li>
+<li><a class="reference internal" href="datastructures.html#comparing-sequences-and-other-types">5.8. Comparing Sequences and Other Types</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="controlflow.html"
+                          title="previous chapter"><span class="section-number">4. </span>More Control Flow Tools</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="modules.html"
+                          title="next chapter"><span class="section-number">6. </span>Modules</a></p>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const title = document.querySelector('meta[property="og:title"]').content;
+        const elements = document.querySelectorAll('.improvepage');
+        const pageurl = window.location.href.split('?')[0];
+        elements.forEach(element => {
+            const url = new URL(element.href.split('?')[0].replace("-nojs", ""));
+            url.searchParams.set('pagetitle', title);
+            url.searchParams.set('pageurl', pageurl);
+            url.searchParams.set('pagesource', "tutorial/datastructures.rst");
+            element.href = url.toString();
+        });
+    });
+  </script>
+  <div role="note" aria-label="source link">
+    <h3>This page</h3>
+    <ul class="this-page-menu">
+      <li><a href="https://docs.python.org/3/bugs.html">Report a bug</a></li>
+      <li><a class="improvepage" href="https://docs.python.org/3/improve-page-nojs.html">Improve this page</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/main/Doc/tutorial/datastructures.rst?plain=1"
+            rel="nofollow">Show source
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="https://docs.python.org/3/genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="https://docs.python.org/3/py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="6. Modules"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="controlflow.html" title="4. More Control Flow Tools"
+             accesskey="P">previous</a> |</li>
+
+          <li><img src="data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M7.90472%200.00013087C7.24498%200.00316295%206.61493%200.0588153%206.06056%200.15584C4.42744%200.441207%204.13093%201.0385%204.13093%202.14002V3.59479H7.99018V4.07971H4.13093H2.68259C1.56098%204.07971%200.578874%204.7465%200.271682%206.01495C-0.0826595%207.4689%20-0.0983765%208.37618%200.271682%209.89434C0.546011%2011.0244%201.20115%2011.8296%202.32275%2011.8296H3.64965V10.0856C3.64965%208.82574%204.75178%207.71441%206.06056%207.71441H9.91531C10.9883%207.71441%2011.8449%206.84056%2011.8449%205.77472V2.14002C11.8449%201.10556%2010.9626%200.328486%209.91531%200.15584C9.25235%200.046687%208.56447%20-0.00290121%207.90472%200.00013087ZM5.81767%201.17017C6.2163%201.17017%206.54184%201.49742%206.54184%201.89978C6.54184%202.30072%206.2163%202.62494%205.81767%202.62494C5.41761%202.62494%205.0935%202.30072%205.0935%201.89978C5.0935%201.49742%205.41761%201.17017%205.81767%201.17017Z%22%20fill%3D%22url%28%23paint0_linear%29%22%2F%3E%0A%3Cpath%20d%3D%22M12.3262%204.07971V5.77472C12.3262%207.08883%2011.1998%208.19488%209.9153%208.19488H6.06055C5.00466%208.19488%204.13092%209.0887%204.13092%2010.1346V13.7693C4.13092%2014.8037%205.04038%2015.4122%206.06055%2015.709C7.28217%2016.0642%208.45364%2016.1285%209.9153%2015.709C10.8869%2015.4307%2011.8449%2014.8708%2011.8449%2013.7693V12.3145H7.99017V11.8296H11.8449H13.7746C14.8962%2011.8296%2015.3141%2011.0558%2015.7042%209.89434C16.1071%208.69865%2016.09%207.5488%2015.7042%206.01495C15.427%204.91058%2014.8976%204.07971%2013.7746%204.07971H12.3262ZM10.1582%2013.2843C10.5583%2013.2843%2010.8824%2013.6086%2010.8824%2014.0095C10.8824%2014.4119%2010.5583%2014.7391%2010.1582%2014.7391C9.75955%2014.7391%209.43402%2014.4119%209.43402%2014.0095C9.43402%2013.6086%209.75955%2013.2843%2010.1582%2013.2843Z%22%20fill%3D%22url%28%23paint1_linear%29%22%2F%3E%0A%3Cdefs%3E%0A%3ClinearGradient%20id%3D%22paint0_linear%22%20x1%3D%221.25961e-08%22%20y1%3D%221.08223e-08%22%20x2%3D%228.81664%22%20y2%3D%227.59597%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%3Cstop%20stop-color%3D%22%235A9FD4%22%2F%3E%0A%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23306998%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3ClinearGradient%20id%3D%22paint1_linear%22%20x1%3D%2210.0654%22%20y1%3D%2213.8872%22%20x2%3D%226.91912%22%20y2%3D%229.42957%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%3Cstop%20stop-color%3D%22%23FFD43B%22%2F%3E%0A%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFE873%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3C%2Fdefs%3E%0A%3C%2Fsvg%3E%0A" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="https://docs.python.org/3/index.html">3.14.6 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">The Python Tutorial</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="datastructures.html"><span class="section-number">5. </span>Data Structures</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="https://docs.python.org/3/search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="data-structures">
+<span id="tut-structures"></span><h1><span class="section-number">5. </span>Data Structures<a class="headerlink" href="datastructures.html#data-structures" title="Link to this heading">¶</a></h1>
+<p>This chapter describes some things you’ve learned about already in more detail,
+and adds some new things as well.</p>
+<section id="more-on-lists">
+<span id="tut-morelists"></span><h2><span class="section-number">5.1. </span>More on Lists<a class="headerlink" href="datastructures.html#more-on-lists" title="Link to this heading">¶</a></h2>
+<p>The <a class="reference internal" href="https://docs.python.org/3/library/stdtypes.html#typesseq-list"><span class="std std-ref">list</span></a> data type has some more methods. Here are all
+of the methods of list objects:</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">list.</span></span><span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Add an item to the end of the list.  Similar to <code class="docutils literal notranslate"><span class="pre">a[len(a):]</span> <span class="pre">=</span> <span class="pre">[x]</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">list.</span></span><span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Extend the list by appending all the items from the iterable.  Similar to
+<code class="docutils literal notranslate"><span class="pre">a[len(a):]</span> <span class="pre">=</span> <span class="pre">iterable</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">list.</span></span><span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Insert an item at a given position.  The first argument is the index of the
+element before which to insert, so <code class="docutils literal notranslate"><span class="pre">a.insert(0,</span> <span class="pre">x)</span></code> inserts at the front of
+the list, and <code class="docutils literal notranslate"><span class="pre">a.insert(len(a),</span> <span class="pre">x)</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">a.append(x)</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">list.</span></span><span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Remove the first item from the list whose value is equal to <em>value</em>.  It raises a
+<a class="reference internal" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> if there is no such item.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">list.</span></span><span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Remove the item at the given position in the list, and return it.  If no index
+is specified, <code class="docutils literal notranslate"><span class="pre">a.pop()</span></code> removes and returns the last item in the list.
+It raises an <a class="reference internal" href="https://docs.python.org/3/library/exceptions.html#IndexError" title="IndexError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IndexError</span></code></a> if the list is empty or the index is
+outside the list range.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">list.</span></span><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Remove all items from the list.  Similar to <code class="docutils literal notranslate"><span class="pre">del</span> <span class="pre">a[:]</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">list.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span></dt>
+<dd><p>Return zero-based index of the first occurrence of <em>value</em> in the list.
+Raises a <a class="reference internal" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> if there is no such item.</p>
+<p>The optional arguments <em>start</em> and <em>end</em> are interpreted as in the slice
+notation and are used to limit the search to a particular subsequence of
+the list.  The returned index is computed relative to the beginning of the full
+sequence rather than the <em>start</em> argument.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">list.</span></span><span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Return the number of times <em>value</em> appears in the list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">list.</span></span><span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sort the items of the list in place (the arguments can be used for sort
+customization, see <a class="reference internal" href="https://docs.python.org/3/library/functions.html#sorted" title="sorted"><code class="xref py py-func docutils literal notranslate"><span class="pre">sorted()</span></code></a> for their explanation).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">list.</span></span><span class="sig-name descname"><span class="pre">reverse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Reverse the elements of the list in place.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">list.</span></span><span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Return a shallow copy of the list.  Similar to <code class="docutils literal notranslate"><span class="pre">a[:]</span></code>.</p>
+</dd></dl>
+
+<p>An example that uses most of the list methods:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;pear&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;kiwi&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fruits</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;apple&#39;</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fruits</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;tangerine&#39;</span><span class="p">)</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fruits</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;banana&#39;</span><span class="p">)</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fruits</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># Find next banana starting at position 4</span>
+<span class="go">6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fruits</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fruits</span>
+<span class="go">[&#39;banana&#39;, &#39;apple&#39;, &#39;kiwi&#39;, &#39;banana&#39;, &#39;pear&#39;, &#39;apple&#39;, &#39;orange&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fruits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;grape&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fruits</span>
+<span class="go">[&#39;banana&#39;, &#39;apple&#39;, &#39;kiwi&#39;, &#39;banana&#39;, &#39;pear&#39;, &#39;apple&#39;, &#39;orange&#39;, &#39;grape&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fruits</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fruits</span>
+<span class="go">[&#39;apple&#39;, &#39;apple&#39;, &#39;banana&#39;, &#39;banana&#39;, &#39;grape&#39;, &#39;kiwi&#39;, &#39;orange&#39;, &#39;pear&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fruits</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="go">&#39;pear&#39;</span>
+</pre></div>
+</div>
+<p>You might have noticed that methods like <code class="docutils literal notranslate"><span class="pre">insert</span></code>, <code class="docutils literal notranslate"><span class="pre">remove</span></code> or <code class="docutils literal notranslate"><span class="pre">sort</span></code> that
+only modify the list have no return value printed – they return the default
+<code class="docutils literal notranslate"><span class="pre">None</span></code>. <a class="footnote-reference brackets" href="datastructures.html#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>  This is a design principle for all mutable data structures in
+Python.</p>
+<p>Another thing you might notice is that not all data can be sorted or
+compared.  For instance, <code class="docutils literal notranslate"><span class="pre">[None,</span> <span class="pre">'hello',</span> <span class="pre">10]</span></code> doesn’t sort because
+integers can’t be compared to strings and <code class="docutils literal notranslate"><span class="pre">None</span></code> can’t be compared to
+other types.  Also, there are some types that don’t have a defined
+ordering relation.  For example, <code class="docutils literal notranslate"><span class="pre">3+4j</span> <span class="pre">&lt;</span> <span class="pre">5+7j</span></code> isn’t a valid
+comparison.</p>
+<section id="using-lists-as-stacks">
+<span id="tut-lists-as-stacks"></span><h3><span class="section-number">5.1.1. </span>Using Lists as Stacks<a class="headerlink" href="datastructures.html#using-lists-as-stacks" title="Link to this heading">¶</a></h3>
+<p>The list methods make it very easy to use a list as a stack, where the last
+element added is the first element retrieved (“last-in, first-out”).  To add an
+item to the top of the stack, use <a class="reference internal" href="https://docs.python.org/3/library/stdtypes.html#list.append" title="list.append"><code class="xref py py-meth docutils literal notranslate"><span class="pre">append()</span></code></a>.  To retrieve an item from the
+top of the stack, use <a class="reference internal" href="https://docs.python.org/3/library/stdtypes.html#list.pop" title="list.pop"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pop()</span></code></a> without an explicit index.  For example:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stack</span>
+<span class="go">[3, 4, 5, 6, 7]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="go">7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stack</span>
+<span class="go">[3, 4, 5, 6]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="go">6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stack</span>
+<span class="go">[3, 4]</span>
+</pre></div>
+</div>
+</section>
+<section id="using-lists-as-queues">
+<span id="tut-lists-as-queues"></span><h3><span class="section-number">5.1.2. </span>Using Lists as Queues<a class="headerlink" href="datastructures.html#using-lists-as-queues" title="Link to this heading">¶</a></h3>
+<p>It is also possible to use a list as a queue, where the first element added is
+the first element retrieved (“first-in, first-out”); however, lists are not
+efficient for this purpose.  While appends and pops from the end of list are
+fast, doing inserts or pops from the beginning of a list is slow (because all
+of the other elements have to be shifted by one).</p>
+<p>To implement a queue, use <a class="reference internal" href="https://docs.python.org/3/library/collections.html#collections.deque" title="collections.deque"><code class="xref py py-class docutils literal notranslate"><span class="pre">collections.deque</span></code></a> which was designed to
+have fast appends and pops from both ends.  For example:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">deque</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">queue</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="s2">&quot;Eric&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Michael&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Terry&quot;</span><span class="p">)</span>           <span class="c1"># Terry arrives</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Graham&quot;</span><span class="p">)</span>          <span class="c1"># Graham arrives</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>                 <span class="c1"># The first to arrive now leaves</span>
+<span class="go">&#39;Eric&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>                 <span class="c1"># The second to arrive now leaves</span>
+<span class="go">&#39;John&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">queue</span>                           <span class="c1"># Remaining queue in order of arrival</span>
+<span class="go">deque([&#39;Michael&#39;, &#39;Terry&#39;, &#39;Graham&#39;])</span>
+</pre></div>
+</div>
+</section>
+<section id="list-comprehensions">
+<span id="tut-listcomps"></span><h3><span class="section-number">5.1.3. </span>List Comprehensions<a class="headerlink" href="datastructures.html#list-comprehensions" title="Link to this heading">¶</a></h3>
+<p>List comprehensions provide a concise way to create lists.
+Common applications are to make new lists where each element is the result of
+some operations applied to each member of another sequence or iterable, or to
+create a subsequence of those elements that satisfy a certain condition.</p>
+<p>For example, assume we want to create a list of squares, like:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">squares</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">squares</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">squares</span>
+<span class="go">[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span>
+</pre></div>
+</div>
+<p>Note that this creates (or overwrites) a variable named <code class="docutils literal notranslate"><span class="pre">x</span></code> that still exists
+after the loop completes.  We can calculate the list of squares without any
+side effects using:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>or, equivalently:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>which is more concise and readable.</p>
+<p>A list comprehension consists of brackets containing an expression followed
+by a <code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code> clause, then zero or more <code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code> or <code class="xref std std-keyword docutils literal notranslate"><span class="pre">if</span></code>
+clauses.  The result will be a new list resulting from evaluating the expression
+in the context of the <code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code> and <code class="xref std std-keyword docutils literal notranslate"><span class="pre">if</span></code> clauses which follow it.
+For example, this listcomp combines the elements of two lists if they are not
+equal:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span> <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="n">y</span><span class="p">]</span>
+<span class="go">[(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]</span>
+</pre></div>
+</div>
+<p>and it’s equivalent to:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">combs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]:</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]:</span>
+<span class="gp">... </span>        <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="n">y</span><span class="p">:</span>
+<span class="gp">... </span>            <span class="n">combs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">combs</span>
+<span class="go">[(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]</span>
+</pre></div>
+</div>
+<p>Note how the order of the <a class="reference internal" href="https://docs.python.org/3/reference/compound_stmts.html#for"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a> and <a class="reference internal" href="https://docs.python.org/3/reference/compound_stmts.html#if"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">if</span></code></a> statements is the
+same in both these snippets.</p>
+<p>If the expression is a tuple (e.g. the <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code> in the previous example),
+it must be parenthesized.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># create a new list with the values doubled</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">vec</span><span class="p">]</span>
+<span class="go">[-8, -4, 0, 4, 8]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># filter the list to exclude negative numbers</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">vec</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">]</span>
+<span class="go">[0, 2, 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># apply a function to all the elements</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">vec</span><span class="p">]</span>
+<span class="go">[4, 2, 0, 2, 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># call a method on each element</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">freshfruit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;  banana&#39;</span><span class="p">,</span> <span class="s1">&#39;  loganberry &#39;</span><span class="p">,</span> <span class="s1">&#39;passion fruit  &#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">weapon</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">weapon</span> <span class="ow">in</span> <span class="n">freshfruit</span><span class="p">]</span>
+<span class="go">[&#39;banana&#39;, &#39;loganberry&#39;, &#39;passion fruit&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># create a list of 2-tuples like (number, square)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
+<span class="go">[(0, 0), (1, 1), (2, 4), (3, 9), (4, 16), (5, 25)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># the tuple must be parenthesized, otherwise an error is raised</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
+<span class="w">    </span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
+<span class="w">     </span><span class="pm">^^^^^^^</span>
+<span class="gr">SyntaxError</span>: <span class="n">did you forget parentheses around the comprehension target?</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># flatten a list using a listcomp with two &#39;for&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">num</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">vec</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">elem</span><span class="p">]</span>
+<span class="go">[1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+</pre></div>
+</div>
+<p>List comprehensions can contain complex expressions and nested functions:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">pi</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
+<span class="go">[&#39;3.1&#39;, &#39;3.14&#39;, &#39;3.142&#39;, &#39;3.1416&#39;, &#39;3.14159&#39;]</span>
+</pre></div>
+</div>
+</section>
+<section id="nested-list-comprehensions">
+<h3><span class="section-number">5.1.4. </span>Nested List Comprehensions<a class="headerlink" href="datastructures.html#nested-list-comprehensions" title="Link to this heading">¶</a></h3>
+<p>The initial expression in a list comprehension can be any arbitrary expression,
+including another list comprehension.</p>
+<p>Consider the following example of a 3x4 matrix implemented as a list of
+3 lists of length 4:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The following list comprehension will transpose rows and columns:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[[</span><span class="n">row</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">matrix</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<span class="go">[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]</span>
+</pre></div>
+</div>
+<p>As we saw in the previous section, the inner list comprehension is evaluated in
+the context of the <a class="reference internal" href="https://docs.python.org/3/reference/compound_stmts.html#for"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a> that follows it, so this example is
+equivalent to:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">transposed</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">transposed</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">row</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">matrix</span><span class="p">])</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transposed</span>
+<span class="go">[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]</span>
+</pre></div>
+</div>
+<p>which, in turn, is the same as:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">transposed</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="c1"># the following 3 lines implement the nested listcomp</span>
+<span class="gp">... </span>    <span class="n">transposed_row</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">matrix</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">transposed_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="gp">... </span>    <span class="n">transposed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">transposed_row</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transposed</span>
+<span class="go">[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]</span>
+</pre></div>
+</div>
+<p>In the real world, you should prefer built-in functions to complex flow statements.
+The <a class="reference internal" href="https://docs.python.org/3/library/functions.html#zip" title="zip"><code class="xref py py-func docutils literal notranslate"><span class="pre">zip()</span></code></a> function would do a great job for this use case:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">matrix</span><span class="p">))</span>
+<span class="go">[(1, 5, 9), (2, 6, 10), (3, 7, 11), (4, 8, 12)]</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="controlflow.html#tut-unpacking-arguments"><span class="std std-ref">Unpacking Argument Lists</span></a> for details on the asterisk in this line.</p>
+</section>
+</section>
+<section id="the-del-statement">
+<span id="tut-del"></span><h2><span class="section-number">5.2. </span>The <code class="xref std std-keyword docutils literal notranslate"><span class="pre">del</span></code> statement<a class="headerlink" href="datastructures.html#the-del-statement" title="Link to this heading">¶</a></h2>
+<p>There is a way to remove an item from a list given its index instead of its
+value: the <a class="reference internal" href="https://docs.python.org/3/reference/simple_stmts.html#del"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">del</span></code></a> statement.  This differs from the <a class="reference internal" href="https://docs.python.org/3/library/stdtypes.html#list.pop" title="list.pop"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pop()</span></code></a> method
+which returns a value.  The <code class="xref std std-keyword docutils literal notranslate"><span class="pre">del</span></code> statement can also be used to remove
+slices from a list or clear the entire list (which we did earlier by assignment
+of an empty list to the slice).  For example:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">66.25</span><span class="p">,</span> <span class="mi">333</span><span class="p">,</span> <span class="mi">333</span><span class="p">,</span> <span class="mf">1234.5</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">[1, 66.25, 333, 333, 1234.5]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">[1, 66.25, 1234.5]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">a</span><span class="p">[:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="https://docs.python.org/3/reference/simple_stmts.html#del"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">del</span></code></a> can also be used to delete entire variables:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">a</span>
+</pre></div>
+</div>
+<p>Referencing the name <code class="docutils literal notranslate"><span class="pre">a</span></code> hereafter is an error (at least until another value
+is assigned to it).  We’ll find other uses for <a class="reference internal" href="https://docs.python.org/3/reference/simple_stmts.html#del"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">del</span></code></a> later.</p>
+</section>
+<section id="tuples-and-sequences">
+<span id="tut-tuples"></span><h2><span class="section-number">5.3. </span>Tuples and Sequences<a class="headerlink" href="datastructures.html#tuples-and-sequences" title="Link to this heading">¶</a></h2>
+<p>We saw that lists and strings have many common properties, such as indexing and
+slicing operations.  They are two examples of <em>sequence</em> data types (see
+<a class="reference internal" href="https://docs.python.org/3/library/stdtypes.html#typesseq"><span class="std std-ref">Sequence Types — list, tuple, range</span></a>).  Since Python is an evolving language, other sequence data
+types may be added.  There is also another standard sequence data type: the
+<em>tuple</em>.</p>
+<p>A tuple consists of a number of values separated by commas, for instance:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="mi">12345</span><span class="p">,</span> <span class="mi">54321</span><span class="p">,</span> <span class="s1">&#39;hello!&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">12345</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
+<span class="go">(12345, 54321, &#39;hello!&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Tuples may be nested:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">=</span> <span class="n">t</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span>
+<span class="go">((12345, 54321, &#39;hello!&#39;), (1, 2, 3, 4, 5))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Tuples are immutable:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">88888</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">&#39;tuple&#39; object does not support item assignment</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># but they can contain mutable objects:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span>
+<span class="go">([1, 2, 3], [3, 2, 1])</span>
+</pre></div>
+</div>
+<p>As you see, on output tuples are always enclosed in parentheses, so that nested
+tuples are interpreted correctly; they may be input with or without surrounding
+parentheses, although often parentheses are necessary anyway (if the tuple is
+part of a larger expression).  It is not possible to assign to the individual
+items of a tuple, however it is possible to create tuples which contain mutable
+objects, such as lists.</p>
+<p>Though tuples may seem similar to lists, they are often used in different
+situations and for different purposes.
+Tuples are <a class="reference internal" href="https://docs.python.org/3/glossary.html#term-immutable"><span class="xref std std-term">immutable</span></a>, and usually contain a heterogeneous sequence of
+elements that are accessed via unpacking (see later in this section) or indexing
+(or even by attribute in the case of <a class="reference internal" href="https://docs.python.org/3/library/collections.html#collections.namedtuple" title="collections.namedtuple"><code class="xref py py-func docutils literal notranslate"><span class="pre">namedtuples</span></code></a>).
+Lists are <a class="reference internal" href="https://docs.python.org/3/glossary.html#term-mutable"><span class="xref std std-term">mutable</span></a>, and their elements are usually homogeneous and are
+accessed by iterating over the list.</p>
+<p>A special problem is the construction of tuples containing 0 or 1 items: the
+syntax has some extra quirks to accommodate these.  Empty tuples are constructed
+by an empty pair of parentheses; a tuple with one item is constructed by
+following a value with a comma (it is not sufficient to enclose a single value
+in parentheses). Ugly, but effective.  For example:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">empty</span> <span class="o">=</span> <span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">singleton</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span><span class="p">,</span>    <span class="c1"># &lt;-- note trailing comma</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">empty</span><span class="p">)</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">singleton</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">singleton</span>
+<span class="go">(&#39;hello&#39;,)</span>
+</pre></div>
+</div>
+<p>The statement <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">=</span> <span class="pre">12345,</span> <span class="pre">54321,</span> <span class="pre">'hello!'</span></code> is an example of <em>tuple packing</em>:
+the values <code class="docutils literal notranslate"><span class="pre">12345</span></code>, <code class="docutils literal notranslate"><span class="pre">54321</span></code> and <code class="docutils literal notranslate"><span class="pre">'hello!'</span></code> are packed together in a tuple.
+The reverse operation is also possible:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">t</span>
+</pre></div>
+</div>
+<p>This is called, appropriately enough, <em>sequence unpacking</em> and works for any
+sequence on the right-hand side.  Sequence unpacking requires that there are as
+many variables on the left side of the equals sign as there are elements in the
+sequence.  Note that multiple assignment is really just a combination of tuple
+packing and sequence unpacking.</p>
+</section>
+<section id="sets">
+<span id="tut-sets"></span><h2><span class="section-number">5.4. </span>Sets<a class="headerlink" href="datastructures.html#sets" title="Link to this heading">¶</a></h2>
+<p>Python also includes a data type for <a class="reference internal" href="https://docs.python.org/3/library/stdtypes.html#types-set"><span class="std std-ref">sets</span></a>.  A set is
+an unordered collection with no duplicate elements.  Basic uses include
+membership testing and eliminating duplicate entries.  Set objects also
+support mathematical operations like union, intersection, difference, and
+symmetric difference.</p>
+<p>Curly braces or the <a class="reference internal" href="https://docs.python.org/3/library/stdtypes.html#set" title="set"><code class="xref py py-func docutils literal notranslate"><span class="pre">set()</span></code></a> function can be used to create sets.  Note: to
+create an empty set you have to use <code class="docutils literal notranslate"><span class="pre">set()</span></code>, not <code class="docutils literal notranslate"><span class="pre">{}</span></code>; the latter creates an
+empty dictionary, a data structure that we discuss in the next section.</p>
+<p>Because sets are unordered, iterating over them or printing them can
+produce the elements in a different order than you expect.</p>
+<p>Here is a brief demonstration:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">basket</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;pear&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">basket</span><span class="p">)</span>                      <span class="c1"># show that duplicates have been removed</span>
+<span class="go">{&#39;orange&#39;, &#39;banana&#39;, &#39;pear&#39;, &#39;apple&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;orange&#39;</span> <span class="ow">in</span> <span class="n">basket</span>                 <span class="c1"># fast membership testing</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;crabgrass&#39;</span> <span class="ow">in</span> <span class="n">basket</span>
+<span class="go">False</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Demonstrate set operations on unique letters from two words</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s1">&#39;abracadabra&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s1">&#39;alacazam&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>                                  <span class="c1"># unique letters in a</span>
+<span class="go">{&#39;a&#39;, &#39;r&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span>                              <span class="c1"># letters in a but not in b</span>
+<span class="go">{&#39;r&#39;, &#39;d&#39;, &#39;b&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">|</span> <span class="n">b</span>                              <span class="c1"># letters in a or b or both</span>
+<span class="go">{&#39;a&#39;, &#39;c&#39;, &#39;r&#39;, &#39;d&#39;, &#39;b&#39;, &#39;m&#39;, &#39;z&#39;, &#39;l&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span>                              <span class="c1"># letters in both a and b</span>
+<span class="go">{&#39;a&#39;, &#39;c&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">^</span> <span class="n">b</span>                              <span class="c1"># letters in a or b but not both</span>
+<span class="go">{&#39;r&#39;, &#39;d&#39;, &#39;b&#39;, &#39;m&#39;, &#39;z&#39;, &#39;l&#39;}</span>
+</pre></div>
+</div>
+<p>Similarly to <a class="reference internal" href="datastructures.html#tut-listcomps"><span class="std std-ref">list comprehensions</span></a>, set comprehensions
+are also supported:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="s1">&#39;abracadabra&#39;</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s1">&#39;abc&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">{&#39;r&#39;, &#39;d&#39;}</span>
+</pre></div>
+</div>
+</section>
+<section id="dictionaries">
+<span id="tut-dictionaries"></span><h2><span class="section-number">5.5. </span>Dictionaries<a class="headerlink" href="datastructures.html#dictionaries" title="Link to this heading">¶</a></h2>
+<p>Another useful data type built into Python is the <em>dictionary</em> (see
+<a class="reference internal" href="https://docs.python.org/3/library/stdtypes.html#typesmapping"><span class="std std-ref">Mapping Types — dict</span></a>). Dictionaries are sometimes found in other languages as
+“associative memories” or “associative arrays”.  Unlike sequences, which are
+indexed by a range of numbers, dictionaries are indexed by <em>keys</em>, which can be
+any immutable type; strings and numbers can always be keys.  Tuples can be used
+as keys if they contain only strings, numbers, or tuples; if a tuple contains
+any mutable object either directly or indirectly, it cannot be used as a key.
+You can’t use lists as keys, since lists can be modified in place using index
+assignments, slice assignments, or methods like <a class="reference internal" href="https://docs.python.org/3/library/stdtypes.html#list.append" title="list.append"><code class="xref py py-meth docutils literal notranslate"><span class="pre">append()</span></code></a> and
+<a class="reference internal" href="https://docs.python.org/3/library/stdtypes.html#list.extend" title="list.extend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">extend()</span></code></a>.</p>
+<p>It is best to think of a dictionary as a set of <em>key: value</em> pairs,
+with the requirement that the keys are unique (within one dictionary). A pair of
+braces creates an empty dictionary: <code class="docutils literal notranslate"><span class="pre">{}</span></code>. Placing a comma-separated list of
+key:value pairs within the braces adds initial key:value pairs to the
+dictionary; this is also the way dictionaries are written on output.</p>
+<p>The main operations on a dictionary are storing a value with some key and
+extracting the value given the key.  It is also possible to delete a key:value
+pair with <code class="docutils literal notranslate"><span class="pre">del</span></code>. If you store using a key that is already in use, the old
+value associated with that key is forgotten.</p>
+<p>Extracting a value for a non-existent key by subscripting (<code class="docutils literal notranslate"><span class="pre">d[key]</span></code>) raises a
+<a class="reference internal" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="KeyError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">KeyError</span></code></a>. To avoid getting this error when trying to access a possibly
+non-existent key, use the <a class="reference internal" href="https://docs.python.org/3/library/stdtypes.html#dict.get" title="dict.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get()</span></code></a> method instead, which returns
+<code class="docutils literal notranslate"><span class="pre">None</span></code> (or a specified default value) if the key is not in the dictionary.</p>
+<p>Performing <code class="docutils literal notranslate"><span class="pre">list(d)</span></code> on a dictionary returns a list of all the keys
+used in the dictionary, in insertion order (if you want it sorted, just use
+<code class="docutils literal notranslate"><span class="pre">sorted(d)</span></code> instead). To check whether a single key is in the
+dictionary, use the <a class="reference internal" href="https://docs.python.org/3/reference/expressions.html#in"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">in</span></code></a> keyword.</p>
+<p>Here is a small example using a dictionary:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;jack&#39;</span><span class="p">:</span> <span class="mi">4098</span><span class="p">,</span> <span class="s1">&#39;sape&#39;</span><span class="p">:</span> <span class="mi">4139</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span><span class="p">[</span><span class="s1">&#39;guido&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4127</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span>
+<span class="go">{&#39;jack&#39;: 4098, &#39;sape&#39;: 4139, &#39;guido&#39;: 4127}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span><span class="p">[</span><span class="s1">&#39;jack&#39;</span><span class="p">]</span>
+<span class="go">4098</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span><span class="p">[</span><span class="s1">&#39;irv&#39;</span><span class="p">]</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">KeyError</span>: <span class="n">&#39;irv&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tel</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;irv&#39;</span><span class="p">))</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">tel</span><span class="p">[</span><span class="s1">&#39;sape&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span><span class="p">[</span><span class="s1">&#39;irv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4127</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span>
+<span class="go">{&#39;jack&#39;: 4098, &#39;guido&#39;: 4127, &#39;irv&#39;: 4127}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">tel</span><span class="p">)</span>
+<span class="go">[&#39;jack&#39;, &#39;guido&#39;, &#39;irv&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">tel</span><span class="p">)</span>
+<span class="go">[&#39;guido&#39;, &#39;irv&#39;, &#39;jack&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;guido&#39;</span> <span class="ow">in</span> <span class="n">tel</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;jack&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tel</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="https://docs.python.org/3/library/stdtypes.html#dict" title="dict"><code class="xref py py-func docutils literal notranslate"><span class="pre">dict()</span></code></a> constructor builds dictionaries directly from sequences of
+key-value pairs:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">([(</span><span class="s1">&#39;sape&#39;</span><span class="p">,</span> <span class="mi">4139</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;guido&#39;</span><span class="p">,</span> <span class="mi">4127</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;jack&#39;</span><span class="p">,</span> <span class="mi">4098</span><span class="p">)])</span>
+<span class="go">{&#39;sape&#39;: 4139, &#39;guido&#39;: 4127, &#39;jack&#39;: 4098}</span>
+</pre></div>
+</div>
+<p>In addition, dict comprehensions can be used to create dictionaries from
+arbitrary key and value expressions:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">)}</span>
+<span class="go">{2: 4, 4: 16, 6: 36}</span>
+</pre></div>
+</div>
+<p>When the keys are simple strings, it is sometimes easier to specify pairs using
+keyword arguments:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">(</span><span class="n">sape</span><span class="o">=</span><span class="mi">4139</span><span class="p">,</span> <span class="n">guido</span><span class="o">=</span><span class="mi">4127</span><span class="p">,</span> <span class="n">jack</span><span class="o">=</span><span class="mi">4098</span><span class="p">)</span>
+<span class="go">{&#39;sape&#39;: 4139, &#39;guido&#39;: 4127, &#39;jack&#39;: 4098}</span>
+</pre></div>
+</div>
+</section>
+<section id="looping-techniques">
+<span id="tut-loopidioms"></span><h2><span class="section-number">5.6. </span>Looping Techniques<a class="headerlink" href="datastructures.html#looping-techniques" title="Link to this heading">¶</a></h2>
+<p>When looping through dictionaries, the key and corresponding value can be
+retrieved at the same time using the <a class="reference internal" href="https://docs.python.org/3/library/stdtypes.html#dict.items" title="dict.items"><code class="xref py py-meth docutils literal notranslate"><span class="pre">items()</span></code></a> method.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">knights</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;gallahad&#39;</span><span class="p">:</span> <span class="s1">&#39;the pure&#39;</span><span class="p">,</span> <span class="s1">&#39;robin&#39;</span><span class="p">:</span> <span class="s1">&#39;the brave&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">knights</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">gallahad the pure</span>
+<span class="go">robin the brave</span>
+</pre></div>
+</div>
+<p>When looping through a sequence, the position index and corresponding value can
+be retrieved at the same time using the <a class="reference internal" href="https://docs.python.org/3/library/functions.html#enumerate" title="enumerate"><code class="xref py py-func docutils literal notranslate"><span class="pre">enumerate()</span></code></a> function.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s1">&#39;tic&#39;</span><span class="p">,</span> <span class="s1">&#39;tac&#39;</span><span class="p">,</span> <span class="s1">&#39;toe&#39;</span><span class="p">]):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">0 tic</span>
+<span class="go">1 tac</span>
+<span class="go">2 toe</span>
+</pre></div>
+</div>
+<p>To loop over two or more sequences at the same time, the entries can be paired
+with the <a class="reference internal" href="https://docs.python.org/3/library/functions.html#zip" title="zip"><code class="xref py py-func docutils literal notranslate"><span class="pre">zip()</span></code></a> function.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">questions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;quest&#39;</span><span class="p">,</span> <span class="s1">&#39;favorite color&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">answers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;lancelot&#39;</span><span class="p">,</span> <span class="s1">&#39;the holy grail&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">q</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">questions</span><span class="p">,</span> <span class="n">answers</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;What is your </span><span class="si">{0}</span><span class="s1">?  It is </span><span class="si">{1}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
+<span class="gp">...</span>
+<span class="go">What is your name?  It is lancelot.</span>
+<span class="go">What is your quest?  It is the holy grail.</span>
+<span class="go">What is your favorite color?  It is blue.</span>
+</pre></div>
+</div>
+<p>To loop over a sequence in reverse, first specify the sequence in a forward
+direction and then call the <a class="reference internal" href="https://docs.python.org/3/library/functions.html#reversed" title="reversed"><code class="xref py py-func docutils literal notranslate"><span class="pre">reversed()</span></code></a> function.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">9</span>
+<span class="go">7</span>
+<span class="go">5</span>
+<span class="go">3</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<p>To loop over a sequence in sorted order, use the <a class="reference internal" href="https://docs.python.org/3/library/functions.html#sorted" title="sorted"><code class="xref py py-func docutils literal notranslate"><span class="pre">sorted()</span></code></a> function which
+returns a new sorted list while leaving the source unaltered.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">basket</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;pear&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">basket</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">apple</span>
+<span class="go">apple</span>
+<span class="go">banana</span>
+<span class="go">orange</span>
+<span class="go">orange</span>
+<span class="go">pear</span>
+</pre></div>
+</div>
+<p>Using <a class="reference internal" href="https://docs.python.org/3/library/stdtypes.html#set" title="set"><code class="xref py py-func docutils literal notranslate"><span class="pre">set()</span></code></a> on a sequence eliminates duplicate elements. The use of
+<a class="reference internal" href="https://docs.python.org/3/library/functions.html#sorted" title="sorted"><code class="xref py py-func docutils literal notranslate"><span class="pre">sorted()</span></code></a> in combination with <code class="xref py py-func docutils literal notranslate"><span class="pre">set()</span></code> over a sequence is an idiomatic
+way to loop over unique elements of the sequence in sorted order.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">basket</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;pear&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">basket</span><span class="p">)):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">apple</span>
+<span class="go">banana</span>
+<span class="go">orange</span>
+<span class="go">pear</span>
+</pre></div>
+</div>
+<p>It is sometimes tempting to change a list while you are looping over it;
+however, it is often simpler and safer to create a new list instead.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">raw_data</span> <span class="o">=</span> <span class="p">[</span><span class="mf">56.2</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;NaN&#39;</span><span class="p">),</span> <span class="mf">51.7</span><span class="p">,</span> <span class="mf">55.3</span><span class="p">,</span> <span class="mf">52.5</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;NaN&#39;</span><span class="p">),</span> <span class="mf">47.8</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filtered_data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">raw_data</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="n">filtered_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filtered_data</span>
+<span class="go">[56.2, 51.7, 55.3, 52.5, 47.8]</span>
+</pre></div>
+</div>
+</section>
+<section id="more-on-conditions">
+<span id="tut-conditions"></span><h2><span class="section-number">5.7. </span>More on Conditions<a class="headerlink" href="datastructures.html#more-on-conditions" title="Link to this heading">¶</a></h2>
+<p>The conditions used in <code class="docutils literal notranslate"><span class="pre">while</span></code> and <code class="docutils literal notranslate"><span class="pre">if</span></code> statements can contain any
+operators, not just comparisons.</p>
+<p>The comparison operators <code class="docutils literal notranslate"><span class="pre">in</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> are membership tests that
+determine whether a value is in (or not in) a container.  The operators <code class="docutils literal notranslate"><span class="pre">is</span></code>
+and <code class="docutils literal notranslate"><span class="pre">is</span> <span class="pre">not</span></code> compare whether two objects are really the same object.  All
+comparison operators have the same priority, which is lower than that of all
+numerical operators.</p>
+<p>Comparisons can be chained.  For example, <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&lt;</span> <span class="pre">b</span> <span class="pre">==</span> <span class="pre">c</span></code> tests whether <code class="docutils literal notranslate"><span class="pre">a</span></code> is
+less than <code class="docutils literal notranslate"><span class="pre">b</span></code> and moreover <code class="docutils literal notranslate"><span class="pre">b</span></code> equals <code class="docutils literal notranslate"><span class="pre">c</span></code>.</p>
+<p>Comparisons may be combined using the Boolean operators <code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code>, and
+the outcome of a comparison (or of any other Boolean expression) may be negated
+with <code class="docutils literal notranslate"><span class="pre">not</span></code>.  These have lower priorities than comparison operators; between
+them, <code class="docutils literal notranslate"><span class="pre">not</span></code> has the highest priority and <code class="docutils literal notranslate"><span class="pre">or</span></code> the lowest, so that <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">and</span>
+<span class="pre">not</span> <span class="pre">B</span> <span class="pre">or</span> <span class="pre">C</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">(A</span> <span class="pre">and</span> <span class="pre">(not</span> <span class="pre">B))</span> <span class="pre">or</span> <span class="pre">C</span></code>. As always, parentheses
+can be used to express the desired composition.</p>
+<p>The Boolean operators <code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code> are so-called <em>short-circuit</em>
+operators: their arguments are evaluated from left to right, and evaluation
+stops as soon as the outcome is determined.  For example, if <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code> are
+true but <code class="docutils literal notranslate"><span class="pre">B</span></code> is false, <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">and</span> <span class="pre">B</span> <span class="pre">and</span> <span class="pre">C</span></code> does not evaluate the expression
+<code class="docutils literal notranslate"><span class="pre">C</span></code>.  When used as a general value and not as a Boolean, the return value of a
+short-circuit operator is the last evaluated argument.</p>
+<p>It is possible to assign the result of a comparison or other Boolean expression
+to a variable.  For example,</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">string1</span><span class="p">,</span> <span class="n">string2</span><span class="p">,</span> <span class="n">string3</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;Trondheim&#39;</span><span class="p">,</span> <span class="s1">&#39;Hammer Dance&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">non_null</span> <span class="o">=</span> <span class="n">string1</span> <span class="ow">or</span> <span class="n">string2</span> <span class="ow">or</span> <span class="n">string3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">non_null</span>
+<span class="go">&#39;Trondheim&#39;</span>
+</pre></div>
+</div>
+<p>Note that in Python, unlike C, assignment inside expressions must be done
+explicitly with the
+<a class="reference internal" href="https://docs.python.org/3/faq/design.html#why-can-t-i-use-an-assignment-in-an-expression"><span class="std std-ref">walrus operator</span></a> <code class="docutils literal notranslate"><span class="pre">:=</span></code>.
+This avoids a common class of problems encountered in C programs: typing <code class="docutils literal notranslate"><span class="pre">=</span></code>
+in an expression when <code class="docutils literal notranslate"><span class="pre">==</span></code> was intended.</p>
+</section>
+<section id="comparing-sequences-and-other-types">
+<span id="tut-comparing"></span><h2><span class="section-number">5.8. </span>Comparing Sequences and Other Types<a class="headerlink" href="datastructures.html#comparing-sequences-and-other-types" title="Link to this heading">¶</a></h2>
+<p>Sequence objects typically may be compared to other objects with the same sequence
+type. The comparison uses <em>lexicographical</em> ordering: first the first two
+items are compared, and if they differ this determines the outcome of the
+comparison; if they are equal, the next two items are compared, and so on, until
+either sequence is exhausted. If two items to be compared are themselves
+sequences of the same type, the lexicographical comparison is carried out
+recursively.  If all items of two sequences compare equal, the sequences are
+considered equal. If one sequence is an initial sub-sequence of the other, the
+shorter sequence is the smaller (lesser) one.  Lexicographical ordering for
+strings uses the Unicode code point number to order individual characters.
+Some examples of comparisons between sequences of the same type:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>              <span class="o">&lt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>              <span class="o">&lt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="s1">&#39;ABC&#39;</span> <span class="o">&lt;</span> <span class="s1">&#39;C&#39;</span> <span class="o">&lt;</span> <span class="s1">&#39;Pascal&#39;</span> <span class="o">&lt;</span> <span class="s1">&#39;Python&#39;</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>           <span class="o">&lt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>                 <span class="o">&lt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>             <span class="o">==</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;aa&#39;</span><span class="p">,</span> <span class="s1">&#39;ab&#39;</span><span class="p">))</span>   <span class="o">&lt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that comparing objects of different types with <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> is legal
+provided that the objects have appropriate comparison methods.  For example,
+mixed numeric types are compared according to their numeric value, so 0 equals
+0.0, etc.  Otherwise, rather than providing an arbitrary ordering, the
+interpreter will raise a <a class="reference internal" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="TypeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> exception.</p>
+<p class="rubric">Footnotes</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="datastructures.html#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Other languages may return the mutated object, which allows method
+chaining, such as <code class="docutils literal notranslate"><span class="pre">d-&gt;insert(&quot;a&quot;)-&gt;remove(&quot;b&quot;)-&gt;sort();</span></code>.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="https://docs.python.org/3/contents.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="datastructures.html#">5. Data Structures</a><ul>
+<li><a class="reference internal" href="datastructures.html#more-on-lists">5.1. More on Lists</a><ul>
+<li><a class="reference internal" href="datastructures.html#using-lists-as-stacks">5.1.1. Using Lists as Stacks</a></li>
+<li><a class="reference internal" href="datastructures.html#using-lists-as-queues">5.1.2. Using Lists as Queues</a></li>
+<li><a class="reference internal" href="datastructures.html#list-comprehensions">5.1.3. List Comprehensions</a></li>
+<li><a class="reference internal" href="datastructures.html#nested-list-comprehensions">5.1.4. Nested List Comprehensions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="datastructures.html#the-del-statement">5.2. The <code class="xref std std-keyword docutils literal notranslate"><span class="pre">del</span></code> statement</a></li>
+<li><a class="reference internal" href="datastructures.html#tuples-and-sequences">5.3. Tuples and Sequences</a></li>
+<li><a class="reference internal" href="datastructures.html#sets">5.4. Sets</a></li>
+<li><a class="reference internal" href="datastructures.html#dictionaries">5.5. Dictionaries</a></li>
+<li><a class="reference internal" href="datastructures.html#looping-techniques">5.6. Looping Techniques</a></li>
+<li><a class="reference internal" href="datastructures.html#more-on-conditions">5.7. More on Conditions</a></li>
+<li><a class="reference internal" href="datastructures.html#comparing-sequences-and-other-types">5.8. Comparing Sequences and Other Types</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="controlflow.html"
+                          title="previous chapter"><span class="section-number">4. </span>More Control Flow Tools</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="modules.html"
+                          title="next chapter"><span class="section-number">6. </span>Modules</a></p>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const title = document.querySelector('meta[property="og:title"]').content;
+        const elements = document.querySelectorAll('.improvepage');
+        const pageurl = window.location.href.split('?')[0];
+        elements.forEach(element => {
+            const url = new URL(element.href.split('?')[0].replace("-nojs", ""));
+            url.searchParams.set('pagetitle', title);
+            url.searchParams.set('pageurl', pageurl);
+            url.searchParams.set('pagesource', "tutorial/datastructures.rst");
+            element.href = url.toString();
+        });
+    });
+  </script>
+  <div role="note" aria-label="source link">
+    <h3>This page</h3>
+    <ul class="this-page-menu">
+      <li><a href="https://docs.python.org/3/bugs.html">Report a bug</a></li>
+      <li><a class="improvepage" href="https://docs.python.org/3/improve-page-nojs.html">Improve this page</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/main/Doc/tutorial/datastructures.rst?plain=1"
+            rel="nofollow">Show source
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+        </div>
+<div id="sidebarbutton" title="Collapse sidebar">
+<span>«</span>
+</div>
+
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="https://docs.python.org/3/genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="https://docs.python.org/3/py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="6. Modules"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="controlflow.html" title="4. More Control Flow Tools"
+             >previous</a> |</li>
+
+          <li><img src="data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M7.90472%200.00013087C7.24498%200.00316295%206.61493%200.0588153%206.06056%200.15584C4.42744%200.441207%204.13093%201.0385%204.13093%202.14002V3.59479H7.99018V4.07971H4.13093H2.68259C1.56098%204.07971%200.578874%204.7465%200.271682%206.01495C-0.0826595%207.4689%20-0.0983765%208.37618%200.271682%209.89434C0.546011%2011.0244%201.20115%2011.8296%202.32275%2011.8296H3.64965V10.0856C3.64965%208.82574%204.75178%207.71441%206.06056%207.71441H9.91531C10.9883%207.71441%2011.8449%206.84056%2011.8449%205.77472V2.14002C11.8449%201.10556%2010.9626%200.328486%209.91531%200.15584C9.25235%200.046687%208.56447%20-0.00290121%207.90472%200.00013087ZM5.81767%201.17017C6.2163%201.17017%206.54184%201.49742%206.54184%201.89978C6.54184%202.30072%206.2163%202.62494%205.81767%202.62494C5.41761%202.62494%205.0935%202.30072%205.0935%201.89978C5.0935%201.49742%205.41761%201.17017%205.81767%201.17017Z%22%20fill%3D%22url%28%23paint0_linear%29%22%2F%3E%0A%3Cpath%20d%3D%22M12.3262%204.07971V5.77472C12.3262%207.08883%2011.1998%208.19488%209.9153%208.19488H6.06055C5.00466%208.19488%204.13092%209.0887%204.13092%2010.1346V13.7693C4.13092%2014.8037%205.04038%2015.4122%206.06055%2015.709C7.28217%2016.0642%208.45364%2016.1285%209.9153%2015.709C10.8869%2015.4307%2011.8449%2014.8708%2011.8449%2013.7693V12.3145H7.99017V11.8296H11.8449H13.7746C14.8962%2011.8296%2015.3141%2011.0558%2015.7042%209.89434C16.1071%208.69865%2016.09%207.5488%2015.7042%206.01495C15.427%204.91058%2014.8976%204.07971%2013.7746%204.07971H12.3262ZM10.1582%2013.2843C10.5583%2013.2843%2010.8824%2013.6086%2010.8824%2014.0095C10.8824%2014.4119%2010.5583%2014.7391%2010.1582%2014.7391C9.75955%2014.7391%209.43402%2014.4119%209.43402%2014.0095C9.43402%2013.6086%209.75955%2013.2843%2010.1582%2013.2843Z%22%20fill%3D%22url%28%23paint1_linear%29%22%2F%3E%0A%3Cdefs%3E%0A%3ClinearGradient%20id%3D%22paint0_linear%22%20x1%3D%221.25961e-08%22%20y1%3D%221.08223e-08%22%20x2%3D%228.81664%22%20y2%3D%227.59597%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%3Cstop%20stop-color%3D%22%235A9FD4%22%2F%3E%0A%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23306998%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3ClinearGradient%20id%3D%22paint1_linear%22%20x1%3D%2210.0654%22%20y1%3D%2213.8872%22%20x2%3D%226.91912%22%20y2%3D%229.42957%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%3Cstop%20stop-color%3D%22%23FFD43B%22%2F%3E%0A%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFE873%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3C%2Fdefs%3E%0A%3C%2Fsvg%3E%0A" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="https://docs.python.org/3/index.html">3.14.6 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >The Python Tutorial</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="datastructures.html"><span class="section-number">5. </span>Data Structures</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="https://docs.python.org/3/search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="https://docs.python.org/3/copyright.html">Copyright</a> 2001 Python Software Foundation.
+    <br>
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br>
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br>
+    
+      See <a href="https://docs.python.org/license.html">History and License</a> for more information.<br>
+    
+    
+    <br>
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br>
+    <br>
+      Last updated on Jul 13, 2026 (10:15 UTC).
+    
+      <a href="https://docs.python.org/bugs.html">Found a bug</a>?
+    
+    <br>
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+
+    <script>
+"use strict";
+
+// File URIs must begin with either one or three forward slashes
+const _is_file_uri = (uri) => uri.startsWith("file:/");
+
+const _IS_LOCAL = _is_file_uri(window.location.href);
+const _CURRENT_RELEASE = DOCUMENTATION_OPTIONS.VERSION || "";
+const _CURRENT_VERSION = _CURRENT_RELEASE.split(".", 2).join(".");
+const _CURRENT_LANGUAGE = (() => {
+  const _LANGUAGE = DOCUMENTATION_OPTIONS.LANGUAGE?.toLowerCase() || "en";
+  // Python 2.7 and 3.5--3.10 use ``LANGUAGE: 'None'`` for English
+  // in ``documentation_options.js``.
+  if (_LANGUAGE === "none") return "en";
+  return _LANGUAGE;
+})();
+const _CURRENT_PREFIX = (() => {
+  if (_IS_LOCAL) return null;
+  // Sphinx 7.2+ defines the content root data attribute in the HTML element.
+  const _CONTENT_ROOT = document.documentElement.dataset.content_root;
+  if (_CONTENT_ROOT !== undefined) {
+    return new URL(_CONTENT_ROOT, window.location).pathname;
+  }
+  // Fallback for older versions of Sphinx (used in Python 3.10 and older).
+  const _NUM_PREFIX_PARTS = _CURRENT_LANGUAGE === "en" ? 2 : 3;
+  return window.location.pathname.split("/", _NUM_PREFIX_PARTS).join("/") + "/";
+})();
+
+const _ALL_VERSIONS = new Map([["3.16", "dev (3.16)"], ["3.15", "pre (3.15)"], ["3.14", "3.14"], ["3.13", "3.13"], ["3.12", "3.12"], ["3.11", "3.11"], ["3.10", "3.10"], ["3.9", "3.9"], ["3.8", "3.8"], ["3.7", "3.7"], ["3.6", "3.6"], ["3.5", "3.5"], ["3.4", "3.4"], ["3.3", "3.3"], ["3.2", "3.2"], ["3.1", "3.1"], ["3.0", "3.0"], ["2.7", "2.7"], ["2.6", "2.6"]]);
+const _ALL_LANGUAGES = new Map([["el", "Greek | \u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac"], ["en", "English"], ["es", "Spanish | espa\u00f1ol"], ["fr", "French | fran\u00e7ais"], ["it", "Italian | italiano"], ["ja", "Japanese | \u65e5\u672c\u8a9e"], ["ko", "Korean | \ud55c\uad6d\uc5b4"], ["pl", "Polish | polski"], ["pt-br", "Brazilian Portuguese | Portugu\u00eas brasileiro"], ["ro", "Romanian | Rom\u00e2ne\u0219te"], ["tr", "Turkish | T\u00fcrk\u00e7e"], ["zh-cn", "Simplified Chinese | \u7b80\u4f53\u4e2d\u6587"], ["zh-tw", "Traditional Chinese | \u7e41\u9ad4\u4e2d\u6587"]]);
+
+/**
+ * Required for Python 3.7 and earlier.
+ * @returns {void}
+ * @private
+ */
+const _create_placeholders_if_missing = () => {
+  if (document.querySelectorAll(".version_switcher_placeholder").length) return;
+
+  const items = document.querySelectorAll("body>div.related>ul>li:not(.right)");
+  for (const item of items) {
+    if (item.innerText.toLowerCase().includes("documentation")) {
+      const container = document.createElement("li");
+      container.className = "switchers";
+      container.style.display = "inline-flex";
+      for (const placeholder_name of ["language", "version"]) {
+        const placeholder = document.createElement("div");
+        placeholder.className = `${placeholder_name}_switcher_placeholder`;
+        placeholder.style.marginRight = "5px";
+        placeholder.style.paddingLeft = "5px";
+        container.appendChild(placeholder);
+      }
+      item.parentElement.insertBefore(container, item);
+      return;
+    }
+  }
+};
+
+/**
+ * @param {Map<string, string>} versions
+ * @returns {HTMLSelectElement}
+ * @private
+ */
+const _create_version_select = (versions) => {
+  const select = document.createElement("select");
+  select.className = "version-select";
+  select.setAttribute("aria-label", "Python version");
+  if (_IS_LOCAL) {
+    select.disabled = true;
+    select.title = "Version switching is disabled in local builds";
+  }
+
+  for (const [version, title] of versions) {
+    const option = document.createElement("option");
+    option.value = version;
+    if (version === _CURRENT_VERSION) {
+      option.text = _CURRENT_RELEASE;
+      option.selected = true;
+    } else {
+      option.text = title;
+    }
+    select.add(option);
+  }
+
+  return select;
+};
+
+/**
+ * @param {Map<string, string>} languages
+ * @returns {HTMLSelectElement}
+ * @private
+ */
+const _create_language_select = (languages) => {
+  if (!languages.has(_CURRENT_LANGUAGE)) {
+    // In case we are browsing a language that is not yet in languages.
+    languages.set(_CURRENT_LANGUAGE, _CURRENT_LANGUAGE);
+  }
+
+  const select = document.createElement("select");
+  select.className = "language-select";
+  select.setAttribute("aria-label", "Language");
+  if (_IS_LOCAL) {
+    select.disabled = true;
+    select.title = "Language switching is disabled in local builds";
+  }
+
+  for (const [language, title] of languages) {
+    const option = document.createElement("option");
+    option.value = language;
+    option.text = title;
+    if (language === _CURRENT_LANGUAGE) option.selected = true;
+    select.add(option);
+  }
+
+  return select;
+};
+
+/**
+ * Change the current page to the first existing URL in the list.
+ * @param {Array<string>} urls
+ * @private
+ */
+const _navigate_to_first_existing = async (urls) => {
+  // Navigate to the first existing URL in urls.
+  for (const url of urls) {
+    try {
+      const response = await fetch(url, { method: "HEAD" });
+      if (response.ok) {
+        window.location.href = url;
+        return url;
+      }
+    } catch (err) {
+      console.error(`Error when fetching '${url}': ${err}`);
+    }
+  }
+
+  // if all else fails, redirect to the d.p.o root
+  window.location.href = "/";
+  return "/";
+};
+
+/**
+ * Navigate to the selected version.
+ * @param {Event} event
+ * @returns {void}
+ * @private
+ */
+const _on_version_switch = async (event) => {
+  if (_IS_LOCAL) return;
+
+  const selected_version = event.target.value;
+  // English has no language prefix.
+  const new_prefix_en = `/${selected_version}/`;
+  const new_prefix =
+    _CURRENT_LANGUAGE === "en"
+      ? new_prefix_en
+      : `/${_CURRENT_LANGUAGE}/${selected_version}/`;
+  if (_CURRENT_PREFIX !== new_prefix) {
+    // Try the following pages in order:
+    // 1. The current page in the current language with the new version
+    // 2. The current page in English with the new version
+    // 3. The documentation home in the current language with the new version
+    // 4. The documentation home in English with the new version
+    await _navigate_to_first_existing([
+      window.location.href.replace(_CURRENT_PREFIX, new_prefix),
+      window.location.href.replace(_CURRENT_PREFIX, new_prefix_en),
+      new_prefix,
+      new_prefix_en,
+    ]);
+  }
+};
+
+/**
+ * Navigate to the selected language.
+ * @param {Event} event
+ * @returns {void}
+ * @private
+ */
+const _on_language_switch = async (event) => {
+  if (_IS_LOCAL) return;
+
+  const selected_language = event.target.value;
+  // English has no language prefix.
+  const new_prefix =
+    selected_language === "en"
+      ? `/${_CURRENT_VERSION}/`
+      : `/${selected_language}/${_CURRENT_VERSION}/`;
+  if (_CURRENT_PREFIX !== new_prefix) {
+    // Try the following pages in order:
+    // 1. The current page in the new language with the current version
+    // 2. The documentation home in the new language with the current version
+    await _navigate_to_first_existing([
+      window.location.href.replace(_CURRENT_PREFIX, new_prefix),
+      new_prefix,
+    ]);
+  }
+};
+
+/**
+ * Set up the version and language switchers.
+ * @returns {void}
+ * @private
+ */
+const _initialise_switchers = () => {
+  const versions = _ALL_VERSIONS;
+  const languages = _ALL_LANGUAGES;
+
+  _create_placeholders_if_missing();
+
+  document
+    .querySelectorAll(".version_switcher_placeholder")
+    .forEach((placeholder) => {
+      const s = _create_version_select(versions);
+      s.addEventListener("change", _on_version_switch);
+      placeholder.append(s);
+    });
+
+  document
+    .querySelectorAll(".language_switcher_placeholder")
+    .forEach((placeholder) => {
+      const s = _create_language_select(languages);
+      s.addEventListener("change", _on_language_switch);
+      placeholder.append(s);
+    });
+};
+
+if (document.readyState !== "loading") {
+  _initialise_switchers();
+} else {
+  document.addEventListener("DOMContentLoaded", _initialise_switchers);
+}
+
+</script>
+  </body>
+</html>

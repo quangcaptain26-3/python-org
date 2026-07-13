@@ -1,0 +1,3943 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="15. Floating-Point Arithmetic:  Issues and Limitations" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://docs.python.org/3/tutorial/floatingpoint.html" />
+<meta property="og:site_name" content="Python documentation" />
+<meta property="og:description" content="Floating-point numbers are represented in computer hardware as base 2 (binary) fractions. For example, the decimal fraction 0.625 has value 6/10 + 2/100 + 5/1000, and in the same way the binary fra..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="https://docs.python.org/3.14/_images/social_previews/summary_tutorial_floatingpoint_c638e124.png" />
+<meta property="og:image:alt" content="Floating-point numbers are represented in computer hardware as base 2 (binary) fractions. For example, the decimal fraction 0.625 has value 6/10 + 2/100 + 5/1000, and in the same way the binary fra..." />
+<meta name="description" content="Floating-point numbers are represented in computer hardware as base 2 (binary) fractions. For example, the decimal fraction 0.625 has value 6/10 + 2/100 + 5/1000, and in the same way the binary fra..." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#3776ab">
+
+    <title>15. Floating-Point Arithmetic: Issues and Limitations &#8212; Python 3.14.6 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style type="text/css">
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f8f8f8; }
+.highlight .c { color: #3D7B7B; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #F00 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666 } /* Operator */
+.highlight .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #9C6500 } /* Comment.Preproc */
+.highlight .cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.highlight .gr { color: #E40000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #008400 } /* Generic.Inserted */
+.highlight .go { color: #717171 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #04D } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #687822 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #00F; font-weight: bold } /* Name.Class */
+.highlight .no { color: #800 } /* Name.Constant */
+.highlight .nd { color: #A2F } /* Name.Decorator */
+.highlight .ni { color: #717171; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #00F } /* Name.Function */
+.highlight .nl { color: #767600 } /* Name.Label */
+.highlight .nn { color: #00F; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #BBB } /* Text.Whitespace */
+.highlight .mb { color: #666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666 } /* Literal.Number.Float */
+.highlight .mh { color: #666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #A45A77 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #00F } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666 } /* Literal.Number.Integer.Long */
+</style>
+    <style type="text/css">
+/*
+ * Sphinx stylesheet -- classic theme.
+ */
+
+/*
+ * Sphinx stylesheet -- basic theme.
+ */
+
+/* -- main layout ----------------------------------------------------------- */
+
+div.clearer {
+    clear: both;
+}
+
+div.section::after {
+    display: block;
+    content: '';
+    clear: left;
+}
+
+/* -- relbar ---------------------------------------------------------------- */
+
+div.related {
+    width: 100%;
+    font-size: 90%;
+}
+
+div.related h3 {
+    display: none;
+}
+
+div.related ul {
+    margin: 0;
+    padding: 0 0 0 10px;
+    list-style: none;
+}
+
+div.related li {
+    display: inline;
+}
+
+div.related li.right {
+    float: right;
+    margin-right: 5px;
+}
+
+/* -- sidebar --------------------------------------------------------------- */
+
+div.sphinxsidebarwrapper {
+    padding: 10px 5px 0 10px;
+}
+
+div.sphinxsidebar {
+    float: left;
+    width: 230px;
+    margin-left: -100%;
+    font-size: 90%;
+    word-wrap: break-word;
+    overflow-wrap : break-word;
+}
+
+div.sphinxsidebar ul {
+    list-style: none;
+}
+
+div.sphinxsidebar ul ul,
+div.sphinxsidebar ul.want-points {
+    margin-left: 20px;
+    list-style: square;
+}
+
+div.sphinxsidebar ul ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+div.sphinxsidebar form {
+    margin-top: 10px;
+}
+
+div.sphinxsidebar input {
+    border: 1px solid #98dbcc;
+    font-family: sans-serif;
+    font-size: 1em;
+}
+
+div.sphinxsidebar #searchbox form.search {
+    overflow: hidden;
+}
+
+div.sphinxsidebar #searchbox input[type="text"] {
+    float: left;
+    width: 80%;
+    padding: 0.25em;
+    box-sizing: border-box;
+}
+
+div.sphinxsidebar #searchbox input[type="submit"] {
+    float: left;
+    width: 20%;
+    border-left: none;
+    padding: 0.25em;
+    box-sizing: border-box;
+}
+
+
+img {
+    border: 0;
+    max-width: 100%;
+}
+
+/* -- search page ----------------------------------------------------------- */
+
+ul.search {
+    margin-top: 10px;
+}
+
+ul.search li {
+    padding: 5px 0;
+}
+
+ul.search li a {
+    font-weight: bold;
+}
+
+ul.search li p.context {
+    color: #888;
+    margin: 2px 0 0 30px;
+    text-align: left;
+}
+
+ul.keywordmatches li.goodmatch a {
+    font-weight: bold;
+}
+
+/* -- index page ------------------------------------------------------------ */
+
+table.contentstable {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table.contentstable p.biglink {
+    line-height: 150%;
+}
+
+a.biglink {
+    font-size: 1.3em;
+}
+
+span.linkdescr {
+    font-style: italic;
+    padding-top: 5px;
+    font-size: 90%;
+}
+
+/* -- general index --------------------------------------------------------- */
+
+table.indextable {
+    width: 100%;
+}
+
+table.indextable td {
+    text-align: left;
+    vertical-align: top;
+}
+
+table.indextable ul {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+}
+
+table.indextable > tbody > tr > td > ul {
+    padding-left: 0em;
+}
+
+table.indextable tr.pcap {
+    height: 10px;
+}
+
+table.indextable tr.cap {
+    margin-top: 10px;
+    background-color: #f2f2f2;
+}
+
+img.toggler {
+    margin-right: 3px;
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+div.modindex-jumpbox {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin: 1em 0 1em 0;
+    padding: 0.4em;
+}
+
+div.genindex-jumpbox {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin: 1em 0 1em 0;
+    padding: 0.4em;
+}
+
+/* -- domain module index --------------------------------------------------- */
+
+table.modindextable td {
+    padding: 2px;
+    border-collapse: collapse;
+}
+
+/* -- general body styles --------------------------------------------------- */
+
+div.body {
+    min-width: 360px;
+    max-width: 800px;
+}
+
+div.body p, div.body dd, div.body li, div.body blockquote {
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+a.headerlink {
+    visibility: hidden;
+}
+
+a:visited {
+    color: #551A8B;
+}
+
+h1:hover > a.headerlink,
+h2:hover > a.headerlink,
+h3:hover > a.headerlink,
+h4:hover > a.headerlink,
+h5:hover > a.headerlink,
+h6:hover > a.headerlink,
+dt:hover > a.headerlink,
+caption:hover > a.headerlink,
+p.caption:hover > a.headerlink,
+div.code-block-caption:hover > a.headerlink {
+    visibility: visible;
+}
+
+div.body p.caption {
+    text-align: inherit;
+}
+
+div.body td {
+    text-align: left;
+}
+
+.first {
+    margin-top: 0 !important;
+}
+
+p.rubric {
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+img.align-left, figure.align-left, .figure.align-left, object.align-left {
+    clear: left;
+    float: left;
+    margin-right: 1em;
+}
+
+img.align-right, figure.align-right, .figure.align-right, object.align-right {
+    clear: right;
+    float: right;
+    margin-left: 1em;
+}
+
+img.align-center, figure.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img.align-default, figure.align-default, .figure.align-default {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-default {
+    text-align: center;
+}
+
+.align-right {
+    text-align: right;
+}
+
+/* -- sidebars -------------------------------------------------------------- */
+
+div.sidebar,
+aside.sidebar {
+    margin: 0 0 0.5em 1em;
+    border: 1px solid #ddb;
+    padding: 7px;
+    background-color: #ffe;
+    width: 40%;
+    float: right;
+    clear: right;
+    overflow-x: auto;
+}
+
+p.sidebar-title {
+    font-weight: bold;
+}
+
+nav.contents,
+aside.topic,
+div.admonition, div.topic, blockquote {
+    clear: left;
+}
+
+/* -- topics ---------------------------------------------------------------- */
+
+nav.contents,
+aside.topic,
+div.topic {
+    border: 1px solid #ccc;
+    padding: 7px;
+    margin: 10px 0 10px 0;
+}
+
+p.topic-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* -- admonitions ----------------------------------------------------------- */
+
+div.admonition {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 7px;
+}
+
+div.admonition dt {
+    font-weight: bold;
+}
+
+p.admonition-title {
+    margin: 0px 10px 5px 0px;
+    font-weight: bold;
+}
+
+div.body p.centered {
+    text-align: center;
+    margin-top: 25px;
+}
+
+/* -- content of sidebars/topics/admonitions -------------------------------- */
+
+div.sidebar > :last-child,
+aside.sidebar > :last-child,
+nav.contents > :last-child,
+aside.topic > :last-child,
+div.topic > :last-child,
+div.admonition > :last-child {
+    margin-bottom: 0;
+}
+
+div.sidebar::after,
+aside.sidebar::after,
+nav.contents::after,
+aside.topic::after,
+div.topic::after,
+div.admonition::after,
+blockquote::after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+/* -- tables ---------------------------------------------------------------- */
+
+table.docutils {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0;
+    border-collapse: collapse;
+}
+
+table.align-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table.align-default {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table caption span.caption-number {
+    font-style: italic;
+}
+
+table caption span.caption-text {
+}
+
+table.docutils td, table.docutils th {
+    padding: 1px 8px 1px 5px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #aaa;
+}
+
+th {
+    text-align: left;
+    padding-right: 5px;
+}
+
+table.citation {
+    border-left: solid 1px gray;
+    margin-left: 1px;
+}
+
+table.citation td {
+    border-bottom: none;
+}
+
+th > :first-child,
+td > :first-child {
+    margin-top: 0px;
+}
+
+th > :last-child,
+td > :last-child {
+    margin-bottom: 0px;
+}
+
+/* -- figures --------------------------------------------------------------- */
+
+div.figure, figure {
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+div.figure p.caption, figcaption {
+    padding: 0.3em;
+}
+
+div.figure p.caption span.caption-number,
+figcaption span.caption-number {
+    font-style: italic;
+}
+
+div.figure p.caption span.caption-text,
+figcaption span.caption-text {
+}
+
+/* -- field list styles ----------------------------------------------------- */
+
+table.field-list td, table.field-list th {
+    border: 0 !important;
+}
+
+.field-list ul {
+    margin: 0;
+    padding-left: 1em;
+}
+
+.field-list p {
+    margin: 0;
+}
+
+.field-name {
+    -moz-hyphens: manual;
+    -ms-hyphens: manual;
+    -webkit-hyphens: manual;
+    hyphens: manual;
+}
+
+/* -- hlist styles ---------------------------------------------------------- */
+
+table.hlist {
+    margin: 1em 0;
+}
+
+table.hlist td {
+    vertical-align: top;
+}
+
+/* -- object description styles --------------------------------------------- */
+
+.sig {
+	font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+}
+
+.sig-name, code.descname {
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.sig-name {
+	font-size: 1.1em;
+}
+
+code.descname {
+    font-size: 1.2em;
+}
+
+.sig-prename, code.descclassname {
+    background-color: transparent;
+}
+
+.optional {
+    font-size: 1.3em;
+}
+
+.sig-paren {
+    font-size: larger;
+}
+
+.sig-param.n {
+	font-style: italic;
+}
+
+/* C++ specific styling */
+
+.sig-inline.c-texpr,
+.sig-inline.cpp-texpr {
+	font-family: unset;
+}
+
+.sig.c   .k, .sig.c   .kt,
+.sig.cpp .k, .sig.cpp .kt {
+	color: #0033B3;
+}
+
+.sig.c   .m,
+.sig.cpp .m {
+	color: #1750EB;
+}
+
+.sig.c   .s, .sig.c   .sc,
+.sig.cpp .s, .sig.cpp .sc {
+	color: #067D17;
+}
+
+
+/* -- other body styles ----------------------------------------------------- */
+
+ol.arabic {
+    list-style: decimal;
+}
+
+ol.loweralpha {
+    list-style: lower-alpha;
+}
+
+ol.upperalpha {
+    list-style: upper-alpha;
+}
+
+ol.lowerroman {
+    list-style: lower-roman;
+}
+
+ol.upperroman {
+    list-style: upper-roman;
+}
+
+:not(li) > ol > li:first-child > :first-child,
+:not(li) > ul > li:first-child > :first-child {
+    margin-top: 0px;
+}
+
+:not(li) > ol > li:last-child > :last-child,
+:not(li) > ul > li:last-child > :last-child {
+    margin-bottom: 0px;
+}
+
+ol.simple ol p,
+ol.simple ul p,
+ul.simple ol p,
+ul.simple ul p {
+    margin-top: 0;
+}
+
+ol.simple > li:not(:first-child) > p,
+ul.simple > li:not(:first-child) > p {
+    margin-top: 0;
+}
+
+ol.simple p,
+ul.simple p {
+    margin-bottom: 0;
+}
+
+aside.footnote > span,
+div.citation > span {
+    float: left;
+}
+aside.footnote > span:last-of-type,
+div.citation > span:last-of-type {
+  padding-right: 0.5em;
+}
+aside.footnote > p {
+  margin-left: 2em;
+}
+div.citation > p {
+  margin-left: 4em;
+}
+aside.footnote > p:last-of-type,
+div.citation > p:last-of-type {
+    margin-bottom: 0em;
+}
+aside.footnote > p:last-of-type:after,
+div.citation > p:last-of-type:after {
+    content: "";
+    clear: both;
+}
+
+dl.field-list {
+    display: grid;
+    grid-template-columns: fit-content(30%) auto;
+}
+
+dl.field-list > dt {
+    font-weight: bold;
+    word-break: break-word;
+    padding-left: 0.5em;
+    padding-right: 5px;
+}
+
+dl.field-list > dd {
+    padding-left: 0.5em;
+    margin-top: 0em;
+    margin-left: 0em;
+    margin-bottom: 0em;
+}
+
+dl {
+    margin-bottom: 15px;
+}
+
+dd > :first-child {
+    margin-top: 0px;
+}
+
+dd ul, dd table {
+    margin-bottom: 10px;
+}
+
+dd {
+    margin-top: 3px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
+
+.sig dd {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.sig dl {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+dl > dd:last-child,
+dl > dd:last-child > :last-child {
+    margin-bottom: 0;
+}
+
+dt:target, span.highlighted {
+    background-color: #fbe54e;
+}
+
+rect.highlighted {
+    fill: #fbe54e;
+}
+
+dl.glossary dt {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.versionmodified {
+    font-style: italic;
+}
+
+.system-message {
+    background-color: #fda;
+    padding: 5px;
+    border: 3px solid red;
+}
+
+.footnote:target  {
+    background-color: #ffa;
+}
+
+.line-block {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.line-block .line-block {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 1.5em;
+}
+
+.guilabel, .menuselection {
+    font-family: sans-serif;
+}
+
+.accelerator {
+    text-decoration: underline;
+}
+
+.classifier {
+    font-style: oblique;
+}
+
+.classifier:before {
+    font-style: normal;
+    margin: 0 0.5em;
+    content: ":";
+    display: inline-block;
+}
+
+abbr, acronym {
+    border-bottom: dotted 1px;
+    cursor: help;
+}
+
+/* -- code displays --------------------------------------------------------- */
+
+pre {
+    overflow: auto;
+    overflow-y: hidden;  /* fixes display issues on Chrome browsers */
+}
+
+pre, div[class*="highlight-"] {
+    clear: both;
+}
+
+span.pre {
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    -webkit-hyphens: none;
+    hyphens: none;
+    white-space: nowrap;
+}
+
+div[class*="highlight-"] {
+    margin: 1em 0;
+}
+
+td.linenos pre {
+    border: 0;
+    background-color: transparent;
+    color: #aaa;
+}
+
+table.highlighttable {
+    display: block;
+}
+
+table.highlighttable tbody {
+    display: block;
+}
+
+table.highlighttable tr {
+    display: flex;
+}
+
+table.highlighttable td {
+    margin: 0;
+    padding: 0;
+}
+
+table.highlighttable td.linenos {
+    padding-right: 0.5em;
+}
+
+table.highlighttable td.code {
+    flex: 1;
+    overflow: hidden;
+}
+
+.highlight .hll {
+    display: block;
+}
+
+div.highlight pre,
+table.highlighttable pre {
+    margin: 0;
+}
+
+div.code-block-caption + div {
+    margin-top: 0;
+}
+
+div.code-block-caption {
+    margin-top: 1em;
+    padding: 2px 5px;
+    font-size: small;
+}
+
+div.code-block-caption code {
+    background-color: transparent;
+}
+
+table.highlighttable td.linenos,
+span.linenos,
+div.highlight span.gp {  /* gp: Generic.Prompt */
+  user-select: none;
+  -webkit-user-select: text; /* Safari fallback only */
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+}
+
+div.code-block-caption span.caption-number {
+    padding: 0.1em 0.3em;
+    font-style: italic;
+}
+
+div.code-block-caption span.caption-text {
+}
+
+div.literal-block-wrapper {
+    margin: 1em 0;
+}
+
+code.xref, a code {
+    background-color: transparent;
+    font-weight: bold;
+}
+
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+    background-color: transparent;
+}
+
+.viewcode-link {
+    float: right;
+}
+
+.viewcode-back {
+    float: right;
+    font-family: sans-serif;
+}
+
+div.viewcode-block:target {
+    margin: -1px -10px;
+    padding: 0 10px;
+}
+
+/* -- math display ---------------------------------------------------------- */
+
+img.math {
+    vertical-align: middle;
+}
+
+div.body div.math p {
+    text-align: center;
+}
+
+span.eqno {
+    float: right;
+}
+
+span.eqno a.headerlink {
+    position: absolute;
+    z-index: 1;
+}
+
+div.math:hover a.headerlink {
+    visibility: visible;
+}
+
+/* -- printout stylesheet --------------------------------------------------- */
+
+@media print {
+    div.document,
+    div.documentwrapper,
+    div.bodywrapper {
+        margin: 0 !important;
+        width: 100%;
+    }
+
+    div.sphinxsidebar,
+    div.related,
+    div.footer,
+    #top-link {
+        display: none;
+    }
+}
+
+/* -- page layout ----------------------------------------------------------- */
+
+html {
+    /* CSS hack for macOS's scrollbar (see #1125) */
+    background-color: #FFFFFF;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    font-size: 100%;
+    background-color: white;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+div.document {
+    display: flex;
+    background-color: white;
+}
+
+div.documentwrapper {
+    float: left;
+    width: 100%;
+}
+
+div.bodywrapper {
+    margin: 0 0 0 230px;
+}
+
+div.body {
+    background-color: white;
+    color: #222222;
+    padding: 0 20px 30px 20px;
+}
+
+div.footer {
+    color: #555555;
+    width: 100%;
+    padding: 9px 0 9px 0;
+    text-align: center;
+    font-size: 75%;
+}
+
+div.footer a {
+    color: #555555;
+    text-decoration: underline;
+}
+
+div.related {
+    background-color: white;
+    line-height: 30px;
+    color: #666666;
+}
+
+div.related a {
+    color: #444444;
+}
+
+div.sphinxsidebar {
+}
+
+div.sphinxsidebar h3 {
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    color: #444444;
+    font-size: 1.4em;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+div.sphinxsidebar h3 a {
+    color: #444444;
+}
+
+div.sphinxsidebar h4 {
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    color: #444444;
+    font-size: 1.3em;
+    font-weight: normal;
+    margin: 5px 0 0 0;
+    padding: 0;
+}
+
+div.sphinxsidebar p {
+    color: #444444;
+}
+
+div.sphinxsidebar p.topless {
+    margin: 5px 10px 10px 10px;
+}
+
+div.sphinxsidebar ul {
+    margin: 10px;
+    padding: 0;
+    color: #444444;
+}
+
+div.sphinxsidebar a {
+    color: #444444;
+}
+
+div.sphinxsidebar input {
+    border: 1px solid #444444;
+    font-family: sans-serif;
+    font-size: 1em;
+}
+
+
+
+    
+    
+
+/* for collapsible sidebar */
+#sidebarbutton {
+    height: 100%;
+    background-color: #cccccc;
+    margin-left: 0;
+    color: #FFFFFF;
+    border-left: 1px solid white;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding-top: 1px;
+    float: right;
+    display: table; /* for vertically centering the <span> */
+}
+
+#sidebarbutton:hover {
+    background-color: white;
+}
+
+#sidebarbutton span {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+div.sphinxsidebarwrapper {
+    float: left;
+    margin-right: 0;
+}
+
+
+/* -- hyperlink styles ------------------------------------------------------ */
+
+a {
+    color: #0090c0;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #00608f;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* -- body styles ----------------------------------------------------------- */
+
+div.body h1,
+div.body h2,
+div.body h3,
+div.body h4,
+div.body h5,
+div.body h6 {
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    background-color: white;
+    font-weight: normal;
+    color: #1a1a1a;
+    border-bottom: 1px solid #ccc;
+    margin: 20px -20px 10px -20px;
+    padding: 3px 0 3px 10px;
+}
+
+div.body h1 { margin-top: 0; font-size: 200%; }
+div.body h2 { font-size: 160%; }
+div.body h3 { font-size: 140%; }
+div.body h4 { font-size: 120%; }
+div.body h5 { font-size: 110%; }
+div.body h6 { font-size: 100%; }
+
+a.headerlink {
+    color: #aaaaaa;
+    font-size: 0.8em;
+    padding: 0 4px 0 4px;
+    text-decoration: none;
+}
+
+a.headerlink:hover {
+    background-color: #aaaaaa;
+    color: white;
+}
+
+div.body p, div.body dd, div.body li, div.body blockquote {
+    text-align: justify;
+    line-height: 130%;
+}
+
+div.admonition p.admonition-title + p {
+    display: inline;
+}
+
+div.admonition p {
+    margin-bottom: 5px;
+}
+
+div.admonition pre {
+    margin-bottom: 5px;
+}
+
+div.admonition ul, div.admonition ol {
+    margin-bottom: 5px;
+}
+
+div.note {
+    background-color: #eee;
+    border: 1px solid #ccc;
+}
+
+div.seealso {
+    background-color: #ffc;
+    border: 1px solid #ff6;
+}
+
+nav.contents,
+aside.topic,
+div.topic {
+    background-color: #eee;
+}
+
+div.warning {
+    background-color: #ffe4e4;
+    border: 1px solid #f66;
+}
+
+p.admonition-title {
+    display: inline;
+}
+
+p.admonition-title:after {
+    content: ":";
+}
+
+pre {
+    padding: 5px;
+    background-color: #eeffcc;
+    color: #333333;
+    line-height: 120%;
+    border: 1px solid #ac9;
+    border-left: none;
+    border-right: none;
+}
+
+code {
+    background-color: #ecf0f3;
+    padding: 0 1px 0 1px;
+    font-size: 0.95em;
+}
+
+th, dl.field-list > dt {
+    background-color: #ede;
+}
+
+.warning code {
+    background: #efc2c2;
+}
+
+.note code {
+    background: #d6d6d6;
+}
+
+.viewcode-back {
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+}
+
+div.viewcode-block:target {
+    background-color: #f4debf;
+    border-top: 1px solid #ac9;
+    border-bottom: 1px solid #ac9;
+}
+
+div.code-block-caption {
+    color: #efefef;
+    background-color: #1c4e63;
+}
+</style>
+    <style type="text/css">
+/* Common colours */
+:root {
+    --good-color: rgb(41 100 51);
+    --good-border: rgb(79 196 100);
+    --middle-color: rgb(133 72 38);
+    --middle-border: rgb(244, 227, 76);
+    --bad-color: rgb(159 49 51);
+    --bad-border: rgb(244, 76, 78);
+}
+
+/* unset some styles from the classic stylesheet */
+div.document,
+div.body,
+div.related,
+div.body h1,
+div.body h2,
+div.body h3,
+div.body h4,
+div.body h5,
+div.body h6,
+div.sphinxsidebar a,
+div.sphinxsidebar p,
+div.sphinxsidebar ul,
+div.sphinxsidebar h3,
+div.sphinxsidebar h3 a,
+div.sphinxsidebar h4,
+.menu a,
+.menu p,
+.menu ul,
+.menu h3,
+.menu h3 a,
+.menu h4,
+table.docutils td,
+table.indextable tr.cap,
+pre {
+    background-color: inherit;
+    color: inherit;
+}
+
+/* Add underlines to links */
+a[href] {
+    text-decoration: underline 1px;
+}
+
+/* Increase the underline offset for code to avoid obscuring underscores */
+a[href]:has(> code) {
+    text-underline-offset: 0.25em;
+}
+
+/* No underline for navigation */
+a.headerlink,
+div.genindex-jumpbox a,
+div.modindex-jumpbox a,
+div#search-results a,
+div.sphinxsidebar a,
+div.toctree-wrapper a,
+div[role=navigation] a,
+table.contentstable a,
+table.indextable a {
+    text-decoration: none;
+}
+
+/* Except when hovered */
+div.genindex-jumpbox a:hover,
+div.modindex-jumpbox a:hover,
+div#search-results a:hover,
+div.sphinxsidebar a:hover,
+div.toctree-wrapper a:hover,
+div[role=navigation] a:hover,
+table.contentstable a:hover,
+table.indextable a:hover {
+    text-decoration: underline;
+    text-underline-offset: auto;
+}
+
+body {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.mobile-nav,
+.menu-wrapper {
+    display: none;
+}
+
+div.related {
+    margin-top: 0.5em;
+    margin-bottom: 1.2em;
+    padding: 0.5em 0;
+    border-width: 1px;
+    border-color: #ccc;
+}
+
+.mobile-nav + div.related {
+    border-bottom-style: solid;
+}
+
+.document + div.related {
+    border-top-style: solid;
+}
+
+div.related a:hover {
+    color: #0095c4;
+}
+
+.related .switchers {
+    display: inline-flex;
+}
+
+.switchers > div {
+    margin-right: 5px;
+}
+
+div.related ul::after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+.inline-search,
+form.inline-search input {
+    display: inline;
+}
+
+form.inline-search input[type='submit'] {
+    /* In some languages, more than 40px is required */
+    width: auto;
+    min-width: 40px;
+}
+
+div.document {
+    display: flex;
+    /* Don't let long code literals extend beyond the right side of the screen */
+    overflow-wrap: break-word;
+}
+
+/* Don't let long code literals extend beyond the right side of the screen */
+span.pre {
+    white-space: unset;
+}
+
+div.sphinxsidebar {
+    display: flex;
+    width: min(25vw, 350px);
+    float: none;
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
+    color: #444;
+    background-color: #eee;
+    border-radius: 5px;
+    line-height: 130%;
+    font-size: smaller;
+}
+
+div.sphinxsidebar h3,
+div.sphinxsidebar h4 {
+    margin-top: 1.5em;
+}
+
+div.bodywrapper {
+    margin-left: min(25vw, 350px);
+}
+
+div.sphinxsidebarwrapper {
+    box-sizing: border-box;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    float: none;
+    flex-grow: 1;
+}
+
+div.sphinxsidebarwrapper > h3:first-child {
+    margin-top: 0.2em;
+}
+
+div.sphinxsidebarwrapper > ul > li > ul > li {
+    margin-bottom: 0.4em;
+}
+
+div.sphinxsidebar a:hover {
+    color: #0095c4;
+}
+
+form.inline-search input,
+div.sphinxsidebar input,
+div.related input {
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    border: 1px solid #999999;
+    font-size: smaller;
+    border-radius: 3px;
+}
+
+div.sphinxsidebar input[type='text'] {
+    max-width: 150px;
+}
+
+#sidebarbutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12px;
+    min-width: 12px;
+    border-radius: 0 5px 5px 0;
+    border-left: none;
+}
+
+#sidebarbutton:hover {
+    background-color: #AAAAAA;
+}
+
+div.body {
+    padding: 0 0 0 1.2em;
+}
+
+div.body p, div.body dd, div.body li, div.body blockquote {
+    text-align: left;
+    line-height: 1.6;
+}
+div.body h1, div.body h2, div.body h3, div.body h4, div.body h5, div.body h6 {
+    margin: 0;
+    border: 0;
+    padding: 0.3em 0;
+}
+div.body dl.field-list > dt {
+    line-height: 1.6;
+}
+
+div.body hr {
+    border: 0;
+    background-color: #ccc;
+    height: 1px;
+}
+
+div.body pre {
+    border-radius: 3px;
+    border: 1px solid #ac9;
+}
+
+div.body {
+    .good pre {
+        border-left: 3px solid var(--good-border);
+    }
+    .bad pre {
+        border-left: 3px solid var(--bad-border);
+    }
+    .maybe pre {
+        border-left: 3px solid var(--middle-border);
+    }
+}
+
+div.code-block-caption {
+    background-color: #eee;
+    border: 1px solid #ac9;
+    border-bottom: none;
+    border-radius: 3px 3px 0 0;
+    padding: 0.3em 0.6em;
+    font-size: 90%;
+    color: #333;
+
+    & + div pre {
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+    }
+
+    & + div .copybutton {
+        border-top-right-radius: 0 !important;
+    }
+}
+
+/* Admonitions */
+:root {
+    --admonition-background: #eee;
+    --admonition-border: #ccc;
+    --admonition-color: black;
+    --attention-background: #bbddff5c;
+    --attention-border: #0000ff36;
+    --caution-background: #ffc;
+    --caution-border: #dd6;
+    --danger-background: #ffe4e4;
+    --danger-border: red;
+    --error-background: #ffe4e4;
+    --error-border: red;
+    --hint-background: #dfd;
+    --hint-border: green;
+    --seealso-background: #ffc;
+    --seealso-border: #dd6;
+    --tip-background: #dfd;
+    --tip-border: green;
+    --warning-background: #ffe4e4;
+    --warning-border: red;
+}
+
+div.body div.admonition {
+    background-color: var(--admonition-background);
+    border: 1px solid var(--admonition-border);
+    border-radius: 3px;
+    color: var(--admonition-color);
+}
+
+div.body div.admonition.attention {
+    background-color: var(--attention-background);
+    border-color: var(--attention-border);
+}
+
+div.body div.admonition.caution {
+    background-color: var(--caution-background);
+    border-color: var(--caution-border);
+}
+
+div.body div.admonition.danger {
+    background-color: var(--danger-background);
+    border-color: var(--danger-border);
+}
+
+div.body div.admonition.error {
+    background-color: var(--error-background);
+    border-color: var(--error-border);
+}
+
+div.body div.admonition.hint {
+    background-color: var(--hint-background);
+    border-color: var(--hint-border);
+}
+
+div.body div.admonition.seealso {
+    background-color: var(--seealso-background);
+    border-color: var(--seealso-border);
+}
+
+div.body div.admonition.tip {
+    background-color: var(--tip-background);
+    border-color: var(--tip-border);
+}
+
+div.body div.admonition.warning {
+    background-color: var(--warning-background);
+    border-color: var(--warning-border);
+}
+
+div.body div.impl-detail {
+    border-radius: 3px;
+}
+
+div.body div.impl-detail > p {
+    margin: 0;
+}
+
+div.body a {
+    color: #0072aa;
+}
+
+div.body a:visited {
+    color: #6363bb;
+}
+
+div.body a:hover {
+    color: #00b0e4;
+}
+
+tt, code, pre {
+    font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+    font-size: 96.5%;
+}
+
+div.body pre {
+    line-height: 120%;
+}
+
+div.body tt,
+div.body code {
+    border-radius: 3px;
+}
+
+div.body tt.descname,
+div.body code.descname {
+    font-size: 120%;
+}
+
+div.body tt.xref,
+div.body a tt,
+div.body code.xref,
+div.body a code {
+    font-weight: normal;
+}
+
+table.docutils {
+    border: 1px solid #ddd;
+    min-width: 20%;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+table.docutils td,
+table.docutils th {
+    border: 1px solid #ddd !important;
+    border-radius: 3px;
+    padding: 0.3em 0.5em;
+}
+
+table p,
+table li {
+    text-align: left !important;
+}
+
+table.docutils th {
+    background-color: #eee;
+}
+
+table.footnote,
+table.footnote td {
+    border: 0 !important;
+}
+
+div.footer {
+    line-height: 150%;
+    text-align: right;
+    width: auto;
+    margin-right: 10px;
+}
+
+div.footer a {
+    text-underline-offset: auto;
+}
+
+div.footer a:hover {
+    color: #0095c4;
+}
+
+/* C API return value annotations */
+:root {
+    --refcount: var(--good-color);
+    --refcount-return-borrowed-ref: var(--middle-color);
+}
+
+.refcount {
+    color: var(--refcount);
+}
+
+.refcount.return_borrowed_ref {
+    color: var(--refcount-return-borrowed-ref)
+}
+
+.stableabi {
+    color: #229;
+}
+
+/* C API thread safety annotations */
+:root {
+    --threadsafety-incompatible: var(--bad-color);
+    --threadsafety-compatible: var(--middle-color);
+    --threadsafety-distinct: var(--middle-color);
+    --threadsafety-shared: var(--good-color);
+    --threadsafety-atomic: var(--good-color);
+}
+
+.threadsafety.threadsafety-incompatible {
+    color: var(--threadsafety-incompatible);
+}
+
+.threadsafety.threadsafety-compatible {
+    color: var(--threadsafety-compatible);
+}
+
+.threadsafety.threadsafety-distinct {
+    color: var(--threadsafety-distinct);
+}
+
+.threadsafety.threadsafety-shared {
+    color: var(--threadsafety-shared);
+}
+
+.threadsafety.threadsafety-atomic {
+    color: var(--threadsafety-atomic);
+}
+
+
+dl > dt span ~ em,
+.sig {
+    font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+}
+
+.toctree-wrapper ul {
+    padding-left: 20px;
+}
+
+.theme-selector {
+    margin-left: .5em;
+}
+
+div.genindex-jumpbox,
+div.genindex-jumpbox > p {
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+div.genindex-jumpbox a {
+    margin: 0 5px;
+    min-width: 30px;
+    text-align: center;
+}
+
+.copybutton {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+    font-size: 80%;
+    padding-left: .5em;
+    padding-right: .5em;
+    height: 100%;
+    max-height: min(100%, 2.4em);
+    border-radius: 0 3px 0 0;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #ac9; /* follows div.body pre */
+    display: none;
+}
+
+.copybutton:hover {
+    background-color: #eee;
+}
+
+.copybutton:active {
+    background-color: #ddd;
+}
+
+.highlight:active .copybutton {
+    display: block;
+}
+
+.highlight:hover .copybutton {
+    display: block;
+}
+
+@media (max-width: 1023px) {
+    /* Body layout */
+    div.body {
+        min-width: 100%;
+        padding: 0;
+        font-size: 0.875rem;
+    }
+    div.bodywrapper {
+        margin: 0;
+    }
+    /* Typography */
+    div.body h1 {
+        font-size: 1.625rem;
+    }
+    div.body h2 {
+        font-size: 1.25rem;
+    }
+    div.body h3, div.body h4, div.body h5 {
+        font-size: 1rem;
+    }
+    /* Override default styles to make more readable */
+    div.body ul {
+        padding-inline-start: 1rem;
+    }
+    div.body blockquote {
+        margin-inline-start: 1rem;
+        margin-inline-end: 0;
+    }
+    /* Remove sidebar and top related bar */
+    div.related, div.sphinxsidebar {
+        display: none;
+    }
+    /* Anchorlinks are not hidden by fixed-positioned navbar when scrolled to */
+    html {
+        scroll-padding-top: 40px;
+    }
+    body {
+        margin-top: 40px;
+    }
+
+    /* Top navigation bar */
+    .mobile-nav {
+        display: block;
+        height: 40px;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        box-shadow: rgba(0, 0, 0, 0.25) 0 0 2px 0;
+        z-index: 1;
+    }
+    .mobile-nav * {
+        box-sizing: border-box;
+    }
+    .nav-content {
+        position: absolute;
+        z-index: 1;
+        height: 40px;
+        width: 100%;
+        display: flex;
+        background-color: white;
+    }
+    .nav-items-wrapper {
+        display: flex;
+        flex: auto;
+        padding: .25rem;
+        align-items: stretch;
+    }
+    .nav-logo {
+        margin-right: 1rem;
+        flex-shrink: 0;
+        align-self: center;
+    }
+    .nav-content img {
+        display: block;
+        width: 20px;
+    }
+    .version_switcher_placeholder {
+        margin-right: 1rem;
+    }
+    .version_switcher_placeholder > select {
+        height: 100%;
+    }
+    .nav-content .search {
+        display: flex;
+        flex: auto;
+        border: 1px solid #a9a9a9;
+        align-items: stretch;
+    }
+    .nav-content .search input[type=search] {
+        border: 0;
+        padding-left: 24px;
+        width: 100%;
+        flex: 1;
+    }
+    .nav-content .search input[type=submit] {
+        height: 100%;
+        box-shadow: none;
+        border: 0;
+        border-left: 1px solid #a9a9a9;
+        cursor: pointer;
+        margin-right: 0;
+    }
+    .nav-content .search svg {
+        position: absolute;
+        align-self: center;
+        padding-left: 4px;
+    }
+    .toggler__input {
+        display: none;
+    }
+    .toggler__label {
+        width: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        flex-shrink: 0;
+    }
+    .toggler__label:hover, .toggler__label:focus {
+        background-color: rgba(127 127 127 / 50%);
+    }
+    .toggler__label > span {
+        position: relative;
+        flex: none;
+        height: 2px;
+        width: 100%;
+        background: currentColor;
+        transition: all 400ms ease;
+    }
+    .toggler__label > span::before,
+    .toggler__label > span::after {
+        content: '';
+        height: 2px;
+        width: 100%;
+        background: inherit;
+        position: absolute;
+        left: 0;
+        top: -8px;
+    }
+    .toggler__label > span::after {
+        top: 8px;
+    }
+    .toggler__input:checked ~ nav > .toggler__label span {
+        transform: rotate(135deg);
+    }
+    .toggler__input:checked ~ nav > .toggler__label span::before {
+        transform: rotate(90deg);
+    }
+    .toggler__input:checked ~ nav > .toggler__label span::before,
+    .toggler__input:checked ~ nav > .toggler__label span::after {
+        top: 0;
+    }
+    .toggler__input:checked:hover ~ nav > .toggler__label span {
+        transform: rotate(315deg);
+    }
+    .toggler__input:checked ~ .menu-wrapper {
+        visibility: visible;
+        left: 0;
+    }
+
+    /* Sliding side menu */
+    .menu-wrapper {
+        display: block;
+        position: fixed;
+        top: 0;
+        transition: left 400ms ease;
+        left: -310px;
+        width: 300px;
+        height: 100%;
+        background-color: #eee;
+        color: #444444;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        overflow-y: auto;
+    }
+    .menu-wrapper.open {
+        visibility: visible;
+        left: 0;
+    }
+    .menu {
+        padding: 40px 10px 30px 20px;
+    }
+    .menu-wrapper h3,
+    .menu-wrapper h4 {
+        margin-bottom: 0;
+        font-weight: normal;
+    }
+    .menu-wrapper h4 {
+        font-size: 1.3em;
+    }
+    .menu-wrapper h3 {
+        font-size: 1.4em;
+    }
+    .menu-wrapper h3 + p,
+    .menu-wrapper h4 + p {
+        margin-top: 0.5rem;
+    }
+    .menu a {
+        font-size: smaller;
+        text-decoration: none;
+    }
+    .menu ul {
+        list-style: none;
+        line-height: 1.4;
+        overflow-wrap: break-word;
+        padding-left: 0;
+    }
+    .menu ul ul {
+        margin-left: 20px;
+        list-style: square;
+    }
+    .menu ul li {
+        margin-bottom: 0.5rem;
+    }
+    .language_switcher_placeholder {
+        margin-top: 2rem;
+    }
+    .language_switcher_placeholder select {
+        width: 100%;
+    }
+    .document {
+        position: relative;
+        z-index: 0;
+    }
+    /*Responsive tables*/
+    .responsive-table__container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .menu .theme-selector-label {
+        margin-top: .5em;
+        display: flex;
+        width: 100%;
+    }
+
+    .menu .theme-selector {
+        flex: auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    div.footer {
+        margin-top: -2em;
+    }
+}
+
+/* Version change directives */
+:root {
+    --versionadded: var(--good-color);
+    --versionchanged: var(--middle-color);
+    --deprecated: var(--bad-color);
+    --soft-deprecated: rgb(175, 0, 255);
+
+    --versionadded-border: var(--good-border);
+    --versionchanged-border: var(--middle-border);
+    --deprecated-border: var(--bad-border);
+    --soft-deprecated-border: rgb(175, 0, 255);
+}
+
+div.versionadded,
+div.versionchanged,
+div.deprecated,
+div.deprecated-removed {
+    border-left: 3px solid;
+    padding: 0 1rem;
+}
+
+div.versionadded {
+    border-left-color: var(--versionadded-border);
+}
+
+div.versionchanged {
+    border-left-color: var(--versionchanged-border);
+}
+
+div.deprecated,
+div.deprecated-removed,
+div.versionremoved {
+    border-left-color: var(--deprecated-border);
+}
+
+div.soft-deprecated {
+    border-left-color: var(--soft-deprecated-border);
+}
+
+div.versionadded .versionmodified {
+    color: var(--versionadded);
+}
+
+div.versionchanged .versionmodified {
+    color: var(--versionchanged);
+}
+
+div.deprecated .versionmodified,
+div.deprecated-removed .versionmodified,
+div.versionremoved .versionmodified {
+    color: var(--deprecated);
+}
+
+div.soft-deprecated .versionmodified {
+    color: var(--soft-deprecated);
+}
+
+/* Hide header when printing */
+@media print {
+    div.mobile-nav {
+        display: none;
+    }
+}
+
+</style>
+    <style type="text/css" media="(prefers-color-scheme: dark)" id="pygments_dark_css">
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #49483e }
+.highlight { background: #272822; color: #F8F8F2 }
+.highlight .c { color: #959077 } /* Comment */
+.highlight .err { color: #ED007E; background-color: #1E0010 } /* Error */
+.highlight .esc { color: #F8F8F2 } /* Escape */
+.highlight .g { color: #F8F8F2 } /* Generic */
+.highlight .k { color: #66D9EF } /* Keyword */
+.highlight .l { color: #AE81FF } /* Literal */
+.highlight .n { color: #F8F8F2 } /* Name */
+.highlight .o { color: #FF4689 } /* Operator */
+.highlight .x { color: #F8F8F2 } /* Other */
+.highlight .p { color: #F8F8F2 } /* Punctuation */
+.highlight .ch { color: #959077 } /* Comment.Hashbang */
+.highlight .cm { color: #959077 } /* Comment.Multiline */
+.highlight .cp { color: #959077 } /* Comment.Preproc */
+.highlight .cpf { color: #959077 } /* Comment.PreprocFile */
+.highlight .c1 { color: #959077 } /* Comment.Single */
+.highlight .cs { color: #959077 } /* Comment.Special */
+.highlight .gd { color: #FF4689 } /* Generic.Deleted */
+.highlight .ge { color: #F8F8F2; font-style: italic } /* Generic.Emph */
+.highlight .ges { color: #F8F8F2; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.highlight .gr { color: #F8F8F2 } /* Generic.Error */
+.highlight .gh { color: #F8F8F2 } /* Generic.Heading */
+.highlight .gi { color: #A6E22E } /* Generic.Inserted */
+.highlight .go { color: #66D9EF } /* Generic.Output */
+.highlight .gp { color: #FF4689; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { color: #F8F8F2; font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #959077 } /* Generic.Subheading */
+.highlight .gt { color: #F8F8F2 } /* Generic.Traceback */
+.highlight .kc { color: #66D9EF } /* Keyword.Constant */
+.highlight .kd { color: #66D9EF } /* Keyword.Declaration */
+.highlight .kn { color: #FF4689 } /* Keyword.Namespace */
+.highlight .kp { color: #66D9EF } /* Keyword.Pseudo */
+.highlight .kr { color: #66D9EF } /* Keyword.Reserved */
+.highlight .kt { color: #66D9EF } /* Keyword.Type */
+.highlight .ld { color: #E6DB74 } /* Literal.Date */
+.highlight .m { color: #AE81FF } /* Literal.Number */
+.highlight .s { color: #E6DB74 } /* Literal.String */
+.highlight .na { color: #A6E22E } /* Name.Attribute */
+.highlight .nb { color: #F8F8F2 } /* Name.Builtin */
+.highlight .nc { color: #A6E22E } /* Name.Class */
+.highlight .no { color: #66D9EF } /* Name.Constant */
+.highlight .nd { color: #A6E22E } /* Name.Decorator */
+.highlight .ni { color: #F8F8F2 } /* Name.Entity */
+.highlight .ne { color: #A6E22E } /* Name.Exception */
+.highlight .nf { color: #A6E22E } /* Name.Function */
+.highlight .nl { color: #F8F8F2 } /* Name.Label */
+.highlight .nn { color: #F8F8F2 } /* Name.Namespace */
+.highlight .nx { color: #A6E22E } /* Name.Other */
+.highlight .py { color: #F8F8F2 } /* Name.Property */
+.highlight .nt { color: #FF4689 } /* Name.Tag */
+.highlight .nv { color: #F8F8F2 } /* Name.Variable */
+.highlight .ow { color: #FF4689 } /* Operator.Word */
+.highlight .pm { color: #F8F8F2 } /* Punctuation.Marker */
+.highlight .w { color: #F8F8F2 } /* Text.Whitespace */
+.highlight .mb { color: #AE81FF } /* Literal.Number.Bin */
+.highlight .mf { color: #AE81FF } /* Literal.Number.Float */
+.highlight .mh { color: #AE81FF } /* Literal.Number.Hex */
+.highlight .mi { color: #AE81FF } /* Literal.Number.Integer */
+.highlight .mo { color: #AE81FF } /* Literal.Number.Oct */
+.highlight .sa { color: #E6DB74 } /* Literal.String.Affix */
+.highlight .sb { color: #E6DB74 } /* Literal.String.Backtick */
+.highlight .sc { color: #E6DB74 } /* Literal.String.Char */
+.highlight .dl { color: #E6DB74 } /* Literal.String.Delimiter */
+.highlight .sd { color: #E6DB74 } /* Literal.String.Doc */
+.highlight .s2 { color: #E6DB74 } /* Literal.String.Double */
+.highlight .se { color: #AE81FF } /* Literal.String.Escape */
+.highlight .sh { color: #E6DB74 } /* Literal.String.Heredoc */
+.highlight .si { color: #E6DB74 } /* Literal.String.Interpol */
+.highlight .sx { color: #E6DB74 } /* Literal.String.Other */
+.highlight .sr { color: #E6DB74 } /* Literal.String.Regex */
+.highlight .s1 { color: #E6DB74 } /* Literal.String.Single */
+.highlight .ss { color: #E6DB74 } /* Literal.String.Symbol */
+.highlight .bp { color: #F8F8F2 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #A6E22E } /* Name.Function.Magic */
+.highlight .vc { color: #F8F8F2 } /* Name.Variable.Class */
+.highlight .vg { color: #F8F8F2 } /* Name.Variable.Global */
+.highlight .vi { color: #F8F8F2 } /* Name.Variable.Instance */
+.highlight .vm { color: #F8F8F2 } /* Name.Variable.Magic */
+.highlight .il { color: #AE81FF } /* Literal.Number.Integer.Long */
+</style>
+    
+    <script>
+const DOCUMENTATION_OPTIONS = {
+    VERSION: '3.14.6',
+    LANGUAGE: 'en',
+    COLLAPSE_INDEX: false,
+    BUILDER: 'html',
+    FILE_SUFFIX: '.html',
+    LINK_SUFFIX: '.html',
+    HAS_SOURCE: true,
+    SOURCELINK_SUFFIX: '.txt',
+    NAVIGATION_WITH_KEYS: false,
+    SHOW_SEARCH_SUMMARY: true,
+    ENABLE_SEARCH_SHORTCUTS: true,
+};
+</script>
+    <script>
+/*
+ * Base JavaScript utilities for all Sphinx HTML documentation.
+ */
+"use strict";
+
+const BLACKLISTED_KEY_CONTROL_ELEMENTS = new Set([
+  "TEXTAREA",
+  "INPUT",
+  "SELECT",
+  "BUTTON",
+]);
+
+const _ready = (callback) => {
+  if (document.readyState !== "loading") {
+    callback();
+  } else {
+    document.addEventListener("DOMContentLoaded", callback);
+  }
+};
+
+/**
+ * Small JavaScript module for the documentation.
+ */
+const Documentation = {
+  init: () => {
+    Documentation.initDomainIndexTable();
+    Documentation.initOnKeyListeners();
+  },
+
+  /**
+   * i18n support
+   */
+  TRANSLATIONS: {},
+  PLURAL_EXPR: (n) => (n === 1 ? 0 : 1),
+  LOCALE: "unknown",
+
+  // gettext and ngettext don't access this so that the functions
+  // can safely bound to a different name (_ = Documentation.gettext)
+  gettext: (string) => {
+    const translated = Documentation.TRANSLATIONS[string];
+    switch (typeof translated) {
+      case "undefined":
+        return string; // no translation
+      case "string":
+        return translated; // translation exists
+      default:
+        return translated[0]; // (singular, plural) translation tuple exists
+    }
+  },
+
+  ngettext: (singular, plural, n) => {
+    const translated = Documentation.TRANSLATIONS[singular];
+    if (typeof translated !== "undefined")
+      return translated[Documentation.PLURAL_EXPR(n)];
+    return n === 1 ? singular : plural;
+  },
+
+  addTranslations: (catalog) => {
+    Object.assign(Documentation.TRANSLATIONS, catalog.messages);
+    Documentation.PLURAL_EXPR = new Function(
+      "n",
+      `return (${catalog.plural_expr})`
+    );
+    Documentation.LOCALE = catalog.locale;
+  },
+
+  /**
+   * helper function to focus on search bar
+   */
+  focusSearchBar: () => {
+    document.querySelectorAll("input[name=q]")[0]?.focus();
+  },
+
+  /**
+   * Initialise the domain index toggle buttons
+   */
+  initDomainIndexTable: () => {
+    const toggler = (el) => {
+      const idNumber = el.id.substr(7);
+      const toggledRows = document.querySelectorAll(`tr.cg-${idNumber}`);
+      if (el.src.substr(-9) === "minus.png") {
+        el.src = `${el.src.substr(0, el.src.length - 9)}plus.png`;
+        toggledRows.forEach((el) => (el.style.display = "none"));
+      } else {
+        el.src = `${el.src.substr(0, el.src.length - 8)}minus.png`;
+        toggledRows.forEach((el) => (el.style.display = ""));
+      }
+    };
+
+    const togglerElements = document.querySelectorAll("img.toggler");
+    togglerElements.forEach((el) =>
+      el.addEventListener("click", (event) => toggler(event.currentTarget))
+    );
+    togglerElements.forEach((el) => (el.style.display = ""));
+    if (DOCUMENTATION_OPTIONS.COLLAPSE_INDEX) togglerElements.forEach(toggler);
+  },
+
+  initOnKeyListeners: () => {
+    // only install a listener if it is really needed
+    if (
+      !DOCUMENTATION_OPTIONS.NAVIGATION_WITH_KEYS &&
+      !DOCUMENTATION_OPTIONS.ENABLE_SEARCH_SHORTCUTS
+    )
+      return;
+
+    document.addEventListener("keydown", (event) => {
+      // bail for input elements
+      if (BLACKLISTED_KEY_CONTROL_ELEMENTS.has(document.activeElement.tagName)) return;
+      // bail with special keys
+      if (event.altKey || event.ctrlKey || event.metaKey) return;
+
+      if (!event.shiftKey) {
+        switch (event.key) {
+          case "ArrowLeft":
+            if (!DOCUMENTATION_OPTIONS.NAVIGATION_WITH_KEYS) break;
+
+            const prevLink = document.querySelector('link[rel="prev"]');
+            if (prevLink && prevLink.href) {
+              window.location.href = prevLink.href;
+              event.preventDefault();
+            }
+            break;
+          case "ArrowRight":
+            if (!DOCUMENTATION_OPTIONS.NAVIGATION_WITH_KEYS) break;
+
+            const nextLink = document.querySelector('link[rel="next"]');
+            if (nextLink && nextLink.href) {
+              window.location.href = nextLink.href;
+              event.preventDefault();
+            }
+            break;
+        }
+      }
+
+      // some keyboard layouts may need Shift to get /
+      switch (event.key) {
+        case "/":
+          if (!DOCUMENTATION_OPTIONS.ENABLE_SEARCH_SHORTCUTS) break;
+          Documentation.focusSearchBar();
+          event.preventDefault();
+      }
+    });
+  },
+};
+
+// quick alias for translations
+const _ = Documentation.gettext;
+
+_ready(Documentation.init);
+
+</script>
+    <script>
+/* Highlighting utilities for Sphinx HTML documentation. */
+"use strict";
+
+const SPHINX_HIGHLIGHT_ENABLED = true
+
+/**
+ * highlight a given string on a node by wrapping it in
+ * span elements with the given class name.
+ */
+const _highlight = (node, addItems, text, className) => {
+  if (node.nodeType === Node.TEXT_NODE) {
+    const val = node.nodeValue;
+    const parent = node.parentNode;
+    const pos = val.toLowerCase().indexOf(text);
+    if (
+      pos >= 0 &&
+      !parent.classList.contains(className) &&
+      !parent.classList.contains("nohighlight")
+    ) {
+      let span;
+
+      const closestNode = parent.closest("body, svg, foreignObject");
+      const isInSVG = closestNode && closestNode.matches("svg");
+      if (isInSVG) {
+        span = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+      } else {
+        span = document.createElement("span");
+        span.classList.add(className);
+      }
+
+      span.appendChild(document.createTextNode(val.substr(pos, text.length)));
+      const rest = document.createTextNode(val.substr(pos + text.length));
+      parent.insertBefore(
+        span,
+        parent.insertBefore(
+          rest,
+          node.nextSibling
+        )
+      );
+      node.nodeValue = val.substr(0, pos);
+      /* There may be more occurrences of search term in this node. So call this
+       * function recursively on the remaining fragment.
+       */
+      _highlight(rest, addItems, text, className);
+
+      if (isInSVG) {
+        const rect = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "rect"
+        );
+        const bbox = parent.getBBox();
+        rect.x.baseVal.value = bbox.x;
+        rect.y.baseVal.value = bbox.y;
+        rect.width.baseVal.value = bbox.width;
+        rect.height.baseVal.value = bbox.height;
+        rect.setAttribute("class", className);
+        addItems.push({ parent: parent, target: rect });
+      }
+    }
+  } else if (node.matches && !node.matches("button, select, textarea")) {
+    node.childNodes.forEach((el) => _highlight(el, addItems, text, className));
+  }
+};
+const _highlightText = (thisNode, text, className) => {
+  let addItems = [];
+  _highlight(thisNode, addItems, text, className);
+  addItems.forEach((obj) =>
+    obj.parent.insertAdjacentElement("beforebegin", obj.target)
+  );
+};
+
+/**
+ * Small JavaScript module for the documentation.
+ */
+const SphinxHighlight = {
+
+  /**
+   * highlight the search words provided in localstorage in the text
+   */
+  highlightSearchWords: () => {
+    if (!SPHINX_HIGHLIGHT_ENABLED) return;  // bail if no highlight
+
+    // get and clear terms from localstorage
+    const url = new URL(window.location);
+    const highlight =
+        localStorage.getItem("sphinx_highlight_terms")
+        || url.searchParams.get("highlight")
+        || "";
+    localStorage.removeItem("sphinx_highlight_terms")
+    url.searchParams.delete("highlight");
+    window.history.replaceState({}, "", url);
+
+    // get individual terms from highlight string
+    const terms = highlight.toLowerCase().split(/\s+/).filter(x => x);
+    if (terms.length === 0) return; // nothing to do
+
+    // There should never be more than one element matching "div.body"
+    const divBody = document.querySelectorAll("div.body");
+    const body = divBody.length ? divBody[0] : document.querySelector("body");
+    window.setTimeout(() => {
+      terms.forEach((term) => _highlightText(body, term, "highlighted"));
+    }, 10);
+
+    const searchBox = document.getElementById("searchbox");
+    if (searchBox === null) return;
+    searchBox.appendChild(
+      document
+        .createRange()
+        .createContextualFragment(
+          '<p class="highlight-link">' +
+            '<a href="javascript:SphinxHighlight.hideSearchWords()">' +
+            _("Hide Search Matches") +
+            "</a></p>"
+        )
+    );
+  },
+
+  /**
+   * helper function to hide the search marks again
+   */
+  hideSearchWords: () => {
+    document
+      .querySelectorAll("#searchbox .highlight-link")
+      .forEach((el) => el.remove());
+    document
+      .querySelectorAll("span.highlighted")
+      .forEach((el) => el.classList.remove("highlighted"));
+    localStorage.removeItem("sphinx_highlight_terms")
+  },
+
+  initEscapeListener: () => {
+    // only install a listener if it is really needed
+    if (!DOCUMENTATION_OPTIONS.ENABLE_SEARCH_SHORTCUTS) return;
+
+    document.addEventListener("keydown", (event) => {
+      // bail for input elements
+      if (BLACKLISTED_KEY_CONTROL_ELEMENTS.has(document.activeElement.tagName)) return;
+      // bail with special keys
+      if (event.shiftKey || event.altKey || event.ctrlKey || event.metaKey) return;
+      if (DOCUMENTATION_OPTIONS.ENABLE_SEARCH_SHORTCUTS && (event.key === "Escape")) {
+        SphinxHighlight.hideSearchWords();
+        event.preventDefault();
+      }
+    });
+  },
+};
+
+_ready(() => {
+  /* Do not call highlightSearchWords() when we are on the search page.
+   * It will highlight words from the *previous* search query.
+   */
+  if (typeof Search === "undefined") SphinxHighlight.highlightSearchWords();
+  SphinxHighlight.initEscapeListener();
+});
+
+</script>
+    
+    <script>
+/*
+ * This script makes the Sphinx sidebar collapsible.
+ *
+ * .sphinxsidebar contains .sphinxsidebarwrapper.  This script adds
+ * in .sphixsidebar, after .sphinxsidebarwrapper, the #sidebarbutton
+ * used to collapse and expand the sidebar.
+ *
+ * When the sidebar is collapsed the .sphinxsidebarwrapper is hidden
+ * and the width of the sidebar and the margin-left of the document
+ * are decreased. When the sidebar is expanded the opposite happens.
+ * This script saves a per-browser/per-session cookie used to
+ * remember the position of the sidebar among the pages.
+ * Once the browser is closed the cookie is deleted and the position
+ * reset to the default (expanded).
+ *
+ */
+
+const initialiseSidebar = () => {
+  
+    
+  
+
+  // global elements used by the functions.
+  const bodyWrapper = document.getElementsByClassName("bodywrapper")[0]
+  const sidebar = document.getElementsByClassName("sphinxsidebar")[0]
+  const sidebarWrapper = document.getElementsByClassName('sphinxsidebarwrapper')[0]
+  const sidebarButton = document.getElementById("sidebarbutton")
+  const sidebarArrow = sidebarButton.querySelector('span')
+
+  // for some reason, the document has no sidebar; do not run into errors
+  if (typeof sidebar === "undefined") return;
+
+  const flipArrow = element => element.innerText = (element.innerText === "»") ? "«" : "»"
+
+  const collapse_sidebar = () => {
+    bodyWrapper.style.marginLeft = ".8em";
+    sidebar.style.width = ".8em"
+    sidebarWrapper.style.display = "none"
+    flipArrow(sidebarArrow)
+    sidebarButton.title = _('Expand sidebar')
+    window.localStorage.setItem("sidebar", "collapsed")
+  }
+
+  const expand_sidebar = () => {
+    bodyWrapper.style.marginLeft = ""
+    sidebar.style.removeProperty("width")
+    sidebarWrapper.style.display = ""
+    flipArrow(sidebarArrow)
+    sidebarButton.title = _('Collapse sidebar')
+    window.localStorage.setItem("sidebar", "expanded")
+  }
+
+  sidebarButton.addEventListener("click", () => {
+    (sidebarWrapper.style.display === "none") ? expand_sidebar() : collapse_sidebar()
+  })
+
+  if (!window.localStorage.getItem("sidebar")) return
+  const value = window.localStorage.getItem("sidebar")
+  if (value === "collapsed") collapse_sidebar();
+  else if (value === "expanded") expand_sidebar();
+}
+
+if (document.readyState !== "loading") initialiseSidebar()
+else document.addEventListener("DOMContentLoaded", initialiseSidebar)
+</script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Python 3.14.6 documentation"
+          href="https://docs.python.org/3/_static/opensearch.xml"/>
+    <link rel="author" title="About these documents" href="https://docs.python.org/3/about.html" />
+    <link rel="index" title="Index" href="https://docs.python.org/3/genindex.html" />
+    <link rel="search" title="Search" href="https://docs.python.org/3/search.html" />
+    <link rel="copyright" title="Copyright" href="https://docs.python.org/3/copyright.html" />
+    <link rel="next" title="16. Appendix" href="appendix.html" />
+    <link rel="prev" title="14. Interactive Input Editing and History Substitution" href="interactive.html" />
+    
+      
+      <script defer file-types="bz2,epub,zip" data-domain="docs.python.org" src="https://analytics.python.org/js/script.file-downloads.outbound-links.js"></script>
+      
+      <link rel="canonical" href="floatingpoint.html">
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<style type="text/css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+/* Common colours */
+:root {
+    --good-color: rgb(79 196 100);
+    --good-border: var(--good-color);
+    --middle-color: rgb(244, 227, 76);
+    --middle-border: var(--middle-color);
+    --bad-color: rgb(244, 76, 78);
+    --bad-border: var(--bad-color);
+}
+
+
+/* Browser elements */
+:root {
+    scrollbar-color: #616161 transparent;
+    color-scheme: dark;
+}
+
+html,
+body {
+    background-color: #222;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+div.related {
+    color: rgba(255, 255, 255, 0.7); /* classic overwrite */
+    border-color: #424242;
+}
+
+/* SIDEBAR */
+div.sphinxsidebar, .menu-wrapper {
+    background-color: #333;
+    color: inherit;
+}
+
+#sidebarbutton {
+    /* important to overwrite style attribute */
+    background-color: #555 !important;
+    color: inherit !important;
+}
+
+div.sidebar, aside.sidebar {
+    background-color: #424242;
+    border-color: #616161;
+}
+
+/* ANCHORS AND HIGHLIGHTS */
+div.body a {
+    color: #7af;
+}
+
+div.body a:visited {
+    color: #09e;
+}
+
+a.headerlink:hover {
+    background-color: #424242;
+}
+
+div.related a {
+    color: currentColor;
+}
+
+div.footer,
+div.footer a {
+    color: currentColor; /* classic overwrites */
+}
+
+dt:target,
+span.highlighted {
+    background-color: #616161;
+}
+
+.footnote:target {
+    background-color: #2c3e50;
+}
+
+/* Below for most things in text */
+
+dl.field-list > dt {
+    background-color: #434;
+}
+
+table.docutils td,
+table.docutils th {
+    border-color: #616161 !important;
+}
+
+table.docutils th {
+    background-color: #424242;
+}
+
+.stableabi {
+    color: #bbf;
+}
+
+div.body pre {
+    border-color: #616161;
+}
+
+div.code-block-caption {
+    background-color: #333;
+    border-color: #616161;
+    color: white;
+}
+
+code {
+    background-color: #424242;
+}
+
+div.body div.seealso {
+    background-color: rgba(255, 255, 0, 0.1);
+}
+
+div.warning {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+.warning code {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+/* Admonitions */
+:root {
+    --admonition-background: #ffffff1a;
+    --admonition-border: currentColor;
+    --admonition-color: #ffffffde;
+    --attention-background: #ffffff1a;
+    --attention-border: currentColor;
+    --caution-background: #ffff001a;
+    --caution-border: #dd6;
+    --danger-background: #f003;
+    --danger-border: #f66;
+    --error-background: #f003;
+    --error-border: #f66;
+    --hint-background: #0044117a;
+    --hint-border: green;
+    --seealso-background: #ffff001a;
+    --seealso-border: #dd6;
+    --tip-background: #0044117a;
+    --tip-border: green;
+    --warning-background: #ff000033;
+    --warning-border: #ff6666;
+}
+
+aside.topic,
+div.topic,
+div.note,
+nav.contents {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: currentColor;
+}
+
+.note code {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav {
+    box-shadow: rgba(255, 255, 255, 0.25) 0 0 2px 0;
+}
+
+.nav-content {
+    background-color: black;
+}
+
+img.invert-in-dark-mode {
+    filter: invert(1) hue-rotate(.5turn);
+}
+
+/* -- object description styles --------------------------------------------- */
+
+/* C++ specific styling */
+
+/* Override Sphinx's basic.css to fix colour contrast */
+.sig.c   .k, .sig.c   .kt,
+.sig.cpp .k, .sig.cpp .kt {
+    color: #5283ff;
+}
+
+/* Version change directives */
+:root {
+    --versionadded: var(--good-color);
+    --versionchanged: var(--middle-color);
+    --deprecated: var(--bad-color);
+    --soft-deprecated: rgb(206, 100, 255);
+    --soft-deprecated-border: rgb(206, 100, 255);
+}
+
+.copybutton {
+    color: #ac9; /* follows div.body pre */
+    background-color: #222222; /* follows body */
+}
+
+.copybutton:hover {
+    background-color: #434343;
+}
+
+.copybutton:active {
+    background-color: #656565;
+}
+
+</style>
+    <link rel="shortcut icon" type="image/png" href="data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M7.90472%200.00013087C7.24498%200.00316295%206.61493%200.0588153%206.06056%200.15584C4.42744%200.441207%204.13093%201.0385%204.13093%202.14002V3.59479H7.99018V4.07971H4.13093H2.68259C1.56098%204.07971%200.578874%204.7465%200.271682%206.01495C-0.0826595%207.4689%20-0.0983765%208.37618%200.271682%209.89434C0.546011%2011.0244%201.20115%2011.8296%202.32275%2011.8296H3.64965V10.0856C3.64965%208.82574%204.75178%207.71441%206.06056%207.71441H9.91531C10.9883%207.71441%2011.8449%206.84056%2011.8449%205.77472V2.14002C11.8449%201.10556%2010.9626%200.328486%209.91531%200.15584C9.25235%200.046687%208.56447%20-0.00290121%207.90472%200.00013087ZM5.81767%201.17017C6.2163%201.17017%206.54184%201.49742%206.54184%201.89978C6.54184%202.30072%206.2163%202.62494%205.81767%202.62494C5.41761%202.62494%205.0935%202.30072%205.0935%201.89978C5.0935%201.49742%205.41761%201.17017%205.81767%201.17017Z%22%20fill%3D%22url%28%23paint0_linear%29%22%2F%3E%0A%3Cpath%20d%3D%22M12.3262%204.07971V5.77472C12.3262%207.08883%2011.1998%208.19488%209.9153%208.19488H6.06055C5.00466%208.19488%204.13092%209.0887%204.13092%2010.1346V13.7693C4.13092%2014.8037%205.04038%2015.4122%206.06055%2015.709C7.28217%2016.0642%208.45364%2016.1285%209.9153%2015.709C10.8869%2015.4307%2011.8449%2014.8708%2011.8449%2013.7693V12.3145H7.99017V11.8296H11.8449H13.7746C14.8962%2011.8296%2015.3141%2011.0558%2015.7042%209.89434C16.1071%208.69865%2016.09%207.5488%2015.7042%206.01495C15.427%204.91058%2014.8976%204.07971%2013.7746%204.07971H12.3262ZM10.1582%2013.2843C10.5583%2013.2843%2010.8824%2013.6086%2010.8824%2014.0095C10.8824%2014.4119%2010.5583%2014.7391%2010.1582%2014.7391C9.75955%2014.7391%209.43402%2014.4119%209.43402%2014.0095C9.43402%2013.6086%209.75955%2013.2843%2010.1582%2013.2843Z%22%20fill%3D%22url%28%23paint1_linear%29%22%2F%3E%0A%3Cdefs%3E%0A%3ClinearGradient%20id%3D%22paint0_linear%22%20x1%3D%221.25961e-08%22%20y1%3D%221.08223e-08%22%20x2%3D%228.81664%22%20y2%3D%227.59597%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%3Cstop%20stop-color%3D%22%235A9FD4%22%2F%3E%0A%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23306998%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3ClinearGradient%20id%3D%22paint1_linear%22%20x1%3D%2210.0654%22%20y1%3D%2213.8872%22%20x2%3D%226.91912%22%20y2%3D%229.42957%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%3Cstop%20stop-color%3D%22%23FFD43B%22%2F%3E%0A%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFE873%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3C%2Fdefs%3E%0A%3C%2Fsvg%3E%0A">
+            <script>
+// Extract copyable text from the code block ignoring the
+// prompts and output.
+function getCopyableText(rootElement) {
+    rootElement = rootElement.cloneNode(true)
+    // tracebacks (.gt) contain bare text elements that
+    // need to be removed
+    const tracebacks = rootElement.querySelectorAll(".gt")
+    for (const el of tracebacks) {
+        while (
+            el.nextSibling &&
+            (el.nextSibling.nodeType !== Node.ELEMENT_NODE ||
+                !el.nextSibling.matches(".gp, .go"))
+        ) {
+            el.nextSibling.remove()
+        }
+    }
+    // Remove all elements with the "go" (Generic.Output),
+    // "gp" (Generic.Prompt), or "gt" (Generic.Traceback) CSS class
+    const elements = rootElement.querySelectorAll(".gp, .go, .gt, .linenos")
+    for (const el of elements) {
+        el.remove()
+    }
+    return rootElement.innerText.trim()
+}
+
+const loadCopyButton = () => {
+    const button = document.createElement("button")
+    button.classList.add("copybutton")
+    button.type = "button"
+    button.innerText = _("Copy")
+    button.title = _("Copy to clipboard")
+
+    const makeOnButtonClick = () => {
+        let timeout = null
+        // define the behavior of the button when it's clicked
+        return async event => {
+            // check if the clipboard is available
+            if (!navigator.clipboard || !navigator.clipboard.writeText) {
+                return;
+            }
+
+            clearTimeout(timeout)
+            const buttonEl = event.currentTarget
+            const codeEl = buttonEl.nextElementSibling
+
+            try {
+                await navigator.clipboard.writeText(getCopyableText(codeEl))
+            } catch (e) {
+                console.error(e.message)
+                return
+            }
+
+            buttonEl.innerText = _("Copied!")
+            timeout = setTimeout(() => {
+                buttonEl.innerText = _("Copy")
+            }, 1500)
+        }
+    }
+
+    const highlightedElements = document.querySelectorAll(
+        ".highlight-python .highlight,"
+        + ".highlight-python3 .highlight,"
+        + ".highlight-pycon .highlight,"
+        + ".highlight-pycon3 .highlight,"
+        + ".highlight-bash .highlight,"
+        + ".highlight-console .highlight,"
+        + ".highlight-doscon .highlight,"
+        + ".highlight-ps1con .highlight,"
+        + ".highlight-sh .highlight,"
+        + ".highlight-shell-session .highlight,"
+        + ".highlight-default .highlight"
+    )
+
+    // create and add the button to all the code blocks that contain >>>
+    highlightedElements.forEach(el => {
+        el.style.position = "relative"
+
+        // if we find a console prompt (.gp), prepend the (deeply cloned) button
+        const clonedButton = button.cloneNode(true)
+        // the onclick attribute is not cloned, set it on the new element
+        clonedButton.onclick = makeOnButtonClick()
+        el.prepend(clonedButton)
+    })
+}
+
+if (document.readyState !== "loading") {
+    loadCopyButton()
+} else {
+    document.addEventListener("DOMContentLoaded", loadCopyButton)
+}
+
+</script>
+            <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Make tables responsive by wrapping them in a div and making them scrollable
+    const tables = document.querySelectorAll("table.docutils")
+    tables.forEach(function(table){
+        table.outerHTML = '<div class="responsive-table__container">' + table.outerHTML + "</div>"
+    })
+
+    const togglerInput = document.querySelector(".toggler__input")
+    const togglerLabel = document.querySelector(".toggler__label")
+    const sideMenu = document.querySelector(".menu-wrapper")
+    const menuItems = document.querySelectorAll(".menu")
+    const doc = document.querySelector(".document")
+    const body = document.querySelector("body")
+
+    function closeMenu() {
+        togglerInput.checked = false
+        sideMenu.setAttribute("aria-expanded", "false")
+        sideMenu.setAttribute("aria-hidden", "true")
+        togglerLabel.setAttribute("aria-pressed", "false")
+        body.style.overflow = "visible"
+    }
+    function openMenu() {
+        togglerInput.checked = true
+        sideMenu.setAttribute("aria-expanded", "true")
+        sideMenu.setAttribute("aria-hidden", "false")
+        togglerLabel.setAttribute("aria-pressed", "true")
+        body.style.overflow = "hidden"
+    }
+
+    // Close menu when link on the sideMenu is clicked
+    sideMenu.addEventListener("click", function (event) {
+        let target = event.target
+        if (target.tagName.toLowerCase() !== "a") {
+            return
+        }
+        closeMenu()
+    })
+    // Add accessibility data when sideMenu is opened/closed
+    togglerInput.addEventListener("change", function (_event) {
+        togglerInput.checked ? openMenu() : closeMenu()
+    })
+    // Make sideMenu links tabbable only when visible
+    for(let menuItem of menuItems) {
+        if(togglerInput.checked) {
+          menuItem.setAttribute("tabindex", "0")
+        } else {
+          menuItem.setAttribute("tabindex", "-1")
+        }
+    }
+    // Close sideMenu when document body is clicked
+    doc.addEventListener("click", function () {
+        if (togglerInput.checked) {
+            closeMenu()
+        }
+    })
+})
+
+</script>
+            <script>
+function isInputFocused() {
+  const activeElement = document.activeElement;
+  return (
+    activeElement.tagName === 'INPUT' ||
+    activeElement.tagName === 'TEXTAREA' ||
+    activeElement.isContentEditable
+  );
+}
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === '/') {
+    if (!isInputFocused()) {
+      // Prevent "/" from being entered in the search box
+      event.preventDefault();
+
+      // Set the focus on the search box
+      const searchBox = document.getElementById('search-box');
+      searchBox.focus();
+    }
+  }
+});
+
+</script>
+            <script>
+const pydocthemeDark = document.getElementById('pydoctheme_dark_css')
+const pygmentsDark = document.getElementById('pygments_dark_css')
+const themeSelectors = document.getElementsByClassName('theme-selector')
+
+function activateTheme(theme) {
+  localStorage.setItem('currentTheme', theme);
+  [...themeSelectors].forEach(e => e.value = theme)
+  switch (theme) {
+    case 'light':
+      pydocthemeDark.media = 'not all'
+      pygmentsDark.media = 'not all'
+      break;
+    case 'dark':
+      pydocthemeDark.media = 'all'
+      pygmentsDark.media = 'all'
+      break;
+    default:
+      // auto
+      pydocthemeDark.media = '(prefers-color-scheme: dark)'
+      pygmentsDark.media = '(prefers-color-scheme: dark)'
+  }
+}
+
+activateTheme(localStorage.getItem('currentTheme') || 'auto')
+
+</script> 
+            <script>
+ function onSwitch(event) {
+     const option = event.target.selectedIndex;
+     const item = event.target.options[option];
+     window.location.href = item.dataset.url;
+ }
+
+ document.addEventListener("readthedocs-addons-data-ready", function(event) {
+   const config = event.detail.data()
+   const versionSelect = `
+   <select id="version_select" aria-label="Python version">
+   ${ config.versions.active.map(
+       (version) => `
+       <option
+           value="${ version.slug }"
+           ${ config.versions.current.slug === version.slug ? 'selected="selected"' : '' }
+           data-url="${ version.urls.documentation }">
+           ${ version.slug }
+       </option>`
+   ).join("\n") }
+   </select>
+   `;
+
+   // Prepend the current language to the options on the selector
+   let languages = config.projects.translations.concat(config.projects.current);
+   languages = languages.sort((a, b) => a.language.name.localeCompare(b.language.name));
+
+   const languageSelect = `
+   <select id="language_select" aria-label="Language">
+   ${ languages.map(
+       (translation) => `
+       <option
+           value="${ translation.slug }"
+           ${ config.projects.current.slug === translation.slug ? 'selected="selected"' : '' }
+           data-url="${ translation.urls.documentation }">
+           ${ translation.language.name }
+       </option>`
+   ).join("\n") }
+   </select>
+   `;
+
+   // Query all the placeholders because there are different ones for Desktop/Mobile
+   const versionPlaceholders = document.querySelectorAll(".version_switcher_placeholder");
+   for (placeholder of versionPlaceholders) {
+       placeholder.innerHTML = versionSelect;
+       let selectElement = placeholder.querySelector("select");
+       selectElement.addEventListener("change", onSwitch);
+   }
+
+   const languagePlaceholders = document.querySelectorAll(".language_switcher_placeholder");
+   for (placeholder of languagePlaceholders) {
+       placeholder.innerHTML = languageSelect;
+       let selectElement = placeholder.querySelector("select");
+       selectElement.addEventListener("change", onSwitch);
+   }
+ });
+
+</script>
+            <meta name="readthedocs-addons-api-version" content="1">
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M7.90472%200.00013087C7.24498%200.00316295%206.61493%200.0588153%206.06056%200.15584C4.42744%200.441207%204.13093%201.0385%204.13093%202.14002V3.59479H7.99018V4.07971H4.13093H2.68259C1.56098%204.07971%200.578874%204.7465%200.271682%206.01495C-0.0826595%207.4689%20-0.0983765%208.37618%200.271682%209.89434C0.546011%2011.0244%201.20115%2011.8296%202.32275%2011.8296H3.64965V10.0856C3.64965%208.82574%204.75178%207.71441%206.06056%207.71441H9.91531C10.9883%207.71441%2011.8449%206.84056%2011.8449%205.77472V2.14002C11.8449%201.10556%2010.9626%200.328486%209.91531%200.15584C9.25235%200.046687%208.56447%20-0.00290121%207.90472%200.00013087ZM5.81767%201.17017C6.2163%201.17017%206.54184%201.49742%206.54184%201.89978C6.54184%202.30072%206.2163%202.62494%205.81767%202.62494C5.41761%202.62494%205.0935%202.30072%205.0935%201.89978C5.0935%201.49742%205.41761%201.17017%205.81767%201.17017Z%22%20fill%3D%22url%28%23paint0_linear%29%22%2F%3E%0A%3Cpath%20d%3D%22M12.3262%204.07971V5.77472C12.3262%207.08883%2011.1998%208.19488%209.9153%208.19488H6.06055C5.00466%208.19488%204.13092%209.0887%204.13092%2010.1346V13.7693C4.13092%2014.8037%205.04038%2015.4122%206.06055%2015.709C7.28217%2016.0642%208.45364%2016.1285%209.9153%2015.709C10.8869%2015.4307%2011.8449%2014.8708%2011.8449%2013.7693V12.3145H7.99017V11.8296H11.8449H13.7746C14.8962%2011.8296%2015.3141%2011.0558%2015.7042%209.89434C16.1071%208.69865%2016.09%207.5488%2015.7042%206.01495C15.427%204.91058%2014.8976%204.07971%2013.7746%204.07971H12.3262ZM10.1582%2013.2843C10.5583%2013.2843%2010.8824%2013.6086%2010.8824%2014.0095C10.8824%2014.4119%2010.5583%2014.7391%2010.1582%2014.7391C9.75955%2014.7391%209.43402%2014.4119%209.43402%2014.0095C9.43402%2013.6086%209.75955%2013.2843%2010.1582%2013.2843Z%22%20fill%3D%22url%28%23paint1_linear%29%22%2F%3E%0A%3Cdefs%3E%0A%3ClinearGradient%20id%3D%22paint0_linear%22%20x1%3D%221.25961e-08%22%20y1%3D%221.08223e-08%22%20x2%3D%228.81664%22%20y2%3D%227.59597%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%3Cstop%20stop-color%3D%22%235A9FD4%22%2F%3E%0A%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23306998%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3ClinearGradient%20id%3D%22paint1_linear%22%20x1%3D%2210.0654%22%20y1%3D%2213.8872%22%20x2%3D%226.91912%22%20y2%3D%229.42957%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%3Cstop%20stop-color%3D%22%23FFD43B%22%2F%3E%0A%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFE873%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3C%2Fdefs%3E%0A%3C%2Fsvg%3E%0A" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="https://docs.python.org/3/search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="https://docs.python.org/3/contents.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="floatingpoint.html#">15. Floating-Point Arithmetic:  Issues and Limitations</a><ul>
+<li><a class="reference internal" href="floatingpoint.html#representation-error">15.1. Representation Error</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="interactive.html"
+                          title="previous chapter"><span class="section-number">14. </span>Interactive Input Editing and History Substitution</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="appendix.html"
+                          title="next chapter"><span class="section-number">16. </span>Appendix</a></p>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const title = document.querySelector('meta[property="og:title"]').content;
+        const elements = document.querySelectorAll('.improvepage');
+        const pageurl = window.location.href.split('?')[0];
+        elements.forEach(element => {
+            const url = new URL(element.href.split('?')[0].replace("-nojs", ""));
+            url.searchParams.set('pagetitle', title);
+            url.searchParams.set('pageurl', pageurl);
+            url.searchParams.set('pagesource', "tutorial/floatingpoint.rst");
+            element.href = url.toString();
+        });
+    });
+  </script>
+  <div role="note" aria-label="source link">
+    <h3>This page</h3>
+    <ul class="this-page-menu">
+      <li><a href="https://docs.python.org/3/bugs.html">Report a bug</a></li>
+      <li><a class="improvepage" href="https://docs.python.org/3/improve-page-nojs.html">Improve this page</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/main/Doc/tutorial/floatingpoint.rst?plain=1"
+            rel="nofollow">Show source
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="https://docs.python.org/3/genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="https://docs.python.org/3/py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="appendix.html" title="16. Appendix"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="interactive.html" title="14. Interactive Input Editing and History Substitution"
+             accesskey="P">previous</a> |</li>
+
+          <li><img src="data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M7.90472%200.00013087C7.24498%200.00316295%206.61493%200.0588153%206.06056%200.15584C4.42744%200.441207%204.13093%201.0385%204.13093%202.14002V3.59479H7.99018V4.07971H4.13093H2.68259C1.56098%204.07971%200.578874%204.7465%200.271682%206.01495C-0.0826595%207.4689%20-0.0983765%208.37618%200.271682%209.89434C0.546011%2011.0244%201.20115%2011.8296%202.32275%2011.8296H3.64965V10.0856C3.64965%208.82574%204.75178%207.71441%206.06056%207.71441H9.91531C10.9883%207.71441%2011.8449%206.84056%2011.8449%205.77472V2.14002C11.8449%201.10556%2010.9626%200.328486%209.91531%200.15584C9.25235%200.046687%208.56447%20-0.00290121%207.90472%200.00013087ZM5.81767%201.17017C6.2163%201.17017%206.54184%201.49742%206.54184%201.89978C6.54184%202.30072%206.2163%202.62494%205.81767%202.62494C5.41761%202.62494%205.0935%202.30072%205.0935%201.89978C5.0935%201.49742%205.41761%201.17017%205.81767%201.17017Z%22%20fill%3D%22url%28%23paint0_linear%29%22%2F%3E%0A%3Cpath%20d%3D%22M12.3262%204.07971V5.77472C12.3262%207.08883%2011.1998%208.19488%209.9153%208.19488H6.06055C5.00466%208.19488%204.13092%209.0887%204.13092%2010.1346V13.7693C4.13092%2014.8037%205.04038%2015.4122%206.06055%2015.709C7.28217%2016.0642%208.45364%2016.1285%209.9153%2015.709C10.8869%2015.4307%2011.8449%2014.8708%2011.8449%2013.7693V12.3145H7.99017V11.8296H11.8449H13.7746C14.8962%2011.8296%2015.3141%2011.0558%2015.7042%209.89434C16.1071%208.69865%2016.09%207.5488%2015.7042%206.01495C15.427%204.91058%2014.8976%204.07971%2013.7746%204.07971H12.3262ZM10.1582%2013.2843C10.5583%2013.2843%2010.8824%2013.6086%2010.8824%2014.0095C10.8824%2014.4119%2010.5583%2014.7391%2010.1582%2014.7391C9.75955%2014.7391%209.43402%2014.4119%209.43402%2014.0095C9.43402%2013.6086%209.75955%2013.2843%2010.1582%2013.2843Z%22%20fill%3D%22url%28%23paint1_linear%29%22%2F%3E%0A%3Cdefs%3E%0A%3ClinearGradient%20id%3D%22paint0_linear%22%20x1%3D%221.25961e-08%22%20y1%3D%221.08223e-08%22%20x2%3D%228.81664%22%20y2%3D%227.59597%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%3Cstop%20stop-color%3D%22%235A9FD4%22%2F%3E%0A%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23306998%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3ClinearGradient%20id%3D%22paint1_linear%22%20x1%3D%2210.0654%22%20y1%3D%2213.8872%22%20x2%3D%226.91912%22%20y2%3D%229.42957%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%3Cstop%20stop-color%3D%22%23FFD43B%22%2F%3E%0A%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFE873%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3C%2Fdefs%3E%0A%3C%2Fsvg%3E%0A" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="https://docs.python.org/3/index.html">3.14.6 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">The Python Tutorial</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="floatingpoint.html"><span class="section-number">15. </span>Floating-Point Arithmetic:  Issues and Limitations</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="https://docs.python.org/3/search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="floating-point-arithmetic-issues-and-limitations">
+<span id="tut-fp-issues"></span><h1><span class="section-number">15. </span>Floating-Point Arithmetic:  Issues and Limitations<a class="headerlink" href="floatingpoint.html#floating-point-arithmetic-issues-and-limitations" title="Link to this heading">¶</a></h1>
+<p>Floating-point numbers are represented in computer hardware as base 2 (binary)
+fractions.  For example, the <strong>decimal</strong> fraction <code class="docutils literal notranslate"><span class="pre">0.625</span></code>
+has value 6/10 + 2/100 + 5/1000, and in the same way the <strong>binary</strong> fraction <code class="docutils literal notranslate"><span class="pre">0.101</span></code>
+has value 1/2 + 0/4 + 1/8. These two fractions have identical values, the only
+real difference being that the first is written in base 10 fractional notation,
+and the second in base 2.</p>
+<p>Unfortunately, most decimal fractions cannot be represented exactly as binary
+fractions.  A consequence is that, in general, the decimal floating-point
+numbers you enter are only approximated by the binary floating-point numbers
+actually stored in the machine.</p>
+<p>The problem is easier to understand at first in base 10.  Consider the fraction
+1/3.  You can approximate that as a base 10 fraction:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.3</span>
+</pre></div>
+</div>
+<p>or, better,</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.33</span>
+</pre></div>
+</div>
+<p>or, better,</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.333</span>
+</pre></div>
+</div>
+<p>and so on.  No matter how many digits you’re willing to write down, the result
+will never be exactly 1/3, but will be an increasingly better approximation of
+1/3.</p>
+<p>In the same way, no matter how many base 2 digits you’re willing to use, the
+decimal value 0.1 cannot be represented exactly as a base 2 fraction.  In base
+2, 1/10 is the infinitely repeating fraction</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.0001100110011001100110011001100110011001100110011</span><span class="o">...</span>
+</pre></div>
+</div>
+<p>Stop at any finite number of bits, and you get an approximation.  On most
+machines today, floats are approximated using a binary fraction with
+the numerator using the first 53 bits starting with the most significant bit and
+with the denominator as a power of two.  In the case of 1/10, the binary fraction
+is <code class="docutils literal notranslate"><span class="pre">3602879701896397</span> <span class="pre">/</span> <span class="pre">2</span> <span class="pre">**</span> <span class="pre">55</span></code> which is close to but not exactly
+equal to the true value of 1/10.</p>
+<p>Many users are not aware of the approximation because of the way values are
+displayed.  Python only prints a decimal approximation to the true decimal
+value of the binary approximation stored by the machine.  On most machines, if
+Python were to print the true decimal value of the binary approximation stored
+for 0.1, it would have to display:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">0.1</span>
+<span class="go">0.1000000000000000055511151231257827021181583404541015625</span>
+</pre></div>
+</div>
+<p>That is more digits than most people find useful, so Python keeps the number
+of digits manageable by displaying a rounded value instead:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">/</span> <span class="mi">10</span>
+<span class="go">0.1</span>
+</pre></div>
+</div>
+<p>Just remember, even though the printed result looks like the exact value
+of 1/10, the actual stored value is the nearest representable binary fraction.</p>
+<p>Interestingly, there are many different decimal numbers that share the same
+nearest approximate binary fraction.  For example, the numbers <code class="docutils literal notranslate"><span class="pre">0.1</span></code> and
+<code class="docutils literal notranslate"><span class="pre">0.10000000000000001</span></code> and
+<code class="docutils literal notranslate"><span class="pre">0.1000000000000000055511151231257827021181583404541015625</span></code> are all
+approximated by <code class="docutils literal notranslate"><span class="pre">3602879701896397</span> <span class="pre">/</span> <span class="pre">2</span> <span class="pre">**</span> <span class="pre">55</span></code>.  Since all of these decimal
+values share the same approximation, any one of them could be displayed
+while still preserving the invariant <code class="docutils literal notranslate"><span class="pre">eval(repr(x))</span> <span class="pre">==</span> <span class="pre">x</span></code>.</p>
+<p>Historically, the Python prompt and built-in <a class="reference internal" href="https://docs.python.org/3/library/functions.html#repr" title="repr"><code class="xref py py-func docutils literal notranslate"><span class="pre">repr()</span></code></a> function would choose
+the one with 17 significant digits, <code class="docutils literal notranslate"><span class="pre">0.10000000000000001</span></code>.   Starting with
+Python 3.1, Python (on most systems) is now able to choose the shortest of
+these and simply display <code class="docutils literal notranslate"><span class="pre">0.1</span></code>.</p>
+<p>Note that this is in the very nature of binary floating point: this is not a bug
+in Python, and it is not a bug in your code either.  You’ll see the same kind of
+thing in all languages that support your hardware’s floating-point arithmetic
+(although some languages may not <em>display</em> the difference by default, or in all
+output modes).</p>
+<p>For more pleasant output, you may wish to use string formatting to produce a
+limited number of significant digits:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">format</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="s1">&#39;.12g&#39;</span><span class="p">)</span>  <span class="c1"># give 12 significant digits</span>
+<span class="go">&#39;3.14159265359&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">format</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="s1">&#39;.2f&#39;</span><span class="p">)</span>   <span class="c1"># give 2 digits after the point</span>
+<span class="go">&#39;3.14&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="go">&#39;3.141592653589793&#39;</span>
+</pre></div>
+</div>
+<p>It’s important to realize that this is, in a real sense, an illusion: you’re
+simply rounding the <em>display</em> of the true machine value.</p>
+<p>One illusion may beget another.  For example, since 0.1 is not exactly 1/10,
+summing three values of 0.1 may not yield exactly 0.3, either:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">==</span> <span class="mf">0.3</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Also, since the 0.1 cannot get any closer to the exact value of 1/10 and
+0.3 cannot get any closer to the exact value of 3/10, then pre-rounding with
+<a class="reference internal" href="https://docs.python.org/3/library/functions.html#round" title="round"><code class="xref py py-func docutils literal notranslate"><span class="pre">round()</span></code></a> function cannot help:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">round</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">round</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">round</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Though the numbers cannot be made closer to their intended exact values,
+the <a class="reference internal" href="https://docs.python.org/3/library/math.html#math.isclose" title="math.isclose"><code class="xref py py-func docutils literal notranslate"><span class="pre">math.isclose()</span></code></a> function can be useful for comparing inexact values:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Alternatively, the <a class="reference internal" href="https://docs.python.org/3/library/functions.html#round" title="round"><code class="xref py py-func docutils literal notranslate"><span class="pre">round()</span></code></a> function can be used to compare rough
+approximations:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">ndigits</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="nb">round</span><span class="p">(</span><span class="mi">22</span> <span class="o">/</span> <span class="mi">7</span><span class="p">,</span> <span class="n">ndigits</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Binary floating-point arithmetic holds many surprises like this.  The problem
+with “0.1” is explained in precise detail below, in the “Representation Error”
+section.  See <a class="reference external" href="https://jvns.ca/blog/2023/01/13/examples-of-floating-point-problems/">Examples of Floating Point Problems</a> for
+a pleasant summary of how binary floating point works and the kinds of
+problems commonly encountered in practice.  Also see
+<a class="reference external" href="http://www.indowsway.com/floatingpoint.htm">The Perils of Floating Point</a>
+for a more complete account of other common surprises.</p>
+<p>As that says near the end, “there are no easy answers.”  Still, don’t be unduly
+wary of floating point!  The errors in Python float operations are inherited
+from the floating-point hardware, and on most machines are on the order of no
+more than 1 part in 2**53 per operation.  That’s more than adequate for most
+tasks, but you do need to keep in mind that it’s not decimal arithmetic and
+that every float operation can suffer a new rounding error.</p>
+<p>While pathological cases do exist, for most casual use of floating-point
+arithmetic you’ll see the result you expect in the end if you simply round the
+display of your final results to the number of decimal digits you expect.
+<a class="reference internal" href="https://docs.python.org/3/library/stdtypes.html#str" title="str"><code class="xref py py-func docutils literal notranslate"><span class="pre">str()</span></code></a> usually suffices, and for finer control see the <a class="reference internal" href="https://docs.python.org/3/library/stdtypes.html#str.format" title="str.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a>
+method’s format specifiers in <a class="reference internal" href="https://docs.python.org/3/library/string.html#formatstrings"><span class="std std-ref">Format string syntax</span></a>.</p>
+<p>For use cases which require exact decimal representation, try using the
+<a class="reference internal" href="https://docs.python.org/3/library/decimal.html#module-decimal" title="decimal: Implementation of the General Decimal Arithmetic Specification."><code class="xref py py-mod docutils literal notranslate"><span class="pre">decimal</span></code></a> module which implements decimal arithmetic suitable for
+accounting applications and high-precision applications.</p>
+<p>Another form of exact arithmetic is supported by the <a class="reference internal" href="https://docs.python.org/3/library/fractions.html#module-fractions" title="fractions: Rational numbers."><code class="xref py py-mod docutils literal notranslate"><span class="pre">fractions</span></code></a> module
+which implements arithmetic based on rational numbers (so the numbers like
+1/3 can be represented exactly).</p>
+<p>If you are a heavy user of floating-point operations you should take a look
+at the NumPy package and many other packages for mathematical and
+statistical operations supplied by the SciPy project. See &lt;<a class="reference external" href="https://scipy.org">https://scipy.org</a>&gt;.</p>
+<p>Python provides tools that may help on those rare occasions when you really
+<em>do</em> want to know the exact value of a float.  The
+<a class="reference internal" href="https://docs.python.org/3/library/stdtypes.html#float.as_integer_ratio" title="float.as_integer_ratio"><code class="xref py py-meth docutils literal notranslate"><span class="pre">float.as_integer_ratio()</span></code></a> method expresses the value of a float as a
+fraction:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mf">3.14159</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">as_integer_ratio</span><span class="p">()</span>
+<span class="go">(3537115888337719, 1125899906842624)</span>
+</pre></div>
+</div>
+<p>Since the ratio is exact, it can be used to losslessly recreate the
+original value:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">==</span> <span class="mi">3537115888337719</span> <span class="o">/</span> <span class="mi">1125899906842624</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="https://docs.python.org/3/library/stdtypes.html#float.hex" title="float.hex"><code class="xref py py-meth docutils literal notranslate"><span class="pre">float.hex()</span></code></a> method expresses a float in hexadecimal (base
+16), again giving the exact value stored by your computer:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+<span class="go">&#39;0x1.921f9f01b866ep+1&#39;</span>
+</pre></div>
+</div>
+<p>This precise hexadecimal representation can be used to reconstruct
+the float value exactly:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">==</span> <span class="nb">float</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s1">&#39;0x1.921f9f01b866ep+1&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Since the representation is exact, it is useful for reliably porting values
+across different versions of Python (platform independence) and exchanging
+data with other languages that support the same format (such as Java and C99).</p>
+<p>Another helpful tool is the <a class="reference internal" href="https://docs.python.org/3/library/functions.html#sum" title="sum"><code class="xref py py-func docutils literal notranslate"><span class="pre">sum()</span></code></a> function which helps mitigate
+loss-of-precision during summation.  It uses extended precision for
+intermediate rounding steps as values are added onto a running total.
+That can make a difference in overall accuracy so that the errors do not
+accumulate to the point where they affect the final total:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">==</span> <span class="mf">1.0</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">([</span><span class="mf">0.1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.0</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="https://docs.python.org/3/library/math.html#math.fsum" title="math.fsum"><code class="xref py py-func docutils literal notranslate"><span class="pre">math.fsum()</span></code></a> goes further and tracks all of the “lost digits”
+as values are added onto a running total so that the result has only a
+single rounding.  This is slower than <a class="reference internal" href="https://docs.python.org/3/library/functions.html#sum" title="sum"><code class="xref py py-func docutils literal notranslate"><span class="pre">sum()</span></code></a> but will be more
+accurate in uncommon cases where large magnitude inputs mostly cancel
+each other out leaving a final sum near zero:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.10430216751806065</span><span class="p">,</span> <span class="o">-</span><span class="mf">266310978.67179024</span><span class="p">,</span> <span class="mf">143401161448607.16</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="o">-</span><span class="mf">143401161400469.7</span><span class="p">,</span> <span class="mf">266262841.31058735</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.003244936839808227</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">Fraction</span><span class="p">,</span> <span class="n">arr</span><span class="p">)))</span>   <span class="c1"># Exact summation with single rounding</span>
+<span class="go">8.042173697819788e-13</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">fsum</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>                   <span class="c1"># Single rounding</span>
+<span class="go">8.042173697819788e-13</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>                         <span class="c1"># Multiple roundings in extended precision</span>
+<span class="go">8.042178034628478e-13</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">total</span> <span class="o">+=</span> <span class="n">x</span>                   <span class="c1"># Multiple roundings in standard precision</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">total</span>                            <span class="c1"># Straight addition has no correct digits!</span>
+<span class="go">-0.0051575902860057365</span>
+</pre></div>
+</div>
+<section id="representation-error">
+<span id="tut-fp-error"></span><h2><span class="section-number">15.1. </span>Representation Error<a class="headerlink" href="floatingpoint.html#representation-error" title="Link to this heading">¶</a></h2>
+<p>This section explains the “0.1” example in detail, and shows how you can perform
+an exact analysis of cases like this yourself.  Basic familiarity with binary
+floating-point representation is assumed.</p>
+<p><em class="dfn">Representation error</em> refers to the fact that some (most, actually)
+decimal fractions cannot be represented exactly as binary (base 2) fractions.
+This is the chief reason why Python (or Perl, C, C++, Java, Fortran, and many
+others) often won’t display the exact decimal number you expect.</p>
+<p>Why is that?  1/10 is not exactly representable as a binary fraction.  Since at
+least 2000, almost all machines use IEEE 754 binary floating-point arithmetic,
+and almost all platforms map Python floats to IEEE 754 binary64 “double
+precision” values.  IEEE 754 binary64 values contain 53 bits of precision, so
+on input the computer strives to convert 0.1 to the closest fraction it can of
+the form <em>J</em>/2**<em>N</em> where <em>J</em> is an integer containing exactly 53 bits.
+Rewriting</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">/</span> <span class="mi">10</span> <span class="o">~=</span> <span class="n">J</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>as</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="o">~=</span> <span class="mi">2</span><span class="o">**</span><span class="n">N</span> <span class="o">/</span> <span class="mi">10</span>
+</pre></div>
+</div>
+<p>and recalling that <em>J</em> has exactly 53 bits (is <code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">2**52</span></code> but <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">2**53</span></code>),
+the best value for <em>N</em> is 56:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span><span class="o">**</span><span class="mi">52</span> <span class="o">&lt;=</span>  <span class="mi">2</span><span class="o">**</span><span class="mi">56</span> <span class="o">//</span> <span class="mi">10</span>  <span class="o">&lt;</span> <span class="mi">2</span><span class="o">**</span><span class="mi">53</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>That is, 56 is the only value for <em>N</em> that leaves <em>J</em> with exactly 53 bits.  The
+best possible value for <em>J</em> is then that quotient rounded:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">56</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span>
+<span class="go">6</span>
+</pre></div>
+</div>
+<p>Since the remainder is more than half of 10, the best approximation is obtained
+by rounding up:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">+</span><span class="mi">1</span>
+<span class="go">7205759403792794</span>
+</pre></div>
+</div>
+<p>Therefore the best possible approximation to 1/10 in IEEE 754 double precision
+is:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="mi">7205759403792794</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">56</span>
+</pre></div>
+</div>
+<p>Dividing both the numerator and denominator by two reduces the fraction to:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3602879701896397</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">55</span>
+</pre></div>
+</div>
+<p>Note that since we rounded up, this is actually a little bit larger than 1/10;
+if we had not rounded up, the quotient would have been a little bit smaller than
+1/10.  But in no case can it be <em>exactly</em> 1/10!</p>
+<p>So the computer never “sees” 1/10:  what it sees is the exact fraction given
+above, the best IEEE 754 double approximation it can get:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">0.1</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">55</span>
+<span class="go">3602879701896397.0</span>
+</pre></div>
+</div>
+<p>If we multiply that fraction by 10**55, we can see the value out to
+55 decimal digits:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">3602879701896397</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">**</span> <span class="mi">55</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">55</span>
+<span class="go">1000000000000000055511151231257827021181583404541015625</span>
+</pre></div>
+</div>
+<p>meaning that the exact number stored in the computer is equal to
+the decimal value 0.1000000000000000055511151231257827021181583404541015625.
+Instead of displaying the full decimal value, many languages (including
+older versions of Python), round the result to 17 significant digits:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">format</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;.17f&#39;</span><span class="p">)</span>
+<span class="go">&#39;0.10000000000000001&#39;</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="https://docs.python.org/3/library/fractions.html#module-fractions" title="fractions: Rational numbers."><code class="xref py py-mod docutils literal notranslate"><span class="pre">fractions</span></code></a> and <a class="reference internal" href="https://docs.python.org/3/library/decimal.html#module-decimal" title="decimal: Implementation of the General Decimal Arithmetic Specification."><code class="xref py py-mod docutils literal notranslate"><span class="pre">decimal</span></code></a> modules make these calculations
+easy:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">fractions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fraction</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Fraction</span><span class="o">.</span><span class="n">from_float</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="go">Fraction(3602879701896397, 36028797018963968)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span><span class="o">.</span><span class="n">as_integer_ratio</span><span class="p">()</span>
+<span class="go">(3602879701896397, 36028797018963968)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Decimal</span><span class="o">.</span><span class="n">from_float</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="go">Decimal(&#39;0.1000000000000000055511151231257827021181583404541015625&#39;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">format</span><span class="p">(</span><span class="n">Decimal</span><span class="o">.</span><span class="n">from_float</span><span class="p">(</span><span class="mf">0.1</span><span class="p">),</span> <span class="s1">&#39;.17&#39;</span><span class="p">)</span>
+<span class="go">&#39;0.10000000000000001&#39;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="https://docs.python.org/3/contents.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="floatingpoint.html#">15. Floating-Point Arithmetic:  Issues and Limitations</a><ul>
+<li><a class="reference internal" href="floatingpoint.html#representation-error">15.1. Representation Error</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="interactive.html"
+                          title="previous chapter"><span class="section-number">14. </span>Interactive Input Editing and History Substitution</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="appendix.html"
+                          title="next chapter"><span class="section-number">16. </span>Appendix</a></p>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const title = document.querySelector('meta[property="og:title"]').content;
+        const elements = document.querySelectorAll('.improvepage');
+        const pageurl = window.location.href.split('?')[0];
+        elements.forEach(element => {
+            const url = new URL(element.href.split('?')[0].replace("-nojs", ""));
+            url.searchParams.set('pagetitle', title);
+            url.searchParams.set('pageurl', pageurl);
+            url.searchParams.set('pagesource', "tutorial/floatingpoint.rst");
+            element.href = url.toString();
+        });
+    });
+  </script>
+  <div role="note" aria-label="source link">
+    <h3>This page</h3>
+    <ul class="this-page-menu">
+      <li><a href="https://docs.python.org/3/bugs.html">Report a bug</a></li>
+      <li><a class="improvepage" href="https://docs.python.org/3/improve-page-nojs.html">Improve this page</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/main/Doc/tutorial/floatingpoint.rst?plain=1"
+            rel="nofollow">Show source
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+        </div>
+<div id="sidebarbutton" title="Collapse sidebar">
+<span>«</span>
+</div>
+
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="https://docs.python.org/3/genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="https://docs.python.org/3/py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="appendix.html" title="16. Appendix"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="interactive.html" title="14. Interactive Input Editing and History Substitution"
+             >previous</a> |</li>
+
+          <li><img src="data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M7.90472%200.00013087C7.24498%200.00316295%206.61493%200.0588153%206.06056%200.15584C4.42744%200.441207%204.13093%201.0385%204.13093%202.14002V3.59479H7.99018V4.07971H4.13093H2.68259C1.56098%204.07971%200.578874%204.7465%200.271682%206.01495C-0.0826595%207.4689%20-0.0983765%208.37618%200.271682%209.89434C0.546011%2011.0244%201.20115%2011.8296%202.32275%2011.8296H3.64965V10.0856C3.64965%208.82574%204.75178%207.71441%206.06056%207.71441H9.91531C10.9883%207.71441%2011.8449%206.84056%2011.8449%205.77472V2.14002C11.8449%201.10556%2010.9626%200.328486%209.91531%200.15584C9.25235%200.046687%208.56447%20-0.00290121%207.90472%200.00013087ZM5.81767%201.17017C6.2163%201.17017%206.54184%201.49742%206.54184%201.89978C6.54184%202.30072%206.2163%202.62494%205.81767%202.62494C5.41761%202.62494%205.0935%202.30072%205.0935%201.89978C5.0935%201.49742%205.41761%201.17017%205.81767%201.17017Z%22%20fill%3D%22url%28%23paint0_linear%29%22%2F%3E%0A%3Cpath%20d%3D%22M12.3262%204.07971V5.77472C12.3262%207.08883%2011.1998%208.19488%209.9153%208.19488H6.06055C5.00466%208.19488%204.13092%209.0887%204.13092%2010.1346V13.7693C4.13092%2014.8037%205.04038%2015.4122%206.06055%2015.709C7.28217%2016.0642%208.45364%2016.1285%209.9153%2015.709C10.8869%2015.4307%2011.8449%2014.8708%2011.8449%2013.7693V12.3145H7.99017V11.8296H11.8449H13.7746C14.8962%2011.8296%2015.3141%2011.0558%2015.7042%209.89434C16.1071%208.69865%2016.09%207.5488%2015.7042%206.01495C15.427%204.91058%2014.8976%204.07971%2013.7746%204.07971H12.3262ZM10.1582%2013.2843C10.5583%2013.2843%2010.8824%2013.6086%2010.8824%2014.0095C10.8824%2014.4119%2010.5583%2014.7391%2010.1582%2014.7391C9.75955%2014.7391%209.43402%2014.4119%209.43402%2014.0095C9.43402%2013.6086%209.75955%2013.2843%2010.1582%2013.2843Z%22%20fill%3D%22url%28%23paint1_linear%29%22%2F%3E%0A%3Cdefs%3E%0A%3ClinearGradient%20id%3D%22paint0_linear%22%20x1%3D%221.25961e-08%22%20y1%3D%221.08223e-08%22%20x2%3D%228.81664%22%20y2%3D%227.59597%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%3Cstop%20stop-color%3D%22%235A9FD4%22%2F%3E%0A%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23306998%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3ClinearGradient%20id%3D%22paint1_linear%22%20x1%3D%2210.0654%22%20y1%3D%2213.8872%22%20x2%3D%226.91912%22%20y2%3D%229.42957%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%3Cstop%20stop-color%3D%22%23FFD43B%22%2F%3E%0A%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFE873%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3C%2Fdefs%3E%0A%3C%2Fsvg%3E%0A" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="https://docs.python.org/3/index.html">3.14.6 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >The Python Tutorial</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="floatingpoint.html"><span class="section-number">15. </span>Floating-Point Arithmetic:  Issues and Limitations</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="https://docs.python.org/3/search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="https://docs.python.org/3/copyright.html">Copyright</a> 2001 Python Software Foundation.
+    <br>
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br>
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br>
+    
+      See <a href="https://docs.python.org/license.html">History and License</a> for more information.<br>
+    
+    
+    <br>
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br>
+    <br>
+      Last updated on Jul 13, 2026 (10:15 UTC).
+    
+      <a href="https://docs.python.org/bugs.html">Found a bug</a>?
+    
+    <br>
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+
+    <script>
+"use strict";
+
+// File URIs must begin with either one or three forward slashes
+const _is_file_uri = (uri) => uri.startsWith("file:/");
+
+const _IS_LOCAL = _is_file_uri(window.location.href);
+const _CURRENT_RELEASE = DOCUMENTATION_OPTIONS.VERSION || "";
+const _CURRENT_VERSION = _CURRENT_RELEASE.split(".", 2).join(".");
+const _CURRENT_LANGUAGE = (() => {
+  const _LANGUAGE = DOCUMENTATION_OPTIONS.LANGUAGE?.toLowerCase() || "en";
+  // Python 2.7 and 3.5--3.10 use ``LANGUAGE: 'None'`` for English
+  // in ``documentation_options.js``.
+  if (_LANGUAGE === "none") return "en";
+  return _LANGUAGE;
+})();
+const _CURRENT_PREFIX = (() => {
+  if (_IS_LOCAL) return null;
+  // Sphinx 7.2+ defines the content root data attribute in the HTML element.
+  const _CONTENT_ROOT = document.documentElement.dataset.content_root;
+  if (_CONTENT_ROOT !== undefined) {
+    return new URL(_CONTENT_ROOT, window.location).pathname;
+  }
+  // Fallback for older versions of Sphinx (used in Python 3.10 and older).
+  const _NUM_PREFIX_PARTS = _CURRENT_LANGUAGE === "en" ? 2 : 3;
+  return window.location.pathname.split("/", _NUM_PREFIX_PARTS).join("/") + "/";
+})();
+
+const _ALL_VERSIONS = new Map([["3.16", "dev (3.16)"], ["3.15", "pre (3.15)"], ["3.14", "3.14"], ["3.13", "3.13"], ["3.12", "3.12"], ["3.11", "3.11"], ["3.10", "3.10"], ["3.9", "3.9"], ["3.8", "3.8"], ["3.7", "3.7"], ["3.6", "3.6"], ["3.5", "3.5"], ["3.4", "3.4"], ["3.3", "3.3"], ["3.2", "3.2"], ["3.1", "3.1"], ["3.0", "3.0"], ["2.7", "2.7"], ["2.6", "2.6"]]);
+const _ALL_LANGUAGES = new Map([["el", "Greek | \u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac"], ["en", "English"], ["es", "Spanish | espa\u00f1ol"], ["fr", "French | fran\u00e7ais"], ["it", "Italian | italiano"], ["ja", "Japanese | \u65e5\u672c\u8a9e"], ["ko", "Korean | \ud55c\uad6d\uc5b4"], ["pl", "Polish | polski"], ["pt-br", "Brazilian Portuguese | Portugu\u00eas brasileiro"], ["ro", "Romanian | Rom\u00e2ne\u0219te"], ["tr", "Turkish | T\u00fcrk\u00e7e"], ["zh-cn", "Simplified Chinese | \u7b80\u4f53\u4e2d\u6587"], ["zh-tw", "Traditional Chinese | \u7e41\u9ad4\u4e2d\u6587"]]);
+
+/**
+ * Required for Python 3.7 and earlier.
+ * @returns {void}
+ * @private
+ */
+const _create_placeholders_if_missing = () => {
+  if (document.querySelectorAll(".version_switcher_placeholder").length) return;
+
+  const items = document.querySelectorAll("body>div.related>ul>li:not(.right)");
+  for (const item of items) {
+    if (item.innerText.toLowerCase().includes("documentation")) {
+      const container = document.createElement("li");
+      container.className = "switchers";
+      container.style.display = "inline-flex";
+      for (const placeholder_name of ["language", "version"]) {
+        const placeholder = document.createElement("div");
+        placeholder.className = `${placeholder_name}_switcher_placeholder`;
+        placeholder.style.marginRight = "5px";
+        placeholder.style.paddingLeft = "5px";
+        container.appendChild(placeholder);
+      }
+      item.parentElement.insertBefore(container, item);
+      return;
+    }
+  }
+};
+
+/**
+ * @param {Map<string, string>} versions
+ * @returns {HTMLSelectElement}
+ * @private
+ */
+const _create_version_select = (versions) => {
+  const select = document.createElement("select");
+  select.className = "version-select";
+  select.setAttribute("aria-label", "Python version");
+  if (_IS_LOCAL) {
+    select.disabled = true;
+    select.title = "Version switching is disabled in local builds";
+  }
+
+  for (const [version, title] of versions) {
+    const option = document.createElement("option");
+    option.value = version;
+    if (version === _CURRENT_VERSION) {
+      option.text = _CURRENT_RELEASE;
+      option.selected = true;
+    } else {
+      option.text = title;
+    }
+    select.add(option);
+  }
+
+  return select;
+};
+
+/**
+ * @param {Map<string, string>} languages
+ * @returns {HTMLSelectElement}
+ * @private
+ */
+const _create_language_select = (languages) => {
+  if (!languages.has(_CURRENT_LANGUAGE)) {
+    // In case we are browsing a language that is not yet in languages.
+    languages.set(_CURRENT_LANGUAGE, _CURRENT_LANGUAGE);
+  }
+
+  const select = document.createElement("select");
+  select.className = "language-select";
+  select.setAttribute("aria-label", "Language");
+  if (_IS_LOCAL) {
+    select.disabled = true;
+    select.title = "Language switching is disabled in local builds";
+  }
+
+  for (const [language, title] of languages) {
+    const option = document.createElement("option");
+    option.value = language;
+    option.text = title;
+    if (language === _CURRENT_LANGUAGE) option.selected = true;
+    select.add(option);
+  }
+
+  return select;
+};
+
+/**
+ * Change the current page to the first existing URL in the list.
+ * @param {Array<string>} urls
+ * @private
+ */
+const _navigate_to_first_existing = async (urls) => {
+  // Navigate to the first existing URL in urls.
+  for (const url of urls) {
+    try {
+      const response = await fetch(url, { method: "HEAD" });
+      if (response.ok) {
+        window.location.href = url;
+        return url;
+      }
+    } catch (err) {
+      console.error(`Error when fetching '${url}': ${err}`);
+    }
+  }
+
+  // if all else fails, redirect to the d.p.o root
+  window.location.href = "/";
+  return "/";
+};
+
+/**
+ * Navigate to the selected version.
+ * @param {Event} event
+ * @returns {void}
+ * @private
+ */
+const _on_version_switch = async (event) => {
+  if (_IS_LOCAL) return;
+
+  const selected_version = event.target.value;
+  // English has no language prefix.
+  const new_prefix_en = `/${selected_version}/`;
+  const new_prefix =
+    _CURRENT_LANGUAGE === "en"
+      ? new_prefix_en
+      : `/${_CURRENT_LANGUAGE}/${selected_version}/`;
+  if (_CURRENT_PREFIX !== new_prefix) {
+    // Try the following pages in order:
+    // 1. The current page in the current language with the new version
+    // 2. The current page in English with the new version
+    // 3. The documentation home in the current language with the new version
+    // 4. The documentation home in English with the new version
+    await _navigate_to_first_existing([
+      window.location.href.replace(_CURRENT_PREFIX, new_prefix),
+      window.location.href.replace(_CURRENT_PREFIX, new_prefix_en),
+      new_prefix,
+      new_prefix_en,
+    ]);
+  }
+};
+
+/**
+ * Navigate to the selected language.
+ * @param {Event} event
+ * @returns {void}
+ * @private
+ */
+const _on_language_switch = async (event) => {
+  if (_IS_LOCAL) return;
+
+  const selected_language = event.target.value;
+  // English has no language prefix.
+  const new_prefix =
+    selected_language === "en"
+      ? `/${_CURRENT_VERSION}/`
+      : `/${selected_language}/${_CURRENT_VERSION}/`;
+  if (_CURRENT_PREFIX !== new_prefix) {
+    // Try the following pages in order:
+    // 1. The current page in the new language with the current version
+    // 2. The documentation home in the new language with the current version
+    await _navigate_to_first_existing([
+      window.location.href.replace(_CURRENT_PREFIX, new_prefix),
+      new_prefix,
+    ]);
+  }
+};
+
+/**
+ * Set up the version and language switchers.
+ * @returns {void}
+ * @private
+ */
+const _initialise_switchers = () => {
+  const versions = _ALL_VERSIONS;
+  const languages = _ALL_LANGUAGES;
+
+  _create_placeholders_if_missing();
+
+  document
+    .querySelectorAll(".version_switcher_placeholder")
+    .forEach((placeholder) => {
+      const s = _create_version_select(versions);
+      s.addEventListener("change", _on_version_switch);
+      placeholder.append(s);
+    });
+
+  document
+    .querySelectorAll(".language_switcher_placeholder")
+    .forEach((placeholder) => {
+      const s = _create_language_select(languages);
+      s.addEventListener("change", _on_language_switch);
+      placeholder.append(s);
+    });
+};
+
+if (document.readyState !== "loading") {
+  _initialise_switchers();
+} else {
+  document.addEventListener("DOMContentLoaded", _initialise_switchers);
+}
+
+</script>
+  </body>
+</html>
